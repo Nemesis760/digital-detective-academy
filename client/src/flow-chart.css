@@ -1,0 +1,118 @@
+/* Flow Chart Component Styles */
+
+.flow-chart-container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.flow-chart-title {
+  color: #1e40af;
+  font-size: 1.3rem;
+  margin: 0 0 2rem 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.flow-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.flow-step-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.flow-step {
+  background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+  border: 2px solid #1e40af;
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #1e40af;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.step-title {
+  color: #1e40af;
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+}
+
+.step-description {
+  color: #64748b;
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.flow-arrow {
+  font-size: 1.5rem;
+  color: #1e40af;
+  margin: 0.5rem 0;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.flow-chart-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e2e8f0;
+}
+
+.footer-text {
+  color: #64748b;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .flow-chart-container {
+    padding: 1.5rem;
+  }
+
+  .flow-step {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .step-title {
+    font-size: 1rem;
+  }
+
+  .step-description {
+    font-size: 0.9rem;
+  }
+}

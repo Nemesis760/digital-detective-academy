@@ -1,0 +1,227 @@
+/* Card Matching Game Styles */
+
+.card-matching-game {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.game-instructions {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-instructions h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.game-instructions p {
+  font-size: 1.1rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.scenarios-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.scenario-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.scenario-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.scenario-card.completed {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.scenario-text {
+  font-size: 1.1rem;
+  color: #1e293b;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.card-btn {
+  flex: 1;
+  padding: 1rem 2rem;
+  border: 3px solid;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.card-btn:hover::before {
+  left: 100%;
+}
+
+.active-btn {
+  border-color: #6366f1;
+  color: #6366f1;
+}
+
+.active-btn:hover {
+  background: #6366f1;
+  color: white;
+  transform: scale(1.05);
+}
+
+.passive-btn {
+  border-color: #06b6d4;
+  color: #06b6d4;
+}
+
+.passive-btn:hover {
+  background: #06b6d4;
+  color: white;
+  transform: scale(1.05);
+}
+
+.card-btn.correct {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-color: #10b981;
+  color: white;
+  animation: correctPulse 0.5s ease;
+}
+
+.card-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@keyframes correctPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.feedback-message {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.feedback-message.correct {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border: 3px solid #34d399;
+}
+
+.feedback-message.wrong {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  border: 3px solid #f87171;
+}
+
+.feedback-text {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.feedback-explanation {
+  font-size: 1rem;
+  opacity: 0.95;
+  font-weight: 500;
+}
+
+.completion-message {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4);
+}
+
+.completion-message h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+/* Dark Theme */
+.dark .card-matching-game {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+}
+
+.dark .scenario-card {
+  background: #1e293b;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .scenario-text {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.dark .card-btn {
+  background: #0f172a;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .card-matching-game {
+    padding: 1.5rem;
+  }
+
+  .card-buttons {
+    flex-direction: column;
+  }
+
+  .card-btn {
+    width: 100%;
+  }
+}
+
