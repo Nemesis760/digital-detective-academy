@@ -36,6 +36,11 @@ npm run preview
 - `client/src/content`: Module content data
 - `client/public/images`: Static assets
 
+## Media (Images & Videos)
+- Images live under `client/public/images/...` and are referenced with `/images/...` paths.
+- Videos are defined via `video_links` in content files and rendered as buttons in the UI.
+- Large binaries/zip artifacts should not be committed to git.
+
 ## Asset policy
 - Do not commit `client/public/*.zip`. Keep large artifacts outside the repo.
 - Avoid committing files larger than 100 MB to git.

@@ -12,6 +12,7 @@ import FileExtensionFlashcards from '../components/FileExtensionFlashcards';
 import ScenarioTest from '../components/ScenarioTest';
 import BoxGame from '../components/BoxGame';
 import VideoLinks from '../components/VideoLinks';
+import { handleImgError } from '../utils/imageFallback';
 import '../modules.css';
 
 // Her bölüm için genel bir bileşen
@@ -78,9 +79,7 @@ const SectionComponent = ({ section, isTurkish }) => {
                   src={contentItem.image} 
                   alt={contentItem.title}
                   className="content-image"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                  }}
+                  onError={handleImgError}
                 />
               )}
 
@@ -117,9 +116,7 @@ const SectionComponent = ({ section, isTurkish }) => {
                           src={data.image} 
                           alt={category}
                           className="table-image"
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                          }}
+                          onError={handleImgError}
                         />
                       )}
                       {data.images && (
@@ -130,9 +127,7 @@ const SectionComponent = ({ section, isTurkish }) => {
                                 src={imgSrc} 
                                 alt={key}
                                 className="table-image-small"
-                                onError={(e) => {
-                                  e.target.style.display = 'none';
-                                }}
+                                onError={handleImgError}
                               />
                               <p className="table-image-label">{key}</p>
                             </div>
@@ -153,9 +148,7 @@ const SectionComponent = ({ section, isTurkish }) => {
                           src={part.image} 
                           alt={part.name}
                           className="part-image"
-                          onError={(e) => {
-                            e.target.style.display = 'none';
-                          }}
+                          onError={handleImgError}
                         />
                       )}
                       <h4>{part.name}</h4>
