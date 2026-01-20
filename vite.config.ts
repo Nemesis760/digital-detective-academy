@@ -6,8 +6,8 @@ export default defineConfig(({ mode }) => ({
   plugins: [react()],
   root: './client',
 
-  // GitHub Pages prod'da lazım, dev'de zararlı
-  base: mode === 'production' ? '/digital-shield-project/' : '/',
+  // GitHub Pages prod'da gerekli
+  base: mode === 'production' ? '/digital-detective-academy/' : '/',
 
   build: {
     outDir: '../dist',
@@ -20,3 +20,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
 }))
+git add vite.config.ts
+git commit -m "Fix Vite base path for GitHub Pages"
+git push origin main
