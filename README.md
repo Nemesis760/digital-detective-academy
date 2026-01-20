@@ -1,4 +1,4 @@
-# Digital Shield Project
+# Digital Detective Academy
 
 This repository contains the **landing page and final report website** for the Digital Shield Project, prepared as part of the **CEIT 435 course**.
 
