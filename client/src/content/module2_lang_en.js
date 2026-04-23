@@ -13,7 +13,7 @@ export const MODULE2_EN = {
           "1.1": {
             title: "What Is a Digital Footprint?",
             description: "A digital footprint is the trail of data we leave behind when we use the internet. Posts, comments, likes, search history, and the videos we watch all create this footprint. Just like footprints in snow, online actions may not always be visible immediately, but they can last a long time.",
-            image: "/images/module2/digital_footprint_concept.png",
+            image: "/images/digital_footprint_concept_map.png",
             points: [
               "Photos and comments we share on social media",
               "Our search history and websites we visit",
@@ -58,7 +58,7 @@ export const MODULE2_EN = {
           "1.2": {
             title: "Permanence of Digital Footprints",
             description: "The internet never forgets. These traces can be seen, saved, and copied by others. Even if content is deleted, someone may have taken a screenshot. That is why 'thinking before posting' is essential in the digital world.",
-            image: "/images/module2/footprint_permanence.png",
+            image: "/images/module1/think_en.png",
             points: [
               "Screenshots may have been taken",
               "Archived pages and database backups",
@@ -84,7 +84,7 @@ export const MODULE2_EN = {
           "2.1": {
             title: "Active Digital Footprint",
             description: "An active digital footprint is created when users intentionally share information. Uploading a photo to Instagram, writing a blog post, or commenting on a YouTube video are examples of this. We are in control.",
-            image: "/images/module2/active_footprint.png",
+            image: "/images/module2/video_active_passive.jpg",
             points: [
               "Sharing photos on social media",
               "Writing a blog post",
@@ -108,7 +108,7 @@ export const MODULE2_EN = {
           "2.2": {
             title: "Passive Digital Footprint",
             description: "A passive digital footprint is created in the background without our direct awareness. Websites tracking us as we browse (cookies), recording our location information, or our IP address fall into this category. Ads appearing based on our recent searches are a result of passive footprints.",
-            image: "/images/module2/passive_footprint.png",
+            image: "/images/module2/video_active_passive.jpg",
             points: [
               "Websites tracking us with cookies",
               "Recording our location information",
@@ -157,7 +157,7 @@ export const MODULE2_EN = {
           "3.1": {
             title: "What Is Personal Information?",
             description: "Personal information is data that identifies us, such as our full name, home address, phone number, ID number, the school we attend, and birthdate. These details are like the keys to our identity in the digital world and are very valuable.",
-            image: "/images/module2/personal_info.png",
+            image: "/images/privacy_detective_hero.png",
             points: [
               "Our full name and surname",
               "Our home address",
@@ -186,7 +186,7 @@ export const MODULE2_EN = {
           "3.2": {
             title: "Privacy Settings",
             description: "The apps we use offer 'privacy settings.' These settings are like locking the door to our virtual house. Keeping our profile open only to 'Friends' we know, instead of 'Public,' prevents strangers from accessing our information.",
-            image: "/images/module2/privacy_settings.png",
+            image: "/images/game_privacy_settings.png",
             points: [
               "Check profile privacy settings",
               "Use 'Friends Only' option",
@@ -270,7 +270,7 @@ export const MODULE2_EN = {
           "4.1": {
             title: "Digital Reputation",
             description: "When applying to a good university or your dream job in the future, officials may look at your 'digital reputation.' Digital reputation is how you appear online.",
-            image: "/images/module2/digital_reputation_tr.png",
+            image: "/images/module2/digital_reputation_en.png",
             points: [
               "Can be checked in university applications",
               "Can be researched in job applications",
@@ -309,7 +309,7 @@ export const MODULE2_EN = {
           "5.1": {
             title: "T.H.I.N.K. Rule",
             description: "Think Before You Post (T.H.I.N.K.): Is what you're sharing True? Helpful? Inspiring? Necessary? Kind? If not, don't share it.",
-            image: "/images/module2/think_rule.png",
+            image: "/images/module1/think_en.png",
             points: [
               "T - True: Is the information true?",
               "H - Helpful: Is it helpful to others?",
