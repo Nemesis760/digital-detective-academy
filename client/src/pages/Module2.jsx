@@ -57,8 +57,8 @@ const CompletionScreen = ({ isTurkish, onNavigate, countdown }) => (
       </h2>
       <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', margin: '0 0 24px', lineHeight: 1.6 }}>
         {isTurkish
-          ? 'Ağlar ve dijital iletişimi başarıyla öğrendin! Şimdi dijital ayak izi dünyasına geçiyoruz.'
-          : 'You mastered networks and digital communication! Now moving on to digital footprint.'}
+          ? 'Dijital ayak izi ve çevrimiçi gizliliği başarıyla öğrendin! Şimdi bilgisayar ağları dünyasına geçiyoruz.'
+          : 'You mastered digital footprint and online privacy! Now moving on to computer networks.'}
       </p>
 
       <div style={{
