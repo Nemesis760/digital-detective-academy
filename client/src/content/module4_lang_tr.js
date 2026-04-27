@@ -12,11 +12,11 @@ export const MODULE4_TR = {
         intro:
           "Cihazın dijital çantan gibidir. Onu korursan fotoğrafların, notların ve hesapların da güvende kalır.",
         content: [
-          "Ekran kilidi ilk kalkanındır. PIN, desen ya da parmak izi, cihaz kaybolsa bile başkalarını durdurur.",
-          "Güncellemeler sadece yeni özellik değildir. Güvenlik açıklarını kapatır ve cihazını güçlendirir.",
-          "Yedekleme bir güvenlik ağdır. Telefon bozulsa bile dosyaların geri gelebilir.",
-          "Mümkünse ayrı hesap kullan. Okul için farklı, oyun ve kişisel kullanım için farklı hesap temiz olur.",
-          "Küçük alışkanlıklar büyük güvenlik sağlar: kilitle, güncelle, yedekle."
+          "Ekran kilidi, cihazının ilk ve en güçlü savunma hattıdır. Telefonunu kaybetsen ya da biri eline geçirse, PIN, desen veya parmak izi sayesinde kişisel bilgilerine ulaşamazlar. Ekran kilidi olmayan bir telefon, kapısı açık bırakılmış bir ev gibidir.",
+          "Güncellemeler yalnızca yeni özellikler getirmez; kötü kişilerin istismar ettiği güvenlik açıklarını da kapatır. Bir yazılımda hata bulunduğunda üretici firma bunu gideren bir güncelleme yayınlar. 'Sonra yapayım' demek, o açığı bir süre daha açık bırakmak demektir.",
+          "Yedekleme, tüm fotoğraf ve dosyalarının güvenli bir kopyasını saklamaktır. Telefonun çalınsa ya da bozulsa bile bulut yedeklemesi sayesinde hiçbir şey kalıcı olarak kaybolmaz. Düzenli yedekleme yapmak, dijital hayatın için bir güvenlik sigortası işlevi görür.",
+          "Okul hesabını oyun veya sosyal medya hesabından ayırmak, olası bir ihlalden etkilenecek alanı küçültür. Bir hesabın ele geçirilse bile diğer hesapların güvende kalması için farklı şifreler kullanmak çok önemlidir.",
+          "Kilitle, güncelle, yedekle — bu üç basit alışkanlık günde sadece birkaç dakika alır. Dijital güvenlik büyük ve karmaşık değildir; küçük ama tutarlı adımlardan oluşur ve zamanla ikinci doğan hâline gelir."
         ],
         images: [
           {
@@ -78,11 +78,11 @@ export const MODULE4_TR = {
         intro:
           "İnternetteki her dosya dost değildir. Bazı indirmeler virüs ya da tuzak saklar.",
         content: [
-          "Zararlı yazılım cihazı yavaşlatır, reklâm gösterir ya da verini çalabilir.",
-          "En güvenli indirmeler resmi mağaza ve güvenilir sitelerden gelir.",
-          "Ücretsiz oyun parası ya da hile vaatleri sık görülen tuzaklardır.",
-          "Yüklemeden önce ad, yorum ve boyut kontrolü yap. Sahte uygulamalar gerçeğe çok benzer.",
-          "Şüphe duyarsan bir yetişkine sor. Küçük bir soru büyük sorunları önler."
+          "Zararlı yazılım (malware), cihazına gizlice sızan ve zarar veren bir programdır. Cihazını yavaşlatabilir, sürekli reklam gösterebilir ya da şifre ve banka bilgilerini çalabilir. Saldırgan bu yazılımı çoğunlukla masum görünen bir dosya veya uygulama içine gizler.",
+          "En güvenli indirmeler, uygulamaları denetleyen resmi mağazalardan (Google Play, App Store) veya üreticinin kendi sitesinden yapılanlardır. Bu mağazalar uygulamaları zararlı yazılımlara karşı kontrol eder ve şüpheli olanları kaldırır. Rastgele bir web sitesinden indirilen dosyalarda bu güvence yoktur.",
+          "Ücretsiz oyun parası, hile kodu ya da premium özellik vaadiyle sunulan bağlantılar, en yaygın dijital tuzaklardandır. Bu bağlantılar seni sahte bir siteye yönlendirerek zararlı yazılım indirtebilir ya da hesap bilgilerini çalabilir. Gerçek bir uygulama hiçbir zaman resmi kanallar dışında ücretsiz ödül vaat etmez.",
+          "Uygulama yüklemeden önce adını, yorum sayısını ve dosya boyutunu dikkatlice kontrol et. Sahte uygulamalar gerçek uygulamaların logosuna ve ismine çok benzer; fark genellikle yorum eksikliğinde ya da şişirilmiş dosya boyutunda gizlidir. Birkaç dakikalık araştırma, büyük bir güvenlik ihlalini önleyebilir.",
+          "Bir dosya veya uygulama sana şüpheli geldiyse, hemen bir yetişkine danış. Utanmak ya da 'abartıyorum' diye düşünmek yerine sormak, en akıllıca seçimdir. Dijital güvenlikte küçük bir soru, büyük bir felaketi önleyebilir."
         ],
         images: [
           {
@@ -156,11 +156,11 @@ export const MODULE4_TR = {
         intro:
           "Uygulamalar izin ister ama her istek mantıklı değildir. Onay vermek senin kararındır.",
         content: [
-          "İzinler birer kapıdır. Kamera uygulaması kamera ister, hesap makinesi istememelidir.",
-          "Bir uygulama fazla izin istiyorsa, istemediğin verileri toplayabilir.",
-          "Gizlilik ayarları, paylaşımlarını kimlerin görebileceğini belirler.",
-          "Konum paylaşımını ihtiyaç yoksa kapat. Konumun özel bir bilgidir.",
-          "İzinleri düzenli kontrol et. Fikrini değiştirip her zaman güncelleyebilirsin."
+          "Bir uygulama yüklendiğinde kamera, mikrofon, konum veya kişiler gibi izinler ister. Bu izinler birer kapı gibidir: yalnızca uygulamanın gerçekten ihtiyaç duyduğu kapıları açman gerekir. Kamera uygulaması kameraya erişmek ister, ama el feneri uygulamasının kişilerine erişmesi mantıklı değildir.",
+          "Bir uygulama fazla sayıda veya alakasız izin istiyorsa, ihtiyacın olmayan verileri topluyor olabilir. Bu veriler reklam şirketlerine satılabilir ya da kötü niyetli kişilerin eline geçebilir. İzin vermeden önce kendinize şunu sor: 'Bu uygulamanın bu bilgiye gerçekten ihtiyacı var mı?'",
+          "Gizlilik ayarları, paylaşımlarını kimlerin görebileceğini belirlediğin bir kontrol panelidir. Sosyal medya hesaplarını 'Herkese Açık' yerine 'Yalnızca Arkadaşlar' olarak ayarlamak, yabancıların profilini görmesini engeller. Bu ayarları düzenli olarak kontrol etmek, zamanla değişebilen varsayılan ayarlara karşı seni korur.",
+          "Konum bilgisi en hassas kişisel verilerden biridir; nerede olduğunu ve günlük rutinini ele verir. İhtiyaç duymadığın uygulamalarda konum paylaşımını kapat ve 'Her Zaman' yerine 'Yalnızca Uygulamayı Kullanırken' seçeneğini tercih et.",
+          "Bir kez verilen izinleri sonradan geri alabilirsin; bu haklardan vazgeçmişsin anlamına gelmez. Ayarlar menüsünden uygulamaların izinlerini düzenli olarak gözden geçir ve artık kullanmadığın uygulamaların erişimlerini kapat. Verilerini yönetmek, dijital kimliğinin sahibi olmaktır."
         ],
         images: [
           {
@@ -224,11 +224,11 @@ export const MODULE4_TR = {
         intro:
           "Halka açık Wi-Fi kalabalık bir otobüs gibidir. Kullanabilirsin ama eşyana dikkat etmelisin.",
         content: [
-          "Ortak ağlar aynı anda birçok kişiyi taşır. Bu yüzden daha az gizlidir.",
-          "Önemli hesaplara ortak ağda girmekten kaçın. Ev ya da okul ağını bekle.",
-          "Zorundaysan, parola ve ödeme girişi yapma. Sadece genel sitelere bak.",
-          "Ortak cihazlarda mutlaka çıkış yap. Bu, kapıyı kilitlemek gibidir.",
-          "İşin bitince ağı unut seçeneğini kullan. Böylece cihazın otomatik bağlanmaz."
+          "Ortak Wi-Fi ağları aynı anda onlarca, hatta yüzlerce kişi tarafından kullanılır. Bu kalabalık ortamda iletişimini izleyen biri çıkabilir ve şifrelerini, mesajlarını ya da ödeme bilgilerini ele geçirebilir. Ortak ağda göndereceğin her veri, mühürsüz bir zarfa benzer.",
+          "Okul e-postası, ödev portalı veya ödeme gerektiren siteler gibi önemli hesaplara ortak ağda girmekten kaçın. Bu işlemleri ev ya da okul ağı gibi güvendiğin ortamlara ertelemek riski büyük ölçüde azaltır. Birkaç dakika beklemek, ciddi bir veri ihlalinden seni koruyabilir.",
+          "Ortak ağ kullanmak zorundaysan yalnızca haber okumak veya video izlemek gibi kişisel veri gerektirmeyen işlemler yap. Şifre, kart bilgisi veya özel mesaj gibi hassas içeriklerden uzak dur. 'Kimse bana saldırmaz ki' diye düşünme; ortak ağ saldırıları otomatik araçlarla kolayca gerçekleştirilir.",
+          "Paylaşılan ya da kütüphane bilgisayarlarında işin bittiğinde mutlaka oturumu kapat. Oturumu açık bırakmak, anahtarı kilitte bırakmak gibidir; arkandan gelen biri hesabına erişebilir. Tarayıcının 'Şifreyi Kaydet' sorusuna hayır de ve geçmişi temizle.",
+          "Bir ağa bağlandıktan sonra 'Ağı Unut' seçeneğini kullanmak, cihazının ileride o ağa otomatik bağlanmasını önler. Özellikle alışveriş merkezi veya kafe gibi yerlerdeki açık ağlar için bu adım kritiktir. Otomatik bağlantı, farkında olmadan risk altına girmenin en yaygın yollarından biridir."
         ],
         images: [
           {
@@ -286,11 +286,11 @@ export const MODULE4_TR = {
         intro:
           "Güvende olmak sadece cihazla ilgili değildir. Nasıl davrandığımız da önemlidir.",
         content: [
-          "Dijital vatandaş saygılı ve naziktir. Paylaşmadan önce düşünür.",
-          "Siber zorbalık, birini üzen mesajlar, şakalar ya da görseller olabilir.",
-          "Kendini güvensiz hissedersen cevap verme. Kanıt sakla ve güvendiğin bir yetişkine söyle.",
-          "Engelle ve bildir araçlarını kullan. Bu araçlar seni korumak için vardır.",
-          "Bir arkadaşına destek olmak çok değerlidir. Sessiz kalmamak, zararı azaltır."
+          "Dijital vatandaşlık, teknolojiyi yalnızca iyi kullanmak değil, başkalarına saygılı ve etik davranmak demektir. Çevrimiçi ortamda söylediklerin ve paylaşımların gerçek hayattaki kadar etkili ve kalıcı olabilir. Paylaşmadan önce 'Bu gönderi birini incitir mi?' diye sormak, iyi bir dijital vatandaşın en önemli alışkanlığıdır.",
+          "Siber zorbalık yalnızca açık hakaretlerle sınırlı değildir; birini dışlayan grup sohbetleri, izinsiz paylaşılan fotoğraflar ya da tekrarlayan rahatsız edici mesajlar da siber zorbalık kapsamına girer. Mağdur olan kişi bundan derin bir üzüntü duyabilir; bu nedenle 'sadece şaka' gibi görünen içerikler bile ciddi zarar verebilir.",
+          "Çevrimiçi bir durumdan rahatsız ya da güvensiz hissedersen, saldırganla tartışmaya girme. Ekran görüntüsü alarak kanıt sakla ve ardından güvendiğin bir yetişkine — ebeveyn, öğretmen veya okul rehber öğretmeni — anlat. Sessiz kalmak zorunda değilsin; yardım istemek güçsüzlük değil, aksine cesaret işaretidir.",
+          "Sosyal medya platformlarının 'Engelle' ve 'Bildir' araçları, seni rahatsız eden kişiyi durdurmanın ve platforma bildirmenin resmi yoludur. Bu araçları kullanmak hem kendini hem de sonraki olası mağdurları korur. Bir içerik veya kişi seni rahatsız ediyorsa bildirmek, sorumlu dijital vatandaşlığın bir parçasıdır.",
+          "Bir arkadaşının siber zorbalığa uğradığını görürsen seyirci kalma. Ona doğrudan mesaj atarak 'Yanındayım' demek bile büyük bir fark yaratabilir. Araştırmalar, zorbalık olaylarında yanında biri olan kişilerin çok daha az olumsuz etkilendiğini göstermektedir."
         ],
         images: [
           {

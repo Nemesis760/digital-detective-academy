@@ -12,11 +12,11 @@ export const MODULE4_EN = {
         intro:
           "Your device is like a backpack for your digital life. When it is protected, your photos, notes, and accounts stay safe too.",
         content: [
-          "A screen lock is your first shield. A PIN, pattern, or fingerprint keeps strangers out if the device is lost.",
-          "Updates are not just new features. They also fix security holes that bad people try to use.",
-          "Backups are your safety net. If your phone breaks or gets stolen, your files can still come back.",
-          "Use separate accounts when possible. A student account for school and a personal account for games keeps things tidy.",
-          "Small habits, done often, create big safety. Lock it, update it, and back it up."
+          "A screen lock is your device's first and strongest line of defense. If you lose your phone or someone picks it up, a PIN, pattern, or fingerprint stops them from reaching your personal data. A phone without a screen lock is like a house with the front door left wide open.",
+          "Updates do more than add new features — they patch security holes that attackers actively try to exploit. When a flaw is found in software, the company releases an update to fix it. Saying 'I'll do it later' means leaving that vulnerability open a little longer.",
+          "A backup is a saved copy of all your photos, homework files, and messages stored somewhere safe. If your phone is stolen, broken, or lost, a cloud backup means nothing is gone forever. Backing up regularly works like an insurance policy for your digital life.",
+          "Keeping your school account separate from gaming or social media accounts limits the damage if one account is compromised. Using different passwords for different purposes is a simple habit that protects you when things go wrong.",
+          "Lock it, update it, back it up — these three habits take just a few minutes each day but protect you from serious problems. Digital safety is not complicated; it is built from small, consistent steps that eventually become second nature."
         ],
         images: [
           {
@@ -78,11 +78,11 @@ export const MODULE4_EN = {
         intro:
           "Not every file on the internet is friendly. Some downloads hide viruses or tricks.",
         content: [
-          "Malware is harmful software. It can slow your device, show ads, or steal your data.",
-          "The safest downloads come from official stores and trusted websites.",
-          "Free game coins or cheat tools are common traps. If it sounds too good, pause and check.",
-          "Before you install, read the app name, reviews, and size. Fake apps often look almost real.",
-          "If something feels wrong, ask an adult or teacher. A quick question can prevent big problems."
+          "Malware is a harmful program that secretly enters your device and causes damage. It can slow your device down, flood your screen with ads, or steal sensitive information like passwords and bank details. Attackers usually hide malware inside files or apps that look completely harmless.",
+          "The safest downloads come from official stores like Google Play or the App Store, or directly from a trusted manufacturer's website. These stores review apps for harmful content and remove suspicious ones. Files downloaded from random websites carry no such guarantee.",
+          "Links promising free game coins, cheat codes, or premium features for nothing are among the most common digital traps. These links often lead to fake sites that install malware or steal your account credentials. A real app will never offer free rewards outside its official channels.",
+          "Before installing any app, carefully check its name, number of reviews, and file size. Fake apps closely copy the look of real ones — the difference is often hidden in a suspiciously low review count or an unusually large file size. A few minutes of research can prevent a major security breach.",
+          "If a file or app feels suspicious, talk to a trusted adult right away. Choosing to ask instead of feeling embarrassed is the smartest move you can make. In digital safety, one small question can prevent a very big problem."
         ],
         images: [
           {
@@ -156,11 +156,11 @@ export const MODULE4_EN = {
         intro:
           "Apps ask for permissions, but not all requests make sense. You can say yes or no.",
         content: [
-          "Permissions are like doors. A camera app needs the camera, but a calculator does not.",
-          "If an app asks for too much, it might be collecting data you do not want to share.",
-          "Privacy settings help you control who can see your posts, photos, and location.",
-          "Turn off location sharing when you do not need it. Your location is personal.",
-          "Check permissions regularly. You can change your mind and update them anytime."
+          "When you install an app, it asks for permissions such as access to your camera, microphone, location, or contacts. Think of permissions as doors: only open the ones the app genuinely needs. A camera app needs the camera, but there is no good reason for a flashlight app to access your contacts.",
+          "If an app requests too many permissions or ones that seem unrelated to its purpose, it may be collecting data you never intended to share. This data can be sold to advertisers or fall into the wrong hands. Before granting a permission, ask yourself: 'Does this app actually need this?'",
+          "Privacy settings are your personal control panel for deciding who can see what you share. Setting social media accounts to 'Friends Only' instead of 'Public' prevents strangers from viewing your profile. Reviewing these settings regularly protects you from default options that may have changed without your knowledge.",
+          "Your location is one of the most sensitive pieces of personal data — it reveals where you are and your daily routine. Turn off location sharing for apps that do not need it, and choose 'Only While Using the App' instead of 'Always' when prompted.",
+          "Permissions you have already granted can always be taken back — giving access once does not mean giving it forever. Regularly review your app permissions in your device settings and revoke access for apps you no longer use. Managing your data means being the true owner of your digital identity."
         ],
         images: [
           {
@@ -224,11 +224,11 @@ export const MODULE4_EN = {
         intro:
           "Public Wi-Fi is like a crowded bus. You can ride, but you must guard your bag.",
         content: [
-          "Shared networks are used by many people at once. That makes them less private.",
-          "Avoid logging into important accounts on public Wi-Fi. Save that for home or school networks.",
-          "If you must use public Wi-Fi, avoid entering passwords and payments.",
-          "Always log out on shared devices. It is like closing the door behind you.",
-          "Use the forget network option when you are done. It prevents auto-connecting later."
+          "Public Wi-Fi networks are shared by dozens or even hundreds of people at the same time. In this crowded environment, someone could be monitoring the traffic and intercepting your passwords, messages, or payment details. Any data you send over a public network is like a letter in an unsealed envelope.",
+          "Avoid logging into important accounts — such as your school email, homework portal, or any payment service — while on public Wi-Fi. Saving those actions for a trusted network like home or school greatly reduces your risk. Waiting a few minutes is a small price to pay to avoid a serious data breach.",
+          "If you must use public Wi-Fi, stick to activities that do not require personal data, like reading news or watching videos. Stay away from entering passwords, card details, or private messages. Do not assume that no one would bother attacking you — public network attacks are carried out by automated tools and require very little effort.",
+          "Always log out of your accounts when you are done on a shared or public computer. Leaving a session open is like leaving your key in the lock — the next person who sits down can access your account. Decline the browser's 'Save password?' prompt and clear your browsing history before you leave.",
+          "After using a public network, select 'Forget this network' so your device does not automatically reconnect to it in the future. This is especially important for open networks in shopping malls, cafes, or airports. Auto-connecting to unknown networks is one of the most common ways people unknowingly put themselves at risk."
         ],
         images: [
           {
@@ -286,11 +286,11 @@ export const MODULE4_EN = {
         intro:
           "Being safe online is not only about devices. It is also about how we treat people.",
         content: [
-          "Digital citizens are respectful and kind. They think before they post or share.",
-          "Cyberbullying can be messages, jokes, or images that hurt someone. It is never okay.",
-          "If you feel unsafe, do not answer the bully. Save evidence and tell a trusted adult.",
-          "Use blocking and reporting tools. They are there to protect you.",
-          "Helping a friend is powerful. When you speak up, you stop harm from growing."
+          "Digital citizenship means using technology not just skillfully, but respectfully and ethically. What you say and share online can be just as impactful and permanent as real-life actions. Before posting, asking yourself 'Could this hurt someone?' is the most important habit of a responsible digital citizen.",
+          "Cyberbullying is not limited to obvious insults — it also includes group chats that exclude someone, photos shared without permission, or repeated unwanted messages. The person on the receiving end can experience deep distress, which means that content intended as a 'joke' can cause genuine harm.",
+          "If you feel unsafe or uncomfortable in an online situation, do not argue with the person bothering you. Take screenshots to preserve evidence, then tell a trusted adult — a parent, teacher, or school counselor. You do not have to stay silent; asking for help is not weakness, it is the courageous and smart choice.",
+          "The 'Block' and 'Report' tools on social media platforms are the official way to stop someone who is harassing you and alert the platform. Using these tools protects not only you, but also future potential victims. If someone or something makes you uncomfortable online, reporting it is part of being a responsible digital citizen.",
+          "If you witness a friend being cyberbullied, do not be a bystander. Even sending a private message saying 'I am here for you' can make an enormous difference. Research shows that people who experience bullying alongside a supportive friend are far less negatively affected than those who face it alone."
         ],
         images: [
           {
