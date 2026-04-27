@@ -35,7 +35,7 @@ export const MODULE4_EN = {
             alt_en: "Cloud backup icon"
           },
           {
-            src: "/images/module4/device_care_kit.png",
+            src: "/images/module4/m4_poster_device_security_en.png",
             alt_tr: "Cihaz bakımını simgeleyen görsel",
             alt_en: "Visual showing device care"
           }
@@ -86,22 +86,22 @@ export const MODULE4_EN = {
         ],
         images: [
           {
-            src: "/images/module4/malware_warning_01.png",
+            src: "/images/module4/m4_poster_malware_en.png",
             alt_tr: "Zararlı yazılım uyarısı ekranı",
             alt_en: "Malware warning screen"
           },
           {
-            src: "/images/module4/safe_download_store.png",
+            src: "/images/module4/m4_poster_malware_en.png",
             alt_tr: "Güvenli uygulama mağazası simgesi",
             alt_en: "Safe app store icon"
           },
           {
-            src: "/images/module4/fake_app_trap.png",
+            src: "/images/module4/m4_poster_malware_en.png",
             alt_tr: "Sahte uygulama tuzağı görseli",
             alt_en: "Fake app trap visual"
           },
           {
-            src: "/images/module4/check_reviews.png",
+            src: "/images/module4/m4_poster_malware_en.png",
             alt_tr: "Yorumları ve puanları kontrol etme",
             alt_en: "Checking reviews and ratings"
           }
@@ -164,22 +164,22 @@ export const MODULE4_EN = {
         ],
         images: [
           {
-            src: "/images/module4/app_permissions_01.png",
+            src: "/images/module4/m4_poster_privacy_en.png",
             alt_tr: "Uygulama izinleri ekranı",
             alt_en: "App permissions screen"
           },
           {
-            src: "/images/module4/location_toggle.png",
+            src: "/images/module4/m4_privacy_permissions.png",
             alt_tr: "Konum izni aç/kapat düğmesi",
             alt_en: "Location permission toggle"
           },
           {
-            src: "/images/module4/privacy_settings_01.png",
+            src: "/images/module4/m4_poster_privacy_en.png",
             alt_tr: "Gizlilik ayarları menüsü",
             alt_en: "Privacy settings menu"
           },
           {
-            src: "/images/module4/data_minimization.png",
+            src: "/images/module4/m4_poster_privacy_en.png",
             alt_tr: "Veri paylaşımını azaltma simgesi",
             alt_en: "Data minimization icon"
           }
@@ -232,22 +232,22 @@ export const MODULE4_EN = {
         ],
         images: [
           {
-            src: "/images/module4/public_wifi_01.png",
+            src: "/images/module4/m4_poster_wifi_en.png",
             alt_tr: "Ortak Wi-Fi ağına bağlanan cihazlar",
             alt_en: "Devices connected to public Wi-Fi"
           },
           {
-            src: "/images/module4/logout_all_devices.png",
+            src: "/images/module4/m4_poster_wifi_en.png",
             alt_tr: "Oturumu kapatmayı gösteren ikon",
             alt_en: "Icon showing sign out"
           },
           {
-            src: "/images/module4/secure_network_badge.png",
+            src: "/images/module4/m4_poster_wifi_en.png",
             alt_tr: "Güvenli ağ rozeti",
             alt_en: "Secure network badge"
           },
           {
-            src: "/images/module4/forget_network.png",
+            src: "/images/module4/m4_poster_wifi_en.png",
             alt_tr: "Ağı unut seçeneği",
             alt_en: "Forget network option"
           }
@@ -294,22 +294,22 @@ export const MODULE4_EN = {
         ],
         images: [
           {
-            src: "/images/module4/digital_citizenship.png",
+            src: "/images/module4/m4_poster_citizenship_en.png",
             alt_tr: "Dijital vatandaşlık davranışları",
             alt_en: "Digital citizenship behaviors"
           },
           {
-            src: "/images/module4/cyberbullying_stop.png",
+            src: "/images/module4/m4_cyberbullying_awareness.png",
             alt_tr: "Siber zorbalığa dur de posteri",
             alt_en: "Stop cyberbullying poster"
           },
           {
-            src: "/images/module4/report_block_tools.png",
+            src: "/images/module4/m4_poster_citizenship_en.png",
             alt_tr: "Bildir ve engelle araçları",
             alt_en: "Report and block tools"
           },
           {
-            src: "/images/module4/ask_for_help.png",
+            src: "/images/module4/m4_poster_citizenship_en.png",
             alt_tr: "Yardım istemeyi gösteren görsel",
             alt_en: "Visual of asking for help"
           }
