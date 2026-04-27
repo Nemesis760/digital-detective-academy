@@ -86,14 +86,14 @@ export const MODULE4_TR = {
         ],
         images: [
           {
-            src: "/images/module4/m4_poster_malware_tr.png",
-            alt_tr: "Zararlı yazılım uyarısı ekranı",
-            alt_en: "Malware warning screen"
+            src: "/images/module4/m4_malware_1_tr.png",
+            alt_tr: "Zararlı yazılım cihazı etkiler",
+            alt_en: "Malware affecting a device"
           },
           {
-            src: "/images/module4/m4_poster_malware_tr.png",
-            alt_tr: "Güvenli uygulama mağazası simgesi",
-            alt_en: "Safe app store icon"
+            src: "/images/module4/m4_malware_2_tr.png",
+            alt_tr: "Resmi mağazadan güvenli indirme",
+            alt_en: "Safe download from official store"
           },
           {
             src: "/images/module4/m4_poster_malware_tr.png",
