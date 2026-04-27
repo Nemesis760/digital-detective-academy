@@ -241,7 +241,7 @@ export const MODULE3_EN = {
           "6.3": {
             title: "Server",
             description: "A server is a powerful computer that provides services.",
-            image: "/images/module3/m3_server_tr.png",
+            image: "/images/module3/m3_server_en.png",
             points: ["Stores data", "Responds to many clients"]
           }
         },
@@ -390,6 +390,22 @@ export const MODULE3_EN = {
         activity_desc: "Try to answer most questions correctly.",
         activity_type: "interactive_quiz",
         activity_key: "network_security",
+      },
+      {
+        id: 11,
+        title: "Hangman (Easy)",
+        subtitle: "Look at the clues, pick letters, find the word!",
+        intro: "Let's review network security and internet concepts in a fun way.",
+        content: {
+          "11.1": {
+            title: "Game",
+            description: "Start and find the word!",
+          },
+        },
+        activity_title: "Activity: Hangman (Easy)",
+        activity_desc: "Read the clue, pick the right letters, and find the word!",
+        activity_type: "hangman",
+        activity_key: "network_security_hangman",
       }
     ],
     scenario_assessment: {
