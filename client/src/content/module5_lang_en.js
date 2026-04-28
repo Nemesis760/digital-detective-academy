@@ -4,20 +4,21 @@ export const MODULE5_EN = {
   module_5: {
     title: "Module 5: Digital Security & Responsible Technology Use",
     subtitle: "🛡️ Digital Shield: Protecting Yourself & Others",
-    hero_image: "/images/module5/WhatsApp Image 2025-12-28 at 13.44.08.jpeg",
+    hero_image: "/images/module5/m5_hero.jpeg",
     sections: [
       {
         id: 1,
         title: "🛡️ What is Digital Security?",
         intro: "Digital security is the ability to protect ourselves, our information, our money, and our reputation when using the internet and digital devices. We can think of it like locking our home's door.",
-        hero_image: "/images/module5/WhatsApp Image 2025-12-28 at 13.44.08.jpeg",
+        hero_image: "/images/module5/m5_hero.jpeg",
         activity_title: "📝 Quiz: Digital Security Basics",
         activity_desc: "Answer questions about digital security.",
+        step_by_step: true,
         content: {
           "1.1": {
             title: "What is Digital Security?",
             description: "Digital security is the ability to protect ourselves, our information, our money, and our reputation when using the internet and digital devices. We can think of it like locking our home's door. Just as we lock the door when leaving home, we should also 'lock' (secure) our accounts in the digital world and not open the door to people we don't know.",
-            image: "/images/module5/WhatsApp Image 2025-12-28 at 13.47.18.jpeg",
+            image: "/images/module5/m5_digital_security.jpeg",
             points: [
               "Thanks to the internet, we can access information, play games, and have fun",
               "However, this environment also has risks such as cyberbullying, identity theft, and fraud",
@@ -146,7 +147,7 @@ export const MODULE5_EN = {
           "2.1": {
             title: "What is Malicious Software (Malware)?",
             description: "Malicious software (Malware) are programs that secretly enter our computers, tablets, or phones and cause harm.",
-            image: "/images/module5/WhatsApp Image 2025-12-28 at 13.48.11.jpeg",
+            image: "/images/module5/m5_malware_types.jpeg",
             points: [
               "Viruses: Infect your files and corrupt them",
               "Spyware: Monitors what you do without your knowledge, steals your passwords",
@@ -160,8 +161,8 @@ export const MODULE5_EN = {
               "✅ Safe: Downloading apps from official stores (App Store, Play Store)"
             ],
             images: {
-              "Fake Antivirus Warning": "/images/module5/WhatsApp Image 2025-12-28 at 13.49.15.jpeg",
-              "Download Warning": "/images/module5/WhatsApp Image 2025-12-28 at 13.50.34.jpeg"
+              "Fake Antivirus Warning": "/images/module5/m5_fake_antivirus.jpeg",
+              "Download Warning": "/images/module5/m5_download_warning.jpeg"
             },
             quiz: [
               {
@@ -269,7 +270,7 @@ export const MODULE5_EN = {
           "2.2": {
             title: "Virus Symptoms",
             description: "If your device suddenly slows down very much, gets very hot, or apps open by themselves, it may have been infected with malicious software.",
-            image: "/images/module5/WhatsApp Image 2025-12-28 at 13.51.34.jpeg",
+            image: "/images/module5/m5_virus_symptoms.jpeg",
             points: [
               "Device suddenly slows down very much",
               "Device gets very hot",
@@ -298,7 +299,7 @@ export const MODULE5_EN = {
           "3.1": {
             title: "Screen Lock",
             description: "Tablets or phones must have a PIN or pattern lock. If the device is lost, your information is protected.",
-            image: "/images/module5/WhatsApp Image 2025-12-28 at 13.55.23.jpeg",
+            image: "/images/module5/m5_screen_lock.jpeg",
             points: [
               "Use PIN or pattern lock",
               "If the device is lost, your information is protected",
@@ -427,7 +428,7 @@ export const MODULE5_EN = {
           "3.2": {
             title: "Public Networks",
             description: "'Free Wi-Fi' networks in cafes or shopping malls may be unsafe. We should not enter passwords or do banking on these networks.",
-            image: "/images/module5/WhatsApp Image 2025-12-28 at 13.57.04.jpeg",
+            image: "/images/module5/m5_public_wifi.jpeg",
             points: [
               "Public Wi-Fi networks may be unsafe",
               "We should not enter passwords on these networks",
@@ -442,7 +443,7 @@ export const MODULE5_EN = {
           "3.3": {
             title: "Logging Out",
             description: "We should never forget to press the 'Log Out' button after using a shared computer at school or the library.",
-            image: "/images/module5/WhatsApp Image 2025-12-28 at 14.00.24.jpeg",
+            image: "/images/module5/m5_logout.jpeg",
             points: [
               "We must always log out on shared computers",
               "We should only use the 'Remember Me' option on our own device",
@@ -609,7 +610,7 @@ export const MODULE5_EN = {
           "5.1": {
             title: "What is Digital Responsibility?",
             description: "In the digital world, it's not enough to just protect ourselves; we must also be responsible towards others.",
-            image: "/images/module5/WhatsApp Image 2025-12-28 at 14.01.08.jpeg",
+            image: "/images/module5/m5_digital_responsibility.jpeg",
             points: [
               "Accuracy: We should research the accuracy of a news story we see on the internet before sharing it. Spreading fake news is irresponsible",
               "Respect: We should not share others' photos without permission, and we should not make hurtful comments",
@@ -747,12 +748,16 @@ export const MODULE5_EN = {
           "6.1": {
             title: "Scenario: The Unlocked Tablet Case",
             description: "Can (6th grade student) leaves his tablet open and unlocked on his desk during recess and goes to the cafeteria. Can's friend Mert takes Can's tablet to play a joke. At that moment, an advertisement catches Mert's attention: 'Download Free War Game - APK Only'. Mert tries to download the game to surprise Can. During the download, the tablet asks: 'This file may harm your device, do you still want to download it?' Mert says 'Yes' and approves all permissions (Contacts, Gallery, Location). When Can returns, he sees that his tablet is very hot and constant advertisements are appearing on the screen.",
-            image: "/images/module5/WhatsApp Image 2025-12-28 at 13.57.04.jpeg",
+            image: "/images/module5/m5_public_wifi.jpeg",
             quiz: [
               {
                 type: "true_false",
                 question: "Can made the first mistake by leaving his tablet unlocked and unattended.",
-                answer: true
+                answer: true,
+                reason_en: {
+                  correct: "Correct! Always lock your device when leaving it unattended. An unlocked device is an open door to unauthorized access.",
+                  wrong: "Actually, this is true. By leaving his tablet unlocked, Can created a security vulnerability. He should always lock his device."
+                }
               },
               {
                 type: "multiple_choice",
@@ -761,7 +766,11 @@ export const MODULE5_EN = {
                   { text: "A) Very helpful.", correct: false },
                   { text: "B) Thoughtless; he interfered with someone else's device without permission and downloaded a risky file.", correct: true },
                   { text: "C) It was a very funny joke.", correct: false }
-                ]
+                ],
+                reason_en: {
+                  correct: "Correct! Touching someone else's device without permission is both disrespectful and a serious security risk.",
+                  wrong: "No. Accessing someone else's device without permission and downloading unknown files is dangerous and irresponsible."
+                }
               },
               {
                 type: "multiple_choice",
@@ -770,7 +779,11 @@ export const MODULE5_EN = {
                   { text: "A) Because the game was very large", correct: false },
                   { text: "B) Because a file with an unclear source (APK) was being downloaded from outside the official store (Play Store/App Store). These files usually contain viruses.", correct: true },
                   { text: "C) Because the internet was slow", correct: false }
-                ]
+                ],
+                reason_en: {
+                  correct: "Correct! APK files downloaded outside official stores can contain viruses and malware. Always take these warnings seriously.",
+                  wrong: "No. The warning was because the file was being downloaded from outside the official store (as an APK). File size or internet speed had nothing to do with it."
+                }
               },
               {
                 type: "multiple_choice",
@@ -779,7 +792,11 @@ export const MODULE5_EN = {
                   { text: "A) Storage space", correct: false },
                   { text: "B) Contacts and Location (The game doesn't need a friends list or address)", correct: true },
                   { text: "C) Internet access", correct: false }
-                ]
+                ],
+                reason_en: {
+                  correct: "Correct! Unnecessary permissions are a privacy threat. If a game asks for your contacts or location, that's a suspicious sign.",
+                  wrong: "A war game has no need for your phone contacts or location. These permissions could be used to steal personal data."
+                }
               },
               {
                 type: "multiple_choice",
@@ -788,7 +805,11 @@ export const MODULE5_EN = {
                   { text: "A) Thank Mert.", correct: false },
                   { text: "B) Play the game immediately.", correct: false },
                   { text: "C) Tell an adult, disconnect the device from the internet, and run a virus scan.", correct: true }
-                ]
+                ],
+                reason_en: {
+                  correct: "Correct! When malware is suspected: tell an adult, disconnect from the internet, and run a virus scan immediately.",
+                  wrong: "No. Continuing to use a malware-infected device can cause more damage. You must consult an adult right away."
+                }
               },
               {
                 type: "multiple_choice",
@@ -797,7 +818,11 @@ export const MODULE5_EN = {
                   { text: "A) Only Can", correct: false },
                   { text: "B) Only Mert", correct: false },
                   { text: "C) Both Can (didn't take security measures) and Mert (violated respect for others and the safe download rule)", correct: true }
-                ]
+                ],
+                reason_en: {
+                  correct: "Correct! Digital responsibility belongs to everyone. Can left his device unlocked; Mert accessed it without permission and downloaded a dangerous file.",
+                  wrong: "Both made mistakes. Can left his tablet unlocked, while Mert interfered without permission and downloaded a harmful file."
+                }
               }
             ]
           }
@@ -814,7 +839,7 @@ export const MODULE5_EN = {
           "7.1": {
             title: "Scenario: The Free Diamonds Trap",
             description: "Elif wants to progress in her favorite game. On Instagram, she sees an advertisement saying 'Click here, enter your username and password, have 10,000 diamonds loaded to your account!' The site is very colorful and uses the real game's logo.",
-            image: "/images/module5/download_warning.png",
+            image: "/images/module5/m5_download_warning.jpeg",
             quiz: [
               {
                 type: "multiple_choice",
@@ -822,7 +847,11 @@ export const MODULE5_EN = {
                 options: [
                   { text: "A) Enter her password immediately, not miss the diamonds.", correct: false },
                   { text: "B) Stop! Sites asking for passwords are usually traps (Phishing).", correct: true }
-                ]
+                ],
+                reason_en: {
+                  correct: "Correct! Unknown sites asking for your password are usually phishing traps. Never enter your password!",
+                  wrong: "No! This is a phishing trap. Entering your password could mean losing your account or being scammed."
+                }
               },
               {
                 type: "multiple_choice",
@@ -830,7 +859,11 @@ export const MODULE5_EN = {
                 options: [
                   { text: "A) Yes, if there's a logo it's real.", correct: false },
                   { text: "B) No, logos can be copied. She should check the address bar (URL).", correct: true }
-                ]
+                ],
+                reason_en: {
+                  correct: "Correct! Logos can be easily copied. Always check the URL in the address bar to verify a site's authenticity.",
+                  wrong: "No! Logos can be copied. Fake sites can use real logos too. Checking the address bar (URL) is essential."
+                }
               },
               {
                 type: "multiple_choice",
@@ -838,7 +871,11 @@ export const MODULE5_EN = {
                 options: [
                   { text: "A) Send it to her friends.", correct: false },
                   { text: "B) Warn the platform by clicking 'Report'.", correct: true }
-                ]
+                ],
+                reason_en: {
+                  correct: "Correct! Reporting suspicious ads protects both yourself and others. That's digital responsibility.",
+                  wrong: "No! Sending it to friends would spread the trap. Instead, use the 'Report' button to warn the platform."
+                }
               }
             ]
           }

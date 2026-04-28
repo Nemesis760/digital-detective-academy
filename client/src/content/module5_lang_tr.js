@@ -2,20 +2,21 @@ export const MODULE5_TR = {
   "module_5": {
     "title": "Modül 5: Dijital Güvenlik ve Bilinçli Teknoloji Kullanımı",
     "subtitle": "🛡️ Dijital Kalkan: Kendini ve Başkalarını Koruma",
-    "hero_image": "/images/module5/WhatsApp Image 2025-12-28 at 13.44.08.jpeg",
+    "hero_image": "/images/module5/m5_hero.jpeg",
     "sections": [
       {
         "id": 1,
         "title": "🛡️ Dijital Güvenlik Nedir?",
         "intro": "Dijital güvenlik, internet ve dijital cihazları kullanırken kendimizi, bilgilerimizi, paramızı ve itibarımızı koruma becerisidir. Bunu evimizin kapısını kilitlemek gibi düşünebiliriz.",
-        "hero_image": "/images/module5/WhatsApp Image 2025-12-28 at 13.44.08.jpeg",
+        "hero_image": "/images/module5/m5_hero.jpeg",
         "activity_title": "📝 Quiz: Dijital Güvenlik Temelleri",
         "activity_desc": "Dijital güvenlik hakkındaki soruları cevapla.",
+        "step_by_step": true,
         "content": {
           "1.1": {
             "title": "Dijital Güvenlik Nedir?",
             "description": "Dijital güvenlik, internet ve dijital cihazları kullanırken kendimizi, bilgilerimizi, paramızı ve itibarımızı koruma becerisidir. Bunu evimizin kapısını kilitlemek gibi düşünebiliriz. Nasıl ki evden çıkarken kapıyı kilitliyorsak, dijital dünyada da hesaplarımızı 'kilitlemeli' (şifrelemek) ve tanımadığımız kişilere kapıyı açmamalıyız.",
-            "image": "/images/module5/WhatsApp Image 2025-12-28 at 13.47.18.jpeg",
+            "image": "/images/module5/m5_digital_security.jpeg",
             "points": [
               "İnternet sayesinde bilgiye ulaşabilir, oyun oynayabilir ve eğlenebiliriz",
               "Ancak bu ortamda siber zorbalık, kimlik hırsızlığı ve dolandırıcılık gibi riskler de vardır",
@@ -216,7 +217,7 @@ export const MODULE5_TR = {
           "2.1": {
             "title": "Zararlı Yazılımlar (Malware) Nedir?",
             "description": "Zararlı yazılımlar (Malware), bilgisayar, tablet veya telefonlarımıza gizlice giren ve zarar veren programlardır.",
-            "image": "/images/module5/WhatsApp Image 2025-12-28 at 13.48.11.jpeg",
+            "image": "/images/module5/m5_malware_types.jpeg",
             "points": [
               "Virüsler: Dosyalarınıza bulaşır ve onları bozar",
               "Casus Yazılımlar (Spyware): Sizin haberiniz olmadan ne yaptığınızı izler, şifrelerinizi çalar",
@@ -230,8 +231,8 @@ export const MODULE5_TR = {
               "✅ Güvenli: Resmi mağazalardan (App Store, Play Store) uygulama indirmek"
             ],
             "images": {
-              "Sahte Antivirüs Uyarısı": "/images/module5/WhatsApp Image 2025-12-28 at 13.49.15.jpeg",
-              "İndirme Uyarısı": "/images/module5/WhatsApp Image 2025-12-28 at 13.50.34.jpeg"
+              "Sahte Antivirüs Uyarısı": "/images/module5/m5_fake_antivirus.jpeg",
+              "İndirme Uyarısı": "/images/module5/m5_download_warning.jpeg"
             },
             "quiz": [
               {
@@ -411,7 +412,7 @@ export const MODULE5_TR = {
           "2.2": {
             "title": "Virüs Belirtileri",
             "description": "Cihazınız aniden çok yavaşlarsa, çok ısınıyorsa veya kendi kendine uygulamalar açılıyorsa zararlı yazılım bulaşmış olabilir.",
-            "image": "/images/module5/WhatsApp Image 2025-12-28 at 13.51.34.jpeg",
+            "image": "/images/module5/m5_virus_symptoms.jpeg",
             "points": [
               "Cihaz aniden çok yavaşlar",
               "Cihaz çok ısınır",
@@ -440,7 +441,7 @@ export const MODULE5_TR = {
           "3.1": {
             "title": "Ekran Kilidi",
             "description": "Tablet veya telefonda mutlaka PIN veya desen kilidi olmalıdır. Cihaz kaybolursa bilgileriniz korunur.",
-            "image": "/images/module5/WhatsApp Image 2025-12-28 at 13.55.23.jpeg",
+            "image": "/images/module5/m5_screen_lock.jpeg",
             "points": [
               "PIN veya desen kilidi kullanın",
               "Cihaz kaybolursa bilgileriniz korunur",
@@ -641,7 +642,7 @@ export const MODULE5_TR = {
           "3.2": {
             "title": "Ortak Ağlar",
             "description": "Kafelerde veya AVM'lerdeki 'Ücretsiz Wi-Fi' ağları güvensiz olabilir. Bu ağlarda şifre girmemeli, bankacılık işlemi yapmamalıyız.",
-            "image": "/images/module5/WhatsApp Image 2025-12-28 at 13.57.04.jpeg",
+            "image": "/images/module5/m5_public_wifi.jpeg",
             "points": [
               "Halka açık Wi-Fi ağları güvensiz olabilir",
               "Bu ağlarda şifre girmemeliyiz",
@@ -656,7 +657,7 @@ export const MODULE5_TR = {
           "3.3": {
             "title": "Oturum Kapatma",
             "description": "Okulda veya kütüphanede ortak bilgisayar kullandıktan sonra 'Çıkış Yap' (Log out) butonuna basmayı asla unutmamalıyız.",
-            "image": "/images/module5/WhatsApp Image 2025-12-28 at 14.00.24.jpeg",
+            "image": "/images/module5/m5_logout.jpeg",
             "points": [
               "Ortak bilgisayarlarda mutlaka çıkış yapmalıyız",
               "'Beni Hatırla' seçeneğini sadece kendi cihazımızda kullanmalıyız",
@@ -895,7 +896,7 @@ export const MODULE5_TR = {
           "5.1": {
             "title": "Dijital Sorumluluk Nedir?",
             "description": "Dijital dünyada sadece kendimizi korumak yetmez; başkalarına karşı da sorumlu olmalıyız.",
-            "image": "/images/module5/WhatsApp Image 2025-12-28 at 14.01.08.jpeg",
+            "image": "/images/module5/m5_digital_responsibility.jpeg",
             "points": [
               "Doğruluk: İnternette gördüğümüz bir haberi paylaşmadan önce doğruluğunu araştırmalıyız. Yalan haber yaymak (Fake News) sorumluluktur",
               "Saygı: Başkalarının fotoğraflarını izinsiz paylaşmamalı, kırıcı yorumlar yapmamalıyız",
@@ -1105,12 +1106,16 @@ export const MODULE5_TR = {
           "6.1": {
             "title": "Senaryo: Açık Kalan Tablet Vakası",
             "description": "Can (6. sınıf öğrencisi), teneffüste tabletini sırasında açık ve kilitsiz bırakıp kantine gider. Can'ın arkadaşı Mert, şaka yapmak amacıyla Can'ın tabletini alır. O sırada Mert'in dikkatini bir reklam çeker: 'Bedava Savaş Oyunu İndir - Sadece APK'. Mert, Can'a sürpriz yapmak için oyunu indirmeye çalışır. İndirme sırasında tablet; 'Bu dosya cihazınıza zarar verebilir, yine de indirilsin mi?' diye sorar. Mert 'Evet' der ve tüm izinleri (Rehber, Galeri, Konum) onaylar. Can geri döndüğünde tabletinin çok ısındığını ve ekranda sürekli reklam çıktığını görür.",
-            "image": "/images/module5/WhatsApp Image 2025-12-28 at 13.57.04.jpeg",
+            "image": "/images/module5/m5_public_wifi.jpeg",
             "quiz": [
               {
                 "type": "true_false",
                 "question": "Can tabletini kilitlemeden ve başıboş bırakarak ilk hatayı yaptı.",
-                "answer": true
+                "answer": true,
+                "reason_tr": {
+                  "correct": "Evet! Cihazları her zaman kilitli bırakmak dijital güvenliğin temelidir. Kilitsiz cihaz, izinsiz erişime açık kapı demektir.",
+                  "wrong": "Aslında bu doğru. Can cihazını kilitsiz bırakarak güvenlik açığı yarattı. Tabletini her zaman kilitli bırakmalıydı."
+                }
               },
               {
                 "type": "multiple_choice",
@@ -1128,7 +1133,11 @@ export const MODULE5_TR = {
                     "text": "C) Çok komik bir şakaydı.",
                     "correct": false
                   }
-                ]
+                ],
+                "reason_tr": {
+                  "correct": "Evet! Başkasının cihazına izinsiz dokunmak hem saygısızlık hem de ciddi bir güvenlik riskidir.",
+                  "wrong": "Hayır. Başkasının cihazına izin almadan müdahale etmek ve bilinmeyen kaynaklardan uygulama indirmek tehlikelidir."
+                }
               },
               {
                 "type": "multiple_choice",
@@ -1146,7 +1155,11 @@ export const MODULE5_TR = {
                     "text": "C) Çünkü internet yavaştı",
                     "correct": false
                   }
-                ]
+                ],
+                "reason_tr": {
+                  "correct": "Doğru! Resmi mağaza dışından indirilen APK dosyaları virüs ve zararlı yazılım içerebilir. Bu uyarılar dikkate alınmalıdır.",
+                  "wrong": "Hayır. Uyarı, dosyanın resmi mağaza dışından (APK olarak) indirilmesinden kaynaklanıyordu. Boyut veya internet hızıyla ilgisi yoktur."
+                }
               },
               {
                 "type": "multiple_choice",
@@ -1164,7 +1177,11 @@ export const MODULE5_TR = {
                     "text": "C) İnternet erişimi",
                     "correct": false
                   }
-                ]
+                ],
+                "reason_tr": {
+                  "correct": "Evet! Gereksiz izinler veri gizliliğini tehdit eder. Bir oyun rehbere veya konuma erişmek istiyorsa bu şüpheli bir işarettir.",
+                  "wrong": "Bir savaş oyununun telefon rehberine veya konumuna ihtiyacı yoktur. Bu tür izinler kişisel veri çalmak için kullanılabilir."
+                }
               },
               {
                 "type": "multiple_choice",
@@ -1182,7 +1199,11 @@ export const MODULE5_TR = {
                     "text": "C) Bir yetişkine haber vermeli, cihazı internetten koparmalı ve virüs taraması yapmalıdır.",
                     "correct": true
                   }
-                ]
+                ],
+                "reason_tr": {
+                  "correct": "Evet! Zararlı yazılım bulaştığında yapılacak ilk adımlar: yetişkine haber ver, interneti kes, virüs taraması yaptır.",
+                  "wrong": "Hayır. Zararlı yazılım bulaşmış bir cihazı kullanmaya devam etmek daha fazla zarar verebilir. Hemen bir yetişkine danışılmalıdır."
+                }
               },
               {
                 "type": "multiple_choice",
@@ -1200,7 +1221,11 @@ export const MODULE5_TR = {
                     "text": "C) Hem Can'da (Güvenlik tedbiri almadı) hem de Mert'te (Başkasına saygı ve güvenli indirme kuralını ihlal etti)",
                     "correct": true
                   }
-                ]
+                ],
+                "reason_tr": {
+                  "correct": "Evet! Dijital sorumluluk herkese aittir. Can güvenlik tedbirini almadı, Mert ise başkasının cihazına izinsiz müdahale etti.",
+                  "wrong": "Her iki tarafın da hataları vardı. Can cihazını kilitsiz bıraktı; Mert ise izinsiz müdahale etti ve tehlikeli dosya indirdi."
+                }
               }
             ]
           }
@@ -1217,7 +1242,7 @@ export const MODULE5_TR = {
           "7.1": {
             "title": "Senaryo: Bedava Elmas Tuzağı",
             "description": "Elif, en sevdiği oyunda ilerlemek istiyor. Instagram'da 'Buraya tıkla, kullanıcı adını ve şifreni gir, hesabına 10.000 elmas yüklensin!' diyen bir reklam görüyor. Site çok renkli ve gerçek oyunun logosunu kullanıyor.",
-            "image": "/images/module5/download_warning.png",
+            "image": "/images/module5/m5_download_warning.jpeg",
             "quiz": [
               {
                 "type": "multiple_choice",
@@ -1231,7 +1256,11 @@ export const MODULE5_TR = {
                     "text": "B) Durmalı! Şifre isteyen siteler genellikle tuzaktır (Phishing).",
                     "correct": true
                   }
-                ]
+                ],
+                "reason_tr": {
+                  "correct": "Evet! Şifre isteyen tanımadık siteler genellikle kimlik avı (phishing) tuzağıdır. Asla şifreni girme!",
+                  "wrong": "Hayır! Bu bir phishing tuzağıdır. Şifreni giren hesabını kaybedebilir, dolandırılabilirsin."
+                }
               },
               {
                 "type": "multiple_choice",
@@ -1245,7 +1274,11 @@ export const MODULE5_TR = {
                     "text": "B) Hayır, logolar kopyalanabilir. Adres çubuğunu (URL) kontrol etmelidir.",
                     "correct": true
                   }
-                ]
+                ],
+                "reason_tr": {
+                  "correct": "Evet! Logo kolayca kopyalanabilir. Güvenilirliği anlamak için her zaman adres çubuğundaki URL'yi kontrol et.",
+                  "wrong": "Hayır! Logo kopyalanabilir. Sahte siteler de gerçek logolar kullanabilir. Adres çubuğunu kontrol etmek şarttır."
+                }
               },
               {
                 "type": "multiple_choice",
@@ -1259,7 +1292,11 @@ export const MODULE5_TR = {
                     "text": "B) 'Şikayet Et / Bildir' diyerek platformu uyarmalıdır.",
                     "correct": true
                   }
-                ]
+                ],
+                "reason_tr": {
+                  "correct": "Evet! Şüpheli reklamları bildirmek hem kendini hem de başkalarını korur. Dijital sorumluluk budur.",
+                  "wrong": "Hayır! Arkadaşlarına göndermek tuzağı yaymak demektir. Bunun yerine 'Şikayet Et' butonunu kullanarak platformu uyar."
+                }
               }
             ]
           }
