@@ -96,14 +96,19 @@ export const MODULE4_TR = {
             alt_en: "Safe download from official store"
           },
           {
-            src: "/images/module4/m4_poster_malware_tr.png",
-            alt_tr: "Sahte uygulama tuzağı görseli",
-            alt_en: "Fake app trap visual"
+            src: "/images/module4/m4_malware_3_tr.png",
+            alt_tr: "Ücretsiz hile tuzağı uyarısı",
+            alt_en: "Free cheat trap warning"
           },
           {
-            src: "/images/module4/m4_poster_malware_tr.png",
-            alt_tr: "Yorumları ve puanları kontrol etme",
-            alt_en: "Checking reviews and ratings"
+            src: "/images/module4/m4_malware_4_tr.png",
+            alt_tr: "Uygulamayı yüklemeden önce kontrol et",
+            alt_en: "Check before installing an app"
+          },
+          {
+            src: "/images/module4/m4_malware_5_tr.png",
+            alt_tr: "Yetişkine danış",
+            alt_en: "Ask a trusted adult"
           }
         ],
         activity: {
