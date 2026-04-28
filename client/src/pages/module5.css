@@ -1,8 +1,12 @@
 /* ============================================================
-   MODULE 5 - ADVANCED HOTSPOT CYBER QUIZ STYLES
+   MODULE 5 - HOTSPOT CYBER QUIZ STYLES
    ============================================================ */
 
-/* Hotspot Quiz Container */
+.module5 .content-image {
+  display: block;
+  margin: 1rem auto;
+}
+
 .hotspot-quiz-container {
   width: 100%;
   max-width: 900px;
@@ -18,11 +22,8 @@
 .hotspot-quiz-container::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
+  inset: 0;
+  background:
     radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
   pointer-events: none;
@@ -34,7 +35,7 @@
   z-index: 1;
 }
 
-/* Hotspot Quiz Header */
+/* Header */
 .hotspot-quiz-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -43,7 +44,6 @@
 .hotspot-quiz-header h3 {
   font-size: 2rem;
   font-weight: 800;
-  color: #1e293b;
   margin-bottom: 0.5rem;
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
@@ -69,7 +69,7 @@
   box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
 }
 
-/* Hotspot Image Wrapper */
+/* Image Wrapper */
 .hotspot-image-wrapper {
   position: relative;
   width: 100%;
@@ -95,23 +95,25 @@
   transform: scale(1.02);
 }
 
-/* Hotspot Buttons */
+/* ✅ FIX: Hotspot buton — tıklanmadan önce nötr mor, renksiz görünmüyor */
 .hotspot-button {
   position: absolute;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 4px solid;
+  /* ✅ FIX: renk eklendi */
+  border: 4px solid #6366f1;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background: rgba(255, 255, 255, 0.9);
+  /* ✅ FIX: nötr mor arka plan */
+  background: rgba(99, 102, 241, 0.15);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  animation: pulse 2s infinite;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.35);
+  animation: hotspotPulse 2s infinite;
 }
 
 .hotspot-button::before {
@@ -120,7 +122,7 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: inherit;
+  background: rgba(99, 102, 241, 0.2);
   opacity: 0.5;
   animation: ripple 2s infinite;
 }
@@ -134,16 +136,19 @@
 
 .hotspot-button:hover {
   transform: scale(1.3);
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 30px rgba(99, 102, 241, 0.5);
 }
 
 .hotspot-button:active {
   transform: scale(1.1);
 }
 
+/* ✅ FIX: Sadece JS'ten tıklandıktan sonra eklenen class'lar */
 .hotspot-correct {
   border-color: #10b981;
-  background: rgba(16, 185, 129, 0.1);
+  background: rgba(16, 185, 129, 0.15);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+  animation: none;
 }
 
 .hotspot-correct::after {
@@ -155,7 +160,9 @@
 
 .hotspot-wrong {
   border-color: #ef4444;
-  background: rgba(239, 68, 68, 0.1);
+  background: rgba(239, 68, 68, 0.15);
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+  animation: none;
 }
 
 .hotspot-wrong::after {
@@ -166,24 +173,14 @@
 }
 
 /* Animations */
-@keyframes pulse {
-  0%, 100% {
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
-  }
-  50% {
-    box-shadow: 0 4px 30px rgba(99, 102, 241, 0.7);
-  }
+@keyframes hotspotPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4); }
+  50%       { box-shadow: 0 4px 30px rgba(99, 102, 241, 0.75); }
 }
 
 @keyframes ripple {
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1.6); opacity: 0; }
 }
 
 /* Feedback Box */
@@ -211,12 +208,8 @@
 }
 
 @keyframes shine {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
+  0%   { left: -100%; }
+  100% { left: 100%; }
 }
 
 .feedback-correct {
@@ -231,7 +224,7 @@
   border: 3px solid #f87171;
 }
 
-/* Quiz Completion Box */
+/* Quiz Completion */
 .quiz-completion-box {
   text-align: center;
   padding: 3rem 2rem;
@@ -254,12 +247,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-20px); }
 }
 
 .quiz-completion-box h3 {
@@ -277,7 +266,7 @@
   z-index: 1;
 }
 
-/* Dark Theme Support */
+/* Dark Theme */
 .dark .hotspot-quiz-container {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
 }
@@ -296,11 +285,11 @@
 }
 
 .dark .hotspot-button {
-  background: rgba(30, 41, 59, 0.9);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.6);
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
   .hotspot-quiz-container {
     padding: 1.5rem;
@@ -316,8 +305,8 @@
   }
 
   .hotspot-button {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
   }
 
   .hotspot-button::after {
@@ -338,7 +327,10 @@
   }
 }
 
-/* Activity Box Enhancements for Module 5 */
+/* ============================================================
+   MODULE 5 - ÖZEL STİLLER
+   ============================================================ */
+
 .module5 .activity-box {
   background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
   border: 2px solid #e0e7ff;
@@ -359,9 +351,13 @@
   margin-bottom: 1.5rem;
 }
 
-/* Section Content Enhancements */
 .module5 .section-content {
   animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .module5 .content-item {
@@ -397,8 +393,7 @@
 }
 
 .module5 .content-points li {
-  padding: 0.75rem 0;
-  padding-left: 2rem;
+  padding: 0.75rem 0 0.75rem 2rem;
   position: relative;
   color: #64748b;
   line-height: 1.6;
@@ -436,7 +431,6 @@
   line-height: 1.6;
 }
 
-/* Hero Image Styling */
 .module5 .section-hero-image {
   width: 100%;
   max-width: 900px;
@@ -451,4 +445,3 @@
 .module5 .section-hero-image:hover {
   transform: scale(1.02);
 }
-
