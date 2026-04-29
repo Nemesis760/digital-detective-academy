@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// Styles imported in index.css
 
 function ScenarioGame({ isTurkish, isModule2 }) {
-  const [gameState, setGameState] = useState('start'); // start, scene1, scene2, scene3, scene4, scene5, success, fail
+  const [gameState, setGameState] = useState('start');
   const [feedback, setFeedback] = useState('');
+  // ✅ FIX: cevap işlenirken tekrar tıklamayı engeller
+  const [isAnswering, setIsAnswering] = useState(false);
 
-  // Modül 1 Metinleri (Donanım/Yazılım)
   const module1Texts = {
     start: {
       image: '/images/game_start.png',
       title: isTurkish ? '🕵️ Dijital Dedektif: Laboratuvar Gizemi' : '🕵️ Digital Detective: Lab Mystery',
-      desc: isTurkish 
+      desc: isTurkish
         ? 'Okulun bilgisayar laboratuvarında büyük bir sorun var! Yarınki sınav için bilgisayarların hazır olması gerekiyor ama hiçbiri çalışmıyor. Müdür seni görevlendirdi. Öğrendiğin bilgileri kullanarak sorunu çözebilir misin?'
-        : 'There is a big problem in the school computer lab! The computers need to be ready for tomorrow\'s exam, but none of them are working. The principal has assigned you. Can you solve the problem using what you learned?',
+        : "There is a big problem in the school computer lab! The computers need to be ready for tomorrow's exam, but none of them are working. The principal has assigned you. Can you solve the problem using what you learned?",
       btn: isTurkish ? 'Görevi Kabul Et' : 'Accept Mission'
     },
     scene1: {
@@ -21,11 +21,11 @@ function ScenarioGame({ isTurkish, isModule2 }) {
       title: isTurkish ? 'Bölüm 1: Karanlık Oda' : 'Chapter 1: The Dark Room',
       desc: isTurkish
         ? 'Laboratuvara girdin. İçerisi sessiz. Ana bilgisayarın güç düğmesine basıyorsun ama hiçbir şey olmuyor. Ekran simsiyah. Ne yapmalısın?'
-        : 'You entered the lab. It\'s quiet inside. You press the power button of the main computer, but nothing happens. The screen is pitch black. What should you do?',
+        : "You entered the lab. It's quiet inside. You press the power button of the main computer, but nothing happens. The screen is pitch black. What should you do?",
       options: [
-        { id: 'software', text: isTurkish ? 'Yazılımı yeniden yükle' : 'Reinstall software', correct: false, feedback: isTurkish ? 'Bilgisayar açılmadan yazılım yükleyemezsin!' : 'You can\'t install software before the computer turns on!' },
+        { id: 'software', text: isTurkish ? 'Yazılımı yeniden yükle' : 'Reinstall software', correct: false, feedback: isTurkish ? 'Bilgisayar açılmadan yazılım yükleyemezsin!' : "You can't install software before the computer turns on!" },
         { id: 'cable', text: isTurkish ? 'Güç kablosunu kontrol et' : 'Check power cable', correct: true, feedback: isTurkish ? 'Harika! Kablo gevşemişti. Taktın ve ışıklar yandı!' : 'Great! The cable was loose. You plugged it in and the lights turned on!' },
-        { id: 'monitor', text: isTurkish ? 'Monitörü değiştir' : 'Replace monitor', correct: false, feedback: isTurkish ? 'Sorun monitörde değil gibi, kasa da çalışmıyor.' : 'The problem doesn\'t seem to be the monitor, the case isn\'t working either.' }
+        { id: 'monitor', text: isTurkish ? 'Monitörü değiştir' : 'Replace monitor', correct: false, feedback: isTurkish ? 'Sorun monitörde değil gibi, kasa da çalışmıyor.' : "The problem doesn't seem to be the monitor, the case isn't working either." }
       ]
     },
     scene2: {
@@ -62,12 +62,11 @@ function ScenarioGame({ isTurkish, isModule2 }) {
     }
   };
 
-  // Modül 2 Metinleri (Sosyal Medya Güvenliği)
   const module2Texts = {
     start: {
       image: '/images/game_social_media_setup.png',
       title: isTurkish ? '🛡️ Dijital Kalkan: Sosyal Medya Görevi' : '🛡️ Digital Shield: Social Media Mission',
-      desc: isTurkish 
+      desc: isTurkish
         ? 'Yeni bir sosyal medya platformu popüler oldu: "FriendZone". Herkes orada! Sen de bir hesap açmak istiyorsun ama dikkatli olmalısın. Dijital ayak izini temiz tutarak ve güvenliğini sağlayarak hesabını kurabilir misin?'
         : 'A new social media platform has become popular: "FriendZone". Everyone is there! You want to open an account too, but you must be careful. Can you set up your account by keeping your digital footprint clean and ensuring your security?',
       btn: isTurkish ? 'Hesap Kurmaya Başla' : 'Start Setup'
@@ -115,7 +114,7 @@ function ScenarioGame({ isTurkish, isModule2 }) {
         : 'You want to share a great photo from the school trip. The school sign is visible in the photo. What should you do?',
       options: [
         { id: 'post_location', text: isTurkish ? 'Konum ekleyerek paylaş' : 'Share with location', correct: false, feedback: isTurkish ? 'Okulunun konumunu ve tabelasını paylaşmak seni takip edilebilir yapar.' : 'Sharing your school location and sign makes you trackable.' },
-        { id: 'blur', text: isTurkish ? 'Okul tabelasını bulanıklaştır ve konum ekleme' : 'Blur the sign and don\'t add location', correct: true, feedback: isTurkish ? 'Çok akıllıca! Kişisel alanını ve güvenliğini korudun.' : 'Very smart! You protected your personal space and safety.' }
+        { id: 'blur', text: isTurkish ? 'Okul tabelasını bulanıklaştır ve konum ekleme' : "Blur the sign and don't add location", correct: true, feedback: isTurkish ? 'Çok akıllıca! Kişisel alanını ve güvenliğini korudun.' : 'Very smart! You protected your personal space and safety.' }
       ]
     },
     scene5: {
@@ -125,7 +124,7 @@ function ScenarioGame({ isTurkish, isModule2 }) {
         ? 'Hesabını açar açmaz bir istek geldi: "SüperOyunYöneticisi". Profilinde hiç fotoğraf yok ve sana "Bedava oyun kredisi ister misin?" diye mesaj attı.'
         : 'As soon as you opened your account, a request came: "SuperGameAdmin". No photos on profile and messaged you "Want free game credits?".',
       options: [
-        { id: 'accept', text: isTurkish ? 'Kabul et ve cevap ver' : 'Accept and reply', correct: false, feedback: isTurkish ? 'Bu bir tuzak olabilir! Tanımadığın kişilere güvenme.' : 'This could be a trap! Don\'t trust strangers.' },
+        { id: 'accept', text: isTurkish ? 'Kabul et ve cevap ver' : 'Accept and reply', correct: false, feedback: isTurkish ? 'Bu bir tuzak olabilir! Tanımadığın kişilere güvenme.' : "This could be a trap! Don't trust strangers." },
         { id: 'reject', text: isTurkish ? 'Reddet ve Engelle' : 'Reject and Block', correct: true, feedback: isTurkish ? 'Doğru karar! Şüpheli hesapları engellemek en iyisidir.' : 'Right decision! Blocking suspicious accounts is best.' }
       ]
     },
@@ -142,30 +141,37 @@ function ScenarioGame({ isTurkish, isModule2 }) {
   const texts = isModule2 ? module2Texts : module1Texts;
 
   const handleOptionClick = (option) => {
+    // ✅ FIX: zaten bir cevap işleniyorsa tekrar tıklamayı engelle
+    if (isAnswering) return;
+
+    setIsAnswering(true);
     setFeedback(option.feedback);
-    
-    if (option.correct) {
-      setTimeout(() => {
-        setFeedback('');
+
+    setTimeout(() => {
+      setFeedback('');
+      setIsAnswering(false); // ✅ FIX: kilit her durumda kaldırılıyor
+
+      if (option.correct) {
         if (gameState === 'scene1') setGameState('scene2');
         else if (gameState === 'scene2') setGameState('scene3');
         else if (gameState === 'scene3') setGameState(isModule2 ? 'scene4' : 'success');
         else if (gameState === 'scene4') setGameState('scene5');
         else if (gameState === 'scene5') setGameState('success');
-      }, 2500);
-    }
+      }
+    }, 2500);
   };
 
   const resetGame = () => {
     setGameState('start');
     setFeedback('');
+    setIsAnswering(false);
   };
 
   return (
     <div className="scenario-game-container">
       <AnimatePresence mode="wait">
         {gameState === 'start' && (
-          <motion.div 
+          <motion.div
             key="start"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -182,8 +188,8 @@ function ScenarioGame({ isTurkish, isModule2 }) {
         )}
 
         {gameState.startsWith('scene') && (
-          <motion.div 
-            key="scene"
+          <motion.div
+            key={gameState}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -50 }}
@@ -194,13 +200,15 @@ function ScenarioGame({ isTurkish, isModule2 }) {
               <span className="scene-badge">{texts[gameState].title}</span>
             </div>
             <p className="scene-desc">{texts[gameState].desc}</p>
-            
+
             <div className="options-grid">
               {texts[gameState].options.map((opt) => (
-                <button 
-                  key={opt.id} 
+                <button
+                  key={opt.id}
                   className="option-btn"
                   onClick={() => handleOptionClick(opt)}
+                  // ✅ FIX: feedback gösterilirken butonlar disabled
+                  disabled={isAnswering}
                 >
                   {opt.text}
                 </button>
@@ -208,7 +216,7 @@ function ScenarioGame({ isTurkish, isModule2 }) {
             </div>
 
             {feedback && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="game-feedback"
@@ -220,7 +228,7 @@ function ScenarioGame({ isTurkish, isModule2 }) {
         )}
 
         {gameState === 'success' && (
-          <motion.div 
+          <motion.div
             key="success"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}

@@ -71,7 +71,7 @@ const HardwareHotspot = ({ isTurkish = true }) => {
         description: isTurkish
           ? "Bilgisayarın beyni! Komutları işler, hız ve performansı etkiler."
           : "The computer’s brain! It processes instructions and affects speed and performance.",
-        position: { top: 24, left: 41 },
+        position: { top: 30, left: 34 },
         emoji: "🧠",
       },
       {
@@ -80,7 +80,7 @@ const HardwareHotspot = ({ isTurkish = true }) => {
         description: isTurkish
           ? "Geçici hafıza! Programlar çalışırken hızlı veri tutar; bilgisayar kapanınca temizlenir."
           : "Temporary memory! Holds data fast while programs run; clears when power is off.",
-        position: { top: 21, left: 56 },
+        position: { top: 28, left: 48 },
         emoji: "⚡",
       },
       {
@@ -89,7 +89,7 @@ const HardwareHotspot = ({ isTurkish = true }) => {
         description: isTurkish
           ? "Görüntüyü üretir. Oyunlar ve grafik işlemlerinde çok önemlidir."
           : "Creates visuals. Very important for gaming and graphics work.",
-        position: { top: 44, left: 42 },
+        position: { top: 60, left: 40 },
         emoji: "🎮",
       },
       {
@@ -98,7 +98,7 @@ const HardwareHotspot = ({ isTurkish = true }) => {
         description: isTurkish
           ? "Kalıcı hafıza. Dosyalar ve oyunlar burada saklanır; elektrik kesilse de silinmez."
           : "Permanent storage. Files and games stay here even when power is off.",
-        position: { top: 43, left: 74 },
+        position: { top: 35, left: 60 },
         emoji: "💾",
       },
       {
@@ -107,7 +107,7 @@ const HardwareHotspot = ({ isTurkish = true }) => {
         description: isTurkish
           ? "Parçaları serin tutar. Isıyı düşürerek performansın korunmasına yardım eder."
           : "Keeps parts cool. Helps maintain performance by reducing heat.",
-        position: { top: 12, left: 50 },
+        position: { top: 14, left: 46 },
         emoji: "🌀",
       },
       {
@@ -116,7 +116,7 @@ const HardwareHotspot = ({ isTurkish = true }) => {
         description: isTurkish
           ? "Elektriği bilgisayarın kullanacağı güce çevirir ve tüm parçalara dağıtır."
           : "Converts wall power into usable power and distributes it to components.",
-        position: { top: 76, left: 17 },
+        position: { top: 80, left: 28 },
         emoji: "🔋",
       },
     ],
@@ -615,15 +615,17 @@ const HardwareHotspot = ({ isTurkish = true }) => {
           background:linear-gradient(135deg,#0b1220 0%,#111827 100%);
           border-radius:12px;
           overflow:hidden;
-          padding:14px;
+          padding:10px;
           display:flex;
           align-items:center;
           justify-content:center;
-          min-height:360px;
+          min-height:260px;
+          max-height:340px;
         }
         .hh-image{
           width:100%;
-          max-width:900px;
+          max-width:700px;
+          max-height:320px;
           height:auto;
           object-fit:contain;
           user-select:none;

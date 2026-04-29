@@ -1,12 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import confetti from 'canvas-confetti';
-
-/**
- * Truth or Troll - Module 3
- * Tinder-style swipe game for detecting fake news and cyberbullying
- * Swipe RIGHT for Safe/Real, LEFT for Bullying/Fake
- */
 
 const TruthOrTrollGame = ({ isTurkish = true }) => {
   const [cards, setCards] = useState([]);
@@ -20,16 +14,16 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
   const rotate = useTransform(x, [-200, 200], [-25, 25]);
   const opacity = useTransform(x, [-200, -100, 0, 100, 200], [0, 1, 1, 1, 0]);
 
-  // Game cards data
-  const gameCards = [
+  // ✅ FIX: useMemo ile isTurkish'e bağlandı — dil değişince yeniden oluşur
+  const gameCards = useMemo(() => [
     {
       id: 1,
       type: 'news',
-      content: isTurkish 
-        ? 'NASA, Mars\'ta su buldu! Bilim insanları heyecanlı.'
+      content: isTurkish
+        ? "NASA, Mars'ta su buldu! Bilim insanları heyecanlı."
         : 'NASA found water on Mars! Scientists are excited.',
       correct: 'real',
-      explanation: isTurkish 
+      explanation: isTurkish
         ? 'Bu gerçek bir haber. NASA resmi kaynaklardan doğruladı.'
         : 'This is real news. NASA confirmed from official sources.'
     },
@@ -37,8 +31,8 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
       id: 2,
       type: 'social',
       content: isTurkish
-        ? 'Sen çok aptalsın! Hiçbir şeyi doğru yapamıyorsun.'
-        : 'You are so stupid! You can\'t do anything right.',
+        ? "Sen çok aptalsın! Hiçbir şeyi doğru yapamıyorsun."
+        : "You are so stupid! You can't do anything right.",
       correct: 'bullying',
       explanation: isTurkish
         ? 'Bu siber zorbalık. Kişiye hakaret ediliyor.'
@@ -82,7 +76,7 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
       type: 'social',
       content: isTurkish
         ? 'Seni hiç sevmiyorum. Okuldan gitmelisin.'
-        : 'I don\'t like you at all. You should leave school.',
+        : "I don't like you at all. You should leave school.",
       correct: 'bullying',
       explanation: isTurkish
         ? 'Bu siber zorbalık. Kişiyi dışlama ve tehdit içeriyor.'
@@ -96,7 +90,7 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
         : 'SHOCK! Famous actor revealed secret illness!',
       correct: 'fake',
       explanation: isTurkish
-        ? 'Bu muhtemelen sahte haber. Sansasyonel başlıklar genelde clickbait\'tir.'
+        ? "Bu muhtemelen sahte haber. Sansasyonel başlıklar genelde clickbait'tir."
         : 'This is probably fake news. Sensational headlines are usually clickbait.'
     },
     {
@@ -110,35 +104,38 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
         ? 'Bu pozitif bir mesaj. Destekleyici ve teşvik edici.'
         : 'This is a positive message. Supportive and encouraging.'
     }
-  ];
+  ], [isTurkish]); // ✅ FIX: isTurkish dependency
 
+  // ✅ FIX: gameCards değişince (dil değişince) oyunu sıfırla
   useEffect(() => {
     setCards([...gameCards]);
-  }, []);
+    setCurrentIndex(0);
+    setScore(0);
+    setGameComplete(false);
+    setFeedback(null);
+    setSwipeDirection(null);
+    x.set(0);
+  }, [gameCards]); // ✅ FIX: boş array değil, gameCards dependency
 
   const currentCard = cards[currentIndex];
 
   const handleSwipe = (direction) => {
     if (!currentCard) return;
 
-    const isCorrect = 
+    const isCorrect =
       (direction === 'right' && (currentCard.correct === 'real' || currentCard.correct === 'safe')) ||
       (direction === 'left' && (currentCard.correct === 'fake' || currentCard.correct === 'bullying'));
 
     setSwipeDirection(direction);
 
     if (isCorrect) {
-      setScore(prev => prev + 10);
+      setScore((prev) => prev + 10);
       setFeedback({
         type: 'success',
         message: isTurkish ? '🎉 Doğru!' : '🎉 Correct!',
         explanation: currentCard.explanation
       });
-      confetti({
-        particleCount: 30,
-        spread: 50,
-        origin: { y: 0.6 }
-      });
+      confetti({ particleCount: 30, spread: 50, origin: { y: 0.6 } });
     } else {
       setFeedback({
         type: 'error',
@@ -149,17 +146,13 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
 
     setTimeout(() => {
       if (currentIndex < cards.length - 1) {
-        setCurrentIndex(prev => prev + 1);
+        setCurrentIndex((prev) => prev + 1);
         setFeedback(null);
         setSwipeDirection(null);
         x.set(0);
       } else {
         setGameComplete(true);
-        confetti({
-          particleCount: 100,
-          spread: 70,
-          origin: { y: 0.6 }
-        });
+        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
       }
     }, 1500);
   };
@@ -174,6 +167,7 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
   };
 
   const resetGame = () => {
+    setCards([...gameCards]);
     setCurrentIndex(0);
     setScore(0);
     setGameComplete(false);
@@ -194,9 +188,9 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
           {isTurkish ? 'Tebrikler!' : 'Congratulations!'}
         </h3>
         <p className="text-white/90 mb-6 text-lg">
-          {isTurkish 
+          {isTurkish
             ? 'Tüm kartları doğru sınıflandırdın! Dijital vatandaşlık konusunda uzmanlaşıyorsun!'
-            : 'You classified all cards correctly! You\'re becoming an expert in digital citizenship!'}
+            : "You classified all cards correctly! You're becoming an expert in digital citizenship!"}
         </p>
         <p className="text-3xl font-bold text-white mb-8">
           {isTurkish ? 'Toplam Puan' : 'Total Score'}: {score}
@@ -219,13 +213,12 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
 
   return (
     <div className="truth-or-troll-game p-6 bg-slate-900 rounded-2xl">
-      {/* Game Header */}
       <div className="text-center mb-6">
         <h3 className="text-3xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-400">
           {isTurkish ? '✅ Sahte mi Gerçek mi?' : '✅ Truth or Troll?'}
         </h3>
         <p className="text-slate-300 mb-4">
-          {isTurkish 
+          {isTurkish
             ? 'Kartları sağa kaydır (✅ Gerçek/Güvenli) veya sola kaydır (❌ Sahte/Zorbalık)'
             : 'Swipe cards right (✅ Real/Safe) or left (❌ Fake/Bullying)'}
         </p>
@@ -241,7 +234,6 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
         </div>
       </div>
 
-      {/* Card Stack */}
       <div className="relative h-[500px] flex items-center justify-center mb-6">
         <AnimatePresence>
           <motion.div
@@ -253,13 +245,13 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
             className="absolute w-80 h-96 bg-white rounded-2xl shadow-2xl cursor-grab active:cursor-grabbing"
             whileTap={{ cursor: 'grabbing' }}
             initial={{ scale: 0.8, opacity: 0, y: 50 }}
-            animate={{ 
-              scale: swipeDirection ? 0.8 : 1, 
+            animate={{
+              scale: swipeDirection ? 0.8 : 1,
               opacity: swipeDirection ? 0 : 1,
               y: swipeDirection ? (swipeDirection === 'right' ? -200 : 200) : 0,
               rotate: swipeDirection ? (swipeDirection === 'right' ? 30 : -30) : 0
             }}
-            exit={{ 
+            exit={{
               x: swipeDirection === 'right' ? 300 : -300,
               opacity: 0,
               rotate: swipeDirection === 'right' ? 30 : -30
@@ -267,17 +259,19 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
           >
             <div className="h-full p-8 flex flex-col">
               <div className="mb-4">
-                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                  currentCard.type === 'news' 
-                    ? 'bg-blue-100 text-blue-700' 
-                    : 'bg-purple-100 text-purple-700'
-                }`}>
-                  {currentCard.type === 'news' 
-                    ? (isTurkish ? '📰 Haber' : '📰 News')
-                    : (isTurkish ? '💬 Sosyal Medya' : '💬 Social Media')}
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                    currentCard.type === 'news'
+                      ? 'bg-blue-100 text-blue-700'
+                      : 'bg-purple-100 text-purple-700'
+                  }`}
+                >
+                  {currentCard.type === 'news'
+                    ? isTurkish ? '📰 Haber' : '📰 News'
+                    : isTurkish ? '💬 Sosyal Medya' : '💬 Social Media'}
                 </span>
               </div>
-              
+
               <div className="flex-1 flex items-center justify-center">
                 <p className="text-2xl font-semibold text-slate-800 text-center leading-relaxed">
                   {currentCard.content}
@@ -298,7 +292,6 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Swipe Hints */}
         {!swipeDirection && (
           <div className="absolute inset-0 pointer-events-none">
             <motion.div
@@ -319,7 +312,6 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
         )}
       </div>
 
-      {/* Feedback */}
       <AnimatePresence>
         {feedback && (
           <motion.div
@@ -338,7 +330,6 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
         )}
       </AnimatePresence>
 
-      {/* Action Buttons */}
       <div className="flex justify-center gap-4">
         <motion.button
           onClick={() => handleSwipe('left')}
@@ -359,7 +350,7 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
       </div>
 
       <p className="text-center text-slate-400 text-sm mt-4">
-        {isTurkish 
+        {isTurkish
           ? '💡 İpucu: Kartı sürükleyerek veya butonlara tıklayarak oynayabilirsin'
           : '💡 Tip: You can play by dragging the card or clicking the buttons'}
       </p>
@@ -368,4 +359,3 @@ const TruthOrTrollGame = ({ isTurkish = true }) => {
 };
 
 export default TruthOrTrollGame;
-

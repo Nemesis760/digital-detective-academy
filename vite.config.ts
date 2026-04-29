@@ -1,18 +1,17 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'node:path'
-
-
+import path from 'path'
 
 export default defineConfig(({ mode }) => ({
   plugins: [react()],
   root: './client',
 
-  // GitHub Pages prod'da gerekli
-  base: mode === 'production' ? '/digital-detective-academy/' : '/',
+  // Working prototype /app altında yayınlanacak
+  base: mode === 'production' ? '/digital-detective-academy/app/' : '/',
 
   build: {
-    outDir: '../dist',
+    // dist yerine repoda app/ üret
+    outDir: '../app',
     emptyOutDir: true,
   },
 

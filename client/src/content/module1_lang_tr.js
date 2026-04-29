@@ -465,7 +465,7 @@ export const MODULE1_TR = {
               }]
           }
         },
-        "activity_title": "🎮 Aktivite: Senaryo Bazlı Test",
+        "activity_title": "Aktivite: Senaryo Bazlı Test",
         "activity_desc": "Örnek Olay: 'Ayşe, e-postasına gelen ve ödül kazandığını söyleyen linke tıkladı.' Soru: Ayşe hangi hatayı yaptı? (Oltalama tuzağına düştü).",
         "activity_type": "scenario_test"
       }

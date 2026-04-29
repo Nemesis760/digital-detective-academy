@@ -1,664 +1,664 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'wouter';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 
-/**
- * Sidebar - Sağ Tarafta Açılır/Kapanır Yan Panel
- * Modüllere hızlı erişim, ayarlar, bilgiler
- */
+const MODULE_SECTIONS = {
+  '/module1': {
+    icon: '📚',
+    label_tr: 'Bilgisayar Dünyasını Keşfediyorum',
+    label_en: 'Exploring the Computer World',
+    key: 'module1',
+    sections_tr: [
+      'Bilgisayar nedir ve nasıl düşünür?',
+      'Donanım (bilgisayarın vücudu)',
+      'Yazılım (bilgisayarın ruhu)',
+      'Hafıza ve dosya yönetimi',
+      'Dijital sağlık, etik ve güvenlik',
+    ],
+    sections_en: [
+      'What is a computer and how does it think?',
+      'Hardware (the body of the computer)',
+      'Software (the soul of the computer)',
+      'Memory and file management',
+      'Digital health, ethics and security',
+    ],
+  },
+  '/module2': {
+    icon: '🔍',
+    label_tr: 'Dijital Ayak İzi ve Çevrimiçi Gizlilik',
+    label_en: 'Digital Footprint & Online Privacy',
+    key: 'module2',
+    sections_tr: [
+      '🔍 Dijital Ayak İzi Nedir?',
+      '🎯 Aktif ve Pasif Dijital Ayak İzi',
+      '🔐 Kişisel Bilgiler ve Gizlilik',
+      '⏳ Dijital Ayak İzinin Geleceğe Etkisi',
+      '🛡️ Güvenli Dijital Davranışlar',
+      "🎭 Senaryo Quiz - Zeynep'in Hikayesi",
+    ],
+    sections_en: [
+      'What is a Digital Footprint?',
+      'Active and Passive Digital Footprint',
+      'Personal Information and Privacy',
+      'Future Impact of Digital Footprint',
+      'Safe Digital Behaviors',
+      "Scenario Quiz - Zeynep's Story",
+    ],
+  },
+  '/module3': {
+    icon: '🌐',
+    label_tr: 'Bilgisayar Ağları ve Dijital İletişim',
+    label_en: 'Computer Networks & Digital Communication',
+    key: 'module3',
+    sections_tr: [
+      'Ağ Nedir? İletişimin Tarihsel Gelişimi',
+      'İnternet Nedir? Veri Paketleri Nasıl Yolculuk Eder?',
+      'Tarayıcı ve Arama Motoru',
+      'İnternet Adresi (URL) ve Uzantılar',
+      'Ağ Türleri: Ev, Okul ve Halka Açık Wi-Fi',
+      'Veri - İstemci - Sunucu',
+      'Ağ Cihazları: Modem, Router, Switch, Ethernet',
+      'Ağ Cihazlarını Eşleştir',
+      'Kablolu vs Kablosuz Bağlantı',
+      'Ağ Güvenliği ve Ünite Değerlendirme',
+      'Adam Asmaca (Kolay)',
+    ],
+    sections_en: [
+      'What is a Network? Communication Timeline',
+      'What is the Internet? How Do Packets Travel?',
+      'Browser and Search Engine',
+      'Internet Address (URL) and Extensions',
+      'Network Types: Home, School and Public Wi-Fi',
+      'Data - Client - Server',
+      'Network Devices: Modem, Router, Switch, Ethernet',
+      'Match Network Devices',
+      'Wired vs Wireless Connection',
+      'Network Security and Unit Review',
+      'Hangman (Easy)',
+    ],
+  },
+  '/module4': {
+    icon: '🛡️',
+    label_tr: 'Şifre Güvenliği ve Hesap Koruma',
+    label_en: 'Password Security & Account Protection',
+    key: 'module4',
+    sections_tr: [
+      'Cihaz Güvenliği: Kilit, Güncelleme, Yedekleme',
+      'Zararlı Yazılımlar ve Güvenli İndirme',
+      'Uygulama İzinleri ve Gizlilik Ayarları',
+      'Ortak Ağlar, Wi-Fi Güvenliği ve Oturum Kapatma',
+      'Dijital Vatandaşlık ve Yardım Alma',
+    ],
+    sections_en: [
+      'Device Security: Lock, Update, Backup',
+      'Malware and Safe Downloading',
+      'App Permissions and Privacy Settings',
+      'Public Networks, Wi-Fi Security and Logout',
+      'Digital Citizenship and Seeking Help',
+    ],
+  },
+  '/module5': {
+    icon: '🔒',
+    label_tr: 'Dijital Güvenlik ve Bilinçli Teknoloji Kullanımı',
+    label_en: 'Digital Security & Responsible Technology Use',
+    key: 'module5',
+    sections_tr: [
+      '🛡️ Dijital Güvenlik Nedir?',
+      '🦠 Zararlı Yazılımlar (Virüsler ve Tehditler)',
+      '📱 Güvenli Cihaz Kullanımı',
+      '🔐 Uygulama İzinleri ve Gizlilik',
+      '🤝 Dijital Sorumluluk',
+      '🎮 Senaryo Quizleri',
+    ],
+    sections_en: [
+      '🛡️ What is Digital Security?',
+      '🦠 Malicious Software (Viruses and Threats)',
+      '📱 Safe Device Use',
+      '🔐 App Permissions and Privacy',
+      '🤝 Digital Responsibility',
+      '🎮 Scenario Quizzes',
+    ],
+  },
+  '/module6': {
+    icon: '⚡',
+    label_tr: 'Dijital Dedektif',
+    label_en: 'Digital Detective',
+    key: 'module6',
+    sections_tr: [
+      '🚨 Kötü Amaçlı Yazılım Belirtileri (Malware Symptoms)',
+      '🎣 Kimlik Avı (Phishing) Avcılığı',
+      '🛠️ Siber Krizlere Müdahale Planı',
+    ],
+    sections_en: [
+      'Malware Symptoms',
+      'Phishing Hunt',
+      'Cyber Incident Response Plan',
+    ],
+  },
+};
+
+const SIDEBAR_WIDTH = 300;
 
 const Sidebar = () => {
   const { isTurkish, toggleLanguage } = useLanguage();
   const { theme, toggleTheme, switchable } = useTheme();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
   const [location] = useLocation();
+  const [expandedModule, setExpandedModule] = useState(null);
+  const [moduleProgress, setModuleProgress] = useState({});
 
-  const menuItems = isTurkish ? [
-    { icon: '🏠', label: 'Ana Sayfa', path: '/' },
-    { icon: '📚', label: 'Bilgisayar Dünyasını Keşfediyorum', subtitle: 'Bilgisayar Temelleri', path: '/module1' },
-    { icon: '🔗', label: 'Bilgisayar Ağları ve Dijital İletişim', subtitle: 'Ağlar ve Dijital İletişim', path: '/module2' },
-    { icon: '🌐', label: 'Dijital Ayak İzi ve Çevrimiçi Gizlilik', subtitle: 'Dijital Ayak İzi ve Gizlilik', path: '/module3' },
-    { icon: '🛡️', label: 'Şifre Güvenliği ve Hesap Koruma', subtitle: 'Şifre ve Hesap Güvenliği', path: '/module4' },
-    { icon: '🔒', label: 'Dijital Güvenlik ve Bilinçli Teknoloji Kullanımı', subtitle: 'Dijital Güvenlik', path: '/module5' },
-    { icon: '⚡', label: 'Dijital Dedektif', subtitle: 'Olay Yeri İnceleme', path: '/module6' },
-  ] : [
-    { icon: '🏠', label: 'Home', path: '/' },
-    { icon: '📚', label: 'Exploring the Computer World', subtitle: 'Computer Basics', path: '/module1' },
-    { icon: '🔗', label: 'Computer Networks & Digital Communication', subtitle: 'Networks & Digital Communication', path: '/module2' },
-    { icon: '🌐', label: 'Digital Footprint & Online Privacy', subtitle: 'Digital Footprint & Privacy', path: '/module3' },
-    { icon: '🛡️', label: 'Password Security & Account Protection', subtitle: 'Password & Account Security', path: '/module4' },
-    { icon: '🔒', label: 'Digital Security & Responsible Technology Use', subtitle: 'Digital Security', path: '/module5' },
-    { icon: '⚡', label: 'Digital Detective', subtitle: 'Crime Scene Investigation', path: '/module6' },
-  ];
+  // HOOK 1 — sidebarVisibility event (home'da gizle)
+  useEffect(() => {
+    const handler = (e) => {
+      const visible = e.detail?.visible ?? true;
+      setIsVisible(visible);
+      if (!visible) {
+        document.body.style.marginLeft = '0px';
+      }
+    };
+    window.addEventListener('sidebarVisibility', handler);
+    return () => window.removeEventListener('sidebarVisibility', handler);
+  }, []);
 
-  const infoItems = isTurkish ? [
-    { icon: '📖', label: 'Kurulum Kılavuzu', action: () => alert('Kurulum Kılavuzu: npm install && npm run dev') },
-    { icon: '❓', label: 'Sıkça Sorulan Sorular', action: () => alert('SSS: Modüller nasıl kullanılır?') },
-    { icon: '📞', label: 'İletişim', action: () => alert('E-posta: info@digitalsecurity.edu') },
-  ] : [
-    { icon: '📖', label: 'Installation Guide', action: () => alert('Installation: npm install && npm run dev') },
-    { icon: '❓', label: 'FAQ', action: () => alert('FAQ: How to use modules?') },
-    { icon: '📞', label: 'Contact', action: () => alert('Email: info@digitalsecurity.edu') },
-  ];
+  // HOOK 2 — progress okuma (location değişince)
+  useEffect(() => {
+    const progress = {};
+    Object.entries(MODULE_SECTIONS).forEach(([path, mod]) => {
+      try {
+        const completed = JSON.parse(
+          localStorage.getItem(`${mod.key}_completedSections`) || '[]'
+        );
+        const active = Number(localStorage.getItem(`${mod.key}_activeSection`)) || 1;
+        progress[path] = { completed, active };
+      } catch {
+        progress[path] = { completed: [], active: 1 };
+      }
+    });
+    setModuleProgress(progress);
+  }, [location]);
+
+  // HOOK 3 — progress event listener
+  useEffect(() => {
+    const readProgress = () => {
+      const progress = {};
+      Object.entries(MODULE_SECTIONS).forEach(([path, mod]) => {
+        try {
+          const completed = JSON.parse(
+            localStorage.getItem(`${mod.key}_completedSections`) || '[]'
+          );
+          const active = Number(localStorage.getItem(`${mod.key}_activeSection`)) || 1;
+          progress[path] = { completed, active };
+        } catch {
+          progress[path] = { completed: [], active: 1 };
+        }
+      });
+      setModuleProgress(progress);
+    };
+
+    window.addEventListener('sectionProgressUpdate', readProgress);
+    window.addEventListener('moduleCompleted', readProgress);
+    return () => {
+      window.removeEventListener('sectionProgressUpdate', readProgress);
+      window.removeEventListener('moduleCompleted', readProgress);
+    };
+  }, []);
+
+  // HOOK 4 — aktif modülü genişlet
+  useEffect(() => {
+    if (MODULE_SECTIONS[location]) setExpandedModule(location);
+  }, [location]);
+
+  // HOOK 5 — body margin (sidebar açık/kapalı)
+  useEffect(() => {
+    if (!isVisible) return;
+    document.body.style.marginLeft = isOpen ? `${SIDEBAR_WIDTH}px` : '0px';
+    document.body.style.transition = 'margin-left 0.3s ease';
+    return () => {
+      document.body.style.marginLeft = '0px';
+    };
+  }, [isOpen, isVisible]);
+
+  // ── TÜM HOOK'LAR BITTI — şimdi early return güvenli ──
+  if (!isVisible) return null;
+
+  const globalProgress = (() => {
+    try {
+      return JSON.parse(localStorage.getItem('digitalShieldProgress') || '{}');
+    } catch {
+      return {};
+    }
+  })();
+
+  const completedModuleCount = Object.values(globalProgress).filter(Boolean).length;
+  const totalModules = Object.keys(MODULE_SECTIONS).length;
+  const isDark = theme === 'dark';
+
+  const sectionLinkStyle = (isCurrent) => ({
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    padding: '6px 10px',
+    borderRadius: '8px',
+    marginBottom: '2px',
+    textDecoration: 'none',
+    color: isCurrent ? '#667eea' : isDark ? 'rgba(255,255,255,0.7)' : '#475569',
+    background: isCurrent ? 'rgba(102,126,234,0.08)' : 'transparent',
+    fontWeight: isCurrent ? 700 : 500,
+    fontSize: '0.8rem',
+    cursor: 'pointer',
+  });
 
   return (
     <>
-      {/* TOGGLE BUTTON */}
+      {/* Toggle butonu */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className="sidebar-toggle"
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        title={isOpen ? (isTurkish ? 'Kapat' : 'Close') : (isTurkish ? 'Aç' : 'Open')}
+        style={{
+          position: 'fixed',
+          left: isOpen ? `${SIDEBAR_WIDTH + 12}px` : '12px',
+          top: '12px',
+          zIndex: 1001,
+          width: '42px',
+          height: '42px',
+          borderRadius: '10px',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          color: 'white',
+          border: 'none',
+          cursor: 'pointer',
+          fontSize: '1.1rem',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 4px 14px rgba(102,126,234,0.4)',
+          transition: 'left 0.3s ease',
+        }}
       >
-        <span className="toggle-icon">{isOpen ? '✕' : '☰'}</span>
+        {isOpen ? '✕' : '☰'}
       </motion.button>
 
-      {/* BACKDROP */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsOpen(false)}
-            className="sidebar-backdrop"
-          />
-        )}
-      </AnimatePresence>
+      {/* Sidebar paneli */}
+      <motion.div
+        animate={{ x: isOpen ? 0 : -SIDEBAR_WIDTH }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+        style={{
+          position: 'fixed',
+          left: 0,
+          top: 0,
+          bottom: 0,
+          width: `${SIDEBAR_WIDTH}px`,
+          background: isDark
+            ? 'linear-gradient(180deg, #0b1220 0%, #111827 100%)'
+            : '#ffffff',
+          zIndex: 1000,
+          boxShadow: isOpen ? '4px 0 20px rgba(0,0,0,0.12)' : 'none',
+          display: 'flex',
+          flexDirection: 'column',
+          overflowY: 'auto',
+          borderRight: `1px solid ${isDark ? '#1e293b' : '#f1f5f9'}`,
+        }}
+      >
+        {/* Header */}
+        <div
+          style={{
+            padding: '14px 16px',
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            flexShrink: 0,
+          }}
+        >
+          <div style={{ color: 'white', fontWeight: 900, fontSize: '1rem' }}>
+            🛡️ {isTurkish ? 'Dijital Güvenlik' : 'Digital Security'}
+          </div>
+          <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: '0.73rem', marginTop: '2px' }}>
+            {completedModuleCount}/{totalModules}{' '}
+            {isTurkish ? 'modül tamamlandı' : 'modules completed'}
+          </div>
+        </div>
 
-      {/* SIDEBAR */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ x: 350 }}
-            animate={{ x: 0 }}
-            exit={{ x: 350 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="sidebar"
+        {/* Progress Bar */}
+        <div
+          style={{
+            padding: '10px 16px',
+            borderBottom: `1px solid ${isDark ? '#1e293b' : '#f1f5f9'}`,
+            flexShrink: 0,
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              fontSize: '0.72rem',
+              color: '#94a3b8',
+              fontWeight: 600,
+              marginBottom: '5px',
+            }}
           >
-            {/* HEADER */}
-            <div className="sidebar-header">
-              <h2>{isTurkish ? '📋 Menü' : '📋 Menu'}</h2>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="close-btn"
-              >
-                ✕
-              </button>
-            </div>
+            <span>{isTurkish ? 'Genel İlerleme' : 'Overall Progress'}</span>
+            <span>{Math.round((completedModuleCount / totalModules) * 100)}%</span>
+          </div>
+          <div
+            style={{
+              height: '5px',
+              background: isDark ? '#1e293b' : '#e2e8f0',
+              borderRadius: '3px',
+              overflow: 'hidden',
+            }}
+          >
+            <motion.div
+              animate={{ width: `${(completedModuleCount / totalModules) * 100}%` }}
+              transition={{ duration: 0.6 }}
+              style={{
+                height: '100%',
+                background: 'linear-gradient(90deg, #667eea, #764ba2)',
+                borderRadius: '3px',
+              }}
+            />
+          </div>
+        </div>
 
-            {/* DIVIDER */}
-            <div className="sidebar-divider"></div>
+        {/* Nav */}
+        <nav style={{ flex: 1, padding: '8px 10px', overflowY: 'auto' }}>
+          <Link
+            href="/"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '10px 14px',
+              borderRadius: '12px',
+              marginBottom: '8px',
+              textDecoration: 'none',
+              color: 'white',
+              background:
+                location === '/'
+                  ? 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+                  : 'linear-gradient(135deg, rgba(102,126,234,0.18) 0%, rgba(118,75,162,0.18) 100%)',
+              fontWeight: 700,
+              fontSize: '0.88rem',
+              border:
+                location === '/'
+                  ? '1.5px solid rgba(102,126,234,0.6)'
+                  : '1.5px solid rgba(102,126,234,0.25)',
+              boxShadow: location === '/' ? '0 4px 14px rgba(102,126,234,0.35)' : 'none',
+              transition: 'all 0.2s ease',
+            }}
+          >
+            <span style={{ fontSize: '1.1rem' }}>🏠</span>
+            <span>{isTurkish ? 'Ana Sayfa' : 'Home'}</span>
+          </Link>
 
-            {/* NAVIGATION MENU */}
-            <nav className="sidebar-nav">
-              <h3>{isTurkish ? '🎓 Modüller' : '🎓 Modules'}</h3>
-              <div className="nav-items">
-                {menuItems.map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05 }}
-                  >
-                    <Link href={item.path}>
-                      <a
-                        className={`nav-item ${location === item.path ? 'active' : ''}`}
-                        onClick={() => setIsOpen(false)}
+          <div
+            style={{
+              fontSize: '0.68rem',
+              fontWeight: 700,
+              color: '#94a3b8',
+              letterSpacing: '0.08em',
+              padding: '5px 10px 3px',
+              textTransform: 'uppercase',
+            }}
+          >
+            {isTurkish ? 'Modüller' : 'Modules'}
+          </div>
+
+          {Object.entries(MODULE_SECTIONS).map(([path, mod]) => {
+            const isActive = location === path;
+            const isExpanded = expandedModule === path;
+            const prog = moduleProgress[path] || { completed: [], active: 1 };
+            const moduleCompleted = globalProgress[mod.key];
+            const sections = isTurkish ? mod.sections_tr : mod.sections_en;
+            const hasSections = sections.length > 0;
+            const pct = hasSections
+              ? Math.round((prog.completed.length / sections.length) * 100)
+              : 0;
+
+            return (
+              <div key={path} style={{ marginBottom: '2px' }}>
+                <div
+                  onClick={() => setExpandedModule(isExpanded ? null : path)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '7px',
+                    padding: '9px 10px',
+                    borderRadius: '9px',
+                    cursor: 'pointer',
+                    background: isActive
+                      ? 'linear-gradient(135deg, rgba(102,126,234,0.12), rgba(118,75,162,0.08))'
+                      : 'transparent',
+                    border: isActive
+                      ? '1px solid rgba(102,126,234,0.2)'
+                      : '1px solid transparent',
+                  }}
+                >
+                  <span style={{ fontSize: '1rem', minWidth: '20px' }}>{mod.icon}</span>
+
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      style={{
+                        fontWeight: 700,
+                        fontSize: '0.78rem',
+                        color: isActive
+                          ? '#667eea'
+                          : isDark
+                          ? 'rgba(255,255,255,0.9)'
+                          : '#1e293b',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
+                      {isTurkish ? mod.label_tr : mod.label_en}
+                    </div>
+
+                    {hasSections && (
+                      <div
+                        style={{
+                          marginTop: '3px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '5px',
+                        }}
                       >
-                        <span className="nav-icon">{item.icon}</span>
-                        <div className="nav-label-wrapper">
-                          <span className="nav-label">{item.label}</span>
-                          {item.subtitle && (
-                            <span className="nav-subtitle">{item.subtitle}</span>
-                          )}
+                        <div
+                          style={{
+                            flex: 1,
+                            height: '3px',
+                            background: isDark ? '#1e293b' : '#e2e8f0',
+                            borderRadius: '2px',
+                            overflow: 'hidden',
+                          }}
+                        >
+                          <motion.div
+                            animate={{ width: `${pct}%` }}
+                            transition={{ duration: 0.5 }}
+                            style={{
+                              height: '100%',
+                              background: moduleCompleted
+                                ? '#10b981'
+                                : 'linear-gradient(90deg, #667eea, #764ba2)',
+                              borderRadius: '2px',
+                            }}
+                          />
                         </div>
-                        <span className="nav-arrow">→</span>
-                      </a>
-                    </Link>
-                  </motion.div>
-                ))}
+                        <span
+                          style={{
+                            fontSize: '0.62rem',
+                            color: '#94a3b8',
+                            whiteSpace: 'nowrap',
+                          }}
+                        >
+                          {prog.completed.length}/{sections.length}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {moduleCompleted && (
+                    <span style={{ color: '#10b981', fontSize: '0.8rem' }}>✓</span>
+                  )}
+
+                  {hasSections && (
+                    <motion.span
+                      animate={{ rotate: isExpanded ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      style={{ color: '#94a3b8', fontSize: '0.6rem', flexShrink: 0 }}
+                    >
+                      ▼
+                    </motion.span>
+                  )}
+                </div>
+
+                <AnimatePresence initial={false}>
+                  {isExpanded && hasSections && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.22 }}
+                      style={{ overflow: 'hidden' }}
+                    >
+                      <div style={{ padding: '3px 3px 5px 30px' }}>
+                        {sections.map((sectionTitle, idx) => {
+                          const sectionId = idx + 1;
+                          const isCompleted = prog.completed.includes(sectionId);
+                          const isCurrent = isActive && prog.active === sectionId;
+
+                          return (
+                            <Link
+                              key={idx}
+                              href={path}
+                              onClick={() => {
+                                localStorage.setItem(
+                                  `${mod.key}_activeSection`,
+                                  String(sectionId)
+                                );
+                                window.dispatchEvent(
+                                  new CustomEvent('sidebarSectionClick', {
+                                    detail: { module: mod.key, sectionId },
+                                  })
+                                );
+                              }}
+                              style={sectionLinkStyle(isCurrent)}
+                            >
+                              <span
+                                style={{
+                                  width: '13px',
+                                  height: '13px',
+                                  borderRadius: '50%',
+                                  border: `2px solid ${
+                                    isCompleted
+                                      ? '#10b981'
+                                      : isCurrent
+                                      ? '#667eea'
+                                      : '#cbd5e1'
+                                  }`,
+                                  background: isCompleted ? '#10b981' : 'transparent',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'center',
+                                  fontSize: '0.5rem',
+                                  color: 'white',
+                                  flexShrink: 0,
+                                }}
+                              >
+                                {isCompleted ? '✓' : ''}
+                              </span>
+                              <span
+                                style={{
+                                  flex: 1,
+                                  whiteSpace: 'nowrap',
+                                  overflow: 'hidden',
+                                  textOverflow: 'ellipsis',
+                                }}
+                              >
+                                {sectionTitle}
+                              </span>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-            </nav>
-
-            {/* DIVIDER */}
-            <div className="sidebar-divider"></div>
-
-            {/* SETTINGS */}
-            <div className="sidebar-settings">
-              <h3>{isTurkish ? '⚙️ Ayarlar' : '⚙️ Settings'}</h3>
-              
-              <motion.button
-                onClick={toggleLanguage}
-                className="settings-item language-btn"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="setting-icon">🌐</span>
-                <span className="setting-label">
-                  {isTurkish ? 'Dil: Türkçe' : 'Language: English'}
-                </span>
-                <span className="setting-value">
-                  {isTurkish ? '🇹🇷' : '🇬🇧'}
-                </span>
-              </motion.button>
-
-              <motion.button
-                onClick={() => toggleTheme?.()}
-                className="settings-item theme-btn"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                disabled={!switchable || !toggleTheme}
-              >
-                <span className="setting-icon">🎨</span>
-                <span className="setting-label">
-                  {isTurkish ? 'Tema' : 'Theme'}
-                </span>
-                <span className="setting-value">
-                  {theme === 'dark' ? '🌙' : '☀️'}
-                </span>
-              </motion.button>
-
-              <motion.button
-                onClick={() => alert(isTurkish ? 'Ses: Açık' : 'Sound: On')}
-                className="settings-item sound-btn"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span className="setting-icon">🔊</span>
-                <span className="setting-label">
-                  {isTurkish ? 'Ses' : 'Sound'}
-                </span>
-                <span className="setting-value">✓</span>
-              </motion.button>
-            </div>
-
-            {/* DIVIDER */}
-            <div className="sidebar-divider"></div>
-
-            {/* INFO SECTION */}
-            <div className="sidebar-info">
-              <h3>{isTurkish ? '📚 Bilgi' : '📚 Information'}</h3>
-              <div className="info-items">
-                {infoItems.map((item, idx) => (
-                  <motion.button
-                    key={idx}
-                    onClick={item.action}
-                    className="info-item"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.15 + idx * 0.05 }}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <span className="info-icon">{item.icon}</span>
-                    <span className="info-label">{item.label}</span>
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-
-            {/* DIVIDER */}
-            <div className="sidebar-divider"></div>
-
-            {/* FOOTER */}
-            <div className="sidebar-footer">
-              <div className="footer-content">
-                <p className="footer-title">
-                  {isTurkish ? '🛡️ Dijital Güvenlik' : '🛡️ Digital Security'}
-                </p>
-                <p className="footer-subtitle">
-                  {isTurkish ? 'Eğitim Platformu v1.0' : 'Education Platform v1.0'}
-                </p>
-                <p className="footer-text">
-                  {isTurkish 
-                    ? '© 2025 Tüm Hakları Saklıdır' 
-                    : '© 2025 All Rights Reserved'}
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <style>{`
-        /* TOGGLE BUTTON */
-        .sidebar-toggle {
-          position: fixed;
-          right: 20px;
-          top: 80px;
-          z-index: 999;
-          width: 60px;
-          height: 60px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border: none;
-          cursor: pointer;
-          font-size: 1.5rem;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-          transition: all 0.3s ease;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .sidebar-toggle:hover {
-          transform: scale(1.1);
-          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
-
-        .sidebar-toggle:active {
-          transform: scale(0.95);
-        }
-
-        .toggle-icon {
-          font-weight: bold;
-          font-size: 1.8rem;
-        }
-
-        /* BACKDROP */
-        .sidebar-backdrop {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.5);
-          z-index: 998;
-          backdrop-filter: blur(4px);
-        }
-
-        /* SIDEBAR */
-        .sidebar {
-          position: fixed;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          width: 350px;
-          background: linear-gradient(180deg, #ffffff 0%, #f5f7fa 100%);
-          z-index: 1000;
-          box-shadow: -5px 0 30px rgba(0, 0, 0, 0.2);
-          display: flex;
-          flex-direction: column;
-          overflow-y: auto;
-        }
-
-        :global(.dark) .sidebar {
-          background: linear-gradient(180deg, #0b1220 0%, #111827 100%);
-        }
-
-        :global(.dark) .nav-item,
-        :global(.dark) .settings-item,
-        :global(.dark) .info-item {
-          background: rgba(255, 255, 255, 0.06);
-          border-color: rgba(255, 255, 255, 0.12);
-          color: rgba(255, 255, 255, 0.9);
-        }
-
-        :global(.dark) .sidebar-nav h3,
-        :global(.dark) .sidebar-settings h3,
-        :global(.dark) .sidebar-info h3 {
-          color: #93c5fd;
-        }
-
-        :global(.dark) .setting-value,
-        :global(.dark) .nav-arrow,
-        :global(.dark) .footer-title {
-          color: #93c5fd;
-        }
-
-        :global(.dark) .footer-subtitle,
-        :global(.dark) .footer-text {
-          color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* HEADER */
-        .sidebar-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 20px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
-          border-bottom: 3px solid #667eea;
-        }
-
-        .sidebar-header h2 {
-          margin: 0;
-          font-size: 1.5rem;
-          font-weight: bold;
-        }
-
-        .close-btn {
-          background: transparent;
-          border: none;
-          color: white;
-          font-size: 1.5rem;
-          cursor: pointer;
-          padding: 5px;
-          transition: all 0.3s ease;
-        }
-
-        .close-btn:hover {
-          transform: scale(1.2);
-        }
-
-        /* DIVIDER */
-        .sidebar-divider {
-          height: 1px;
-          background: linear-gradient(90deg, transparent, #ddd, transparent);
-          margin: 15px 0;
-        }
-
-        /* NAVIGATION */
-        .sidebar-nav {
-          padding: 20px;
-          flex: 1;
-        }
-
-        .sidebar-nav h3 {
-          margin: 0 0 15px 0;
-          color: #667eea;
-          font-size: 1rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          font-weight: bold;
-        }
-
-        .nav-items {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .nav-item {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 12px 15px;
-          background: white;
-          border: 2px solid #e0e0e0;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          text-decoration: none;
-          color: #333;
-          font-weight: 500;
-        }
-
-        .nav-item:hover {
-          background: linear-gradient(135deg, #f0f4ff 0%, #f5e6ff 100%);
-          border-color: #667eea;
-          transform: translateX(-5px);
-        }
-
-        .nav-item.active {
-          border-color: #667eea;
-          background: linear-gradient(135deg, #f0f4ff 0%, #f5e6ff 100%);
-        }
-
-        .nav-icon {
-          font-size: 1.3rem;
-          min-width: 30px;
-          text-align: center;
-        }
-
-        .nav-label-wrapper {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-        }
-
-        .nav-label {
-          font-size: 0.95rem;
-          font-weight: 600;
-        }
-
-        .nav-subtitle {
-          font-size: 0.8rem;
-          color: #666;
-          font-weight: 400;
-        }
-
-        :global(.dark) .nav-subtitle {
-          color: rgba(255, 255, 255, 0.6);
-        }
-
-        .nav-arrow {
-          color: #667eea;
-          font-weight: bold;
-          opacity: 0;
-          transition: all 0.3s ease;
-        }
-
-        .nav-item:hover .nav-arrow {
-          opacity: 1;
-          transform: translateX(5px);
-        }
-
-        /* SETTINGS */
-        .sidebar-settings {
-          padding: 20px;
-        }
-
-        .sidebar-settings h3 {
-          margin: 0 0 15px 0;
-          color: #667eea;
-          font-size: 1rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          font-weight: bold;
-        }
-
-        .settings-item {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 12px 15px;
-          background: white;
-          border: 2px solid #e0e0e0;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          margin-bottom: 10px;
-          font-weight: 500;
-          color: #333;
-        }
-
-        .settings-item:hover {
-          background: linear-gradient(135deg, #f0f4ff 0%, #f5e6ff 100%);
-          border-color: #667eea;
-          transform: translateX(-5px);
-        }
-
-        .setting-icon {
-          font-size: 1.3rem;
-          min-width: 30px;
-          text-align: center;
-        }
-
-        .setting-label {
-          flex: 1;
-          font-size: 0.95rem;
-        }
-
-        .setting-value {
-          font-size: 1.1rem;
-          font-weight: bold;
-          color: #667eea;
-        }
-
-        /* INFO SECTION */
-        .sidebar-info {
-          padding: 20px;
-        }
-
-        .sidebar-info h3 {
-          margin: 0 0 15px 0;
-          color: #667eea;
-          font-size: 1rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          font-weight: bold;
-        }
-
-        .info-items {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .info-item {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          padding: 12px 15px;
-          background: white;
-          border: 2px solid #e0e0e0;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          font-weight: 500;
-          color: #333;
-        }
-
-        .info-item:hover {
-          background: linear-gradient(135deg, #f0f4ff 0%, #f5e6ff 100%);
-          border-color: #667eea;
-          transform: translateX(-5px);
-        }
-
-        .info-icon {
-          font-size: 1.3rem;
-          min-width: 30px;
-          text-align: center;
-        }
-
-        .info-label {
-          flex: 1;
-          font-size: 0.95rem;
-        }
-
-        /* FOOTER */
-        .sidebar-footer {
-          padding: 20px;
-          background: linear-gradient(135deg, #f0f4ff 0%, #f5e6ff 100%);
-          border-top: 2px solid #e0e0e0;
-          text-align: center;
-        }
-
-        .footer-content {
-          margin: 0;
-        }
-
-        .footer-title {
-          margin: 0 0 5px 0;
-          font-size: 1.1rem;
-          font-weight: bold;
-          color: #667eea;
-        }
-
-        .footer-subtitle {
-          margin: 0 0 10px 0;
-          font-size: 0.9rem;
-          color: #666;
-        }
-
-        .footer-text {
-          margin: 0;
-          font-size: 0.8rem;
-          color: #999;
-        }
-
-        /* SCROLLBAR */
-        .sidebar::-webkit-scrollbar {
-          width: 6px;
-        }
-
-        .sidebar::-webkit-scrollbar-track {
-          background: #f1f1f1;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb {
-          background: #667eea;
-          border-radius: 3px;
-        }
-
-        .sidebar::-webkit-scrollbar-thumb:hover {
-          background: #764ba2;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-          .sidebar {
-            width: 100%;
-            max-width: 300px;
-          }
-
-          .sidebar-toggle {
-            width: 50px;
-            height: 50px;
-            font-size: 1.2rem;
-            top: 70px;
-          }
-
-          .sidebar-header h2 {
-            font-size: 1.3rem;
-          }
-
-          .nav-item,
-          .settings-item,
-          .info-item {
-            padding: 10px 12px;
-            font-size: 0.9rem;
-          }
-
-          .nav-icon,
-          .setting-icon,
-          .info-icon {
-            font-size: 1.1rem;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .sidebar {
-            width: 100%;
-          }
-
-          .sidebar-toggle {
-            width: 45px;
-            height: 45px;
-            right: 15px;
-            top: 70px;
-            font-size: 1rem;
-          }
-
-          .sidebar-nav,
-          .sidebar-settings,
-          .sidebar-info,
-          .sidebar-footer {
-            padding: 15px;
-          }
-
-          .nav-item,
-          .settings-item,
-          .info-item {
-            padding: 10px;
-            font-size: 0.85rem;
-          }
-
-          .nav-label,
-          .setting-label,
-          .info-label {
-            font-size: 0.85rem;
-          }
-        }
-      `}</style>
+            );
+          })}
+        </nav>
+
+        {/* Footer */}
+        <div
+          style={{
+            padding: '12px 14px',
+            borderTop: `1px solid ${isDark ? '#1e293b' : '#f1f5f9'}`,
+            flexShrink: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: '6px',
+          }}
+        >
+          <button
+            onClick={toggleLanguage}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '8px 12px',
+              borderRadius: '9px',
+              border: `1px solid ${isDark ? '#1e293b' : '#e2e8f0'}`,
+              background: isDark ? 'rgba(255,255,255,0.05)' : '#f8fafc',
+              cursor: 'pointer',
+              fontWeight: 600,
+              fontSize: '0.83rem',
+              color: isDark ? 'rgba(255,255,255,0.85)' : '#334155',
+              width: '100%',
+              textAlign: 'left',
+            }}
+          >
+            <span>🌐</span>
+            <span style={{ flex: 1 }}>{isTurkish ? 'Türkçe' : 'English'}</span>
+            <span>{isTurkish ? '🇹🇷' : '🇬🇧'}</span>
+          </button>
+
+          {switchable && toggleTheme && (
+            <button
+              onClick={toggleTheme}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 12px',
+                borderRadius: '9px',
+                border: `1px solid ${isDark ? '#1e293b' : '#e2e8f0'}`,
+                background: isDark ? 'rgba(255,255,255,0.05)' : '#f8fafc',
+                cursor: 'pointer',
+                fontWeight: 600,
+                fontSize: '0.83rem',
+                color: isDark ? 'rgba(255,255,255,0.85)' : '#334155',
+                width: '100%',
+                textAlign: 'left',
+              }}
+            >
+              <span>{theme === 'dark' ? '🌙' : '☀️'}</span>
+              <span style={{ flex: 1 }}>{isTurkish ? 'Tema' : 'Theme'}</span>
+            </button>
+          )}
+
+          <div
+            style={{
+              textAlign: 'center',
+              color: '#94a3b8',
+              fontSize: '0.68rem',
+              paddingTop: '2px',
+            }}
+          >
+            🛡️ Digital Detective Academy v1.0
+          </div>
+        </div>
+      </motion.div>
     </>
   );
 };

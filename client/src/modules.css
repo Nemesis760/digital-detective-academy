@@ -436,10 +436,10 @@
   margin: 0;
   flex: 1;
   line-height: 1.2;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
 }
 
 .mark-complete-btn {
@@ -1918,6 +1918,189 @@
   content: '✓';
   color: #10b981;
   font-weight: bold;
+}
+
+/* ============================================================
+   DARK THEME — İÇERİK ALANLARI
+   Hardcoded renk kullanan elementleri düzelt
+   ============================================================ */
+
+/* Genel içerik kartları */
+.dark .content-item {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .activity-box {
+  background: #0f172a;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .section-intro {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.12) 100%);
+  border-left-color: #818cf8;
+}
+
+.dark .section-subtitle {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+}
+
+/* Beyaz arka planlı kartlar */
+.dark .part-card {
+  background: #111c33;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .part-card p,
+.dark .part-card em {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.dark .extension-card {
+  background: #111c33;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .rule-item {
+  background: #111c33;
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.dark .rule-item:hover {
+  background: rgba(16, 185, 129, 0.15);
+}
+
+/* Comparison */
+.dark .comparison-item {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.dark .comparison-item strong {
+  color: #a5b4fc;
+}
+
+/* Tehdit kartları */
+.dark .threat-card {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(220, 38, 38, 0.12) 100%);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.dark .threat-card h4 {
+  color: #fca5a5;
+}
+
+.dark .threat-card p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Senaryo kartları */
+.dark .scenario-card {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.12) 100%);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.dark .scenario-card h4,
+.dark .scenario-card strong {
+  color: #fcd34d;
+}
+
+.dark .scenario-card p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* İyi/kötü şifre örnekleri */
+.dark .bad-examples {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(220, 38, 38, 0.12) 100%);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.dark .good-examples {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.12) 100%);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.dark .bad-examples li,
+.dark .good-examples li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* İçerik örnekleri */
+.dark .content-examples {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+/* Table item */
+.dark .table-item {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.dark .table-item p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* Checklist */
+.dark .checklist-item {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.12) 100%);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* nav-btn disabled state */
+.dark .nav-btn:disabled {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Section navigation border */
+.dark .section-navigation {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .content-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Quiz feedback — dark modda okunabilirlik */
+.dark .quiz-feedback.correct-feedback {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+  color: #6ee7b7;
+}
+
+.dark .quiz-feedback.wrong-feedback {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.2) 100%);
+  color: #fca5a5;
+}
+
+.dark .interactive-quiz-option.correct {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+  border-color: #10b981;
+  color: #6ee7b7;
+}
+
+.dark .interactive-quiz-option.wrong {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.2) 100%);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+.dark .true-false-btn.correct {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+  border-color: #10b981;
+  color: #6ee7b7;
+}
+
+.dark .true-false-btn.wrong {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(220, 38, 38, 0.2) 100%);
+  border-color: #ef4444;
+  color: #fca5a5;
+}
+
+.dark .true-false-btn.show-correct {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+  border-color: #10b981;
+  color: #6ee7b7;
 }
 
 /* Dark Theme Quiz */
