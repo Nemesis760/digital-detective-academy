@@ -1,24 +1,19 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { Clock, Trophy, Sparkles } from 'lucide-react';
+import { Clock, Trophy } from 'lucide-react';
 import soundManager from '../utils/soundEffects';
-
-/**
- * BoxGame - Wordwall tarzı "Kutuyu Aç" oyunu
- * Öğrenciler kutulara tıklayarak soruları açarlar
- */
 
 const BoxGame = ({ isTurkish = true, questions = [] }) => {
   const [openedBoxes, setOpenedBoxes] = useState(new Set());
   const [answeredBoxes, setAnsweredBoxes] = useState(new Set());
+  const [boxResults, setBoxResults] = useState({});
   const [currentBox, setCurrentBox] = useState(null);
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(180); // 3 dakika
+  const [timeLeft, setTimeLeft] = useState(180);
   const [gameComplete, setGameComplete] = useState(false);
   const [isStarted, setIsStarted] = useState(false);
 
-  // Default questions if none provided
   const defaultQuestions = isTurkish ? [
     { id: 1, question: "İşletim sistemi dosyaların yönetimini sağlar.", answer: true },
     { id: 2, question: "Açık kaynak kodlu işletim sistemleri herkes tarafından geliştirilebilir.", answer: true },
@@ -45,81 +40,64 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
 
   const gameQuestions = questions.length > 0 ? questions : defaultQuestions;
 
-  // Timer
   useEffect(() => {
     if (!isStarted || gameComplete) return;
-
     if (timeLeft > 0) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     }
-
-    if (timeLeft === 0) {
-      setGameComplete(true);
-    }
+    if (timeLeft === 0) setGameComplete(true);
   }, [timeLeft, gameComplete, isStarted]);
 
   const handleBoxClick = (boxId) => {
-    if (!isStarted) return;
-    if (answeredBoxes.has(boxId) || gameComplete) return;
-    
-    // Eğer zaten açıksa ve cevaplanmamışsa, soruyu göster
-    if (openedBoxes.has(boxId) && !answeredBoxes.has(boxId)) {
-      setCurrentBox(boxId);
-      return;
-    }
-    
-    // Yeni kutu aç
+    if (!isStarted || answeredBoxes.has(boxId) || gameComplete) return;
     setCurrentBox(boxId);
     setOpenedBoxes(prev => new Set([...prev, boxId]));
   };
 
   const handleAnswer = (isCorrect) => {
     if (!currentBox) return;
-    
     const question = gameQuestions.find(q => q.id === currentBox);
-    if (question && question.answer === isCorrect) {
+    const wasCorrect = question && question.answer === isCorrect;
+
+    if (wasCorrect) {
       setScore(prev => prev + 10);
       soundManager.playCorrect();
       confetti({
         particleCount: 40,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#10b981', '#059669', '#34d399', '#fbbf24']
+        colors: ['#10b981', '#059669', '#34d399', '#fbbf24'],
       });
     } else {
       soundManager.playWrong();
     }
-    
-    // Bu kutuyu cevaplanmış olarak işaretle
+
+    setBoxResults(prev => ({ ...prev, [currentBox]: wasCorrect }));
     setAnsweredBoxes(prev => new Set([...prev, currentBox]));
-    
-    // Tüm sorular cevaplandı mı kontrol et
+
     if (answeredBoxes.size + 1 === gameQuestions.length) {
       setTimeout(() => {
         setGameComplete(true);
         soundManager.playSuccess();
-        // Büyük konfeti patlaması
         setTimeout(() => {
           confetti({
             particleCount: 200,
             spread: 100,
             origin: { y: 0.5 },
-            colors: ['#10b981', '#059669', '#34d399', '#fbbf24', '#f59e0b', '#6366f1']
+            colors: ['#10b981', '#059669', '#34d399', '#fbbf24', '#f59e0b', '#6366f1'],
           });
         }, 300);
       }, 500);
     }
-    
-    // Soruyu kapat ama kutu açık kalsın
-    setTimeout(() => {
-      setCurrentBox(null);
-    }, 1000);
+
+    setTimeout(() => setCurrentBox(null), 800);
   };
 
   const handleReset = () => {
     setOpenedBoxes(new Set());
     setAnsweredBoxes(new Set());
+    setBoxResults({});
     setCurrentBox(null);
     setScore(0);
     setTimeLeft(180);
@@ -132,21 +110,13 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
     if (timeLeft <= 0) setTimeLeft(180);
   };
 
-  const getBoxColor = (boxId) => {
-    const colors = [
-      'from-orange-500 to-red-500',
-      'from-green-500 to-emerald-500',
-      'from-blue-500 to-cyan-500',
-      'from-pink-500 to-rose-500',
-      'from-purple-500 to-indigo-500',
-    ];
-    return colors[(boxId - 1) % colors.length];
-  };
+  const currentQuestion = currentBox ? gameQuestions.find(q => q.id === currentBox) : null;
 
   return (
     <div className="box-game-container">
+      {/* Header */}
       <div className="game-header">
-        <motion.div 
+        <motion.div
           className="timer-display"
           animate={timeLeft <= 10 ? { scale: [1, 1.1, 1] } : {}}
           transition={{ duration: 0.5, repeat: timeLeft <= 10 ? Infinity : 0 }}
@@ -155,11 +125,9 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
           <span>{Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}</span>
         </motion.div>
         <h3>
-          {isTurkish 
-            ? '📦 Kutuyu Aç - İşletim Sistemi Oyunu'
-            : '📦 Open the Box - Operating System Game'}
+          {isTurkish ? '📦 Kutuyu Aç - İşletim Sistemi Oyunu' : '📦 Open the Box - Operating System Game'}
         </h3>
-        <motion.div 
+        <motion.div
           className="score-display"
           animate={{ scale: score > 0 ? [1, 1.1, 1] : 1 }}
           transition={{ duration: 0.3 }}
@@ -171,8 +139,8 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
 
       <div className="instruction-text">
         {isTurkish
-          ? (isStarted ? 'Açmak için birine dokunun' : 'Başlatmak için butona dokunun')
-          : (isStarted ? 'Touch one to open' : 'Tap the button to start')}
+          ? (isStarted ? 'Bir kutuya tıkla, soruyu gör, cevapla!' : 'Başlatmak için butona dokunun')
+          : (isStarted ? 'Click a box, read the question, answer it!' : 'Tap the button to start')}
       </div>
 
       {!isStarted && !gameComplete && (
@@ -183,68 +151,72 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
         </div>
       )}
 
-      <div className={`boxes-grid ${currentBox ? 'has-current' : ''} ${!isStarted ? 'disabled' : ''}`}>
+      {/* Question panel — shown above the grid when a box is open */}
+      <AnimatePresence>
+        {currentQuestion && !answeredBoxes.has(currentBox) && (
+          <motion.div
+            className="question-panel"
+            key={currentBox}
+            initial={{ opacity: 0, y: -16, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.97 }}
+            transition={{ duration: 0.25 }}
+          >
+            <p className="panel-question-label">
+              {isTurkish ? `Soru ${currentBox}` : `Question ${currentBox}`}
+            </p>
+            <p className="panel-question-text">{currentQuestion.question}</p>
+            <div className="panel-answer-buttons">
+              <motion.button
+                className="answer-btn correct-btn"
+                onClick={() => handleAnswer(true)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ✅ {isTurkish ? 'Doğru' : 'True'}
+              </motion.button>
+              <motion.button
+                className="answer-btn wrong-btn"
+                onClick={() => handleAnswer(false)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                ❌ {isTurkish ? 'Yanlış' : 'False'}
+              </motion.button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Boxes grid — always fixed layout, no expanding */}
+      <div className={`boxes-grid${!isStarted ? ' disabled' : ''}`}>
         {gameQuestions.map((question, index) => {
           const isOpen = openedBoxes.has(question.id);
           const isAnswered = answeredBoxes.has(question.id);
           const isCurrent = currentBox === question.id;
-          const showQuestion = isOpen && (isCurrent || isAnswered);
-          
+          const wasCorrect = boxResults[question.id];
+
           return (
             <motion.div
               key={question.id}
-              className={`game-box ${isOpen ? 'opened' : ''} ${isCurrent ? 'current' : ''} ${isAnswered ? 'answered' : ''}`}
-              onClick={() => !isAnswered && handleBoxClick(question.id)}
-              whileHover={!isAnswered ? { scale: 1.05 } : {}}
-              whileTap={!isAnswered ? { scale: 0.95 } : {}}
+              className={`game-box${isOpen ? ' opened' : ''}${isCurrent ? ' current' : ''}${isAnswered ? ' answered' : ''}${isAnswered && wasCorrect ? ' correct-answer' : ''}${isAnswered && !wasCorrect ? ' wrong-answer' : ''}`}
+              onClick={() => !isAnswered && !isCurrent && handleBoxClick(question.id)}
+              whileHover={!isAnswered && isStarted ? { scale: 1.06 } : {}}
+              whileTap={!isAnswered && isStarted ? { scale: 0.94 } : {}}
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.06 }}
             >
-              {showQuestion ? (
-                <div className="box-content">
-                  <p className="question-text">{question.question}</p>
-                  {!isAnswered && (
-                    <div className="answer-buttons">
-                      <motion.button
-                        className="answer-btn correct-btn"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleAnswer(true);
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        ✅ {isTurkish ? 'Doğru' : 'True'}
-                      </motion.button>
-                      <motion.button
-                        className="answer-btn wrong-btn"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleAnswer(false);
-                        }}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        ❌ {isTurkish ? 'Yanlış' : 'False'}
-                      </motion.button>
-                    </div>
-                  )}
-                  {isAnswered && (
-                    <div className="answer-feedback">
-                      <span className="feedback-icon">
-                        {gameQuestions.find(q => q.id === question.id)?.answer ? '✅' : '❌'}
-                      </span>
-                      <span className="feedback-text">
-                        {isTurkish ? 'Cevaplandı' : 'Answered'}
-                      </span>
-                    </div>
-                  )}
+              {isAnswered ? (
+                <div className="box-number">
+                  <span className="answer-result-icon">{wasCorrect ? '✅' : '❌'}</span>
+                  <span className="corner-num">{question.id}</span>
                 </div>
               ) : (
                 <div className="box-number">
                   <span className="number">{question.id}</span>
-                  <span className="corner-icon">📄</span>
+                  {isOpen && <span className="opened-badge">📖</span>}
+                  {!isOpen && <span className="corner-icon">📄</span>}
                 </div>
               )}
             </motion.div>
@@ -252,6 +224,7 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
         })}
       </div>
 
+      {/* Completion modal */}
       <AnimatePresence>
         {gameComplete && (
           <motion.div
@@ -265,9 +238,7 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
               initial={{ scale: 0.8, y: 50 }}
               animate={{ scale: 1, y: 0 }}
             >
-              <h2>
-                {isTurkish ? '🎉 Oyun Tamamlandı!' : '🎉 Game Complete!'}
-              </h2>
+              <h2>{isTurkish ? '🎉 Oyun Tamamlandı!' : '🎉 Game Complete!'}</h2>
               <p className="final-score">
                 {isTurkish ? 'Toplam Puan:' : 'Total Score:'} {score} / {gameQuestions.length * 10}
               </p>
@@ -292,7 +263,7 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
           padding: 2rem;
           background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
           border-radius: 16px;
-          min-height: 600px;
+          min-height: 500px;
           position: relative;
         }
 
@@ -300,13 +271,13 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-bottom: 2rem;
+          margin-bottom: 1.5rem;
           flex-wrap: wrap;
           gap: 1rem;
         }
 
         .game-header h3 {
-          font-size: 1.5rem;
+          font-size: 1.4rem;
           color: #0369a1;
           margin: 0;
           flex: 1;
@@ -315,41 +286,41 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
 
         .timer-display {
           background: white;
-          padding: 0.75rem 1.25rem;
+          padding: 0.65rem 1.1rem;
           border-radius: 20px;
           font-weight: 700;
           color: #0369a1;
-          font-size: 1.1rem;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          font-size: 1rem;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.12);
           display: flex;
           align-items: center;
           gap: 0.5rem;
           border: 2px solid #0369a1;
+          white-space: nowrap;
         }
 
-        .timer-display span {
-          font-variant-numeric: tabular-nums;
-        }
+        .timer-display span { font-variant-numeric: tabular-nums; }
 
         .score-display {
           background: linear-gradient(135deg, #10b981 0%, #059669 100%);
           color: white;
-          padding: 0.75rem 1.25rem;
+          padding: 0.65rem 1.1rem;
           border-radius: 20px;
           font-weight: 700;
-          font-size: 1.1rem;
-          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+          font-size: 1rem;
+          box-shadow: 0 4px 12px rgba(16,185,129,0.3);
           display: flex;
           align-items: center;
           gap: 0.5rem;
+          white-space: nowrap;
         }
 
         .instruction-text {
-          text-align: left;
-          font-size: 1.2rem;
+          text-align: center;
+          font-size: 1.1rem;
           color: #0369a1;
           font-weight: 600;
-          margin-bottom: 1.5rem;
+          margin-bottom: 1.25rem;
         }
 
         .start-area {
@@ -362,105 +333,148 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
           background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
           color: white;
           border: none;
-          padding: 0.8rem 1.6rem;
+          padding: 0.8rem 2rem;
           border-radius: 12px;
           font-weight: 700;
           font-size: 1rem;
           cursor: pointer;
-          box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          box-shadow: 0 6px 16px rgba(99,102,241,0.4);
+          transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .start-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5);
+          box-shadow: 0 8px 20px rgba(99,102,241,0.5);
         }
 
+        /* ── Question panel ── */
+        .question-panel {
+          background: white;
+          border-radius: 16px;
+          padding: 1.5rem 2rem;
+          margin-bottom: 1.5rem;
+          box-shadow: 0 8px 28px rgba(99,102,241,0.18);
+          border: 2px solid #6366f1;
+          text-align: center;
+        }
+
+        .panel-question-label {
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: #6366f1;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          margin: 0 0 0.5rem;
+        }
+
+        .panel-question-text {
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: #1e293b;
+          line-height: 1.55;
+          margin: 0 0 1.25rem;
+        }
+
+        .panel-answer-buttons {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+        }
+
+        .answer-btn {
+          padding: 0.75rem 2rem;
+          border: none;
+          border-radius: 10px;
+          font-weight: 700;
+          cursor: pointer;
+          font-size: 1rem;
+          transition: transform 0.2s, box-shadow 0.2s;
+          min-width: 130px;
+        }
+
+        .correct-btn {
+          background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+          color: white;
+          box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+        }
+
+        .correct-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(16,185,129,0.45);
+        }
+
+        .wrong-btn {
+          background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+          color: white;
+          box-shadow: 0 4px 12px rgba(239,68,68,0.3);
+        }
+
+        .wrong-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 16px rgba(239,68,68,0.45);
+        }
+
+        /* ── Boxes grid — always fixed, never changes size ── */
         .boxes-grid {
           display: grid;
           grid-template-columns: repeat(5, 1fr);
-          gap: 1rem;
-          max-width: 1000px;
+          gap: 0.9rem;
+          max-width: 900px;
           margin: 0 auto;
         }
 
         .boxes-grid.disabled {
-          opacity: 0.6;
-          pointer-events: none;
-        }
-
-        .boxes-grid.has-current .game-box:not(.current) {
+          opacity: 0.55;
           pointer-events: none;
         }
 
         .game-box {
           aspect-ratio: 1;
-          border-radius: 16px;
+          border-radius: 14px;
           cursor: pointer;
           position: relative;
           overflow: hidden;
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .game-box:not(.opened) {
+          box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+          transition: box-shadow 0.25s, border-color 0.25s;
           background: white;
-          border: 4px solid;
-          position: relative;
+          border: 3px solid #e2e8f0;
         }
 
-        .game-box:not(.opened)::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.05));
-          opacity: 0;
-          transition: opacity 0.3s;
+        .game-box:not(.answered):not(.opened):hover {
+          box-shadow: 0 6px 20px rgba(99,102,241,0.22);
+          border-color: #6366f1;
         }
 
-        .game-box:not(.opened):hover::before {
-          opacity: 1;
-        }
-
-        .game-box.opened {
+        .game-box.opened:not(.answered) {
           background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-          border: 4px solid #f59e0b;
-          box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
-          animation: boxOpen 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-          z-index: 20;
-        }
-
-        @keyframes boxOpen {
-          0% { transform: scale(0.8) rotate(-5deg); opacity: 0.5; }
-          50% { transform: scale(1.1) rotate(5deg); }
-          100% { transform: scale(1) rotate(0deg); opacity: 1; }
+          border-color: #f59e0b;
+          box-shadow: 0 6px 20px rgba(245,158,11,0.35);
         }
 
         .game-box.current {
-          transform: scale(1.05);
-          z-index: 30;
-          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-          animation: currentPulse 1s ease-in-out infinite;
+          border-color: #6366f1;
+          box-shadow: 0 6px 24px rgba(99,102,241,0.45);
+          animation: currentPulse 1.2s ease-in-out infinite;
         }
 
         @keyframes currentPulse {
-          0%, 100% { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25); }
-          50% { box-shadow: 0 12px 32px rgba(99, 102, 241, 0.4); }
+          0%, 100% { box-shadow: 0 6px 20px rgba(99,102,241,0.35); }
+          50%       { box-shadow: 0 6px 28px rgba(99,102,241,0.6); }
         }
 
-        @media (min-width: 901px) {
-          .game-box.opened,
-          .game-box.current {
-            grid-column: span 2;
-            grid-row: span 2;
-            aspect-ratio: auto;
-            min-height: 200px;
-          }
+        .game-box.correct-answer {
+          background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+          border-color: #10b981;
+          cursor: default;
         }
 
+        .game-box.wrong-answer {
+          background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+          border-color: #ef4444;
+          cursor: default;
+        }
+
+        /* Box number display */
         .box-number {
           width: 100%;
           height: 100%;
@@ -470,145 +484,46 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
           position: relative;
         }
 
-        .box-number .number {
-          font-size: 3rem;
+        .number {
+          font-size: 2.4rem;
           font-weight: 800;
           color: #1e293b;
         }
 
         .corner-icon {
           position: absolute;
-          bottom: 8px;
-          right: 8px;
-          font-size: 1.5rem;
-          opacity: 0.5;
+          bottom: 6px;
+          right: 6px;
+          font-size: 1.2rem;
+          opacity: 0.4;
         }
 
-        .box-content {
-          width: 100%;
-          height: 100%;
-          padding: 1rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.75rem;
-          justify-content: space-between;
-          position: relative;
-          z-index: 30;
-          overflow-y: auto;
-          pointer-events: auto;
+        .opened-badge {
+          position: absolute;
+          bottom: 6px;
+          right: 6px;
+          font-size: 1.2rem;
+          opacity: 0.7;
         }
 
-        .question-text {
-          font-size: 1rem;
-          font-weight: 700;
-          color: #1e293b;
-          margin: 0 0 1rem 0;
-          line-height: 1.5;
-          text-align: center;
-          flex: 1;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .answer-buttons {
-          display: flex;
-          gap: 0.5rem;
-          margin-top: auto;
-          z-index: 10;
-          position: relative;
-          pointer-events: auto;
-        }
-
-        .answer-feedback {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          margin-top: auto;
-          padding: 0.5rem;
-        }
-
-        .feedback-icon {
+        .answer-result-icon {
           font-size: 2rem;
         }
 
-        .feedback-text {
-          font-size: 0.85rem;
-          font-weight: 600;
-          color: #64748b;
-        }
-
-        .game-box.answered {
-          background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-          border-color: #10b981;
-        }
-
-        .answer-btn {
-          flex: 1;
-          padding: 0.75rem 0.5rem;
-          border: none;
-          border-radius: 10px;
-          font-weight: 700;
-          cursor: pointer;
-          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-          font-size: 0.85rem;
-          position: relative;
-          overflow: hidden;
-          z-index: 20;
-          min-height: 44px;
-        }
-
-        .answer-btn::before {
-          content: '';
+        .corner-num {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          width: 0;
-          height: 0;
-          border-radius: 50%;
-          background: rgba(255, 255, 255, 0.3);
-          transform: translate(-50%, -50%);
-          transition: width 0.6s, height 0.6s;
+          bottom: 4px;
+          right: 6px;
+          font-size: 0.7rem;
+          font-weight: 700;
+          color: #94a3b8;
         }
 
-        .answer-btn:active::before {
-          width: 300px;
-          height: 300px;
-        }
-
-        .correct-btn {
-          background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-          color: white;
-          box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-        }
-
-        .correct-btn:hover {
-          background: linear-gradient(135deg, #059669 0%, #047857 100%);
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
-        }
-
-        .wrong-btn {
-          background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-          color: white;
-          box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-        }
-
-        .wrong-btn:hover {
-          background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-          transform: translateY(-2px);
-          box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
-        }
-
+        /* Completion modal */
         .completion-modal {
           position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.7);
+          inset: 0;
+          background: rgba(0,0,0,0.65);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -619,18 +534,14 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
         .completion-card {
           background: white;
           border-radius: 20px;
-          padding: 3rem;
-          max-width: 500px;
+          padding: 3rem 2.5rem;
+          max-width: 480px;
           width: 90%;
           text-align: center;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
-        .completion-card h2 {
-          font-size: 2rem;
-          color: #10b981;
-          margin-bottom: 1rem;
-        }
+        .completion-card h2 { font-size: 2rem; color: #10b981; margin-bottom: 1rem; }
 
         .final-score {
           font-size: 1.5rem;
@@ -656,59 +567,36 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
           font-size: 1.1rem;
           cursor: pointer;
           margin-top: 1.5rem;
-          transition: all 0.3s;
+          transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .reset-game-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+          box-shadow: 0 6px 20px rgba(99,102,241,0.4);
         }
 
-        @media (max-width: 900px) {
-          .game-box.opened,
-          .game-box.current {
-            grid-column: 1 / -1;
-            aspect-ratio: auto;
-            min-height: 220px;
-          }
-
-          .box-content {
-            overflow-y: auto;
-          }
-        }
-
+        /* Responsive */
         @media (max-width: 768px) {
           .boxes-grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.65rem;
           }
-
-          .game-header {
-            flex-direction: column;
-          }
-
-          .game-header h3 {
-            font-size: 1.2rem;
-          }
-
-          .question-text {
-            font-size: 0.85rem;
-          }
-
-          .answer-btn {
-            font-size: 0.75rem;
-            padding: 0.4rem;
-          }
+          .game-header h3 { font-size: 1.1rem; }
+          .number { font-size: 1.8rem; }
+          .panel-question-text { font-size: 1rem; }
+          .answer-btn { padding: 0.65rem 1rem; font-size: 0.9rem; min-width: 100px; }
         }
 
         @media (max-width: 480px) {
           .boxes-grid {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
           }
-
-          .box-number .number {
-            font-size: 2rem;
-          }
+          .box-game-container { padding: 1.25rem; }
+          .game-header { flex-direction: column; }
+          .number { font-size: 1.5rem; }
+          .panel-answer-buttons { gap: 0.6rem; }
+          .answer-btn { min-width: 80px; }
         }
       `}</style>
     </div>
@@ -716,4 +604,3 @@ const BoxGame = ({ isTurkish = true, questions = [] }) => {
 };
 
 export default BoxGame;
-
