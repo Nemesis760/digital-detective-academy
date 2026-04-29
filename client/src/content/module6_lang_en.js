@@ -196,8 +196,12 @@ export const MODULE6_EN = {
         activity_desc: "Apply the correct response steps in a cyber attack scenario. Find the clues, disconnect the internet, and clean the virus to save the system!",
         video_links: [
           {
-            url: "https://www.youtube.com/watch?v=9HOpanT0GRs",
-            title: "Harvard CS50 — Intro to Cybersecurity (English)"
+            url: "https://www.youtube.com/watch?v=nVEyG3C-Mqw",
+            title: "Cyber Security for Kids — How to Stay Safe Online"
+          },
+          {
+            url: "https://www.youtube.com/watch?v=P0HeMNM6veI",
+            title: "What to Do When You're Hacked — English"
           }
         ],
         content: {

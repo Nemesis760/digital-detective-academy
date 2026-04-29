@@ -194,8 +194,12 @@ export const MODULE6_TR = {
         "activity_desc": "Siber saldırı senaryosunda doğru müdahale adımlarını uygula. Sistemi kurtarmak için ipuçlarını bul, interneti kes ve virüsü temizle!",
         "video_links": [
           {
-            "url": "https://www.youtube.com/watch?v=XBkzBrXlle0",
-            "title": "Phishing & Cyber Attacks Explained — English"
+            "url": "https://www.youtube.com/watch?v=8XH0VKz0upk",
+            "title": "Çocuklar İçin İnternet Güvenliği — Türkçe"
+          },
+          {
+            "url": "https://www.youtube.com/watch?v=5JSMRbEW5_c",
+            "title": "Kimlik Avı Saldırılarına Karşı Tedbirler — Türkçe"
           }
         ],
         "content": {
