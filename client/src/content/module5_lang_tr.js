@@ -33,174 +33,72 @@ export const MODULE5_TR = {
               {
                 "type": "true_false",
                 "question": "Dijital güvenlik sadece bilgisayar mühendislerinin işidir.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Dijital güvenlik, interneti kullanan herkesin sorumluluğudur — mühendis olman gerekmez. Öğrenciler dahil herkes kendini korumalıdır."
               },
               {
                 "type": "true_false",
                 "question": "İnternette yaptığım davranışlar gerçek hayatımı etkilemez.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "İnternette paylaştıkların, yazdıkların ve yaptıkların arkadaşlıklarını, itibarını ve geleceğini doğrudan etkileyebilir."
               },
               {
                 "type": "true_false",
                 "question": "Güvenli olmak için güçlü şifreler ve gizlilik ayarları kullanılır.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Güçlü şifreler yetkisiz erişimi engeller; gizlilik ayarları ise kişisel bilgilerinin kimlerin görebileceğini kontrol eder."
               },
               {
                 "type": "true_false",
                 "question": "Dijital güvenlik becerileri her yaşta öğrenilebilir.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Şifre seçimi ve şüpheli linkleri fark etme gibi dijital güvenlik alışkanlıkları her yaşta öğrenilebilir ve uygulanabilir."
               },
               {
                 "type": "true_false",
                 "question": "Tanımadığım kişilerden gelen dosyaları açmak güvenlidir.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Tanımadığın kişilerin gönderdiği dosyalar virüs veya zararlı yazılım içerebilir. Asla açma — cihazın ve bilgilerin tehlikeye girebilir."
               },
               {
                 "type": "true_false",
                 "question": "Akıllı telefonlar da bilgisayarlar gibi güvenlik riski taşır.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Akıllı telefonlar kişisel veri, fotoğraf ve şifre barındırır. Bilgisayarlarla aynı virüs, hacking ve hesap hırsızlığı risklerine maruz kalırlar."
               },
               {
                 "type": "true_false",
                 "question": "Dijital güvenlik, teknolojiden korkmak değil, onu bilinçli kullanmaktır.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Amaç teknolojiyi bırakmak değil; hangi linke tıklayacağını bilmek ve bilinçli kararlar vermektir. Bu, en iyi antivirüsten bile etkilidir."
               },
               {
                 "type": "true_false",
                 "question": "Sadece oyun oynarken güvende olmam yeterlidir, ders çalışırken gerekmez.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Oyun, ders, sohbet, sosyal medya — her çevrimiçi etkinlikte risk vardır. Her zaman dikkatli olman gerekir."
               },
               {
                 "type": "multiple_choice",
                 "question": "Dijital güvenlik temel olarak neyi amaçlar?",
                 "options": [
-                  {
-                    "text": "A) İnterneti tamamen yasaklamayı",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Kendimizi ve bilgilerimizi risklerden korumayı",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) Bilgisayarı daha hızlı yapmayı",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) Daha çok oyun indirmeyi",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) İnterneti tamamen yasaklamayı", "correct": false },
+                  { "text": "B) Kendimizi ve bilgilerimizi risklerden korumayı", "correct": true },
+                  { "text": "C) Bilgisayarı daha hızlı yapmayı", "correct": false },
+                  { "text": "D) Daha çok oyun indirmeyi", "correct": false }
+                ],
+                "explanation_tr": "Dijital güvenlik, seni ve bilgilerini hackerlar, virüsler ve dolandırıcılar gibi çevrimiçi tehditlerden korumayı amaçlar."
               },
               {
                 "type": "multiple_choice",
                 "question": "Aşağıdakilerden hangisi bir dijital güvenlik önlemidir?",
                 "options": [
-                  {
-                    "text": "A) Şifreyi monitöre yapıştırmak",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Herkese açık Wi-Fi ağlarında bankacılık işlemi yapmak",
-                    "correct": false
-                  },
-                  {
-                    "text": "C) Bilgisayarın ekran kilidini kullanmak",
-                    "correct": true
-                  },
-                  {
-                    "text": "D) Tanımadığın kişilerin arkadaşlık isteğini kabul etmek",
-                    "correct": false
-                  }
-                ]
-              },
-              {
-                "type": "multiple_choice",
-                "question": "'Dijital vatandaşlık' kavramı ne ile ilgilidir?",
-                "options": [
-                  {
-                    "text": "A) Sadece kod yazmakla",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) İnternette sorumlu ve etik davranmakla",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) En pahalı tableti almakla",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) Hızlı klavye kullanmakla",
-                    "correct": false
-                  }
-                ]
-              },
-              {
-                "type": "multiple_choice",
-                "question": "Güvenli olmayan bir davranış sergilersek ne olabilir?",
-                "options": [
-                  {
-                    "text": "A) İnternetimiz hızlanır",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Hesaplarımız çalınabilir",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) Bilgisayarın rengi değişir",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) Hiçbir şey olmaz",
-                    "correct": false
-                  }
-                ]
-              },
-              {
-                "type": "multiple_choice",
-                "question": "Dijital güvenlik kimin sorumluluğundadır?",
-                "options": [
-                  {
-                    "text": "A) Sadece devletin",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Sadece öğretmenlerin",
-                    "correct": false
-                  },
-                  {
-                    "text": "C) İnterneti kullanan herkesin",
-                    "correct": true
-                  },
-                  {
-                    "text": "D) Sadece anne-babanın",
-                    "correct": false
-                  }
-                ]
-              },
-              {
-                "type": "multiple_choice",
-                "question": "Bilinçli bir teknoloji kullanıcısı ne yapar?",
-                "options": [
-                  {
-                    "text": "A) Gördüğü her linke tıklar",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Bilgilerin doğruluğunu kontrol eder",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) Şifresini arkadaşlarıyla paylaşır",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) Sürekli oyun oynar",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) Şifreyi monitöre yapıştırmak", "correct": false },
+                  { "text": "B) Herkese açık Wi-Fi ağlarında bankacılık işlemi yapmak", "correct": false },
+                  { "text": "C) Bilgisayarın ekran kilidini kullanmak", "correct": true },
+                  { "text": "D) Tanımadığın kişilerin arkadaşlık isteğini kabul etmek", "correct": false }
+                ],
+                "explanation_tr": "Ekran kilidi, cihaz kaybolsa veya çalınsa bile başkalarının uygulamalarına, fotoğraflarına ve şifrelerine erişmesini engeller."
               }
             ]
           }
@@ -238,86 +136,72 @@ export const MODULE5_TR = {
               {
                 "type": "true_false",
                 "question": "İnternetteki her 'İndir' butonu güvenlidir.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "İnternetteki pek çok 'İndir' butonu zararlı yazılım yükleyen tuzaklardır. Yalnızca resmi ve güvenilir kaynaklardan indirme yap."
               },
               {
                 "type": "true_false",
                 "question": "Cihazın aniden yavaşlaması bir virüs belirtisi olabilir.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Zararlı yazılımlar arka planda gizli işlemler çalıştırarak cihazın kaynaklarını tüketir ve ciddi yavaşlamaya yol açar."
               },
               {
                 "type": "true_false",
                 "question": "Antivirüs programları bizi zararlı yazılımlardan korumaya yardımcı olur.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Antivirüs programları zararlı yazılımları tespit eder ve zarar vermeden önce cihazından temizler."
               },
               {
                 "type": "true_false",
                 "question": "Sadece güvenilir ve resmi mağazalardan (App Store, Play Store) uygulama indirmeliyim.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Resmi mağazalar uygulamaları güvenlik açısından inceler. Gayri resmi kaynaklardan indirmek cihazını ciddi riske atar."
               },
               {
                 "type": "true_false",
                 "question": "Virüsler telefonlara bulaşmaz, sadece bilgisayara bulaşır.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Telefonlar da bilgisayarlar kadar kolayca virüs kapabilir. İnternete bağlanan her cihaz risk altındadır."
               },
               {
                 "type": "true_false",
                 "question": "'Bedava ödül kazandın' mesajları genellikle tuzaktır.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Bu mesajlar, seni tehlikeli bir linke tıklatmak ya da kişisel bilgilerini ele geçirmek için tasarlanmış klasik sosyal mühendislik tuzaklarıdır."
               },
               {
                 "type": "true_false",
                 "question": "Cihaz güncellemelerini yapmak güvenliği artırır.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Güncellemeler, zararlı yazılımların istismar edebileceği güvenlik açıklarını kapatır. Güncelleme yapmadan cihazın savunmasız kalır."
               },
               {
                 "type": "true_false",
                 "question": "Casus yazılımlar biz fark etmeden bilgilerimizi çalabilir.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Casus yazılımlar (spyware) sessizce çalışır: şifrelerini, mesajlarını ve tarama geçmişini gizlice kaydeder ve gönderir."
               },
               {
                 "type": "multiple_choice",
                 "question": "Zararlı yazılımlar en sık nasıl bulaşır?",
                 "options": [
-                  {
-                    "text": "A) Orijinal kutulu oyunlardan",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Güvenilmeyen sitelerden indirilen dosyalardan",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) Okulun web sitesinden",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) Word dosyasından",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) Orijinal kutulu oyunlardan", "correct": false },
+                  { "text": "B) Güvenilmeyen sitelerden indirilen dosyalardan", "correct": true },
+                  { "text": "C) Okulun web sitesinden", "correct": false },
+                  { "text": "D) Word dosyasından", "correct": false }
+                ],
+                "explanation_tr": "Güvenilmeyen web siteleri zararsız görünen ama içinde zararlı yazılım barındıran dosyalar sunar. Her zaman resmi ve bilinen kaynaklardan indir."
               },
               {
                 "type": "multiple_choice",
                 "question": "Aşağıdakilerden hangisi bir virüs belirtisidir?",
                 "options": [
-                  {
-                    "text": "A) Ekranın daha parlak olması",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Sürekli açılan reklam pencereleri",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) Klavyenin temiz olması",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) Oyunun hızlı açılması",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) Ekranın daha parlak olması", "correct": false },
+                  { "text": "B) Sürekli açılan reklam pencereleri", "correct": true },
+                  { "text": "C) Klavyenin temiz olması", "correct": false },
+                  { "text": "D) Oyunun hızlı açılması", "correct": false }
+                ],
+                "explanation_tr": "Sürekli açılan reklam pencereleri, cihaza bulaşmış reklam yazılımının (adware) klasik bir belirtisidir."
               },
               {
                 "type": "multiple_choice",
@@ -458,74 +342,61 @@ export const MODULE5_TR = {
               {
                 "type": "true_false",
                 "question": "Tabletimi masada bırakıp kantine gidebilirim.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Cihazını gözetimsiz bırakmak — kısa süreliğine bile — hırsızlık veya yetkisiz kullanım riskine yol açar. Yanında götür ya da kilitle."
               },
               {
                 "type": "true_false",
                 "question": "Ekran kilidi koymak, cihaz çalınırsa verilerimi korur.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Ekran kilidi, cihaz kaybolsa veya çalınsa bile uygulamalara, fotoğraflara ve şifrelerine başkalarının erişmesini engeller."
               },
               {
                 "type": "true_false",
                 "question": "Kafedeki şifresiz Wi-Fi ağları her zaman güvenlidir.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Açık Wi-Fi ağları yakındaki herkes tarafından izlenebilir. Saldırganlar bu ağlarda şifrelerini ve mesajlarını ele geçirebilir."
               },
               {
                 "type": "true_false",
                 "question": "Ortak bilgisayarda işim bitince 'Çıkış Yap' demeliyim.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Çıkış yapmak, o bilgisayarı sonraki kullananın hesabına ve kişisel bilgilerine erişmesini engeller."
               },
               {
                 "type": "true_false",
                 "question": "Güncellemeler gereksizdir, yapmasam da olur.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Güncellemeler, hackerların ve zararlı yazılımların istismar ettiği güvenlik açıklarını kapatır. Güncelleme yapmazsan cihazın savunmasız kalır."
               },
               {
                 "type": "true_false",
                 "question": "Bluetooth'u kullanmadığım zamanlarda kapalı tutmalıyım.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Açık Bluetooth bağlantısı, yakındaki saldırganlar tarafından haberin olmadan cihazına erişmek için kullanılabilir."
               },
               {
                 "type": "true_false",
                 "question": "Tanımadığım bir USB belleği hemen bilgisayarıma takmalıyım.",
-                "answer": false
-              },
-              {
-                "type": "true_false",
-                "question": "Şarj aletimi başkalarıyla paylaşırken dikkatli olmalıyım.",
-                "answer": true
-              },
-              {
-                "type": "true_false",
-                "question": "Cihazımı çok sıcak veya çok soğuk ortamlarda bırakmamalıyım.",
-                "answer": true
+                "answer": false,
+                "explanation_tr": "Kaynağını bilmediğin USB bellekler, takıldığı anda cihazını enfekte edecek zararlı yazılım içerebilir. Asla bilinmeyen USB takma."
               },
               {
                 "type": "true_false",
                 "question": "'Beni Hatırla' seçeneğini sadece kendi evimdeki cihazda kullanmalıyım.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "'Beni Hatırla' oturumu o cihazda saklar. Ortak veya halka açık cihazlarda kullanırsan başkaları hesabına erişebilir."
               },
               {
                 "type": "multiple_choice",
                 "question": "Ortak kullanılan bir bilgisayarda (örn: okulda) işiniz bitince ne yapmalısınız?",
                 "options": [
-                  {
-                    "text": "A) Ekranı kapatıp gitmek",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Hesaptan çıkış yapmak (Log out)",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) Bilgisayarı fişten çekmek",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) Sadece tarayıcıyı kapatmak",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) Ekranı kapatıp gitmek", "correct": false },
+                  { "text": "B) Hesaptan çıkış yapmak (Log out)", "correct": true },
+                  { "text": "C) Bilgisayarı fişten çekmek", "correct": false },
+                  { "text": "D) Sadece tarayıcıyı kapatmak", "correct": false }
+                ],
+                "explanation_tr": "Tarayıcıyı kapatmak yeterli değildir — oturumu sonlandırmak için çıkış yapmalısın. Aksi takdirde sonraki kullanıcı hesabını yeniden açabilir."
               },
               {
                 "type": "multiple_choice",
@@ -553,23 +424,12 @@ export const MODULE5_TR = {
                 "type": "multiple_choice",
                 "question": "Halka açık ücretsiz Wi-Fi ağlarında ne yapmamalıyız?",
                 "options": [
-                  {
-                    "text": "A) Haber okumak",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Hava durumuna bakmak",
-                    "correct": false
-                  },
-                  {
-                    "text": "C) Banka hesabına veya özel hesaplara şifre ile girmek",
-                    "correct": true
-                  },
-                  {
-                    "text": "D) Haritaya bakmak",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) Haber okumak", "correct": false },
+                  { "text": "B) Hava durumuna bakmak", "correct": false },
+                  { "text": "C) Banka hesabına veya özel hesaplara şifre ile girmek", "correct": true },
+                  { "text": "D) Haritaya bakmak", "correct": false }
+                ],
+                "explanation_tr": "Halka açık Wi-Fi'da veriler ele geçirilebilir. Bu ağlarda asla şifre girme veya hassas hesaplara erişme."
               },
               {
                 "type": "multiple_choice",
@@ -712,86 +572,72 @@ export const MODULE5_TR = {
               {
                 "type": "true_false",
                 "question": "Her uygulamanın istediği her izne 'Evet' demeliyim.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Uygulamalar yalnızca gerçekten ihtiyaç duydukları izinleri almalıdır. Gereksiz izinler uygulamaların özel verilerini toplamasına imkân verir."
               },
               {
                 "type": "true_false",
                 "question": "Bir hesap makinesi uygulamasının kameraya ihtiyacı yoktur.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Hesap makinesi yalnızca matematik işlemleri yapar. Kamera erişimi istemesi gereksiz ve şüpheli olur."
               },
               {
                 "type": "true_false",
                 "question": "Uygulama izinlerini ayarlardan kontrol edebilirim.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Cihazının ayarlar menüsünden herhangi bir uygulamanın izinlerini istediğin zaman inceleyebilir ve iptal edebilirsin."
               },
               {
                 "type": "true_false",
                 "question": "Konum izni vermek, nerede olduğumu uygulamanın bilmesini sağlar.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Konum izni fiziksel koordinatlarını açığa çıkarır — nerede olduğunu ve günlük rutinini gösterir. Yalnızca gerçekten ihtiyaç duyan uygulamalara ver."
               },
               {
                 "type": "true_false",
                 "question": "Oyun uygulamalarının çoğu rehberime (kişilerime) ihtiyaç duyar.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Oyunların genellikle kişi listene ihtiyacı yoktur. Bir oyun rehbere erişmek istiyorsa bu şüpheli bir işarettir."
               },
               {
                 "type": "true_false",
                 "question": "Gizlilik politikalarını okumak (veya göz atmak) önemlidir.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Gizlilik politikaları bir uygulamanın hangi verileri topladığını ve nasıl kullandığını açıklar. Bunu bilmek bilinçli kararlar vermanı sağlar."
               },
               {
                 "type": "true_false",
                 "question": "Kameramın izinsiz açılmaması için izinleri denetlemeliyim.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Bazı uygulamalar kameranı veya mikrofonunu gizlice etkinleştirebilir. İzinleri düzenli olarak gözden geçirmek seni korutur."
               },
               {
                 "type": "true_false",
                 "question": "Gereksiz izin isteyen uygulamaları yüklememeliyim.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Amacıyla ilgisiz izinler isteyen bir uygulama kişisel verilerini toplamaya çalışıyor olabilir. Bu tür uygulamaları yükleme."
               },
               {
                 "type": "multiple_choice",
                 "question": "Bir 'El Feneri' uygulaması 'Rehberine Erişmek' istiyorsa ne yapmalısın?",
                 "options": [
-                  {
-                    "text": "A) İzin vermelisin",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Reddetmelisin, çünkü gereksizdir",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) Arkadaşlarına sormalısın",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) Telefonu kapatmalısın",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) İzin vermelisin", "correct": false },
+                  { "text": "B) Reddetmelisin, çünkü gereksizdir", "correct": true },
+                  { "text": "C) Arkadaşlarına sormalısın", "correct": false },
+                  { "text": "D) Telefonu kapatmalısın", "correct": false }
+                ],
+                "explanation_tr": "El feneri yalnızca ışığa ihtiyaç duyar — rehbere erişmesinin hiçbir nedeni yoktur. Gereksiz izin isteği bir gizlilik tehlike işaretidir."
               },
               {
                 "type": "multiple_choice",
                 "question": "'Konum' izni ne işe yarar?",
                 "options": [
-                  {
-                    "text": "A) Telefonun sesini açar",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Uygulamanın senin coğrafi yerini (nerede olduğunu) bilmesini sağlar",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) Ekran parlaklığını artırır",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) İnterneti hızlandırır",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) Telefonun sesini açar", "correct": false },
+                  { "text": "B) Uygulamanın senin coğrafi yerini (nerede olduğunu) bilmesini sağlar", "correct": true },
+                  { "text": "C) Ekran parlaklığını artırır", "correct": false },
+                  { "text": "D) İnterneti hızlandırır", "correct": false }
+                ],
+                "explanation_tr": "Konum izni, uygulamaya tam fiziksel konumunu söyler. Bunu yalnızca harita veya navigasyon gibi gerçekten ihtiyaç duyan uygulamalara ver."
               },
               {
                 "type": "multiple_choice",
@@ -912,74 +758,61 @@ export const MODULE5_TR = {
               {
                 "type": "true_false",
                 "question": "İnternette gördüğüm her haberi hemen paylaşmalıyım.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Paylaşmadan önce her zaman haberin doğruluğunu teyit et. Yanlışlıkla bile olsa doğrulanmamış bilgi yaymak sorumsuzluktur."
               },
               {
                 "type": "true_false",
                 "question": "Başkalarının fotoğrafını izinsiz paylaşmak saygısızlıktır.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Birinin fotoğrafını rızası olmadan paylaşmak mahremiyetini ihlal eder ve ona ciddi sıkıntı yaşatabilir. Her zaman önce izin alın."
               },
               {
                 "type": "true_false",
                 "question": "Kötü niyetli bir yorumu 'Bildir / Şikayet Et' yapabilirim.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Zararlı içerikleri bildirmek hem seni hem de topluluktaki diğerlerini korur. Sorumlu bir dijital vatandaşın önemli bir görevidir."
               },
               {
                 "type": "true_false",
                 "question": "Dijital dünyada nazik olmak zorunda değilim.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Çevrimiçi sözler yüz yüze söylenenler kadar acıtır. Dijital dünyada da gerçek hayat kadar nazik ve saygılı olmak gerekir."
               },
               {
                 "type": "true_false",
                 "question": "Doğrulanmamış bilgileri yaymak kargaşaya sebep olabilir.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Sahte haberler ve söylentiler çevrimiçi hızla yayılır. Doğrulanmamış bilgiler toplulukları paniğe sürükleyebilir ve insanların itibarına zarar verebilir."
               },
               {
                 "type": "true_false",
                 "question": "Arkadaşımın sırrını sosyal medyada paylaşabilirim.",
-                "answer": false
+                "answer": false,
+                "explanation_tr": "Birinin sırrını izinsiz paylaşmak güvenini ihlal eder ve hem arkadaşlığınıza hem de onun itibarına ciddi zarar verebilir."
               },
               {
                 "type": "true_false",
                 "question": "Dijital ayak izim geleceğimi etkileyebilir, sorumlu davranmalıyım.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "İnternette paylaştığın her şey kalıcı bir dijital iz bırakır. Gelecekteki işverenler, okullar ve diğerleri bunu görebilir."
               },
               {
                 "type": "true_false",
                 "question": "Başkalarının emeğine (telif hakkına) saygı duymalıyım.",
-                "answer": true
-              },
-              {
-                "type": "true_false",
-                "question": "Sadece kendi güvenliğim önemlidir, başkaları beni ilgilendirmez.",
-                "answer": false
-              },
-              {
-                "type": "true_false",
-                "question": "İnterneti iyilik ve öğrenme için kullanmak bir tercihtir.",
-                "answer": true
+                "answer": true,
+                "explanation_tr": "Telif hakkı yaratıcıların çalışmalarını korur. Resim, müzik veya yazı kullanmak için her zaman kredi ver ve izin iste."
               },
               {
                 "type": "multiple_choice",
                 "question": "Arkadaşının utanç verici bir fotoğrafını gördüğünde ne yapmalısın?",
                 "options": [
-                  {
-                    "text": "A) Herkese göndermelisin",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Gülüp geçmelisin",
-                    "correct": false
-                  },
-                  {
-                    "text": "C) Paylaşmamalı ve gerekirse kaldırtması için uyarmalısın",
-                    "correct": true
-                  },
-                  {
-                    "text": "D) Yorum yazıp dalga geçmelisin",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) Herkese göndermelisin", "correct": false },
+                  { "text": "B) Gülüp geçmelisin", "correct": false },
+                  { "text": "C) Paylaşmamalı ve gerekirse kaldırtması için uyarmalısın", "correct": true },
+                  { "text": "D) Yorum yazıp dalga geçmelisin", "correct": false }
+                ],
+                "explanation_tr": "Arkadaşının onurunu korumak — fotoğrafı paylaşmamak ve onu uyarmak — sorumlu ve dost canlısı bir davranıştır."
               },
               {
                 "type": "multiple_choice",
@@ -1007,23 +840,12 @@ export const MODULE5_TR = {
                 "type": "multiple_choice",
                 "question": "İnternette birisi sana zorbalık yaparsa ne yapmalısın?",
                 "options": [
-                  {
-                    "text": "A) Sen de ona küfür etmelisin",
-                    "correct": false
-                  },
-                  {
-                    "text": "B) Cevap vermemeli, engellemeli ve bir büyüğüne söylemelisin",
-                    "correct": true
-                  },
-                  {
-                    "text": "C) Adresini verip kavgaya çağırmalısın",
-                    "correct": false
-                  },
-                  {
-                    "text": "D) Bilgisayarı kapatıp ağlamalısın",
-                    "correct": false
-                  }
-                ]
+                  { "text": "A) Sen de ona küfür etmelisin", "correct": false },
+                  { "text": "B) Cevap vermemeli, engellemeli ve bir büyüğüne söylemelisin", "correct": true },
+                  { "text": "C) Adresini verip kavgaya çağırmalısın", "correct": false },
+                  { "text": "D) Bilgisayarı kapatıp ağlamalısın", "correct": false }
+                ],
+                "explanation_tr": "Zorbalığa cevap vermek durumu tırmandırır. Engellemek, kanıt saklamak ve güvenilir bir yetişkine söylemek en güvenli ve akıllıca yanıttır."
               },
               {
                 "type": "multiple_choice",

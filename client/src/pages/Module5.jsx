@@ -331,7 +331,7 @@ const sections = (() => {
       <div className="section-navigation" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 3rem 2rem 4rem' }}>
         <button
           className="nav-btn prev"
-          onClick={() => { setActiveSection((p) => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          onClick={() => { setActiveSection((p) => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); document.documentElement.scrollTop = 0; document.body.scrollTop = 0; }}
           disabled={activeSection === 1}
         >
           {'<-'} {isTurkish ? 'Önceki' : 'Previous'}
@@ -345,6 +345,8 @@ const sections = (() => {
             handleSectionComplete(activeSection);
             setActiveSection((p) => Math.min(sections.length, p + 1));
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
           }}
           disabled={activeSection === sections.length}
         >

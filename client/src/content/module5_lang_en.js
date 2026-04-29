@@ -35,42 +35,50 @@ export const MODULE5_EN = {
               {
                 type: "true_false",
                 question: "Digital security is only the job of computer engineers.",
-                answer: false
+                answer: false,
+                explanation_en: "Digital security is everyone's responsibility. Anyone who uses the internet — students, adults, everyone — needs to protect themselves online."
               },
               {
                 type: "true_false",
                 question: "My behavior on the internet does not affect my real life.",
-                answer: false
+                answer: false,
+                explanation_en: "What you post, share, or say online can affect your friendships, reputation, and even future opportunities. Your digital life and real life are deeply connected."
               },
               {
                 type: "true_false",
                 question: "Strong passwords and privacy settings are used to be safe.",
-                answer: true
+                answer: true,
+                explanation_en: "Strong passwords block unauthorized access to your accounts, and privacy settings control who can see your personal information."
               },
               {
                 type: "true_false",
                 question: "Digital security skills can be learned at any age.",
-                answer: true
+                answer: true,
+                explanation_en: "Digital security habits — like using strong passwords and checking links before clicking — can be learned and practiced at any age."
               },
               {
                 type: "true_false",
                 question: "Opening files from people I don't know is safe.",
-                answer: false
+                answer: false,
+                explanation_en: "Files from unknown people may contain viruses or malware that can damage your device or steal your information. Never open them!"
               },
               {
                 type: "true_false",
                 question: "Smartphones also carry security risks like computers.",
-                answer: true
+                answer: true,
+                explanation_en: "Smartphones store photos, passwords, and personal data — they face the same threats as computers, including viruses and account theft."
               },
               {
                 type: "true_false",
                 question: "Digital security is not about being afraid of technology, but using it consciously.",
-                answer: true
+                answer: true,
+                explanation_en: "The goal is not to avoid technology, but to use it wisely. Making informed decisions online is more powerful than any antivirus."
               },
               {
                 type: "true_false",
                 question: "It's enough to be safe only when playing games, it's not necessary when studying.",
-                answer: false
+                answer: false,
+                explanation_en: "Risks exist in all online activities — gaming, studying, chatting, browsing. You need to stay alert at all times."
               },
               {
                 type: "multiple_choice",
@@ -80,7 +88,8 @@ export const MODULE5_EN = {
                   { text: "B) Protecting ourselves and our information from risks", correct: true },
                   { text: "C) Making computers faster", correct: false },
                   { text: "D) Downloading more games", correct: false }
-                ]
+                ],
+                explanation_en: "Digital security protects you, your information, and your devices from online threats like hackers, viruses, and scams."
               },
               {
                 type: "multiple_choice",
@@ -90,47 +99,8 @@ export const MODULE5_EN = {
                   { text: "B) Doing banking on public Wi-Fi networks", correct: false },
                   { text: "C) Using the computer's screen lock", correct: true },
                   { text: "D) Accepting friend requests from people you don't know", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What is the concept of 'digital citizenship' related to?",
-                options: [
-                  { text: "A) Just writing code", correct: false },
-                  { text: "B) Acting responsibly and ethically on the internet", correct: true },
-                  { text: "C) Buying the most expensive tablet", correct: false },
-                  { text: "D) Using the keyboard fast", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What can happen if we exhibit unsafe behavior?",
-                options: [
-                  { text: "A) Our internet speeds up", correct: false },
-                  { text: "B) Our accounts can be stolen", correct: true },
-                  { text: "C) The computer's color changes", correct: false },
-                  { text: "D) Nothing happens", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "Who is responsible for digital security?",
-                options: [
-                  { text: "A) Only the government", correct: false },
-                  { text: "B) Only teachers", correct: false },
-                  { text: "C) Everyone who uses the internet", correct: true },
-                  { text: "D) Only parents", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What does a conscious technology user do?",
-                options: [
-                  { text: "A) Clicks on every link they see", correct: false },
-                  { text: "B) Verifies the accuracy of information", correct: true },
-                  { text: "C) Shares their password with friends", correct: false },
-                  { text: "D) Plays games constantly", correct: false }
-                ]
+                ],
+                explanation_en: "A screen lock prevents anyone from accessing your device and data if it is lost or stolen. It is one of the simplest and most effective security measures."
               }
             ]
           }
@@ -168,42 +138,50 @@ export const MODULE5_EN = {
               {
                 type: "true_false",
                 question: "Every 'Download' button on the internet is safe.",
-                answer: false
+                answer: false,
+                explanation_en: "Many download buttons on the internet are traps that install malware. Always download only from official and trusted sources."
               },
               {
                 type: "true_false",
                 question: "A device suddenly slowing down can be a sign of a virus.",
-                answer: true
+                answer: true,
+                explanation_en: "Malware runs hidden processes in the background, using up your device's resources and causing it to slow down significantly."
               },
               {
                 type: "true_false",
                 question: "Antivirus programs help protect us from malicious software.",
-                answer: true
+                answer: true,
+                explanation_en: "Antivirus programs scan your device, detect threats, and remove them before they can cause damage."
               },
               {
                 type: "true_false",
                 question: "I should only download apps from trusted and official stores (App Store, Play Store).",
-                answer: true
+                answer: true,
+                explanation_en: "Official app stores review apps for safety. Downloading from unofficial sources puts your device at serious risk."
               },
               {
                 type: "true_false",
                 question: "Viruses don't infect phones, only computers.",
-                answer: false
+                answer: false,
+                explanation_en: "Phones can be infected with viruses just as easily as computers. Any device connected to the internet is at risk."
               },
               {
                 type: "true_false",
                 question: "'You won a free prize' messages are usually traps.",
-                answer: true
+                answer: true,
+                explanation_en: "These messages are classic social engineering traps designed to trick you into clicking a dangerous link or giving away personal information."
               },
               {
                 type: "true_false",
                 question: "Updating devices increases security.",
-                answer: true
+                answer: true,
+                explanation_en: "Updates patch security vulnerabilities in software. Without updates, your device is exposed to known attacks."
               },
               {
                 type: "true_false",
                 question: "Spyware can steal our information without us noticing.",
-                answer: true
+                answer: true,
+                explanation_en: "Spyware secretly monitors your activity — recording passwords, messages, and browsing history — without any visible signs."
               },
               {
                 type: "multiple_choice",
@@ -213,7 +191,8 @@ export const MODULE5_EN = {
                   { text: "B) From files downloaded from untrusted sites", correct: true },
                   { text: "C) From the school's website", correct: false },
                   { text: "D) From Word documents", correct: false }
-                ]
+                ],
+                explanation_en: "Untrusted websites host files that appear safe but contain hidden malware. Always download from official, known sources."
               },
               {
                 type: "multiple_choice",
@@ -223,47 +202,8 @@ export const MODULE5_EN = {
                   { text: "B) Constantly opening advertisement windows", correct: true },
                   { text: "C) The keyboard being clean", correct: false },
                   { text: "D) The game opening quickly", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What should we do if we suspect our computer has a virus?",
-                options: [
-                  { text: "A) Throw the computer in the trash", correct: false },
-                  { text: "B) Tell an adult and run a virus scan", correct: true },
-                  { text: "C) Wipe the screen", correct: false },
-                  { text: "D) Wait without doing anything", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What kind of malicious software is a 'Trojan Horse'?",
-                options: [
-                  { text: "A) Software that looks useful but causes harm in the background", correct: true },
-                  { text: "B) A history lesson program", correct: false },
-                  { text: "C) A horse game", correct: false },
-                  { text: "D) An antivirus program", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What should we pay attention to for safe downloads?",
-                options: [
-                  { text: "A) The site being colorful", correct: false },
-                  { text: "B) The file size", correct: false },
-                  { text: "C) It being an official and known site", correct: true },
-                  { text: "D) The size of the download button", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What does an antivirus program do?",
-                options: [
-                  { text: "A) Speeds up the internet", correct: false },
-                  { text: "B) Detects and removes malicious software", correct: true },
-                  { text: "C) Enables cheating in games", correct: false },
-                  { text: "D) Takes screenshots", correct: false }
-                ]
+                ],
+                explanation_en: "Pop-up advertisement windows that appear constantly are a classic sign of adware — a type of malware — infecting your device."
               }
             ]
           },
@@ -316,52 +256,50 @@ export const MODULE5_EN = {
               {
                 type: "true_false",
                 question: "I can leave my tablet on the desk and go to the cafeteria.",
-                answer: false
+                answer: false,
+                explanation_en: "Leaving your device unattended — even for a moment — risks theft or unauthorized use. Always take it with you or lock it."
               },
               {
                 type: "true_false",
                 question: "Setting a screen lock protects my data if the device is stolen.",
-                answer: true
+                answer: true,
+                explanation_en: "A screen lock prevents anyone from accessing your apps, photos, and passwords if your device is lost or stolen."
               },
               {
                 type: "true_false",
                 question: "Password-free Wi-Fi networks in cafes are always safe.",
-                answer: false
+                answer: false,
+                explanation_en: "Open Wi-Fi networks can be monitored by anyone nearby. Attackers can intercept your passwords and messages on these networks."
               },
               {
                 type: "true_false",
                 question: "I should log out when I'm done on a shared computer.",
-                answer: true
+                answer: true,
+                explanation_en: "Logging out prevents the next person who uses that computer from accessing your accounts and personal information."
               },
               {
                 type: "true_false",
                 question: "Updates are unnecessary, I don't need to do them.",
-                answer: false
+                answer: false,
+                explanation_en: "Updates patch security holes that hackers and malware can exploit. Skipping updates leaves your device vulnerable."
               },
               {
                 type: "true_false",
                 question: "I should keep Bluetooth off when I'm not using it.",
-                answer: true
+                answer: true,
+                explanation_en: "An active Bluetooth connection can be exploited by nearby attackers to access your device without your knowledge."
               },
               {
                 type: "true_false",
                 question: "I should immediately plug an unknown USB drive into my computer.",
-                answer: false
-              },
-              {
-                type: "true_false",
-                question: "I should be careful when sharing my charger with others.",
-                answer: true
-              },
-              {
-                type: "true_false",
-                question: "I should not leave my device in very hot or very cold environments.",
-                answer: true
+                answer: false,
+                explanation_en: "Unknown USB drives may contain malware designed to infect your device the moment they are plugged in. Never use unverified USB drives."
               },
               {
                 type: "true_false",
                 question: "I should only use the 'Remember Me' option on my own device at home.",
-                answer: true
+                answer: true,
+                explanation_en: "'Remember Me' saves your login session on that device. Using it on a shared or public device lets others access your account."
               },
               {
                 type: "multiple_choice",
@@ -371,17 +309,8 @@ export const MODULE5_EN = {
                   { text: "B) Log out of the account", correct: true },
                   { text: "C) Unplug the computer", correct: false },
                   { text: "D) Just close the browser", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "Which of the following is a physical security measure?",
-                options: [
-                  { text: "A) Installing antivirus", correct: false },
-                  { text: "B) Putting a case on the device and setting a screen lock", correct: true },
-                  { text: "C) Downloading games", correct: false },
-                  { text: "D) Writing comments", correct: false }
-                ]
+                ],
+                explanation_en: "Closing the browser is not enough — you must log out so the next user cannot reopen your session and access your account."
               },
               {
                 type: "multiple_choice",
@@ -391,37 +320,8 @@ export const MODULE5_EN = {
                   { text: "B) Check the weather", correct: false },
                   { text: "C) Access bank accounts or private accounts with passwords", correct: true },
                   { text: "D) Look at maps", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "Why are device updates important?",
-                options: [
-                  { text: "A) They color the screen", correct: false },
-                  { text: "B) They close security vulnerabilities and protect the device", correct: true },
-                  { text: "C) They make the device heavier", correct: false },
-                  { text: "D) They install new games", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "How should the screen lock (password) you put on your tablet be?",
-                options: [
-                  { text: "A) 1234", correct: false },
-                  { text: "B) Your birth date", correct: false },
-                  { text: "C) A pattern or number that's hard to guess", correct: true },
-                  { text: "D) 0000", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What can happen if you plug an unknown USB drive into your computer?",
-                options: [
-                  { text: "A) The computer speeds up", correct: false },
-                  { text: "B) Viruses inside it can infect your computer", correct: true },
-                  { text: "C) The screen looks clearer", correct: false },
-                  { text: "D) Your internet quota increases", correct: false }
-                ]
+                ],
+                explanation_en: "On public Wi-Fi, your data can be intercepted. Never enter passwords or access sensitive accounts on these networks."
               }
             ]
           },
@@ -498,42 +398,50 @@ export const MODULE5_EN = {
               {
                 type: "true_false",
                 question: "I should say 'Yes' to every permission every app asks for.",
-                answer: false
+                answer: false,
+                explanation_en: "Apps should only receive permissions they genuinely need. Unnecessary permissions allow apps to collect your private data."
               },
               {
                 type: "true_false",
                 question: "A calculator app does not need a camera.",
-                answer: true
+                answer: true,
+                explanation_en: "A calculator only needs to perform math operations. Camera access would be unnecessary and suspicious."
               },
               {
                 type: "true_false",
                 question: "I can check app permissions from settings.",
-                answer: true
+                answer: true,
+                explanation_en: "You can view and revoke any app's permissions at any time through your device's settings menu."
               },
               {
                 type: "true_false",
                 question: "Giving location permission allows the app to know where I am.",
-                answer: true
+                answer: true,
+                explanation_en: "Location permission reveals your physical coordinates — where you are and your daily routine. Only grant it to apps that truly need it."
               },
               {
                 type: "true_false",
                 question: "Most game apps need my contacts.",
-                answer: false
+                answer: false,
+                explanation_en: "Games typically have no need for your contact list. If a game requests contacts, that is a suspicious sign."
               },
               {
                 type: "true_false",
                 question: "Reading (or browsing) privacy policies is important.",
-                answer: true
+                answer: true,
+                explanation_en: "Privacy policies explain what data an app collects and how it uses it. Knowing this helps you make informed decisions."
               },
               {
                 type: "true_false",
                 question: "I should monitor permissions so my camera doesn't open without permission.",
-                answer: true
+                answer: true,
+                explanation_en: "Without monitoring, some apps may secretly activate your camera or microphone. Regularly reviewing permissions keeps you in control."
               },
               {
                 type: "true_false",
                 question: "I should not install apps that ask for unnecessary permissions.",
-                answer: true
+                answer: true,
+                explanation_en: "An app requesting permissions unrelated to its purpose may be trying to harvest your personal data. Avoid installing such apps."
               },
               {
                 type: "multiple_choice",
@@ -543,7 +451,8 @@ export const MODULE5_EN = {
                   { text: "B) You should deny it, because it's unnecessary", correct: true },
                   { text: "C) You should ask your friends", correct: false },
                   { text: "D) You should turn off your phone", correct: false }
-                ]
+                ],
+                explanation_en: "A flashlight only needs the torch light — it has no reason to access your contacts. Unnecessary permissions are a privacy red flag."
               },
               {
                 type: "multiple_choice",
@@ -553,47 +462,8 @@ export const MODULE5_EN = {
                   { text: "B) Allows the app to know your geographical location (where you are)", correct: true },
                   { text: "C) Increases screen brightness", correct: false },
                   { text: "D) Speeds up the internet", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "Which app really needs 'Microphone' permission?",
-                options: [
-                  { text: "A) Voice recording app", correct: true },
-                  { text: "B) Calculator", correct: false },
-                  { text: "C) Notepad", correct: false },
-                  { text: "D) Calendar", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "Where do we check app permissions?",
-                options: [
-                  { text: "A) From photo gallery", correct: false },
-                  { text: "B) From settings menu", correct: true },
-                  { text: "C) From music player", correct: false },
-                  { text: "D) From camera app", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "Why is privacy important?",
-                options: [
-                  { text: "A) To prevent our information from being used by others", correct: true },
-                  { text: "B) To get more points in games", correct: false },
-                  { text: "C) To protect the phone's battery", correct: false },
-                  { text: "D) To take better photos", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "Which permission does a Navigation (Map) app need?",
-                options: [
-                  { text: "A) Microphone", correct: false },
-                  { text: "B) Location", correct: true },
-                  { text: "C) Camera", correct: false },
-                  { text: "D) Files", correct: false }
-                ]
+                ],
+                explanation_en: "Location permission tells the app your exact physical location. Only grant this to apps like maps or navigation that genuinely need it."
               }
             ]
           }
@@ -626,52 +496,50 @@ export const MODULE5_EN = {
               {
                 type: "true_false",
                 question: "I should share every news story I see on the internet immediately.",
-                answer: false
+                answer: false,
+                explanation_en: "Always verify news before sharing. Spreading unverified information — even accidentally — can harm real people and cause panic."
               },
               {
                 type: "true_false",
                 question: "Sharing others' photos without permission is disrespectful.",
-                answer: true
+                answer: true,
+                explanation_en: "Sharing someone's photo without their consent violates their privacy and can cause them real distress. Always ask first."
               },
               {
                 type: "true_false",
                 question: "I can 'Report' a malicious comment.",
-                answer: true
+                answer: true,
+                explanation_en: "Reporting harmful content protects both yourself and others in the community. It is an important part of being a responsible digital citizen."
               },
               {
                 type: "true_false",
                 question: "I don't have to be kind in the digital world.",
-                answer: false
+                answer: false,
+                explanation_en: "Online words hurt just as much as face-to-face words. Being kind and respectful is just as important in the digital world."
               },
               {
                 type: "true_false",
                 question: "Spreading unverified information can cause chaos.",
-                answer: true
+                answer: true,
+                explanation_en: "Fake news and rumors spread fast online. Unverified information can panic communities and damage people's reputations."
               },
               {
                 type: "true_false",
                 question: "I can share my friend's secret on social media.",
-                answer: false
+                answer: false,
+                explanation_en: "Sharing someone's secret without permission betrays their trust and can seriously damage your friendship and their reputation."
               },
               {
                 type: "true_false",
                 question: "My digital footprint can affect my future, I should behave responsibly.",
-                answer: true
+                answer: true,
+                explanation_en: "Everything you post online creates a permanent digital footprint. Future employers, schools, and others may see it."
               },
               {
                 type: "true_false",
                 question: "I should respect others' work (copyright).",
-                answer: true
-              },
-              {
-                type: "true_false",
-                question: "Only my own security matters, others don't concern me.",
-                answer: false
-              },
-              {
-                type: "true_false",
-                question: "Using the internet for good and learning is a choice.",
-                answer: true
+                answer: true,
+                explanation_en: "Copyright protects creators' work. Using images, music, or text without permission is unfair and often illegal."
               },
               {
                 type: "multiple_choice",
@@ -681,17 +549,8 @@ export const MODULE5_EN = {
                   { text: "B) Laugh and move on", correct: false },
                   { text: "C) Not share it and warn them to remove it if necessary", correct: true },
                   { text: "D) Comment and make fun of it", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What should we do to fight 'Fake News'?",
-                options: [
-                  { text: "A) Like the news immediately", correct: false },
-                  { text: "B) Not share it without researching the source", correct: true },
-                  { text: "C) Send it to everyone", correct: false },
-                  { text: "D) Not read anything", correct: false }
-                ]
+                ],
+                explanation_en: "Protecting your friend's dignity — not sharing the photo and alerting them — is the responsible and caring choice."
               },
               {
                 type: "multiple_choice",
@@ -701,37 +560,8 @@ export const MODULE5_EN = {
                   { text: "B) Don't respond, block them, and tell an adult", correct: true },
                   { text: "C) Give them your address and challenge them to a fight", correct: false },
                   { text: "D) Turn off the computer and cry", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What does digital citizenship mean?",
-                options: [
-                  { text: "A) Playing computer games very well", correct: false },
-                  { text: "B) Using technology ethically, safely, and responsibly", correct: true },
-                  { text: "C) Having many followers on social media", correct: false },
-                  { text: "D) Typing messages fast", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "What should we pay attention to when using a work (image, music) on the internet?",
-                options: [
-                  { text: "A) Nothing, everything is free", correct: false },
-                  { text: "B) Copyright and the owner's permission", correct: true },
-                  { text: "C) Its color being beautiful", correct: false },
-                  { text: "D) Its volume being high", correct: false }
-                ]
-              },
-              {
-                type: "multiple_choice",
-                question: "Which of the following is responsible behavior?",
-                options: [
-                  { text: "A) Giving your password to someone you don't know", correct: false },
-                  { text: "B) Opening a fake account in your friend's name", correct: false },
-                  { text: "C) Using a strong password and being respectful to others", correct: true },
-                  { text: "D) Recording video without permission", correct: false }
-                ]
+                ],
+                explanation_en: "Responding to a bully escalates the situation. Blocking, saving evidence, and telling a trusted adult is the safest and smartest response."
               }
             ]
           }
