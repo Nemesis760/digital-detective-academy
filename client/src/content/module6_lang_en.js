@@ -9,8 +9,14 @@ export const MODULE6_EN = {
         id: 1,
         title: "🚨 Malware Symptoms",
         intro: "Learn to recognize the signals your computer gives when it's sick. Slowdowns, pop-ups, overheating, and more.",
-        activity_title: "🎮 Activity: Identify Threat Signals",
-        activity_desc: "Identify which threat signals are present in the given scenarios.",
+        activity_title: "🧩 Activity: Identify Threat Signals",
+        activity_desc: "Answer the questions below to test your knowledge about malware!",
+        video_links: [
+          {
+            url: "https://www.youtube.com/watch?v=eNBx9kbgdDY",
+            title: "Let's Learn About Malware! — For Kids"
+          }
+        ],
         content: {
           "1.1": {
             title: "What is Malware?",
@@ -32,6 +38,7 @@ export const MODULE6_EN = {
           "1.2": {
             title: "Warning Signs of Malware",
             description: "Your computer gives you signals when something is wrong. Learn to recognize them!",
+            image: "/images/module6/m6_malware_signs_en.png",
             points: [
               "Computer runs much slower than usual",
               "Pop-up windows appear frequently",
@@ -51,6 +58,7 @@ export const MODULE6_EN = {
           "1.3": {
             title: "How to Protect Against Malware",
             description: "Prevention is better than cure! Here's how to keep malware away:",
+            image: "/images/module6/m6_protection_en.png",
             points: [
               "Install and update antivirus software regularly",
               "Don't click on suspicious links or pop-ups",
@@ -58,17 +66,75 @@ export const MODULE6_EN = {
               "Keep your operating system updated",
               "Use strong passwords",
               "Back up your important files regularly"
+            ],
+            quiz: [
+              {
+                type: "true_false",
+                question: "Malware can only infect computers, not phones.",
+                answer: false,
+                explanation_en: "Wrong! Malware can infect phones, tablets, smartwatches, and any internet-connected device."
+              },
+              {
+                type: "true_false",
+                question: "If your computer runs much slower than usual, it could be a sign of malware.",
+                answer: true,
+                explanation_en: "Correct! Slowdowns are one of the most common signs that malware is consuming your system's resources."
+              },
+              {
+                type: "true_false",
+                question: "Once antivirus software is installed, you never need to update it.",
+                answer: false,
+                explanation_en: "Wrong! Antivirus software must be updated regularly to recognize new threats. Outdated antivirus leaves you vulnerable."
+              },
+              {
+                type: "true_false",
+                question: "A program that looks trustworthy can still be a Trojan horse.",
+                answer: true,
+                explanation_en: "Correct! Trojans disguise themselves as useful software to sneak into your computer."
+              },
+              {
+                type: "true_false",
+                question: "Pop-up windows are only for advertising and are never dangerous.",
+                answer: false,
+                explanation_en: "Wrong! Fake pop-ups can trick you into downloading malware or entering personal information."
+              },
+              {
+                type: "multiple_choice",
+                question: "A pop-up says 'You've won a prize!' What should you do?",
+                options: ["A) Click to claim your prize", "B) Close it and tell an adult", "C) Enter your information", "D) Share it with friends"],
+                answer: "B",
+                explanation_en: "These pop-ups are usually phishing attempts. Closing them and telling an adult is the safest choice."
+              },
+              {
+                type: "multiple_choice",
+                question: "What does ransomware do?",
+                options: ["A) Speeds up your internet", "B) Locks files and demands money", "C) Acts as antivirus", "D) Makes your computer faster"],
+                answer: "B",
+                explanation_en: "Ransomware locks your files and demands payment (usually cryptocurrency) to restore access."
+              },
+              {
+                type: "true_false",
+                question: "Downloading files from unknown sources can put your computer at risk.",
+                answer: true,
+                explanation_en: "Correct! Files from untrusted sites may contain malware. Always use official, trusted sources."
+              }
             ]
           }
         },
-        activity_type: "flappy_bird"
+        activity_type: "interactive_quiz"
       },
       {
         id: 2,
         title: "🎣 Phishing Detection",
         intro: "Learn how to detect fake emails, messages, and websites to avoid falling for phishing scams.",
-        activity_title: "📝 Quiz: Fake Email Detective",
-        activity_desc: "Compare real and fake email examples to distinguish them.",
+        activity_title: "🎯 Scenario Game",
+        activity_desc: "Find the dangerous spot in cyber threat scenarios and choose the correct action! Complete all missions.",
+        video_links: [
+          {
+            url: "https://www.youtube.com/watch?v=XBkzBrXlle0",
+            title: "Phishing Explained in 6 Minutes — English"
+          }
+        ],
         content: {
           "2.1": {
             title: "What is Phishing?",
@@ -90,6 +156,7 @@ export const MODULE6_EN = {
           "2.2": {
             title: "How to Spot Phishing",
             description: "Phishing attempts have telltale signs. Learn to recognize them:",
+            image: "/images/module6/m6_phishing_signs_en.png",
             points: [
               "Check the sender's email address carefully",
               "Look for spelling and grammar mistakes",
@@ -108,6 +175,7 @@ export const MODULE6_EN = {
           "2.3": {
             title: "What to Do If You Suspect Phishing",
             description: "If you think you've received a phishing message, here's what to do:",
+            image: "/images/module6/m6_phishing_response_en.png",
             points: [
               "Don't click on any links or download attachments",
               "Don't reply to the message",
@@ -123,9 +191,15 @@ export const MODULE6_EN = {
       {
         id: 3,
         title: "🛠️ Cyber Crisis Response Plan",
-        intro: "The first steps taken during an attack or crisis can save lives. (Disconnect internet, tell parent/teacher, scan).",
+        intro: "The first steps taken during an attack or crisis can save the situation. Disconnect internet, tell parent/teacher, scan your device.",
         activity_title: "🎮 Activity: Crisis Simulation",
-        activity_desc: "Order the correct response steps in a cyber attack scenario.",
+        activity_desc: "Apply the correct response steps in a cyber attack scenario. Find the clues, disconnect the internet, and clean the virus to save the system!",
+        video_links: [
+          {
+            url: "https://www.youtube.com/watch?v=9HOpanT0GRs",
+            title: "Harvard CS50 — Intro to Cybersecurity (English)"
+          }
+        ],
         content: {
           "3.1": {
             title: "What is a Cyber Crisis?",
@@ -147,6 +221,7 @@ export const MODULE6_EN = {
           "3.2": {
             title: "The STOP Response Plan",
             description: "When facing a cyber crisis, remember STOP:",
+            image: "/images/module6/m6_stop_plan_en.png",
             points: [
               "S - Stop: Stop what you're doing immediately",
               "T - Tell: Tell a trusted adult (parent, teacher) right away",
@@ -163,6 +238,7 @@ export const MODULE6_EN = {
           "3.3": {
             title: "Prevention Checklist",
             description: "The best defense is prevention. Follow this checklist:",
+            image: "/images/module6/m6_checklist_en.png",
             points: [
               "✅ Keep antivirus software updated",
               "✅ Don't share passwords with anyone",
@@ -181,5 +257,3 @@ export const MODULE6_EN = {
 };
 
 export default MODULE6_EN;
-
-
