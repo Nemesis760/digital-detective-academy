@@ -280,12 +280,9 @@ export default function CardMatchingGame({ pairs = [], isTurkish }) {
                   </div>
                   {/* Back face — content */}
                   <div className="cmg-face cmg-back">
-                    <span className="cmg-card-emoji">{card.emoji}</span>
-                    <span className={`cmg-type-badge ${card.type === "term" ? "term-badge" : "def-badge"}`}>
-                      {card.type === "term"
-                        ? (tr ? "Terim" : "Term")
-                        : (tr ? "Açıklama" : "Definition")}
-                    </span>
+                    <div className={`cmg-card-top ${card.type === "term" ? "top-term" : "top-def"}`}>
+                      <span className="cmg-card-emoji">{card.emoji}</span>
+                    </div>
                     <p className="cmg-card-text">{card.text}</p>
                     {isMatch && <span className="cmg-match-check">✓</span>}
                   </div>
@@ -536,46 +533,49 @@ export default function CardMatchingGame({ pairs = [], isTurkish }) {
           color: rgba(99,102,241,.55);
         }
 
-        /* BACK — TERM (blue) */
-        .cmg-card.is-term .cmg-back {
-          background: linear-gradient(135deg, #1d4ed8 0%, #4f46e5 100%);
-          color: white;
-          border: 2px solid rgba(255,255,255,.25);
-        }
-
-        /* BACK — DEF (purple) */
-        .cmg-card.is-def .cmg-back {
-          background: linear-gradient(135deg, #7c3aed 0%, #be185d 100%);
-          color: white;
-          border: 2px solid rgba(255,255,255,.25);
-        }
-
+        /* BACK — white base, colored top strip */
         .cmg-back {
           transform: rotateY(180deg);
-          padding: 10px 8px 8px;
-          gap: 6px;
+          padding: 0;
+          background: #ffffff;
+          border: 2px solid #e2e8f0;
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: flex-start;
+          gap: 0;
         }
-        .cmg-card-emoji { font-size: 1.5rem; line-height: 1; }
-        .cmg-type-badge {
-          padding: 3px 10px;
-          border-radius: 999px;
-          font-size: .72rem;
-          font-weight: 900;
-          background: rgba(255,255,255,.22);
-          color: rgba(255,255,255,.95);
-          border: 1px solid rgba(255,255,255,.3);
+        .cmg-card.is-term .cmg-back { border-color: #3b82f6; }
+        .cmg-card.is-def  .cmg-back { border-color: #a855f7; }
+
+        .cmg-card-top {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 8px 0 6px;
+          flex-shrink: 0;
         }
+        .top-term { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+        .top-def  { background: linear-gradient(135deg, #a855f7, #ec4899); }
+
+        .cmg-card-emoji { font-size: 1.4rem; line-height: 1; }
+
         .cmg-card-text {
+          flex: 1;
+          padding: 6px 8px;
           font-size: .78rem;
           font-weight: 800;
           text-align: center;
-          line-height: 1.25;
-          color: rgba(255,255,255,.95);
+          line-height: 1.3;
+          color: #1e293b;
+          margin: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
         .cmg-match-check {
-          position: absolute; top: 6px; right: 8px;
+          position: absolute; top: 5px; right: 7px;
           font-size: 1rem;
-          color: #4ade80;
+          color: #16a34a;
           font-weight: 900;
         }
 
@@ -583,24 +583,24 @@ export default function CardMatchingGame({ pairs = [], isTurkish }) {
         .cmg-card.matched .cmg-card-inner {
           animation: cmgPop .5s ease;
         }
-        .cmg-card.matched .cmg-face {
-          box-shadow: 0 0 0 3px #4ade80, 0 6px 20px rgba(16,185,129,.25);
+        .cmg-card.matched .cmg-back {
+          border-color: #22c55e !important;
+          box-shadow: 0 0 0 2px #22c55e, 0 6px 20px rgba(16,185,129,.3);
+        }
+        .cmg-card.matched .cmg-front {
+          box-shadow: 0 0 0 2px #22c55e;
         }
 
         /* WRONG SHAKE */
-        .cmg-card.wrong-shake .cmg-card-inner {
-          animation: cmgShake .4s ease;
+        .cmg-card.wrong-shake .cmg-face {
+          background: rgba(239,68,68,.08) !important;
+          border-color: #ef4444 !important;
         }
 
         @keyframes cmgPop {
           0%  { transform: rotateY(180deg) scale(1); }
-          50% { transform: rotateY(180deg) scale(1.07); }
+          50% { transform: rotateY(180deg) scale(1.06); }
           100%{ transform: rotateY(180deg) scale(1); }
-        }
-        @keyframes cmgShake {
-          0%,100% { transform: rotateY(180deg) translateX(0); }
-          20%     { transform: rotateY(180deg) translateX(-6px); }
-          60%     { transform: rotateY(180deg) translateX(6px); }
         }
 
         /* ── DONE SCREEN ── */
