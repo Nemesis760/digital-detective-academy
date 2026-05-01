@@ -1260,6 +1260,15 @@
   object-fit: contain;
 }
 
+.module1 .content-image {
+  max-width: 900px;
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: zoom-in;
+}
+
 .module1 .table-image {
   max-width: 520px;
 }

@@ -100,7 +100,40 @@ const CompletionScreen = ({ isTurkish, onNavigate, countdown }) => (
   </motion.div>
 );
 
+const ImageLightbox = ({ src, alt, onClose }) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    onClick={onClose}
+    style={{
+      position: 'fixed', inset: 0, zIndex: 3000,
+      background: 'rgba(0,0,0,0.9)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      cursor: 'zoom-out', padding: '20px',
+    }}
+  >
+    <img
+      src={src}
+      alt={alt}
+      style={{ maxWidth: '95vw', maxHeight: '90vh', objectFit: 'contain', borderRadius: '8px' }}
+      onClick={(e) => e.stopPropagation()}
+    />
+    <button
+      onClick={onClose}
+      style={{
+        position: 'absolute', top: '16px', right: '20px',
+        background: 'rgba(255,255,255,0.15)', border: 'none',
+        color: 'white', fontSize: '1.5rem', cursor: 'pointer',
+        borderRadius: '50%', width: '40px', height: '40px',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+      }}
+    >✕</button>
+  </motion.div>
+);
+
 const SectionComponent = ({ section, isTurkish }) => {
+  const [lightbox, setLightbox] = useState(null);
   const renderActivityByType = (activityType) => {
     switch (activityType) {
       case 'data_factory':
@@ -132,6 +165,10 @@ const SectionComponent = ({ section, isTurkish }) => {
   };
 
   return (
+    <>
+      <AnimatePresence>
+        {lightbox && <ImageLightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}
+      </AnimatePresence>
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -146,7 +183,7 @@ const SectionComponent = ({ section, isTurkish }) => {
           {Object.entries(section.content).map(([key, contentItem]) => (
             <motion.div key={key} className="content-item" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
               <h3 className="content-item-title">{contentItem.title}</h3>
-              {contentItem.image && <img src={contentItem.image} alt={contentItem.title} className="content-image" onError={handleImgError} />}
+              {contentItem.image && <img src={contentItem.image} alt={contentItem.title} className="content-image" onError={handleImgError} onClick={() => setLightbox({ src: contentItem.image, alt: contentItem.title })} />}
               <p className="content-description">{contentItem.description}</p>
               {contentItem.points && <ul className="content-points">{contentItem.points.map((p, i) => <li key={i}>{p}</li>)}</ul>}
               {contentItem.examples && Array.isArray(contentItem.examples) && (
@@ -255,6 +292,7 @@ const SectionComponent = ({ section, isTurkish }) => {
         </div>
       ) : null}
     </motion.div>
+    </>
   );
 };
 
