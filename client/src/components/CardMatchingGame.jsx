@@ -13,16 +13,36 @@ function nowMs() {
   return typeof performance !== "undefined" ? performance.now() : Date.now();
 }
 
+const DEFAULT_PAIRS_TR = [
+  { term: "Aktif Ayak İzi", def: "Kullanıcının bilerek yaptığı paylaşımlar (fotoğraf, yorum, gönderi)" },
+  { term: "Pasif Ayak İzi", def: "Farkında olmadan oluşan izler (çerezler, konum, tıklama geçmişi)" },
+  { term: "Çerez (Cookie)", def: "Web sitelerinin seni takip etmek için cihazına bıraktığı küçük veri dosyası" },
+  { term: "Dijital Kimlik", def: "İnternette bıraktığın tüm izlerin oluşturduğu kişisel profil" },
+  { term: "Gizlilik Ayarı", def: "Paylaşımlarının kimler tarafından görüleceğini kontrol eden seçenek" },
+  { term: "Dijital İtibar", def: "İnternetteki davranışlarına göre oluşan sanal itibarın" },
+];
+
+const DEFAULT_PAIRS_EN = [
+  { term: "Active Footprint", def: "Data you share intentionally (photos, comments, posts)" },
+  { term: "Passive Footprint", def: "Data collected without your awareness (cookies, location, click history)" },
+  { term: "Cookie", def: "Small files websites store on your device to track your activity" },
+  { term: "Digital Identity", def: "Your online profile built from all the traces you leave on the internet" },
+  { term: "Privacy Setting", def: "Controls who can see your shared content online" },
+  { term: "Digital Reputation", def: "The virtual reputation formed by your behavior on the internet" },
+];
+
 export default function CardMatchGame({ pairs = [], isTurkish }) {
   const baseCards = useMemo(() => {
+    const defaultPairs = isTurkish ? DEFAULT_PAIRS_TR : DEFAULT_PAIRS_EN;
     // pairs: [{term, def}]
-    const clean = (pairs || []).filter((p) => p?.term && p?.def);
+    const source = (pairs && pairs.length > 0) ? pairs : defaultPairs;
+    const clean = source.filter((p) => p?.term && p?.def);
     const items = clean.flatMap((p, idx) => [
       { id: `t-${idx}`, type: "term", value: String(p.term), pairId: idx },
       { id: `d-${idx}`, type: "def", value: String(p.def), pairId: idx },
     ]);
     return items;
-  }, [pairs]);
+  }, [pairs, isTurkish]);
 
   const [seed, setSeed] = useState(0);
 
