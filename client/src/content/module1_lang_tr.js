@@ -359,13 +359,13 @@ export const MODULE1_TR = {
         },
         "activities": [
           {
-            "activity_title": "Veri Birimleri Bulmacas?",
-            "activity_desc": "?pucu se? ve harfleri doldur (1024 byte = 1 KB, vb.).",
+            "activity_title": "Veri Birimleri Bulmacası",
+            "activity_desc": "İpucu seç ve harfleri doldur (1024 byte = 1 KB vb.).",
             "activity_type": "data_units_crossword_wordwall"
           },
           {
-            "activity_title": "Dosya Uzant?lar? U?ak Oyunu",
-            "activity_desc": "Do?ru uzant? bulutlar?ndan ge?, yanl?? bulutlardan ka??n. Tamamlay?nca otomatik ilerler.",
+            "activity_title": "Dosya Uzantıları Uçak Oyunu",
+            "activity_desc": "Doğru uzantı bulutlarından geç, yanlış bulutlardan kaçın. Tamamlayınca otomatik ilerler.",
             "activity_type": "file_extensions_airplane"
           }
         ]

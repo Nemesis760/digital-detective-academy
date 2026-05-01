@@ -4,7 +4,6 @@ import FILE_EXTENSIONS_ROUNDS from "./fileExtensionsData";
 
 import airplanePng from "../../assets/module1/file-extensions-airplane/airplane.png";
 import cloudPng from "../../assets/module1/file-extensions-airplane/cloud.png";
-import cityPng from "../../assets/module1/file-extensions-airplane/city.png";
 import skyPng from "../../assets/module1/file-extensions-airplane/sky.png";
 import sfxCorrect from "../../assets/module1/file-extensions-airplane/sfx_correct.mp3";
 import sfxWrong from "../../assets/module1/file-extensions-airplane/sfx_wrong.mp3";
@@ -85,9 +84,9 @@ export default function FileExtensionsAirplaneGame() {
     plane: { x: 200, y: 260, vy: 0 },
     clouds: buildClouds(FILE_EXTENSIONS_ROUNDS[0]),
     bg1: 0,
-    bg2: 0,
     advancePending: false,
     effects: [],
+    correctHits: new Set(),
   });
 
   // Keep refs in sync with state
@@ -96,11 +95,12 @@ export default function FileExtensionsAirplaneGame() {
   useEffect(() => { showAnswersRef.current = showAnswers; }, [showAnswers]);
   useEffect(() => { roundIndexRef.current = roundIndex; }, [roundIndex]);
 
-  // Reset clouds + plane on round change
+  // Reset clouds + plane + correctHits on round change
   useEffect(() => {
     stateRef.current.clouds = buildClouds(FILE_EXTENSIONS_ROUNDS[roundIndex]);
     stateRef.current.plane = { x: 200, y: 260, vy: 0 };
     stateRef.current.advancePending = false;
+    stateRef.current.correctHits = new Set();
   }, [roundIndex]);
 
   // W/S only keyboard controls
@@ -132,7 +132,6 @@ export default function FileExtensionsAirplaneGame() {
     let running = true;
 
     const skyImg = new Image();   skyImg.src = skyPng;
-    const cityImg = new Image();  cityImg.src = cityPng;
     const cloudImg = new Image(); cloudImg.src = cloudPng;
     const planeImg = new Image(); planeImg.src = airplanePng;
 
@@ -152,21 +151,14 @@ export default function FileExtensionsAirplaneGame() {
     };
 
     const drawBackground = (dt) => {
-      const { bg1, bg2 } = stateRef.current;
+      const { bg1 } = stateRef.current;
       const speed1 = 10 * dt;
-      const speed2 = 30 * dt;
 
       ctx.fillStyle = "#67b7ff";
       ctx.fillRect(0, 0, ASPECT_W, ASPECT_H);
 
       if (skyImg.complete && skyImg.naturalWidth > 0) {
-        stateRef.current.bg1 = drawTiledImage(skyImg, 0, ASPECT_H, bg1, speed1, 0.92);
-      }
-      if (cityImg.complete && cityImg.naturalWidth > 0) {
-        stateRef.current.bg2 = drawTiledImage(cityImg, ASPECT_H - 120, 120, bg2, speed2, 0.9);
-      } else {
-        ctx.fillStyle = "rgba(24,36,64,0.6)";
-        ctx.fillRect(0, ASPECT_H - 120, ASPECT_W, 120);
+        stateRef.current.bg1 = drawTiledImage(skyImg, 0, ASPECT_H, bg1, speed1, 1.0);
       }
     };
 
@@ -243,7 +235,7 @@ export default function FileExtensionsAirplaneGame() {
     };
 
     const drawPlane = (plane) => {
-      const size = 86;
+      const size = 120;
       ctx.save();
       ctx.translate(plane.x, plane.y);
       if (planeImg.complete && planeImg.naturalWidth > 0) {
@@ -292,6 +284,7 @@ export default function FileExtensionsAirplaneGame() {
 
           if (cloud.isCorrect) {
             playCorrect();
+            state.correctHits.add(cloud.label);
             setScore((s) => s + 10);
             setMessage({ type: "ok", text: "Doğru! ✓" });
             setTimeout(() => setMessage(null), 800);
@@ -339,9 +332,10 @@ export default function FileExtensionsAirplaneGame() {
       draw(dt);
 
       if (running_ && !over && !answers) {
-        const allCorrect = stateRef.current.clouds
-          .filter((c) => c.isCorrect)
-          .every((c) => c.hit);
+        const currentRound = FILE_EXTENSIONS_ROUNDS[ridx];
+        const allCorrect = currentRound.correct.every(
+          (label) => stateRef.current.correctHits.has(label)
+        );
 
         if (allCorrect && !stateRef.current.advancePending) {
           stateRef.current.advancePending = true;
@@ -398,6 +392,7 @@ export default function FileExtensionsAirplaneGame() {
     stateRef.current.plane  = { x: 200, y: 260, vy: 0 };
     stateRef.current.advancePending = false;
     stateRef.current.effects = [];
+    stateRef.current.correctHits = new Set();
   };
 
   const startGame = () => { startAgain(); setIsRunning(true); };
