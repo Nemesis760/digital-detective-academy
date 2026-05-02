@@ -41,7 +41,7 @@ export const MODULE1_TR = {
           "1.2": {
             "title": "Veri ve Bilgi Farkı (Yapboz Analojisi)",
             "description": "Veri (Data): Tek başına bir anlam ifade etmeyen, işlenmemiş ham gerçeklerdir (Örn: '30', 'Kırmızı', 'Ahmet'). Bunlar dağınık yapboz parçalarıdır.\nBilgi (Information): Verilerin işlenip, bir araya getirilerek anlamlı hale gelmiş sonucudur (Örn: 'Ahmet'in kırmızı kazağının fiyatı 30 TL'dir'). Bu, yapbozun tamamlanmış halidir.",
-            "image": "/images/concept_data_info.png",
+            "image": "/images/module1/veri_bilgi.png",
             "examples": [
               "Veri: '10', '00', 'Teneffüs' → Bilgi: 'Saat 10:00'da teneffüs zili çalacak.'",
               "Veri: 'Un', 'Su', 'Maya' → Bilgi (Ürün): 'Ekmek'",
@@ -64,7 +64,7 @@ export const MODULE1_TR = {
       },
       {
         "id": 2,
-        "title": "🧩 Donanım (bilgisayarın vücudu)",
+        "title": "🧩 Donanım (Bilgisayarın Vücudu)",
         "subtitle": "Fiziksel Parçalar, Çevre Birimleri ve Görevleri",
         "intro": "Bilgisayarın elle tutulabilen, gözle görülebilen, kırılabilen tüm metal, plastik ve elektronik parçalarına donanım denir. İnsan vücuduna benzer; tıpkı bizim iskeletimiz, organlarımız olduğu gibi, bilgisayarın da çalışmasını sağlayan fiziksel bileşenleri vardır.",
         "video_links": [
@@ -163,7 +163,7 @@ export const MODULE1_TR = {
       },
       {
         "id": 3,
-        "title": "💾 Yazılım (bilgisayarın ruhu)",
+        "title": "💾 Yazılım (Bilgisayarın Ruhu)",
         "subtitle": "Programlar, İşletim Sistemleri, Kodlama ve Lisanslar",
         "intro": "Donanım parçalarına ne yapması gerektiğini söyleyen, bilgisayarı yöneten komutlar dizisidir. Yazılım olmadan en pahalı bilgisayar bile çalışmayan siyah bir ekrandan ibarettir. Yazılım, bilgisayara hayat veren ruhtur!",
         "video_links": [
@@ -403,7 +403,7 @@ export const MODULE1_TR = {
           "5.2": {
             "title": "Dijital Tehditler (Zararlı Yazılımlar)",
             "description": "İnternetteki kötü niyetli yazılımlar bilgisayarımıza sızıp bilgi çalabilir veya dosyaları silebilir.",
-            "image": "/images/module1_digital_threats.png",
+            "image": "/images/module1/digital_tehditler_tr.png",
             "threat_types": [
               {
                 "name": "Virüs",
