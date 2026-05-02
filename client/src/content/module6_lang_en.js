@@ -225,7 +225,7 @@ export const MODULE6_EN = {
           "3.2": {
             title: "The STOP Response Plan",
             description: "When facing a cyber crisis, remember STOP:",
-            image: "/images/module6/m6_stop_plan_en.png",
+            image: "/images/module6/Stop_en.png",
             points: [
               "S - Stop: Stop what you're doing immediately",
               "T - Tell: Tell a trusted adult (parent, teacher) right away",

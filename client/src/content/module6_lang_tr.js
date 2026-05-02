@@ -223,7 +223,7 @@ export const MODULE6_TR = {
           "3.2": {
             "title": "STOP Müdahale Planı",
             "description": "Siber krizle karşılaştığınızda STOP'u hatırlayın:",
-            "image": "/images/module6/m6_stop_plan_tr.png",
+            "image": "/images/module6/Stop_tr.png",
             "points": [
               "S - Stop (Dur): Yaptığınız şeyi hemen durdurun",
               "T - Tell (Söyle): Hemen güvendiğiniz bir yetişkine söyleyin (ebeveyn, öğretmen)",
