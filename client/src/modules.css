@@ -1261,7 +1261,8 @@
 }
 
 .module1 .content-image,
-.module2 .content-image {
+.module2 .content-image,
+.module6 .content-image {
   max-width: 900px;
   width: 100%;
   display: block;

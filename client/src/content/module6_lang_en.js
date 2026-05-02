@@ -21,7 +21,7 @@ export const MODULE6_EN = {
           "1.1": {
             title: "What is Malware?",
             description: "Malware (malicious software) is software designed to harm your computer, steal information, or disrupt operations. It's like a digital virus!",
-            image: "/images/module6/threats.jpg",
+            image: "/images/module6/malware_ing.png",
             points: [
               "Viruses: Spread from file to file, damaging your system",
               "Trojans: Disguise themselves as safe programs but are dangerous",
@@ -139,7 +139,7 @@ export const MODULE6_EN = {
           "2.1": {
             title: "What is Phishing?",
             description: "Phishing is when scammers try to trick you into giving them personal information like passwords or credit card numbers by pretending to be a trusted company.",
-            image: "/images/module6/phishing.jpg",
+            image: "/images/module6/phishing_ing.png",
             points: [
               "Fake emails that look like they're from real companies",
               "Messages asking you to click on suspicious links",
@@ -208,7 +208,7 @@ export const MODULE6_EN = {
           "3.1": {
             title: "What is a Cyber Crisis?",
             description: "A cyber crisis is when your computer or accounts are under attack. It could be malware, hacking, or identity theft.",
-            image: "/images/module6/crisis_response_hero.jpg",
+            image: "/images/module6/cyber_crisis_en.png",
             points: [
               "Your computer is infected with malware",
               "Someone has hacked into your account",

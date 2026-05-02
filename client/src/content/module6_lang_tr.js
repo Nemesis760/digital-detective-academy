@@ -19,7 +19,7 @@ export const MODULE6_TR = {
           "1.1": {
             "title": "Kötü Amaçlı Yazılım (Malware) Nedir?",
             "description": "Kötü amaçlı yazılım (malware), bilgisayarınıza zarar vermek, bilgi çalmak veya işlemleri bozmak için tasarlanmış yazılımdır. Dijital bir virüs gibidir!",
-            "image": "/images/module6/threats.jpg",
+            "image": "/images/module6/malware_tr.png",
             "points": [
               "Virüsler: Dosyadan dosyaya yayılır, sisteminize zarar verir",
               "Truva Atları: Kendilerini güvenli programlar gibi gösterir ama tehlikelidir",
@@ -137,7 +137,7 @@ export const MODULE6_TR = {
           "2.1": {
             "title": "Kimlik Avı (Phishing) Nedir?",
             "description": "Kimlik avı, dolandırıcıların güvenilir bir şirket gibi davranarak şifreler veya kredi kartı numaraları gibi kişisel bilgilerinizi almak için sizi kandırmaya çalışmasıdır.",
-            "image": "/images/module6/phishing.jpg",
+            "image": "/images/module6/phishing_tr.png",
             "points": [
               "Gerçek şirketlerden geliyormuş gibi görünen sahte e-postalar",
               "Şüpheli linklere tıklamanızı isteyen mesajlar",
@@ -206,7 +206,7 @@ export const MODULE6_TR = {
           "3.1": {
             "title": "Siber Kriz Nedir?",
             "description": "Siber kriz, bilgisayarınızın veya hesaplarınızın saldırı altında olduğu zamandır. Kötü amaçlı yazılım, hack veya kimlik hırsızlığı olabilir.",
-            "image": "/images/module6/crisis_response_hero.jpg",
+            "image": "/images/module6/cyber_crisis_tr.png",
             "points": [
               "Bilgisayarınız kötü amaçlı yazılımla enfekte olmuştur",
               "Birisi hesabınıza girmiştir",
