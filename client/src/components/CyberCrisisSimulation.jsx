@@ -22,7 +22,7 @@ const CyberCrisisSimulation = ({ isTurkish = true }) => {
   // ============================================================
   const [phase, setPhase] = useState('boot');
   const [systemIntegrity, setSystemIntegrity] = useState(100);
-  const [timeLeft, setTimeLeft] = useState(10); // 10 seconds as per prompt
+  const [timeLeft, setTimeLeft] = useState(90);
   const [cluesFound, setCluesFound] = useState({
     fakeUrl: false,
     cpuUsage: false,
@@ -64,7 +64,7 @@ const CyberCrisisSimulation = ({ isTurkish = true }) => {
         }
 
         // Zaman azaldıkça sallantı artar
-        if (timeLeft < 20) {
+        if (timeLeft < 30) {
           setWindowShake(true);
           setTimeout(() => setWindowShake(false), 200);
         }
