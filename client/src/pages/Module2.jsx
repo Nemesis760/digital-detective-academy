@@ -120,7 +120,7 @@ const SectionComponent = ({ section, isTurkish }) => {
           }
         }
         return quizContent ? (
-          <InteractiveQuiz quizItems={quizContent} isTurkish={isTurkish} />
+          <InteractiveQuiz quizItems={quizContent} isTurkish={isTurkish} stepByStep />
         ) : (
           <div className="activity-placeholder">
             <p className="activity-placeholder-text">
@@ -193,7 +193,7 @@ const SectionComponent = ({ section, isTurkish }) => {
               {contentItem.quiz &&
                 section.activity_type !== 'content_quiz' &&
                 section.activity_type !== 'interactive_quiz' && (
-                  <InteractiveQuiz quizItems={contentItem.quiz} isTurkish={isTurkish} />
+                  <InteractiveQuiz quizItems={contentItem.quiz} isTurkish={isTurkish} stepByStep />
                 )}
               {contentItem.story_images && (
                 <div className="story-images-section">

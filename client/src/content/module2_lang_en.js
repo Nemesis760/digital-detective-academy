@@ -31,17 +31,20 @@ export const MODULE2_EN = {
               {
                 type: "true_false",
                 question: "Digital footprint consists only of social media posts.",
-                answer: false
+                answer: false,
+                explanation_en: "A digital footprint goes far beyond social media. Your search history, videos you watch, games you play, and messages you send are all part of your digital footprint."
               },
               {
                 type: "true_false",
                 question: "Every action on the internet can leave a trace.",
-                answer: true
+                answer: true,
+                explanation_en: "Yes! Clicking on a site, watching a video, or even just visiting a page can leave a trace on servers. In the digital world, every step can be recorded."
               },
               {
                 type: "true_false",
                 question: "When you delete a post, it completely disappears from the internet.",
-                answer: false
+                answer: false,
+                explanation_en: "Deleting a post removes it from your view, but someone may have already taken a screenshot or the site may have archived it. The internet truly never forgets!"
               },
               {
                 type: "multiple_choice",
@@ -51,7 +54,8 @@ export const MODULE2_EN = {
                   { text: "B) Watching a video on the internet", correct: true },
                   { text: "C) Reading a book", correct: false },
                   { text: "D) Playing sports", correct: false }
-                ]
+                ],
+                explanation_en: "Watching a video online leaves a trace in your viewing history and on the platform's database. Writing notes, reading books, and playing sports don't create any digital traces."
               }
             ]
           },
@@ -101,7 +105,8 @@ export const MODULE2_EN = {
               {
                 type: "true_false",
                 question: "Commenting by my own choice is an active footprint.",
-                answer: true
+                answer: true,
+                explanation_en: "An active digital footprint is created by actions you intentionally choose to do. Writing a comment is fully your own decision, so it creates an active footprint."
               }
             ]
           },
@@ -125,12 +130,14 @@ export const MODULE2_EN = {
               {
                 type: "true_false",
                 question: "Cookies that track me on websites are an active footprint.",
-                answer: false
+                answer: false,
+                explanation_en: "Cookies work in the background without your awareness. You're not sharing anything; the website is collecting information about you. That's why it's a passive footprint."
               },
               {
                 type: "true_false",
                 question: "A map app that uses my location leaves a passive footprint.",
-                answer: true
+                answer: true,
+                explanation_en: "A map app automatically collects your location data in the background. You're not consciously 'publishing' it — the app records it on its own. This is a passive footprint."
               }
             ]
           },
@@ -179,7 +186,8 @@ export const MODULE2_EN = {
                   { text: "B) Your birthdate", correct: false },
                   { text: "C) Your favorite color", correct: true },
                   { text: "D) Your home address", correct: false }
-                ]
+                ],
+                explanation_en: "Your favorite color doesn't identify you or put your privacy at risk. But your phone number, birthdate, and home address are private details that directly identify you — never share these online!"
               }
             ]
           },
@@ -204,22 +212,26 @@ export const MODULE2_EN = {
               {
                 type: "true_false",
                 question: "There is no harm in sharing my home address on social media.",
-                answer: false
+                answer: false,
+                explanation_en: "Your home address is one of your most private pieces of information. Malicious people could use it to find you. It should absolutely never be shared on social media!"
               },
               {
                 type: "true_false",
                 question: "Privacy settings allow us to control who can see our information.",
-                answer: true
+                answer: true,
+                explanation_en: "Exactly! Privacy settings let you keep your profile visible only to friends you know, preventing strangers from accessing your information. This is the foundation of digital safety."
               },
               {
                 type: "true_false",
                 question: "Making my profile 'Public' is the safest method.",
-                answer: false
+                answer: false,
+                explanation_en: "A public profile means millions of strangers can see your information. The safest option is to set your profile to 'Friends Only' so only people you know can view it."
               },
               {
                 type: "true_false",
                 question: "I should not use a photo showing my school uniform logo as a profile picture.",
-                answer: true
+                answer: true,
+                explanation_en: "A school uniform logo can reveal which school you attend. This information could be used to predict where you are. Profile pictures shouldn't contain identifiable details like logos or landmarks."
               },
               {
                 type: "multiple_choice",
@@ -228,7 +240,8 @@ export const MODULE2_EN = {
                   { text: "A) Allow it", correct: false },
                   { text: "B) Deny it", correct: true },
                   { text: "C) Ask your friends", correct: false }
-                ]
+                ],
+                explanation_en: "A game has no reason to access your contacts. Unnecessary permission requests are a warning sign that an app may be trying to collect your personal data. Always ask 'why does it need this?' — and deny it!"
               },
               {
                 type: "multiple_choice",
@@ -237,7 +250,8 @@ export const MODULE2_EN = {
                   { text: "A) Your home address", correct: false },
                   { text: "B) Your favorite team's flag", correct: true },
                   { text: "C) Your school's full name", correct: false }
-                ]
+                ],
+                explanation_en: "Your favorite team's flag doesn't reveal anything personal about you. Your home address and school name could show where you live and spend time — those are dangerous to share."
               }
             ]
           },
@@ -360,7 +374,8 @@ export const MODULE2_EN = {
                   { text: "A) Share quickly.", correct: false },
                   { text: "B) Stop and think if the post is kind and safe.", correct: true },
                   { text: "C) Guess how many likes you'll get.", correct: false }
-                ]
+                ],
+                explanation_en: "According to the T.H.I.N.K. rule, before sharing you should ask: Is it True? Helpful? Inspiring? Necessary? Kind? Speed and likes don't matter — safety and respect do!"
               }
             ]
           }
@@ -385,7 +400,8 @@ export const MODULE2_EN = {
                   { text: "A) Passive digital footprint", correct: false },
                   { text: "B) Active digital footprint (she is sharing it intentionally)", correct: true },
                   { text: "C) Neither", correct: false }
-                ]
+                ],
+                explanation_en: "Zeynep is consciously choosing to share the photo. Because it's an intentional action, it creates an active digital footprint. Passive footprints are created without direct awareness."
               },
               {
                 type: "multiple_choice",
@@ -394,7 +410,8 @@ export const MODULE2_EN = {
                   { text: "A) Yes, she can share it because it's funny", correct: false },
                   { text: "B) No, it violates Can's personal privacy and could offend him (it could be considered cyberbullying)", correct: true },
                   { text: "C) It doesn't matter", correct: false }
-                ]
+                ],
+                explanation_en: "Taking and sharing someone's photo without permission violates their privacy rights and can be considered cyberbullying. Being funny doesn't justify it — empathy matters!"
               },
               {
                 type: "multiple_choice",
@@ -403,7 +420,8 @@ export const MODULE2_EN = {
                   { text: "A) Yes, she should allow it immediately", correct: false },
                   { text: "B) No, she should deny it. A game does not need contacts.", correct: true },
                   { text: "C) She should ignore it and close it", correct: false }
-                ]
+                ],
+                explanation_en: "There's no logical reason for a game to need access to contacts or photos. These unnecessary permission requests are a red flag that the app may be trying to collect personal data — always deny it!"
               },
               {
                 type: "multiple_choice",
@@ -412,7 +430,8 @@ export const MODULE2_EN = {
                   { text: "A) Share the photo and allow the game", correct: false },
                   { text: "B) She should delete Can's photo and not share it (respect for others). She should also deny the game's unnecessary access request (protecting her own privacy).", correct: true },
                   { text: "C) Just don't share the photo", correct: false }
-                ]
+                ],
+                explanation_en: "Two separate ethical decisions are both correct here: respecting others' privacy (deleting Can's photo) and protecting her own privacy (denying the app's unnecessary request). Both are equally important!"
               }
             ]
           }

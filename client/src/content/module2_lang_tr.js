@@ -18,7 +18,7 @@ export const MODULE2_TR = {
             title: "Dijital Ayak İzi Nedir?",
             description:
               "Dijital ayak izi, internette yaptığımız her hareketin geride bıraktığı izlerin tamamıdır. Sosyal medyada paylaştığımız fotoğraflar, yazdığımız yorumlar, arama geçmişimiz ve izlediğimiz videolar bu izlerin bir parçasıdır. İnternette attığımız her adım, tıpkı karda yürürken oluşan ayak izleri gibi görünmez ama kalıcı olabilir.",
-            image: "/images/digital_footprint_concept_map.png",
+            image: "/images/module2/digital_footprint_hero.png",
             story_images: true,
             points: [
               "Sosyal medyada paylaştığımız fotoğraflar ve yorumlar",
@@ -38,17 +38,20 @@ export const MODULE2_TR = {
                 type: "true_false",
                 question:
                   "Dijital ayak izi sadece sosyal medya paylaşımlarından oluşur.",
-                answer: false
+                answer: false,
+                explanation_tr: "Dijital ayak izi sosyal medyanın çok ötesine geçer. Arama geçmişin, izlediğin videolar, oynadığın oyunlar ve gönderdiğin mesajlar da dijital ayak izinin parçasıdır."
               },
               {
                 type: "true_false",
                 question: "İnternette yapılan her hareket iz bırakabilir.",
-                answer: true
+                answer: true,
+                explanation_tr: "Evet! Bir siteye tıklamak, video izlemek, hatta sadece bir sayfayı ziyaret etmek bile sunucularda iz bırakabilir. Dijital dünyada her adım kaydedilebilir."
               },
               {
                 type: "true_false",
                 question: "Bir gönderiyi silince internetten tamamen yok olur.",
-                answer: false
+                answer: false,
+                explanation_tr: "Silmek içeriği kaldırsa da, birisi daha önce ekran görüntüsü almış ya da site arşivlemiş olabilir. İnternet gerçekten asla unutmaz!"
               },
               {
                 type: "multiple_choice",
@@ -58,7 +61,8 @@ export const MODULE2_TR = {
                   { text: "B) İnternette video izlemek", correct: true },
                   { text: "C) Kitap okumak", correct: false },
                   { text: "D) Spor yapmak", correct: false }
-                ]
+                ],
+                explanation_tr: "İnternette video izlemek, izleme geçmişinde ve platformun veri tabanında iz bırakır. Deftere not almak, kitap okumak ve spor yapmak internette hiç iz bırakmaz."
               }
             ]
           },
@@ -112,7 +116,8 @@ export const MODULE2_TR = {
               {
                 type: "true_false",
                 question: "Kendi isteğimle yorum yapmak aktif ayak izidir.",
-                answer: true
+                answer: true,
+                explanation_tr: "Aktif dijital ayak izi, bilerek ve isteyerek yaptığımız paylaşımlardır. Bir yorum yazmak tamamen senin kararın olduğu için aktif bir iz bırakırsın."
               }
             ]
           },
@@ -138,13 +143,15 @@ export const MODULE2_TR = {
                 type: "true_false",
                 question:
                   "Sitelerin beni takip eden çerezleri (cookies) aktif ayak izidir.",
-                answer: false
+                answer: false,
+                explanation_tr: "Çerezler arka planda ve farkında olmadan çalışır. Bir şey paylaşmıyorsun; site senin hakkında bilgi topluyor. Bu yüzden pasif ayak izidir."
               },
               {
                 type: "true_false",
                 question:
                   "Konumumu kullanan bir harita uygulaması pasif iz bırakır.",
-                answer: true
+                answer: true,
+                explanation_tr: "Harita uygulaması arka planda konum verini otomatik toplar. Sen bunu 'yayınlamıyorsun', uygulama kendisi kaydediyor. Bu pasif bir iz bırakmaktır."
               }
             ]
           },
@@ -197,7 +204,8 @@ export const MODULE2_TR = {
                   { text: "B) Doğum tarihin", correct: false },
                   { text: "C) En sevdiğin renk", correct: true },
                   { text: "D) Ev adresin", correct: false }
-                ]
+                ],
+                explanation_tr: "En sevdiğin renk seni tanımlamaz ve gizliliğini tehlikeye atmaz. Ama telefon numaran, doğum tarihin ve ev adresin seni doğrudan tanımlayan özel bilgilerdir — bunları internette paylaşma!"
               }
             ]
           },
@@ -223,24 +231,28 @@ export const MODULE2_TR = {
               {
                 type: "true_false",
                 question: "Ev adresimi sosyal medyada paylaşmakta bir sakınca yoktur.",
-                answer: false
+                answer: false,
+                explanation_tr: "Ev adresin en özel bilgilerinden biridir. Kötü niyetli kişiler bu bilgiyi seni bulmak için kullanabilir. Sosyal medyada kesinlikle paylaşılmamalıdır!"
               },
               {
                 type: "true_false",
                 question:
                   "Gizlilik ayarları, bilgilerimizi kimlerin göreceğini kontrol etmemizi sağlar.",
-                answer: true
+                answer: true,
+                explanation_tr: "Evet! Gizlilik ayarları sayesinde profilini sadece arkadaşlarına açık tutabilir, yabancıların seni görmesini engelleyebilirsin. Bu dijital güvenliğin temelidir."
               },
               {
                 type: "true_false",
                 question: "Profilimi 'Herkese Açık' yapmak en güvenli yöntemdir.",
-                answer: false
+                answer: false,
+                explanation_tr: "Herkese açık profil, milyonlarca yabancının bilgilerini görebileceği anlamına gelir. En güvenli yöntem profili 'Sadece Arkadaşlar' olarak ayarlamaktır."
               },
               {
                 type: "true_false",
                 question:
                   "Okul formamın logosunun göründüğü bir fotoğrafı profil resmi yapmamalıyım.",
-                answer: true
+                answer: true,
+                explanation_tr: "Okul forması logosundan birisi hangi okula gittiğini öğrenebilir. Bu bilgi, nerede olduğunu tahmin etmek için kullanılabilir. Profil fotoğrafında tanımlanabilir detaylar olmamalı."
               },
               {
                 type: "multiple_choice",
@@ -250,7 +262,8 @@ export const MODULE2_TR = {
                   { text: "A) İzin vermelisin", correct: false },
                   { text: "B) Reddetmelisin", correct: true },
                   { text: "C) Arkadaşlarına sormalısın", correct: false }
-                ]
+                ],
+                explanation_tr: "Bir oyunun rehberine ihtiyacı yoktur. Gereksiz izin istekleri, uygulamanın senin kişisel verilerini toplayabileceğinin işaretidir. Her zaman 'neden bu izni istiyor?' diye sor!"
               },
               {
                 type: "multiple_choice",
@@ -259,7 +272,8 @@ export const MODULE2_TR = {
                   { text: "A) Ev adresin", correct: false },
                   { text: "B) Tuttuğun takımın bayrağı", correct: true },
                   { text: "C) Okulunun tam adı", correct: false }
-                ]
+                ],
+                explanation_tr: "Tuttuğun takımın bayrağı hakkında kişisel bir şey açıklamaz ve seni tanımlamaz. Ev adresi ve okul adı ise nerede olduğunu gösterebilir — bunlar tehlikeli bilgilerdir."
               }
             ]
           },
@@ -338,7 +352,7 @@ export const MODULE2_TR = {
             title: "T.H.I.N.K. Kuralı",
             description:
               "Paylaşmadan Önce Düşün (T.H.I.N.K.): Paylaşacağın şey Doğru mu (True)? Yararlı mı (Helpful)? İlham verici mi (Inspiring)? Gerekli mi (Necessary)? Nazik mi (Kind)? Değilse paylaşma.",
-            image: "/images/digital_footprint_hero.png",
+            image: "/images/module2/think_rule.png",
             points: [
               "T - True (Doğru): Bilgi doğru mu?",
               "H - Helpful (Yararlı): Başkalarına yararlı mı?",
@@ -396,7 +410,8 @@ export const MODULE2_TR = {
                     correct: true
                   },
                   { text: "C) Kaç beğeni alacağını tahmin etmek.", correct: false }
-                ]
+                ],
+                explanation_tr: "T.H.I.N.K. kuralına göre: paylaşmadan önce 'Bu doğru mu? Yararlı mı? İlham verici mi? Gerekli mi? Nazik mi?' diye sorman gerekir. Hız veya beğeni sayısı değil, güvenlik ve saygı önemlidir!"
               }
             ]
           }
@@ -426,7 +441,8 @@ export const MODULE2_TR = {
                     correct: true
                   },
                   { text: "C) Hiçbiri", correct: false }
-                ]
+                ],
+                explanation_tr: "Zeynep fotoğrafı kendisi, bilerek ve isteyerek paylaşıyor. Bu bilinçli bir eylem olduğundan aktif dijital ayak izidir. Pasif ayak izi ise farkında olmadan oluşur."
               },
               {
                 type: "multiple_choice",
@@ -439,7 +455,8 @@ export const MODULE2_TR = {
                     correct: true
                   },
                   { text: "C) Fark etmez", correct: false }
-                ]
+                ],
+                explanation_tr: "Bir kişinin izni olmadan fotoğrafını çekmek ve paylaşmak hem gizlilik hakkını ihlal eder hem de dijital zorbalık sayılabilir. Komik olması bunu haklı kılmaz — empati kurmak önemlidir!"
               },
               {
                 type: "multiple_choice",
@@ -452,7 +469,8 @@ export const MODULE2_TR = {
                     correct: true
                   },
                   { text: "C) Önemsemeden kapatmalıdır", correct: false }
-                ]
+                ],
+                explanation_tr: "Bir oyunun rehbere veya fotoğraflara erişmesi için hiçbir mantıklı sebep yoktur. Bu gereksiz izin istekleri, veri toplamaya çalışan şüpheli uygulamaların belirtisidir — her zaman reddet!"
               },
               {
                 type: "multiple_choice",
@@ -465,7 +483,8 @@ export const MODULE2_TR = {
                     correct: true
                   },
                   { text: "C) Sadece fotoğrafı paylaşma", correct: false }
-                ]
+                ],
+                explanation_tr: "İki farklı etik karar birden doğru: Başkasının gizliliğini korumak (Can'ın fotoğrafını silmek) ve kendi gizliliğini korumak (gereksiz uygulama iznini reddetmek). İkisi de eşit önemde!"
               }
             ]
           }

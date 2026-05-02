@@ -2,6 +2,37 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../modules.css';
 
+const CELEBRATION_EMOJIS = ['🎉', '⭐', '🌟', '✨', '🏆', '🎊', '💫'];
+
+function CelebrationBurst() {
+  return (
+    <div style={{ position: 'relative', height: 0, overflow: 'visible', pointerEvents: 'none' }}>
+      {CELEBRATION_EMOJIS.map((emoji, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 1, y: 0, x: 0, scale: 0.5 }}
+          animate={{
+            opacity: 0,
+            y: -80 - Math.random() * 60,
+            x: (i % 2 === 0 ? 1 : -1) * (20 + i * 18),
+            scale: 1.4,
+          }}
+          transition={{ duration: 0.9, delay: i * 0.07, ease: 'easeOut' }}
+          style={{
+            position: 'absolute',
+            left: '50%',
+            top: '-8px',
+            fontSize: '1.4rem',
+            display: 'inline-block',
+          }}
+        >
+          {emoji}
+        </motion.span>
+      ))}
+    </div>
+  );
+}
+
 function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
   // ── Normal mod state ──────────────────────────────────────────────
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -254,22 +285,42 @@ function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
               {stepAnswered && (
                 <motion.div
                   className={`quiz-feedback ${correct ? 'correct-feedback' : 'wrong-feedback'}`}
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
+                  initial={{ opacity: 0, scale: correct ? 0.8 : 0.95, height: 0 }}
+                  animate={{ opacity: 1, scale: 1, height: 'auto' }}
                   exit={{ opacity: 0, height: 0 }}
+                  transition={{ type: correct ? 'spring' : 'tween', stiffness: 400, damping: 20 }}
                 >
-                  <p>{correct ? `✔ ${isTurkish ? 'Doğru!' : 'Correct!'}` : `✘ ${isTurkish ? 'Yanlış!' : 'Incorrect!'}`}</p>
+                  {correct && <CelebrationBurst />}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                    {correct ? (
+                      <motion.span
+                        initial={{ scale: 0 }}
+                        animate={{ scale: [0, 1.4, 1] }}
+                        transition={{ duration: 0.4 }}
+                        style={{ fontSize: '1.6rem' }}
+                      >
+                        🎉
+                      </motion.span>
+                    ) : (
+                      <span style={{ fontSize: '1.3rem' }}>😅</span>
+                    )}
+                    <p style={{ margin: 0, fontWeight: 800 }}>
+                      {correct
+                        ? (isTurkish ? 'Harika! Doğru cevap!' : 'Amazing! Correct answer!')
+                        : (isTurkish ? 'Yanlış! Bir sonraki sefer daha iyi!' : 'Incorrect! Better next time!')}
+                    </p>
+                  </div>
                   {finalReason && (
                     <p className="quiz-explain">
                       {correct
-                        ? (isTurkish ? 'Neden doğru? ' : 'Why correct? ')
-                        : (isTurkish ? 'Neden yanlış? ' : 'Why wrong? ')}
+                        ? (isTurkish ? '💡 Neden doğru? ' : '💡 Why correct? ')
+                        : (isTurkish ? '💡 Neden yanlış? ' : '💡 Why wrong? ')}
                       {finalReason}
                     </p>
                   )}
                   {!correct && correctText && (
                     <p className="quiz-explain">
-                      {isTurkish ? 'Doğru cevap: ' : 'Correct answer: '}{correctText}
+                      {isTurkish ? '✅ Doğru cevap: ' : '✅ Correct answer: '}{correctText}
                     </p>
                   )}
 
@@ -280,13 +331,16 @@ function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
                     style={{
                       marginTop: '0.75rem',
                       padding: '9px 24px',
-                      background: 'linear-gradient(135deg, #667eea, #764ba2)',
+                      background: correct
+                        ? 'linear-gradient(135deg, #22c55e, #16a34a)'
+                        : 'linear-gradient(135deg, #667eea, #764ba2)',
                       color: 'white',
                       border: 'none',
                       borderRadius: '10px',
                       fontWeight: 700,
                       fontSize: '0.9rem',
                       cursor: 'pointer',
+                      boxShadow: correct ? '0 4px 14px rgba(34,197,94,0.35)' : 'none',
                     }}
                   >
                     {isLast
