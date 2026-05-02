@@ -18,113 +18,258 @@ function AdvancedHotspotCyberQuiz({ isTurkish }) {
     {
       title: isTurkish ? '🔗 Gizemli Link' : '🔗 Mystery Link',
       image: '/images/module6/game_first_post.png',
-      question: isTurkish ? 'Efe hangisine tıklamalı?' : 'Where should Efe click?',
-      hotspots: [
-        { id: 1, correct: false, style: { top: '45%', left: '30%' } },
-        { id: 2, correct: true, style: { top: '72%', left: '65%' } },
+      situation: isTurkish
+        ? 'Efe, sosyal medyada bir fotoğraf paylaşıyor. Paylaşım yaparken konum etiketini açık mı bırakmalı, yoksa kapalı mı tutmalı?'
+        : 'Efe is sharing a photo on social media. Should he leave the location tag ON or keep it OFF?',
+      question: isTurkish ? 'Efe ne yapmalı?' : 'What should Efe do?',
+      choices: [
+        {
+          id: 1, correct: false,
+          label: isTurkish ? '📍 Konum Etiketini AÇIK bırak' : '📍 Keep Location Tag ON',
+          explanation: isTurkish
+            ? '❌ Yanlış! Konumunu herkesle paylaşmak seni ve aileni tehlikeye atar. Nerede olduğunu yabancılar görebilir.'
+            : '❌ Wrong! Sharing your location with everyone puts you and your family at risk. Strangers can see where you are.',
+        },
+        {
+          id: 2, correct: true,
+          label: isTurkish ? '🔒 Konum Etiketini KAPALI tut' : '🔒 Keep Location Tag OFF',
+          explanation: isTurkish
+            ? '✅ Harika! Konumunu gizleyerek gizliliğini koruyorsun. Nerede olduğunu sadece istediğin kişiler bilmeli!'
+            : '✅ Great! Hiding your location protects your privacy. Only people you trust should know where you are!',
+        },
       ],
-      correctText: isTurkish ? 'Harika! Bilinmeyen linkler silinmelidir.' : 'Great! Unknown links should be deleted.',
-      wrongText: isTurkish ? 'Bu tehlikeli olabilir. Tekrar dene!' : 'This could be dangerous. Try again!',
     },
     {
       title: isTurkish ? '🔐 Şifre Tuzağı' : '🔐 Password Trap',
       image: '/images/module6/game_password_creation.png',
-      question: isTurkish ? 'Doğru davranış hangisi?' : 'Which is the right action?',
-      hotspots: [
-        { id: 1, correct: false, style: { top: '55%', left: '42%' } },
-        { id: 2, correct: true, style: { top: '78%', left: '68%' } },
+      situation: isTurkish
+        ? 'Efe\'nin en iyi arkadaşı şifreni soruyor: "Bana ver, seninle bir oyun oynamak istiyorum." Efe ne yapmalı?'
+        : 'Efe\'s best friend is asking for his password: "Give it to me, I want to play a game with you." What should Efe do?',
+      question: isTurkish ? 'Efe ne yapmalı?' : 'What should Efe do?',
+      choices: [
+        {
+          id: 1, correct: false,
+          label: isTurkish ? '🔓 Şifremi arkadaşıma vereyim' : '🔓 Give my password to my friend',
+          explanation: isTurkish
+            ? '❌ Yanlış! Şifreni en yakın arkadaşına bile vermemelisin. Şifreler tamamen kişiseldir — kimseyle paylaşılmaz!'
+            : '❌ Wrong! You should never give your password to anyone, even your best friend. Passwords are completely personal!',
+        },
+        {
+          id: 2, correct: true,
+          label: isTurkish ? '🛡️ Şifremi kimseyle paylaşmam' : '🛡️ I never share my password',
+          explanation: isTurkish
+            ? '✅ Süper! Şifreler yalnızca sana aittir. Sana gerçekten önem veren hiçbir kişi şifreni istemez. Güçlü ve gizli tut!'
+            : '✅ Well done! Passwords belong only to you. Anyone who truly cares about you would never ask for your password. Keep it strong and secret!',
+        },
       ],
-      correctText: isTurkish ? 'Süper! Şifreler gizli tutulur.' : 'Well done! Passwords are private.',
-      wrongText: isTurkish ? 'Yanlış seçim! Şifre paylaşılmaz.' : 'Wrong choice! Passwords are not shared.',
     },
     {
       title: isTurkish ? '📨 Tanımadık Mesaj' : '📨 Unknown Message',
       image: '/images/module6/game_friend_request.png',
+      situation: isTurkish
+        ? 'Efe\'ye sosyal medyada tanımadığı biri arkadaşlık isteği gönderiyor ve "Seninle arkadaş olmak istiyorum, çok güzel fotoğrafların var" diyor.'
+        : 'A stranger sends Efe a friend request on social media saying "I want to be your friend, you have great photos."',
       question: isTurkish ? 'Efe ne yapmalı?' : 'What should Efe do?',
-      hotspots: [
-        { id: 1, correct: false, style: { top: '50%', left: '35%' } },
-        { id: 2, correct: true, style: { top: '75%', left: '70%' } },
+      choices: [
+        {
+          id: 1, correct: false,
+          label: isTurkish ? '✔️ İsteği kabul edeyim, samimi görünüyor' : '✔️ Accept the request, they seem nice',
+          explanation: isTurkish
+            ? '❌ Dikkat! İnternette tanımadığın kişiler her zaman göründükleri gibi olmayabilir. Yabancıların arkadaşlık isteklerini asla kabul etme!'
+            : '❌ Warning! People online are not always who they seem. Never accept friend requests from strangers you don\'t know in real life!',
+        },
+        {
+          id: 2, correct: true,
+          label: isTurkish ? '🚫 İsteği reddet ve bir büyüğüme söyle' : '🚫 Reject the request and tell an adult',
+          explanation: isTurkish
+            ? '✅ Doğru! Tanımadığın kişilerin isteklerini reddet ve bu durumu güvendiğin bir büyüğüne haber ver. Güvende olmak önemlidir!'
+            : '✅ Correct! Reject requests from people you don\'t know and tell a trusted adult. Staying safe is what matters most!',
+        },
       ],
-      correctText: isTurkish ? 'Doğru! Tanımadığın kişilerle konuşma.' : 'Correct! Do not talk to strangers.',
-      wrongText: isTurkish ? 'Bu güvenli değil. Tekrar dene.' : 'This is not safe. Try again.',
     },
     {
       title: isTurkish ? '📧 Acil E-posta' : '📧 Urgent Email',
       image: '/images/module6/game_privacy_settings.png',
-      question: isTurkish ? 'En güvenli seçim hangisi?' : 'What is the safest choice?',
-      hotspots: [
-        { id: 1, correct: false, style: { top: '48%', left: '40%' } },
-        { id: 2, correct: true, style: { top: '80%', left: '65%' } },
+      situation: isTurkish
+        ? 'Efe\'ye "Tebrikler! 1.000 TL kazandınız! Ödülünüzü almak için hemen tıklayın ve bilgilerinizi girin!" yazılı bir e-posta geliyor.'
+        : 'Efe receives an email: "Congratulations! You won $500! Click here immediately and enter your details to claim your prize!"',
+      question: isTurkish ? 'Efe ne yapmalı?' : 'What should Efe do?',
+      choices: [
+        {
+          id: 1, correct: false,
+          label: isTurkish ? '🎁 Hemen tıklayayım, ödül kazandım!' : '🎁 Click immediately, I won a prize!',
+          explanation: isTurkish
+            ? '❌ Dur! Bu bir phishing (kimlik avı) tuzağıdır! Kimse sana bedava para vermez. Bu tür e-postalar kişisel bilgilerini çalmak için tasarlanmıştır.'
+            : '❌ Stop! This is a phishing scam! Nobody gives away free money. These emails are designed to steal your personal information.',
+        },
+        {
+          id: 2, correct: true,
+          label: isTurkish ? '🗑️ E-postayı sil, büyüğüme haber ver' : '🗑️ Delete the email, tell an adult',
+          explanation: isTurkish
+            ? '✅ Harika karar! "Hemen tıkla" veya "ödül kazandın" gibi mesajlar oltalama saldırısıdır. Silip bir yetişkine söylemek en güvenli yoldur!'
+            : '✅ Great decision! Messages saying "click now" or "you won a prize" are phishing attacks. Deleting and telling an adult is the safest path!',
+        },
       ],
-      correctText: isTurkish ? 'Harika! Önce bir büyüğüne danışmalısın.' : 'Great! Ask an adult first.',
-      wrongText: isTurkish ? 'Acele etmek risklidir!' : 'Rushing can be risky!',
     },
   ];
 
   const [step, setStep] = useState(0);
-  const [feedback, setFeedback] = useState(null);
+  const [answered, setAnswered] = useState(false);
+  const [selectedId, setSelectedId] = useState(null);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [clickedIds, setClickedIds] = useState(new Set());
 
   const playSound = (soundFile) => {
-    try {
-      const audio = new Audio(soundFile);
-      audio.volume = 0.5;
-      audio.play().catch(() => {});
-    } catch (_) {}
+    try { new Audio(soundFile).play().catch(() => {}); } catch (_) {}
   };
 
-  const handleClick = (spot) => {
-    if (clickedIds.has(spot.id)) return;
-    setClickedIds((prev) => new Set([...prev, spot.id]));
-    setIsCorrect(spot.correct);
-    setFeedback(spot.correct ? scenarios[step].correctText : scenarios[step].wrongText);
-    if (spot.correct) {
-      playSound('/sounds/correct.mp3');
-      setTimeout(() => { setFeedback(null); setClickedIds(new Set()); setStep((prev) => prev + 1); }, 2000);
-    } else {
-      playSound('/sounds/wrong.mp3');
-      setTimeout(() => { setFeedback(null); }, 2000);
-    }
+  const handleChoice = (choice) => {
+    if (answered) return;
+    setSelectedId(choice.id);
+    setAnswered(true);
+    setIsCorrect(choice.correct);
+    playSound(choice.correct ? '/sounds/correct.mp3' : '/sounds/wrong.mp3');
+  };
+
+  const handleNext = () => {
+    setStep((s) => s + 1);
+    setAnswered(false);
+    setSelectedId(null);
+    setIsCorrect(false);
   };
 
   if (step >= scenarios.length) {
     return (
-      <motion.div className="quiz-completion-box" initial={{ scale: 0.7, opacity: 0 }} animate={{ scale: 1, opacity: 1 }}>
+      <motion.div
+        className="quiz-completion-box"
+        initial={{ scale: 0.7, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+      >
+        <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>🏆</div>
         <h3>{isTurkish ? 'Tüm Görevler Tamamlandı!' : 'All Missions Completed!'}</h3>
-        <p>{isTurkish ? 'Artık bilinçli bir dijital vatandaşsın!' : 'You are now a responsible digital citizen!'}</p>
+        <p>{isTurkish ? 'Artık bilinçli bir dijital vatandaşsın! Harika iş çıkardın.' : 'You are now a responsible digital citizen! Great job.'}</p>
+        <motion.button
+          whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
+          onClick={() => { setStep(0); setAnswered(false); setSelectedId(null); }}
+          style={{
+            marginTop: '1rem', padding: '10px 28px',
+            background: 'linear-gradient(135deg, #667eea, #764ba2)',
+            color: 'white', border: 'none', borderRadius: '10px',
+            fontWeight: 700, cursor: 'pointer',
+          }}
+        >
+          🔄 {isTurkish ? 'Tekrar Oyna' : 'Play Again'}
+        </motion.button>
       </motion.div>
     );
   }
 
   const current = scenarios[step];
+  const selectedChoice = current.choices.find((c) => c.id === selectedId);
 
   return (
-    <div className="hotspot-quiz-container">
-      <div className="hotspot-quiz-header">
-        <h3>{current.title}</h3>
-        <p className="hotspot-quiz-question">{current.question}</p>
-        <div className="hotspot-quiz-progress">
-          {isTurkish ? 'Görev' : 'Mission'} {step + 1}/{scenarios.length}
-        </div>
+    <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+      {/* Başlık ve ilerleme */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+        <h3 style={{ margin: 0, fontSize: '1.2rem', fontWeight: 800, color: '#3b82f6' }}>{current.title}</h3>
+        <span style={{
+          background: '#e0e7ff', color: '#3730a3', fontWeight: 700,
+          fontSize: '0.8rem', padding: '4px 12px', borderRadius: '20px',
+        }}>
+          {isTurkish ? 'Görev' : 'Mission'} {step + 1} / {scenarios.length}
+        </span>
       </div>
-      <div className="hotspot-image-wrapper">
-        <img src={current.image} alt={current.title} className="hotspot-quiz-image" />
-        {current.hotspots.map((spot) => {
-          const wasClicked = clickedIds.has(spot.id);
-          const resultClass = wasClicked ? (spot.correct ? 'hotspot-correct' : 'hotspot-wrong') : '';
+
+      {/* Senaryo açıklaması */}
+      <div style={{
+        background: '#f0f9ff', border: '1px solid #bae6fd', borderRadius: '12px',
+        padding: '0.85rem 1rem', marginBottom: '1rem', fontSize: '0.95rem', color: '#0c4a6e',
+      }}>
+        📖 {current.situation}
+      </div>
+
+      {/* Görsel */}
+      <div style={{ borderRadius: '12px', overflow: 'hidden', marginBottom: '1rem', border: '2px solid #e2e8f0' }}>
+        <img
+          src={current.image}
+          alt={current.title}
+          style={{ width: '100%', display: 'block', maxHeight: '300px', objectFit: 'cover' }}
+          onError={(e) => { e.target.style.display = 'none'; }}
+        />
+      </div>
+
+      {/* Soru */}
+      <p style={{ fontWeight: 700, fontSize: '1rem', color: '#1e293b', marginBottom: '0.75rem' }}>
+        ❓ {current.question}
+      </p>
+
+      {/* Seçenekler */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem', marginBottom: '1rem' }}>
+        {current.choices.map((choice) => {
+          const isSelected = selectedId === choice.id;
+          let bg = '#f8fafc', border = '#cbd5e1', color = '#1e293b';
+          if (answered && isSelected && choice.correct) { bg = '#dcfce7'; border = '#22c55e'; color = '#15803d'; }
+          else if (answered && isSelected && !choice.correct) { bg = '#fee2e2'; border = '#ef4444'; color = '#991b1b'; }
+          else if (answered && choice.correct) { bg = '#dcfce7'; border = '#22c55e'; color = '#15803d'; }
           return (
-            <button key={spot.id} className={`hotspot-button ${resultClass}`} style={spot.style} onClick={() => handleClick(spot)} aria-label="Click to answer" />
+            <motion.button
+              key={choice.id}
+              whileHover={!answered ? { scale: 1.02 } : {}}
+              whileTap={!answered ? { scale: 0.98 } : {}}
+              onClick={() => handleChoice(choice)}
+              disabled={answered}
+              style={{
+                padding: '0.85rem 1.1rem', background: bg,
+                border: `2px solid ${border}`, borderRadius: '10px',
+                color, fontWeight: 600, fontSize: '0.95rem',
+                cursor: answered ? 'default' : 'pointer',
+                textAlign: 'left', transition: 'all 0.2s',
+              }}
+            >
+              {choice.label}
+            </motion.button>
           );
         })}
       </div>
+
+      {/* Geri bildirim */}
       <AnimatePresence>
-        {feedback && (
-          <motion.div className={`feedback-box ${isCorrect ? 'feedback-correct' : 'feedback-wrong'}`} initial={{ scale: 0.8, opacity: 0, y: 20 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.8, y: -20 }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-            {feedback}
+        {answered && selectedChoice && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            style={{
+              background: isCorrect ? '#dcfce7' : '#fee2e2',
+              border: `2px solid ${isCorrect ? '#22c55e' : '#ef4444'}`,
+              borderRadius: '12px', padding: '0.85rem 1rem',
+              color: isCorrect ? '#15803d' : '#991b1b',
+              fontSize: '0.92rem', fontWeight: 600, marginBottom: '1rem',
+            }}
+          >
+            {selectedChoice.explanation}
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Sonraki buton */}
+      {answered && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
+          onClick={handleNext}
+          style={{
+            padding: '10px 28px',
+            background: 'linear-gradient(135deg, #667eea, #764ba2)',
+            color: 'white', border: 'none', borderRadius: '10px',
+            fontWeight: 700, fontSize: '0.95rem', cursor: 'pointer',
+          }}
+        >
+          {step + 1 < scenarios.length
+            ? (isTurkish ? 'Sonraki Görev →' : 'Next Mission →')
+            : (isTurkish ? '✅ Tamamla' : '✅ Finish')}
+        </motion.button>
+      )}
     </div>
   );
 }
