@@ -247,11 +247,12 @@ function Module2() {
     component: () => <SectionComponent section={section} isTurkish={isTurkish} />,
   }));
 
-  // ✅ activeSection localStorage
+  // ✅ activeSection localStorage + scroll to top
   useEffect(() => {
     const clamped = Math.min(Math.max(activeSection, 1), sections.length);
     if (clamped !== activeSection) { setActiveSection(clamped); return; }
     localStorage.setItem(`${MODULE_KEY}_activeSection`, String(activeSection));
+    window.scrollTo(0, 0);
   }, [activeSection, sections.length]);
 
   // ✅ completedSections localStorage + Sidebar event
@@ -275,7 +276,6 @@ function Module2() {
     const handler = (e) => {
       if (e.detail.module === MODULE_KEY) {
         setActiveSection(e.detail.sectionId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
     window.addEventListener('sidebarSectionClick', handler);
@@ -345,7 +345,7 @@ function Module2() {
       <div className="section-navigation" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 3rem 2rem 4rem' }}>
         <button
           className="nav-btn prev"
-          onClick={() => { setActiveSection((p) => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          onClick={() => setActiveSection((p) => Math.max(1, p - 1))}
           disabled={activeSection === 1}
         >
           {'<-'} {isTurkish ? 'Önceki' : 'Previous'}
@@ -358,7 +358,6 @@ function Module2() {
           onClick={() => {
             handleSectionComplete(activeSection);
             setActiveSection((p) => Math.min(sections.length, p + 1));
-            window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           disabled={activeSection === sections.length}
         >
