@@ -741,19 +741,14 @@ export const MODULE5_EN = {
       },
       {
         id: 8,
-        title: "🕵️ Phishing Detective: Spot the Fake!",
-        intro: "Real or fake? Examine each message and decide if it's 'Safe' or 'Suspicious'. Learn the red flags hidden in every phishing attempt!",
-        activity_title: "🎮 Phishing Detective Game",
+        title: "🎮 Digital Safety Activities",
+        intro: "Put what you've learned to the test with two big activities! Act as a phishing detective to catch fake messages, then make safe choices throughout an online day.",
+        activity_title: "🕵️ Phishing Detective: Spot the Fake!",
         activity_desc: "10 different messages will appear. Decide whether each one is real or a phishing (fake) attempt!",
-        activity_type: "phishing_detective"
-      },
-      {
-        id: 9,
-        title: "🗺️ Safe Decision Map: An Online Day",
-        intro: "You're spending a day online from morning to night. At every step, will you play it safe or take a risk? Make the right choice at 8 decision points and protect your digital security score!",
-        activity_title: "🎮 Safe Decision Map",
-        activity_desc: "Make decisions at 8 different situations. Every wrong choice costs you points. Get the highest score possible!",
-        activity_type: "safe_decision_map"
+        activity_type: "phishing_detective",
+        second_activity_title: "🗺️ Safe Decision Map: An Online Day",
+        second_activity_desc: "Make decisions at 8 different situations. Every wrong choice costs you points. Get the highest score possible!",
+        second_activity_type: "safe_decision_map"
       }
     ],
   },

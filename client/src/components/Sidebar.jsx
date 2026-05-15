@@ -111,6 +111,7 @@ const MODULE_SECTIONS = {
       '🔐 Uygulama İzinleri ve Gizlilik',
       '🤝 Dijital Sorumluluk',
       '🎮 Senaryo Quizleri',
+      '🎯 Dijital Güvenlik Aktiviteleri',
     ],
     sections_en: [
       '🛡️ What is Digital Security?',
@@ -119,6 +120,7 @@ const MODULE_SECTIONS = {
       '🔐 App Permissions and Privacy',
       '🤝 Digital Responsibility',
       '🎮 Scenario Quizzes',
+      '🎯 Digital Safety Activities',
     ],
   },
   '/module6': {

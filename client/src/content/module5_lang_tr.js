@@ -1153,19 +1153,14 @@ export const MODULE5_TR = {
       },
       {
         "id": 8,
-        "title": "🕵️ Phishing Dedektifi: Sahteyi Yakala!",
-        "intro": "Gerçek mi, sahte mi? Ekrana gelen mesajları incele ve 'Güvenli' ya da 'Şüpheli' olarak sınıflandır. Her yanlış mesajın arkasındaki ipuçlarını öğren!",
-        "activity_title": "🎮 Phishing Dedektifi Oyunu",
+        "title": "🎮 Dijital Güvenlik Aktiviteleri",
+        "intro": "İki büyük aktiviteyle öğrendiklerini pekiştir! Phishing dedektifi olarak sahte mesajları yakala, ardından çevrimiçi bir günde güvenli kararlar al.",
+        "activity_title": "🕵️ Phishing Dedektifi: Sahteyi Yakala!",
         "activity_desc": "10 farklı mesaj / bildirim gelecek. Her birinin gerçek mi yoksa phishing (sahte) mi olduğuna karar ver!",
-        "activity_type": "phishing_detective"
-      },
-      {
-        "id": 9,
-        "title": "🗺️ Güvenli Karar Haritası: Çevrimiçi Bir Gün",
-        "intro": "Sabahtan geceye kadar çevrimiçi bir gün geçiriyorsun. Her adımda güvenli mi, yoksa riskli mi davranacaksın? 8 karar noktasında doğru seçimi yap ve dijital güvenlik puanını koru!",
-        "activity_title": "🎮 Güvenli Karar Haritası",
-        "activity_desc": "8 farklı durumda karar ver. Her yanlış seçim puanından düşer. Mümkün olduğunca yüksek puan topla!",
-        "activity_type": "safe_decision_map"
+        "activity_type": "phishing_detective",
+        "second_activity_title": "🗺️ Güvenli Karar Haritası: Çevrimiçi Bir Gün",
+        "second_activity_desc": "8 farklı durumda karar ver. Her yanlış seçim puanından düşer. Mümkün olduğunca yüksek puan topla!",
+        "second_activity_type": "safe_decision_map"
       }
     ]
   }
