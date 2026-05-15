@@ -22,7 +22,7 @@ const CyberCrisisSimulation = ({ isTurkish = true }) => {
   // ============================================================
   const [phase, setPhase] = useState('boot');
   const [systemIntegrity, setSystemIntegrity] = useState(100);
-  const [timeLeft, setTimeLeft] = useState(90);
+  const [timeLeft, setTimeLeft] = useState(30);
   const [cluesFound, setCluesFound] = useState({
     fakeUrl: false,
     cpuUsage: false,
@@ -94,7 +94,7 @@ const CyberCrisisSimulation = ({ isTurkish = true }) => {
   const bootSystem = () => {
     setPhase('desktop');
     setSystemIntegrity(100);
-    setTimeLeft(10); // 10 seconds challenge
+    setTimeLeft(30); // 30 seconds challenge
     setCluesFound({ fakeUrl: false, cpuUsage: false, typo: false, processName: false });
     setInternetConnected(true);
     setScore(0);
