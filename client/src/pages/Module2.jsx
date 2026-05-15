@@ -13,6 +13,7 @@ import ScenarioGame from '../components/ScenarioGame';
 import StoryMode from '../components/StoryMode';
 import ContentQuizGame from '../components/ContentQuizGame';
 import WheelQuizGame from '../components/WheelQuizGame';
+import VideoLinks from '../components/VideoLinks';
 import '../modules.css';
 
 const MODULE_KEY = 'module2';
@@ -169,26 +170,7 @@ const SectionComponent = ({ section, isTurkish }) => {
                 </div>
               )}
               {Array.isArray(contentItem.video_links) && contentItem.video_links.length > 0 && (
-                <div className="video-cards">
-                  <h4 className="video-cards-title">
-                    {contentItem.video_title || (isTurkish ? 'Video Kartları' : 'Video Cards')}
-                  </h4>
-                  <div className="video-cards-grid">
-                    {contentItem.video_links.map((video, idx) => (
-                      <div className="video-card" key={`${key}-video-${idx}`}>
-                        <div className="video-card-thumb">
-                          <img src={video.thumbnail} alt={video.title} loading="lazy" onError={(e) => { e.target.style.display = 'none'; }} />
-                        </div>
-                        <div className="video-card-body">
-                          <p className="video-card-title">{video.title}</p>
-                          <button className="video-card-btn" onClick={() => window.open(video.url, '_blank', 'noopener,noreferrer')}>
-                            {contentItem.video_cta || (isTurkish ? 'İzle' : 'Watch')}
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <VideoLinks videoLinks={contentItem.video_links} />
               )}
               {contentItem.quiz &&
                 section.activity_type !== 'content_quiz' &&
@@ -289,6 +271,8 @@ function Module2() {
       if (newCompleted.length === sections.length) {
         const progress = JSON.parse(localStorage.getItem('digitalShieldProgress') || '{}');
         progress.module2 = true;
+        if (!progress.badges) progress.badges = [];
+        if (!progress.badges.includes('module2')) progress.badges.push('module2');
         localStorage.setItem('digitalShieldProgress', JSON.stringify(progress));
         window.dispatchEvent(new CustomEvent('moduleCompleted', { detail: { module: MODULE_KEY } }));
         setTimeout(() => { setShowCompletion(true); setCountdown(5); }, 400);
@@ -328,15 +312,6 @@ function Module2() {
         >
           <div className="content-header">
             <h1>{currentSection?.title_tr}</h1>
-            <button
-              className="mark-complete-btn"
-              onClick={() => handleSectionComplete(activeSection)}
-              disabled={completedSections.includes(activeSection)}
-            >
-              {completedSections.includes(activeSection)
-                ? isTurkish ? 'Tamamlandı ✓' : 'Completed ✓'
-                : isTurkish ? 'Tamamla' : 'Complete'}
-            </button>
           </div>
           {SectionComponentToRender && <SectionComponentToRender />}
         </motion.div>
@@ -350,19 +325,52 @@ function Module2() {
         >
           {'<-'} {isTurkish ? 'Önceki' : 'Previous'}
         </button>
-        <span style={{ color: '#64748b', fontWeight: 600, fontSize: '0.9rem' }}>
-          {activeSection} / {sections.length}
-        </span>
-        <button
-          className="nav-btn next"
-          onClick={() => {
-            handleSectionComplete(activeSection);
-            setActiveSection((p) => Math.min(sections.length, p + 1));
-          }}
-          disabled={activeSection === sections.length}
-        >
-          {isTurkish ? 'Sonraki' : 'Next'} {'->'}
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px', minWidth: '100px' }}>
+          <span style={{
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: 'white',
+            borderRadius: '999px',
+            padding: '6px 22px',
+            fontWeight: 800,
+            fontSize: '0.88rem',
+            letterSpacing: '0.04em',
+            boxShadow: '0 2px 12px rgba(102,126,234,0.3)',
+            whiteSpace: 'nowrap',
+          }}>
+            {activeSection} / {sections.length}
+          </span>
+          <div style={{ width: '72px', height: '4px', background: '#e2e8f0', borderRadius: '999px', overflow: 'hidden' }}>
+            <div style={{
+              width: `${Math.round((activeSection / sections.length) * 100)}%`,
+              height: '100%',
+              background: 'linear-gradient(90deg, #667eea, #764ba2)',
+              borderRadius: '999px',
+              transition: 'width 0.4s ease',
+            }} />
+          </div>
+        </div>
+        {activeSection === sections.length ? (
+          <button
+            className="nav-btn next"
+            onClick={() => handleSectionComplete(activeSection)}
+            disabled={completedSections.includes(activeSection)}
+            style={{ background: completedSections.includes(activeSection) ? '#10b981' : '#7c3aed' }}
+          >
+            {completedSections.includes(activeSection)
+              ? (isTurkish ? 'Tamamlandı ✓' : 'Completed ✓')
+              : (isTurkish ? '✓ Modülü Tamamla' : '✓ Complete Module')}
+          </button>
+        ) : (
+          <button
+            className="nav-btn next"
+            onClick={() => {
+              handleSectionComplete(activeSection);
+              setActiveSection((p) => Math.min(sections.length, p + 1));
+            }}
+          >
+            {isTurkish ? 'Sonraki' : 'Next'} {'->'}
+          </button>
+        )}
       </div>
     </div>
   );

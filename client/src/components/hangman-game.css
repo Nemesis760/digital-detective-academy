@@ -1,12 +1,26 @@
+/* =========================================
+   HANGMAN GAME — full visual redesign
+   ========================================= */
+
 .hangman-game {
   width: 100%;
   max-width: 860px;
   margin: 0 auto;
+  font-family: inherit;
 }
 
-/* ---------------------------------------
+/* -----------------------------------------
    TOP BAR
----------------------------------------- */
+----------------------------------------- */
+.hangman-top.compact-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
 .hangman-top {
   display: flex;
   justify-content: space-between;
@@ -15,376 +29,561 @@
   margin-bottom: 14px;
 }
 
-/* compact mod: Module3 başlığı zaten bastığı için top alanı sade */
-.hangman-top.compact-top {
-  justify-content: flex-end;
-  margin-bottom: 10px;
+/* Progress block */
+.hm-progress-block {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 120px;
 }
 
-.hangman-title {
-  margin: 0;
-  font-size: 1.35rem;
-  font-weight: 800;
+.hm-q-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #6366f1;
+  letter-spacing: 0.03em;
 }
 
-.hangman-desc {
-  margin: 6px 0 0 0;
-  opacity: 0.8;
-  line-height: 1.4;
+.hm-progress-bar {
+  height: 6px;
+  background: #e0e7ff;
+  border-radius: 999px;
+  overflow: hidden;
 }
 
+.hm-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+/* Meta pills */
 .hangman-meta {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
 .hangman-pill {
-  border: 1px solid rgba(0,0,0,0.08);
-  background: rgba(255,255,255,0.8);
-  border-radius: 999px;
-  padding: 8px 12px;
   display: inline-flex;
-  gap: 8px;
-  align-items: baseline;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-.hangman-pill.danger {
-  border-color: rgba(220, 38, 38, 0.25);
-  background: rgba(254, 226, 226, 0.7);
+.hangman-pill.score-pill {
+  background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+  border: 1.5px solid #a78bfa;
+  color: #4c1d95;
 }
 
-.hangman-pill-label {
-  font-size: 0.85rem;
-  opacity: 0.8;
+.hangman-pill.lives-pill {
+  background: linear-gradient(135deg, #fce7f3, #fbcfe8);
+  border: 1.5px solid #f9a8d4;
+  color: #831843;
 }
 
-.hangman-pill-value {
-  font-weight: 800;
-  font-size: 1.05rem;
+.hangman-pill.lives-pill.warning {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-color: #f59e0b;
+  color: #78350f;
 }
 
-/* ---------------------------------------
+.hangman-pill.lives-pill.critical {
+  background: linear-gradient(135deg, #fee2e2, #fca5a5);
+  border-color: #ef4444;
+  color: #7f1d1d;
+  animation: pulse-danger 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-danger {
+  from { transform: scale(1); }
+  to   { transform: scale(1.04); }
+}
+
+.hangman-pill-label { opacity: 0.85; }
+.hangman-pill-value { font-size: 1.05rem; font-weight: 900; }
+
+/* -----------------------------------------
    CARD
----------------------------------------- */
+----------------------------------------- */
 .hangman-card {
-  border-radius: 18px;
-  padding: 16px;
-  background: linear-gradient(180deg, rgba(245, 247, 255, 0.9), rgba(255,255,255,0.9));
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 18px 60px rgba(0,0,0,0.08);
+  border-radius: 20px;
+  padding: 18px;
+  background: linear-gradient(160deg, #f8faff 0%, #ffffff 60%, #f5f3ff 100%);
+  border: 1.5px solid rgba(99,102,241,0.12);
+  box-shadow: 0 20px 60px rgba(99,102,241,0.1), 0 4px 16px rgba(0,0,0,0.05);
   overflow: hidden;
 }
 
+/* -----------------------------------------
+   CLUE
+----------------------------------------- */
 .hangman-clue {
   display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 14px;
+  gap: 12px;
+  align-items: flex-start;
+  background: linear-gradient(135deg, #fef9c3, #fef3c7);
+  border: 1.5px solid #fde68a;
+  border-radius: 14px;
+  padding: 13px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 12px rgba(245,158,11,0.12);
 }
 
-.hangman-clue-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.18);
+.hangman-clue-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.hangman-clue-label {
+  font-size: 0.75rem;
   font-weight: 800;
-  font-size: 0.85rem;
-  white-space: nowrap;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 3px;
 }
 
 .hangman-clue-text {
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1c1917;
+  line-height: 1.5;
 }
 
-/* ---------------------------------------
+/* -----------------------------------------
    BOARD
----------------------------------------- */
+----------------------------------------- */
 .hangman-board {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 14px;
-  align-items: center;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  align-items: start;
   margin-bottom: 16px;
 }
 
-@media (max-width: 720px) {
-  .hangman-board {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 680px) {
+  .hangman-board { grid-template-columns: 1fr; }
 }
 
-/* ---------------------------------------
+/* -----------------------------------------
    GALLOW
----------------------------------------- */
+----------------------------------------- */
 .hangman-gallow {
   position: relative;
-  height: 220px;
-  border-radius: 16px;
-  background: rgba(2, 6, 23, 0.92);
-  border: 1px solid rgba(255,255,255,0.08);
+  height: 230px;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #0f172a 0%, #1e1b4b 100%);
+  border: 1.5px solid rgba(99,102,241,0.25);
   overflow: hidden;
+  box-shadow: inset 0 2px 20px rgba(0,0,0,0.3);
+  transition: border-color 0.3s ease;
 }
 
-/* ✅ g-line'lar artık aşamalı: on ile görünür */
+.hangman-gallow.warning {
+  border-color: rgba(245,158,11,0.45);
+}
+
+.hangman-gallow.critical {
+  border-color: rgba(239,68,68,0.5);
+}
+
+/* structural lines */
 .g-line {
   position: absolute;
-  background: rgba(255,255,255,0.85);
+  background: rgba(165,180,252,0.9);
   border-radius: 999px;
-
   opacity: 0;
-  transform: scale(0.98);
-  transition: opacity 180ms ease, transform 180ms ease;
+  transform: scaleX(0.8) scaleY(0.8);
+  transition: opacity 200ms ease, transform 200ms ease;
 }
 
-.g-line.on {
-  opacity: 1;
-  transform: scale(1);
-}
+.g-line.on { opacity: 1; transform: scale(1); }
 
-.g-line.v { width: 10px; height: 170px; left: 36px; top: 24px; }
-.g-line.h { width: 130px; height: 10px; left: 36px; top: 24px; }
+.g-line.v    { width: 8px;  height: 158px; left: 38px; top: 26px; }
+.g-line.h    { width: 118px; height: 8px;  left: 38px; top: 26px; }
+.g-line.base { width: 150px; height: 8px;  left: 26px; bottom: 20px; }
+.g-line.base.on { opacity: 0.55; }
 
-/* base çizgisi soft */
-.g-line.base { width: 160px; height: 10px; left: 22px; bottom: 18px; }
-.g-line.base.on { opacity: 0.6; }
-
-/* body parçaları */
+/* body parts */
 .g-part {
   position: absolute;
   opacity: 0;
-  transform: scale(0.98);
-  transition: opacity 180ms ease, transform 180ms ease;
+  transform: scale(0.5);
+  transition: opacity 250ms ease, transform 250ms cubic-bezier(0.34,1.56,0.64,1);
 }
 
-.g-part.on {
-  opacity: 1;
-  transform: scale(1);
-}
+.g-part.on { opacity: 1; transform: scale(1); }
 
 .g-part.head {
-  width: 44px; height: 44px;
-  border-radius: 999px;
-  border: 6px solid rgba(255,255,255,0.9);
-  left: 142px; top: 52px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 5px solid rgba(255,255,255,0.92);
+  left: 138px; top: 50px;
 }
 
 .g-part.body {
-  width: 8px; height: 70px;
+  width: 6px; height: 66px;
   background: rgba(255,255,255,0.9);
-  left: 164px; top: 96px;
+  left: 159px; top: 92px;
   border-radius: 999px;
 }
 
 .g-part.arm {
-  width: 56px; height: 8px;
+  width: 52px; height: 6px;
   background: rgba(255,255,255,0.9);
-  top: 118px;
+  top: 112px;
   border-radius: 999px;
 }
 
-.g-part.arm.left { left: 112px; transform-origin: right center; transform: rotate(-18deg); }
-.g-part.arm.right { left: 164px; transform-origin: left center; transform: rotate(18deg); }
+.g-part.arm.left  { left: 110px; transform-origin: right center; transform: rotate(-20deg); }
+.g-part.arm.right { left: 160px; transform-origin: left center;  transform: rotate(20deg);  }
+.g-part.arm.on    { transform: scale(1); }
+.g-part.arm.left.on  { transform: rotate(-20deg) scale(1); }
+.g-part.arm.right.on { transform: rotate(20deg)  scale(1); }
 
 .g-part.leg {
-  width: 56px; height: 8px;
+  width: 52px; height: 6px;
   background: rgba(255,255,255,0.9);
-  top: 168px;
+  top: 160px;
   border-radius: 999px;
 }
 
-.g-part.leg.left { left: 112px; transform-origin: right center; transform: rotate(22deg); }
-.g-part.leg.right { left: 164px; transform-origin: left center; transform: rotate(-22deg); }
+.g-part.leg.left  { left: 110px; transform-origin: right center; transform: rotate(24deg);  }
+.g-part.leg.right { left: 160px; transform-origin: left center;  transform: rotate(-24deg); }
+.g-part.leg.on    { transform: scale(1); }
+.g-part.leg.left.on  { transform: rotate(24deg)  scale(1); }
+.g-part.leg.right.on { transform: rotate(-24deg) scale(1); }
 
 .g-part.face {
-  left: 142px; top: 52px;
-  width: 44px; height: 44px;
+  left: 134px; top: 46px;
+  width: 52px; height: 52px;
   display: grid;
   place-items: center;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.9);
+  font-weight: 900;
+  letter-spacing: 6px;
 }
 
 .g-part.face::before {
   content: "× ×";
-  letter-spacing: 6px;
-  color: rgba(255,255,255,0.85);
-  font-weight: 900;
 }
 
-/* ---------------------------------------
-   WORD AREA
----------------------------------------- */
+/* lives dots */
+.g-lives {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  display: flex;
+  gap: 4px;
+}
+
+.g-life-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(167,139,250,0.85);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.g-life-dot.gone {
+  background: rgba(239,68,68,0.7);
+  transform: scale(0.75);
+}
+
+/* -----------------------------------------
+   RIGHT PANEL (word + wrong letters)
+----------------------------------------- */
+.hangman-right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* -----------------------------------------
+   WORD DISPLAY
+----------------------------------------- */
 .hangman-word {
   border-radius: 16px;
-  padding: 12px;
-  background: rgba(255,255,255,0.82);
-  border: 1px solid rgba(0,0,0,0.07);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  padding: 14px 16px;
+  background: white;
+  border: 1.5px solid rgba(99,102,241,0.14);
+  box-shadow: 0 4px 16px rgba(99,102,241,0.07);
 }
 
 .hangman-word-label {
-  font-size: 0.85rem;
-  opacity: 0.7;
-  margin-bottom: 8px;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #6366f1;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
 }
 
 .hangman-word-value {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  font-size: 1.35rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
+  gap: 6px;
+  align-items: flex-end;
 }
 
 .hm-ch {
-  min-width: 18px;
+  min-width: 28px;
+  height: 38px;
   text-align: center;
-  padding: 6px 6px;
-  border-bottom: 2px solid rgba(0,0,0,0.22);
+  font-size: 1.3rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 3px solid #c7d2fe;
+  transition: all 0.2s ease;
+}
+
+.hm-ch.revealed {
+  color: #4f46e5;
+  border-bottom-color: #6366f1;
+  animation: pop-in 0.25s cubic-bezier(0.34,1.56,0.64,1);
 }
 
 .hm-ch.hidden {
-  opacity: 0.85;
+  color: transparent;
+  border-bottom-color: #d1d5db;
 }
 
-/* ---------------------------------------
-   LETTERS
----------------------------------------- */
+.hm-ch.space {
+  border-bottom: none;
+  min-width: 14px;
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.6); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+/* -----------------------------------------
+   WRONG LETTERS
+----------------------------------------- */
+.hm-wrong-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: #fff1f2;
+  border: 1.5px solid #fecdd3;
+  border-radius: 12px;
+  padding: 8px 12px;
+}
+
+.hm-wrong-label {
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #e11d48;
+  flex-shrink: 0;
+}
+
+.hm-wrong-chips {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.hm-wrong-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: #fecdd3;
+  color: #9f1239;
+  font-weight: 900;
+  font-size: 0.82rem;
+  text-decoration: line-through;
+}
+
+/* -----------------------------------------
+   LETTER BUTTONS
+----------------------------------------- */
 .hangman-letters {
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 4px;
 }
 
-@media (max-width: 720px) {
-  .hangman-letters {
-    grid-template-columns: repeat(7, minmax(0, 1fr));
-  }
+@media (max-width: 680px) {
+  .hangman-letters { grid-template-columns: repeat(7, minmax(0, 1fr)); }
 }
 
 .hm-letter {
-  border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.08);
-  background: rgba(255,255,255,0.92);
-  padding: 10px 0;
+  border-radius: 10px;
+  border: 1.5px solid rgba(99,102,241,0.2);
+  background: linear-gradient(160deg, #eff6ff 0%, #ede9fe 100%);
+  padding: 9px 0;
   font-weight: 900;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
-  box-shadow: 0 10px 22px rgba(0,0,0,0.06);
+  transition: all 150ms ease;
+  color: #1e1b4b;
+  box-shadow: 0 2px 6px rgba(99,102,241,0.1);
   user-select: none;
 }
 
-.hm-letter:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+.hm-letter:hover:not(:disabled) {
+  background: linear-gradient(160deg, #dbeafe 0%, #ddd6fe 100%);
+  border-color: rgba(99,102,241,0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(99,102,241,0.2);
 }
 
-.hm-letter.used {
-  opacity: 0.45;
-  cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
+.hm-letter:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .hm-letter.good {
-  border-color: rgba(16, 185, 129, 0.35);
-  background: rgba(209, 250, 229, 0.95);
+  background: linear-gradient(160deg, #d1fae5, #a7f3d0);
+  border-color: #10b981;
+  color: #064e3b;
+  cursor: default;
+  box-shadow: 0 2px 8px rgba(16,185,129,0.2);
 }
 
 .hm-letter.bad {
-  border-color: rgba(239, 68, 68, 0.35);
-  background: rgba(254, 226, 226, 0.95);
+  background: linear-gradient(160deg, #fee2e2, #fecaca);
+  border-color: #ef4444;
+  color: #991b1b;
+  opacity: 0.6;
+  cursor: default;
+  text-decoration: line-through;
+  box-shadow: none;
 }
 
-/* ---------------------------------------
+.hm-letter.used:not(.good):not(.bad) {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+  background: #f1f5f9;
+  border-color: transparent;
+}
+
+/* -----------------------------------------
    RESULT BOX
----------------------------------------- */
+----------------------------------------- */
 .hangman-result {
-  margin-top: 14px;
-  border-radius: 16px;
-  padding: 14px;
-  border: 1px solid rgba(0,0,0,0.06);
-  background: rgba(255,255,255,0.88);
+  margin-top: 16px;
+  border-radius: 18px;
+  padding: 20px;
+  border: 2px solid rgba(0,0,0,0.08);
+  text-align: center;
 }
 
 .hangman-result.won {
-  border-color: rgba(16, 185, 129, 0.35);
-  background: rgba(209, 250, 229, 0.7);
+  background: linear-gradient(135deg, #d1fae5, #ecfdf5);
+  border-color: #10b981;
 }
 
 .hangman-result.lost {
-  border-color: rgba(239, 68, 68, 0.35);
-  background: rgba(254, 226, 226, 0.7);
+  background: linear-gradient(135deg, #fee2e2, #fff1f2);
+  border-color: #ef4444;
+}
+
+.hangman-result-emoji {
+  font-size: 2.8rem;
+  margin-bottom: 8px;
 }
 
 .hangman-result-title {
   font-weight: 900;
-  font-size: 1.1rem;
-  margin-bottom: 8px;
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+  color: #1e1b4b;
 }
 
+.hangman-result.won  .hangman-result-title { color: #065f46; }
+.hangman-result.lost .hangman-result-title { color: #7f1d1d; }
+
 .hangman-result-answer {
-  display: flex;
+  display: inline-flex;
   gap: 8px;
   align-items: baseline;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  background: rgba(255,255,255,0.7);
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.08);
 }
 
 .hangman-result-answer .label {
-  opacity: 0.75;
+  font-size: 0.85rem;
   font-weight: 700;
+  opacity: 0.7;
 }
 
 .hangman-result-answer .value {
   font-weight: 900;
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
 }
 
-/* ---------------------------------------
-   ACTIONS
----------------------------------------- */
+/* -----------------------------------------
+   ACTION BUTTONS
+----------------------------------------- */
 .hangman-actions {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .hm-btn {
   border: none;
   border-radius: 12px;
-  padding: 10px 14px;
+  padding: 11px 20px;
   font-weight: 900;
+  font-size: 0.95rem;
   cursor: pointer;
-  background: rgba(99, 102, 241, 0.92);
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
   color: white;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
-  transition: transform 120ms ease, opacity 120ms ease;
+  box-shadow: 0 6px 18px rgba(99,102,241,0.35);
+  transition: transform 120ms ease, box-shadow 120ms ease;
 }
 
 .hm-btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(99,102,241,0.4);
 }
 
 .hm-btn.ghost {
-  background: rgba(2, 6, 23, 0.8);
+  background: linear-gradient(135deg, #334155, #1e293b);
+  box-shadow: 0 6px 18px rgba(15,23,42,0.25);
 }
 
-.hm-btn.secondary {
-  background: rgba(15, 23, 42, 0.85);
-}
-
-/* ---------------------------------------
+/* -----------------------------------------
    EMPTY STATE
----------------------------------------- */
+----------------------------------------- */
 .hangman-empty {
-  padding: 14px;
-  border-radius: 14px;
+  padding: 20px;
+  border-radius: 16px;
   border: 1px solid rgba(0,0,0,0.06);
   background: rgba(255,255,255,0.85);
+  text-align: center;
+  color: #64748b;
 }
+
+/* title/desc for non-compact mode */
+.hangman-title { margin: 0; font-size: 1.35rem; font-weight: 800; }
+.hangman-desc  { margin: 6px 0 0; opacity: 0.8; line-height: 1.4; }
+.hangman-head  { flex: 1; }

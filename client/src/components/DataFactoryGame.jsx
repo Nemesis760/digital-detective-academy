@@ -215,37 +215,87 @@ const DataFactoryGame = ({ isTurkish = true }) => {
         </AnimatePresence>
       </div>
 
-      {/* ✅ ANA LAYOUT: sol = 4 istasyon, sağ = öğeler */}
+      {/* ANA LAYOUT: mobilde sütun, md+ yan yana */}
       <div
         ref={scrollAreaRef}
-        className="flex gap-3 px-3 pb-4 overflow-y-auto touch-pan-y"
-        style={{ maxHeight: '520px' }}
+        className="flex flex-col md:flex-row gap-3 px-3 pb-4 overflow-y-auto touch-pan-y"
+        style={{ maxHeight: 'min(520px, 70vh)' }}
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
       >
-        {/* SOL: 4 istasyon kutusu alt alta */}
-        <div className="flex flex-col gap-2.5" style={{ flex: '1 1 55%', minWidth: 0 }}>
+        {/* Öğeler — mobilde üstte (tam genişlik), md'de sağda sabit */}
+        <div className="w-full md:order-2 md:w-[42%] md:flex-none min-w-0">
+          <div className="bg-slate-800 rounded-xl p-2.5 md:sticky md:top-0">
+            <h4 className="text-sm font-bold text-slate-200 text-center mb-2">
+              {isTurkish ? '📦 Öğeler' : '📦 Items'}
+            </h4>
+
+            {/* mobilde 2 sütun, md'de tek sütun */}
+            <div className="grid grid-cols-2 md:grid-cols-1 gap-1.5">
+              <AnimatePresence>
+                {availableItems.map((item) => {
+                  const isDraggingThis = dragState.active && dragState.item?.id === item.id;
+                  return (
+                    <motion.div
+                      key={item.id}
+                      onClick={() => handleItemSelect(item)}
+                      onPointerDown={(e) => onPointerDownItem(e, item)}
+                      className={[
+                        'flex items-center gap-2 rounded-lg px-2 py-2 md:px-3',
+                        'border-2 transition-colors select-none cursor-grab active:cursor-grabbing touch-pan-y',
+                        selectedItem?.id === item.id
+                          ? 'bg-yellow-500/20 border-yellow-400 ring-1 ring-yellow-300'
+                          : 'bg-slate-700 border-slate-600 hover:border-blue-400',
+                        isDraggingThis ? 'border-yellow-400 bg-slate-600' : '',
+                      ].join(' ')}
+                      whileHover={{ x: 2 }}
+                      whileTap={{ scale: 0.97 }}
+                    >
+                      <span className="text-lg pointer-events-none">{item.emoji}</span>
+                      <span className="text-white font-semibold text-xs md:text-sm pointer-events-none truncate">{item.name}</span>
+                      {selectedItem?.id === item.id && (
+                        <span className="ml-auto text-yellow-300 text-xs font-bold pointer-events-none flex-shrink-0">✓</span>
+                      )}
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+
+              {availableItems.length === 0 && !gameComplete && (
+                <p className="col-span-2 md:col-span-1 text-slate-400 text-xs text-center py-4">
+                  {isTurkish ? 'Tüm öğeler yerleştirildi!' : 'All items placed!'}
+                </p>
+              )}
+            </div>
+
+            {selectedItem && (
+              <p className="text-center text-yellow-300 text-xs mt-2 font-semibold">
+                {isTurkish ? '👆 İstasyona dokun' : '👆 Tap a station'}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* İstasyonlar — mobilde altta (tam genişlik), md'de solda */}
+        <div className="w-full md:order-1 md:flex-1 min-w-0 flex flex-col gap-2.5">
           {Object.entries(stationsConfig).map(([key, config]) => (
             <motion.div
               key={key}
               data-station={key}
               className={`bg-gradient-to-br ${config.color} rounded-xl border-2 border-white/20 p-2.5 cursor-pointer`}
-              style={{ minHeight: '90px' }}
+              style={{ minHeight: '80px' }}
               onClick={() => { if (selectedItem) placeItemToStation(key, selectedItem); }}
               whileHover={{ scale: 1.01 }}
             >
-              {/* İstasyon başlığı — yatay */}
               <div className="flex items-center gap-2 mb-2 pointer-events-none">
                 <span className="text-xl">{config.emoji}</span>
-                <div>
+                <div className="min-w-0">
                   <h4 className="text-sm font-bold text-white leading-tight">{config.title}</h4>
-                  <p className="text-xs text-white/70">{config.description}</p>
+                  <p className="text-xs text-white/70 truncate">{config.description}</p>
                 </div>
               </div>
 
-              {/* Yerleştirilen öğeler */}
-            
-<div className="bg-white/10 rounded-lg px-2 py-1.5 min-h-[36px] flex flex-wrap gap-1">
+              <div className="bg-white/10 rounded-lg px-2 py-1.5 min-h-[36px] flex flex-wrap gap-1">
                 <AnimatePresence>
                   {stations[key].map((item, index) => (
                     <motion.div
@@ -259,64 +309,10 @@ const DataFactoryGame = ({ isTurkish = true }) => {
                     </motion.div>
                   ))}
                 </AnimatePresence>
-                {stations[key].length === 0 && (
-                  <div className="w-full py-1" />
-                )}
+                {stations[key].length === 0 && <div className="w-full py-1" />}
               </div>
             </motion.div>
           ))}
-        </div>
-
-        {/* SAĞ: öğeler alt alta */}
-        <div style={{ flex: '0 0 42%', minWidth: 0 }}>
-          <div className="bg-slate-800 rounded-xl p-2.5 sticky top-0">
-            <h4 className="text-sm font-bold text-slate-200 text-center mb-2">
-              {isTurkish ? '📦 Öğeler' : '📦 Items'}
-            </h4>
-
-            <div className="flex flex-col gap-1.5">
-              <AnimatePresence>
-                {availableItems.map((item) => {
-                  const isDraggingThis = dragState.active && dragState.item?.id === item.id;
-                  return (
-                    <motion.div
-                      key={item.id}
-                      onClick={() => handleItemSelect(item)}
-                      onPointerDown={(e) => onPointerDownItem(e, item)}
-                      className={[
-                        'flex items-center gap-2 rounded-lg px-3 py-2',
-                        'border-2 transition-colors select-none cursor-grab active:cursor-grabbing touch-pan-y',
-                        selectedItem?.id === item.id
-                          ? 'bg-yellow-500/20 border-yellow-400 ring-1 ring-yellow-300'
-                          : 'bg-slate-700 border-slate-600 hover:border-blue-400',
-                        isDraggingThis ? 'border-yellow-400 bg-slate-600' : '',
-                      ].join(' ')}
-                      whileHover={{ x: 3 }}
-                      whileTap={{ scale: 0.97 }}
-                    >
-                      <span className="text-xl pointer-events-none">{item.emoji}</span>
-                      <span className="text-white font-semibold text-sm pointer-events-none">{item.name}</span>
-                      {selectedItem?.id === item.id && (
-                        <span className="ml-auto text-yellow-300 text-xs font-bold pointer-events-none">✓</span>
-                      )}
-                    </motion.div>
-                  );
-                })}
-              </AnimatePresence>
-
-              {availableItems.length === 0 && !gameComplete && (
-                <p className="text-slate-400 text-xs text-center py-4">
-                  {isTurkish ? 'Tüm öğeler yerleştirildi!' : 'All items placed!'}
-                </p>
-              )}
-            </div>
-
-            {selectedItem && (
-              <p className="text-center text-yellow-300 text-xs mt-2 font-semibold">
-                {isTurkish ? `👆 İstasyona dokun` : `👆 Tap a station`}
-              </p>
-            )}
-          </div>
         </div>
       </div>
 

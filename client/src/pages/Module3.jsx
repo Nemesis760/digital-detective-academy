@@ -11,10 +11,12 @@ import { useLanguage } from '../contexts/LanguageContext';
 
 import HardwareHotspot from '../components/HardwareHotspot';
 import NetworkDeviceMatchingGame from '../components/NetworkDeviceMatchingGame';
+import NetworkDevicePlacementGame from '../components/NetworkDevicePlacementGame';
 import InteractiveQuiz from '../components/InteractiveQuiz';
 import ScenarioGame from '../components/ScenarioGame';
 import HangmanGame from '../components/HangmanGame';
 import StoryMode from '../components/StoryMode';
+import VideoLinks from '../components/VideoLinks';
 
 import { NETWORK_SECURITY_HANGMAN } from "../content/activities/network_security_hangman";
 import { BROWSER_SEARCH_CARD_MATCHING } from '../content/activities/browser_search_card_matching';
@@ -25,6 +27,16 @@ import { DEVICE_COMMUNICATION_HOTSPOT } from '../content/activities/device_commu
 import { NETWORK_DEVICE_MATCHING } from '../content/activities/network_device_matching';
 import { NETWORK_SECURITY_QUIZ } from '../content/activities/network_security_quiz';
 import { NETWORK_LOST_PACKET_SCENARIO } from '../content/activities/network_lost_packet_scenario';
+import { WIRED_WIRELESS_TRUTH_OR_TROLL } from '../content/activities/wired_wireless_truth_or_troll';
+
+const WIRED_WIRELESS_QUIZ = WIRED_WIRELESS_TRUTH_OR_TROLL.statements.map((s) => ({
+  type: 'true_false',
+  question_tr: s.text_tr,
+  question_en: s.text_en,
+  answer: s.answer,
+  explanation_tr: s.explanation_tr,
+  explanation_en: s.explanation_en,
+}));
 
 import '../modules.css';
 
@@ -169,6 +181,7 @@ const SectionComponent = ({ section, isTurkish }) => {
         const map = {
           network_security: NETWORK_SECURITY_QUIZ.quiz,
           url_parts: URL_PARTS_QUIZ.quiz,
+          wired_wireless: WIRED_WIRELESS_QUIZ,
         };
 
         if (activity_key) {
@@ -197,6 +210,9 @@ const SectionComponent = ({ section, isTurkish }) => {
         if (activity_key === 'network_device_matching') return NETWORK_DEVICE_MATCHING;
         return null;
       }
+
+      case 'network_device_placement':
+        return true;
 
       case 'hangman': {
         const map = {
@@ -227,13 +243,22 @@ const SectionComponent = ({ section, isTurkish }) => {
         if (!activityData) return null;
         return <NetworkDeviceMatchingGame isTurkish={isTurkish} data={activityData} />;
 
+      case 'network_device_placement':
+        return <NetworkDevicePlacementGame isTurkish={isTurkish} />;
+
       case 'hangman':
         if (!activityData) return null;
         return <HangmanGame isTurkish={isTurkish} data={activityData} compact />;
 
       case 'interactive_quiz':
         if (!activityData) return null;
-        return <InteractiveQuiz quizItems={activityData} isTurkish={isTurkish} />;
+        return (
+          <InteractiveQuiz
+            quizItems={activityData}
+            isTurkish={isTurkish}
+            stepByStep={section.activity_key === 'network_security'}
+          />
+        );
 
       case 'scenario_game':
         if (!activityData) return null;
@@ -310,39 +335,7 @@ const SectionComponent = ({ section, isTurkish }) => {
               )}
 
               {Array.isArray(contentItem.video_links) && contentItem.video_links.length > 0 && (
-                <div className="video-cards">
-                  <h4 className="video-cards-title">
-                    {contentItem.video_title || (isTurkish ? 'Video Kartları' : 'Video Cards')}
-                  </h4>
-
-                  <div className="video-cards-grid">
-                    {contentItem.video_links.map((video, idx) => (
-                      <div className="video-card" key={`${key}-video-${idx}`}>
-                        <div className="video-card-thumb">
-                          <img
-                            src={video.thumbnail}
-                            alt={video.title}
-                            loading="lazy"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none';
-                            }}
-                          />
-                        </div>
-
-                        <div className="video-card-body">
-                          <p className="video-card-title">{video.title}</p>
-                          <button
-                            className="video-card-btn"
-                            onClick={() => window.open(video.url, '_blank', 'noopener,noreferrer')}
-                            aria-label={isTurkish ? 'Videoyu yeni sekmede aç' : 'Open video in new tab'}
-                          >
-                            {contentItem.video_cta || (isTurkish ? 'İzle' : 'Watch')}
-                          </button>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <VideoLinks videoLinks={contentItem.video_links} />
               )}
 
               {shouldRenderInlineQuiz && contentItem.quiz && (
@@ -476,6 +469,8 @@ function Module3() {
     if (newCompleted.length === sections.length) {
       const progress = JSON.parse(localStorage.getItem('digitalShieldProgress') || '{}');
       progress.module3 = true;
+      if (!progress.badges) progress.badges = [];
+      if (!progress.badges.includes('module3')) progress.badges.push('module3');
       localStorage.setItem('digitalShieldProgress', JSON.stringify(progress));
 
       window.dispatchEvent(
@@ -521,20 +516,6 @@ function Module3() {
         >
           <div className="content-header">
             <h1>{currentSection?.title_tr}</h1>
-
-            <button
-              className="mark-complete-btn"
-              onClick={() => handleSectionComplete(activeSection)}
-              disabled={completedSections.includes(activeSection)}
-            >
-              {completedSections.includes(activeSection)
-                ? isTurkish
-                  ? 'Tamamlandı ✓'
-                  : 'Completed ✓'
-                : isTurkish
-                ? 'Tamamla'
-                : 'Complete'}
-            </button>
           </div>
 
           {SectionComponentToRender && <SectionComponentToRender />}
@@ -556,21 +537,54 @@ function Module3() {
           {'<-'} {isTurkish ? 'Önceki' : 'Previous'}
         </button>
 
-        <span style={{ color: '#64748b', fontWeight: 600, fontSize: '0.9rem' }}>
-          {activeSection} / {sections.length}
-        </span>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px', minWidth: '100px' }}>
+          <span style={{
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: 'white',
+            borderRadius: '999px',
+            padding: '6px 22px',
+            fontWeight: 800,
+            fontSize: '0.88rem',
+            letterSpacing: '0.04em',
+            boxShadow: '0 2px 12px rgba(102,126,234,0.3)',
+            whiteSpace: 'nowrap',
+          }}>
+            {activeSection} / {sections.length}
+          </span>
+          <div style={{ width: '72px', height: '4px', background: '#e2e8f0', borderRadius: '999px', overflow: 'hidden' }}>
+            <div style={{
+              width: `${Math.round((activeSection / sections.length) * 100)}%`,
+              height: '100%',
+              background: 'linear-gradient(90deg, #667eea, #764ba2)',
+              borderRadius: '999px',
+              transition: 'width 0.4s ease',
+            }} />
+          </div>
+        </div>
 
-        <button
-          className="nav-btn next"
-          onClick={() => {
-            handleSectionComplete(activeSection);
-            setActiveSection((prev) => Math.min(sections.length, prev + 1));
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          disabled={activeSection === sections.length}
-        >
-          {isTurkish ? 'Sonraki' : 'Next'} {'->'}
-        </button>
+        {activeSection === sections.length ? (
+          <button
+            className="nav-btn next"
+            onClick={() => handleSectionComplete(activeSection)}
+            disabled={completedSections.includes(activeSection)}
+            style={{ background: completedSections.includes(activeSection) ? '#10b981' : '#7c3aed' }}
+          >
+            {completedSections.includes(activeSection)
+              ? (isTurkish ? 'Tamamlandı ✓' : 'Completed ✓')
+              : (isTurkish ? '✓ Modülü Tamamla' : '✓ Complete Module')}
+          </button>
+        ) : (
+          <button
+            className="nav-btn next"
+            onClick={() => {
+              handleSectionComplete(activeSection);
+              setActiveSection((prev) => Math.min(sections.length, prev + 1));
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+          >
+            {isTurkish ? 'Sonraki' : 'Next'} {'->'}
+          </button>
+        )}
       </div>
     </div>
   );

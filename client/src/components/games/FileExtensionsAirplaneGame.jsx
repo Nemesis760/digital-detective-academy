@@ -4,7 +4,6 @@ import FILE_EXTENSIONS_ROUNDS from "./fileExtensionsData";
 
 import airplanePng from "../../assets/module1/file-extensions-airplane/airplane.png";
 import cloudPng from "../../assets/module1/file-extensions-airplane/cloud.png";
-import skyPng from "../../assets/module1/file-extensions-airplane/sky.png";
 import sfxCorrect from "../../assets/module1/file-extensions-airplane/sfx_correct.mp3";
 import sfxWrong from "../../assets/module1/file-extensions-airplane/sfx_wrong.mp3";
 
@@ -83,7 +82,6 @@ export default function FileExtensionsAirplaneGame() {
   const stateRef = useRef({
     plane: { x: 200, y: 260, vy: 0 },
     clouds: buildClouds(FILE_EXTENSIONS_ROUNDS[0]),
-    bg1: 0,
     advancePending: false,
     effects: [],
     correctHits: new Set(),
@@ -131,35 +129,12 @@ export default function FileExtensionsAirplaneGame() {
     const ctx = canvas.getContext("2d");
     let running = true;
 
-    const skyImg = new Image();   skyImg.src = skyPng;
     const cloudImg = new Image(); cloudImg.src = cloudPng;
     const planeImg = new Image(); planeImg.src = airplanePng;
 
-    const drawTiledImage = (img, y, height, offset, speed, alpha = 1) => {
-      const aspect = img.naturalWidth / img.naturalHeight;
-      const width = height * aspect;
-      if (width <= 0) return offset;
-      let drawOffset = (offset - speed) % width;
-      if (drawOffset > 0) drawOffset -= width;
-      ctx.globalAlpha = alpha;
-      for (let x = drawOffset; x < ASPECT_W + width; x += width) {
-        // +2 overlap prevents subpixel seams between tiles
-        ctx.drawImage(img, Math.floor(x), y, Math.ceil(width) + 2, height);
-      }
-      ctx.globalAlpha = 1;
-      return drawOffset;
-    };
-
-    const drawBackground = (dt) => {
-      const { bg1 } = stateRef.current;
-      const speed1 = 10 * dt;
-
-      ctx.fillStyle = "#67b7ff";
+    const drawBackground = () => {
+      ctx.fillStyle = "#87ceeb";
       ctx.fillRect(0, 0, ASPECT_W, ASPECT_H);
-
-      if (skyImg.complete && skyImg.naturalWidth > 0) {
-        stateRef.current.bg1 = drawTiledImage(skyImg, 0, ASPECT_H, bg1, speed1, 1.0);
-      }
     };
 
     const drawCloud = (cloud) => {

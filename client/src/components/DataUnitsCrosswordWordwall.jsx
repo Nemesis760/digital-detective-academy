@@ -111,7 +111,7 @@ const floatY = {
 };
 
 function BalloonsOverlay({ density = 8 }) {
-  // Sade ama “Wordwall hissi”: yüzen balonlar + confetti vibe
+  // Sade ama "Wordwall hissi": yüzen balonlar + confetti vibe
   const balloons = useMemo(() => {
     const arr = [];
     for (let i = 0; i < density; i++) {
@@ -489,11 +489,11 @@ function GameUI({
     setMode("type");
   };
 
-  // Wordwall gibi: grid büyük, overlay’de daha da büyük
-  const cellSizeMax = isOverlay ? 46 : 38;
+  // Hücre boyutu: mobilde küçüt, masaüstünde büyüt
+  const cellSizeMax = isOverlay ? 46 : 36;
   const cellStyle = {
-    width: `clamp(30px, 3.6vw, ${cellSizeMax}px)`,
-    height: `clamp(30px, 3.6vw, ${cellSizeMax}px)`,
+    width: `clamp(22px, 5.5vw, ${cellSizeMax}px)`,
+    height: `clamp(22px, 5.5vw, ${cellSizeMax}px)`,
   };
 
   const total = WORDS.length;
@@ -620,12 +620,14 @@ function GameUI({
         </AnimatePresence>
       </div>
 
-      {/* Body */}
-      <div className="relative z-10 grid grid-cols-1 xl:grid-cols-[320px_1fr_340px] gap-4 px-4 pb-4 h-[calc(100%-160px)]">
-        {/* Left: Questions */}
-        <div className="bg-black/20 border border-white/12 rounded-2xl p-3 overflow-auto backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.40)]">
+      {/* Body: mobilde sutun, lg'de yan yana */}
+      <div className="relative z-10 flex flex-col lg:grid lg:grid-cols-[260px_1fr] xl:grid-cols-[260px_1fr_300px] gap-3 px-3 pb-4">
+
+        {/* Sorular: mobilde yatay scroll, lg'de sol panel */}
+        <div className="bg-black/20 border border-white/12 rounded-2xl p-3 backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.40)]">
           <div className="text-sm font-extrabold mb-2 opacity-95">Sorular</div>
-          <div className="flex flex-col gap-2">
+          {/* mobilde yatay, lg'de dikey liste */}
+          <div className="flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-x-visible pb-1 lg:pb-0">
             {WORDS
               .slice()
               .sort((a, b) => a.number - b.number)
@@ -637,7 +639,7 @@ function GameUI({
                     key={w.id}
                     onClick={() => pickWord(w.id)}
                     className={[
-                      "text-left px-3 py-2 rounded-xl border transition shadow-[0_10px_25px_rgba(0,0,0,0.25)]",
+                      "text-left px-3 py-2 rounded-xl border transition shadow-[0_10px_25px_rgba(0,0,0,0.25)] flex-shrink-0 lg:flex-shrink",
                       active
                         ? "bg-blue-500/20 border-blue-400/45"
                         : "bg-white/6 border-white/12 hover:bg-white/10",
@@ -647,21 +649,21 @@ function GameUI({
                     title={done ? "Tamamlandı" : "Seç"}
                   >
                     <div className="flex items-center justify-between gap-2">
-                      <div className="text-sm font-extrabold">
-                        <span className="inline-block w-6 opacity-90">{w.number}.</span> {w.clueTr}
+                      <div className="text-xs lg:text-sm font-extrabold whitespace-nowrap lg:whitespace-normal">
+                        <span className="inline-block w-5 opacity-90">{w.number}.</span> {w.clueTr}
                       </div>
-                      <div className="text-xs opacity-85">
+                      <div className="text-xs opacity-85 ml-2">
                         {done ? "✓" : w.dir === "across" ? "→" : "↓"}
                       </div>
                     </div>
-                    <div className="text-xs opacity-75 mt-1">{w.answer.length} harf</div>
+                    <div className="text-xs opacity-75 mt-0.5">{w.answer.length} harf</div>
                   </button>
                 );
               })}
           </div>
         </div>
 
-        {/* Center: Grid */}
+        {/* Grid — yatay scroll ile taşmayı önle */}
         <div className="bg-black/20 border border-white/12 rounded-2xl p-3 overflow-auto backdrop-blur-md shadow-[0_18px_45px_rgba(0,0,0,0.40)]">
           <motion.div
             key={shakeKey}
@@ -669,7 +671,7 @@ function GameUI({
             className="mx-auto w-fit"
           >
             <div
-              className="grid gap-1"
+              className="grid gap-[3px]"
               style={{
                 gridTemplateColumns: `repeat(${GRID_COLS}, ${cellStyle.width})`,
                 gridTemplateRows: `repeat(${GRID_ROWS}, ${cellStyle.height})`,
@@ -692,7 +694,6 @@ function GameUI({
                   const locked = sol.wordIds.some((id) => solved.has(id));
                   const inRecentSolved = recentSolved ? sol.wordIds.includes(recentSolved) : false;
 
-                  // click behavior
                   const clickableWordId =
                     selectedWordId && sol.wordIds.includes(selectedWordId)
                       ? selectedWordId
@@ -705,17 +706,15 @@ function GameUI({
                     activeCell.r === r &&
                     activeCell.c === c;
 
-                  // 3D hücre hissi
                   const baseBg = locked ? "bg-green-500/18" : "bg-white/10";
                   const baseBorder = locked ? "border-green-300/35" : "border-white/18";
 
                   return (
                     <motion.button
-                      key={`${r}-${c}-${shineTick}`} // shine refresh
+                      key={`${r}-${c}-${shineTick}`}
                       onClick={() => {
                         if (locked) return;
                         pickWord(clickableWordId);
-
                         setTimeout(() => {
                           const w = WORDS.find((x) => x.id === clickableWordId);
                           if (!w) return;
@@ -727,18 +726,16 @@ function GameUI({
                       disabled={locked}
                       style={cellStyle}
                       className={[
-                        "relative rounded-lg border flex items-center justify-center select-none transition",
+                        "relative rounded-md border flex items-center justify-center select-none transition",
                         "font-extrabold",
                         baseBg,
                         baseBorder,
-                        "shadow-[0_10px_25px_rgba(0,0,0,0.35)]",
-                        "before:content-[''] before:absolute before:inset-0 before:rounded-lg before:pointer-events-none",
+                        "shadow-[0_4px_12px_rgba(0,0,0,0.35)]",
+                        "before:content-[''] before:absolute before:inset-0 before:rounded-md before:pointer-events-none",
                         "before:bg-gradient-to-b before:from-white/10 before:to-transparent",
-                        // seçili kelime vurgusu
                         mode === "type" && inSelected ? "ring-2 ring-blue-400/40" : "",
                         isActive ? "ring-4 ring-yellow-300/55" : "",
-                        // kilitli glow
-                        locked ? "shadow-[0_0_0_1px_rgba(134,239,172,0.25),0_18px_45px_rgba(0,0,0,0.45)]" : "",
+                        locked ? "shadow-[0_0_0_1px_rgba(134,239,172,0.25)]" : "",
                       ].join(" ")}
                       title={sol.wordIds.join(", ")}
                       initial={false}
@@ -749,10 +746,9 @@ function GameUI({
                       }
                       transition={{ duration: 0.35 }}
                     >
-                      {/* Shine sweep when recently solved */}
                       {inRecentSolved && (
                         <motion.span
-                          className="absolute inset-0 rounded-lg pointer-events-none overflow-hidden"
+                          className="absolute inset-0 rounded-md pointer-events-none overflow-hidden"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
@@ -766,15 +762,16 @@ function GameUI({
                         </motion.span>
                       )}
 
-                      {/* Start number */}
                       {isStart && (
-                        <span className="absolute top-1 left-1 text-[11px] opacity-85 font-extrabold">
+                        <span className="absolute top-0.5 left-0.5 text-[9px] leading-none opacity-85 font-extrabold">
                           {num}
                         </span>
                       )}
 
-                      {/* Letter */}
-                      <span className="text-lg drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+                      <span
+                        className="drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)]"
+                        style={{ fontSize: `clamp(10px, 2.8vw, 16px)` }}
+                      >
                         {val}
                       </span>
                     </motion.button>
@@ -784,13 +781,13 @@ function GameUI({
             </div>
           </motion.div>
 
-          <div className="mt-3 text-xs text-white/75">
-            Wordwall modu: önce <span className="font-semibold">“kelime seç”</span>, sonra yaz. Son harfte otomatik kontrol eder.
+          <div className="mt-2 text-xs text-white/65">
+            Önce <span className="font-semibold">kelime seç</span>, sonra yaz. Son harfte otomatik kontrol.
           </div>
         </div>
 
-        {/* Right: Mini lesson / hint panel */}
-        <div className="hidden xl:block">
+        {/* Mini ders: mobilde altta, xl'de sag panel */}
+        <div className="xl:block">
           <MiniLesson selectedClue={selectedWord?.clueTr ?? null} />
         </div>
       </div>
@@ -815,11 +812,9 @@ export default function DataUnitsCrosswordWordwall() {
 
   return (
     <div className="w-full">
-      {/* Normal view: sığdırılmış yükseklik */}
+      {/* Normal view */}
       <div className="relative rounded-2xl border border-white/10 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
-        <div className="h-[680px]">
-          <GameUI showFullscreenButton onOpenFullscreen={() => setOverlayOpen(true)} />
-        </div>
+        <GameUI showFullscreenButton onOpenFullscreen={() => setOverlayOpen(true)} />
       </div>
 
       {/* Fullscreen overlay (kırpıksız) */}

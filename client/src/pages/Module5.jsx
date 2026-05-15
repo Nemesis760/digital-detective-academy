@@ -6,8 +6,33 @@ import { MODULE5_EN } from '../content/module5_lang_en';
 import LoadingScreen from '../components/LoadingScreen';
 import { useLanguage } from '../contexts/LanguageContext';
 import InteractiveQuiz from '../components/InteractiveQuiz';
+import CardMatchGame from '../components/CardMatchGame';
+import PhishingDetective from '../components/PhishingDetective';
+import AppPermissionDetective from '../components/AppPermissionDetective';
+import NewsVerifier from '../components/NewsVerifier';
+import SafeDecisionMap from '../components/SafeDecisionMap';
+import HangmanGame from '../components/HangmanGame';
+import { CYBER_SECURITY_HANGMAN } from '../content/activities/cyber_security_hangman';
 import '../modules.css';
 import './module5.css';
+
+const VIRUS_PAIRS_TR = [
+  ['Virüs', 'Dosyalara bulaşır ve onları bozar'],
+  ['Casus Yazılım (Spyware)', 'Şifrelerini ve bilgilerini gizlice çalar'],
+  ['Fidye Yazılımı (Ransomware)', 'Dosyalarını kilitler ve para ister'],
+  ['Reklam Yazılımı (Adware)', 'Sürekli istenmeyen reklam pencereleri açar'],
+  ['Truva Atı (Trojan)', 'Yararlı görünür ama içten zarar verir'],
+  ['Solucan (Worm)', 'Ağ üzerinden kendini kopyalayarak yayılır'],
+];
+
+const VIRUS_PAIRS_EN = [
+  ['Virus', 'Infects and corrupts files on your device'],
+  ['Spyware', 'Secretly steals your passwords and data'],
+  ['Ransomware', 'Locks your files and demands money to unlock'],
+  ['Adware', 'Floods your screen with unwanted pop-up ads'],
+  ['Trojan', 'Looks useful but causes harm from the inside'],
+  ['Worm', 'Copies itself across networks to spread damage'],
+];
 
 const MODULE_KEY = 'module5';
 
@@ -77,9 +102,10 @@ const CompletionScreen = ({ isTurkish, onNavigate, countdown }) => (
 );
 
 const SectionComponent = ({ section, isTurkish }) => {
-  const renderActivity = () => {
-    const activityType = section.activity_type;
-    switch (activityType) {
+  const virusPairs = isTurkish ? VIRUS_PAIRS_TR : VIRUS_PAIRS_EN;
+
+  const renderActivity = (type) => {
+    switch (type) {
       case 'quiz':
       case 'interactive_quiz': {
         let quizContent = null;
@@ -98,14 +124,20 @@ const SectionComponent = ({ section, isTurkish }) => {
           </div>
         );
       }
+      case 'virus_match':
+        return <CardMatchGame isTurkish={isTurkish} pairs={virusPairs} />;
+      case 'app_permission':
+        return <AppPermissionDetective isTurkish={isTurkish} />;
+      case 'phishing_detective':
+        return <PhishingDetective isTurkish={isTurkish} />;
+      case 'news_verifier':
+        return <NewsVerifier isTurkish={isTurkish} />;
+      case 'safe_decision_map':
+        return <SafeDecisionMap isTurkish={isTurkish} />;
+      case 'cyber_hangman':
+        return <HangmanGame isTurkish={isTurkish} data={CYBER_SECURITY_HANGMAN} />;
       default:
-        return (
-          <div className="activity-placeholder">
-            <p className="activity-placeholder-text">
-              {isTurkish ? 'Aktivite bileşeni yükleniyor...' : 'Loading activity component...'}
-            </p>
-          </div>
-        );
+        return null;
     }
   };
 
@@ -142,11 +174,23 @@ const SectionComponent = ({ section, isTurkish }) => {
         </div>
       )}
 
-      <div className="activity-box">
-        <h3>{section.activity_title}</h3>
-        <p>{section.activity_desc}</p>
-        {renderActivity()}
-      </div>
+      {/* Primary activity */}
+      {section.activity_title && (
+        <div className="activity-box">
+          <h3>{section.activity_title}</h3>
+          {section.activity_desc && <p>{section.activity_desc}</p>}
+          {renderActivity(section.activity_type)}
+        </div>
+      )}
+
+      {/* Secondary activity (virus_match, app_permission, phishing_detective) */}
+      {section.second_activity_type && (
+        <div className="activity-box" style={{ marginTop: '2rem' }}>
+          <h3>{section.second_activity_title || (isTurkish ? '🎮 Aktivite' : '🎮 Activity')}</h3>
+          {section.second_activity_desc && <p>{section.second_activity_desc}</p>}
+          {renderActivity(section.second_activity_type)}
+        </div>
+      )}
     </motion.div>
   );
 };
@@ -245,6 +289,7 @@ const sections = (() => {
     const clamped = Math.min(Math.max(activeSection, 1), sections.length);
     if (clamped !== activeSection) { setActiveSection(clamped); return; }
     localStorage.setItem(`${MODULE_KEY}_activeSection`, String(activeSection));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeSection, sections.length]);
 
   useEffect(() => {
@@ -265,7 +310,6 @@ const sections = (() => {
     const handler = (e) => {
       if (e.detail.module === MODULE_KEY) {
         setActiveSection(e.detail.sectionId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
     window.addEventListener('sidebarSectionClick', handler);
@@ -279,6 +323,8 @@ const sections = (() => {
       if (newCompleted.length === sections.length) {
         const progress = JSON.parse(localStorage.getItem('digitalShieldProgress') || '{}');
         progress.module5 = true;
+        if (!progress.badges) progress.badges = [];
+        if (!progress.badges.includes('module5')) progress.badges.push('module5');
         localStorage.setItem('digitalShieldProgress', JSON.stringify(progress));
         window.dispatchEvent(new CustomEvent('moduleCompleted', { detail: { module: MODULE_KEY } }));
         setTimeout(() => { setShowCompletion(true); setCountdown(5); }, 400);
@@ -314,15 +360,6 @@ const sections = (() => {
         >
           <div className="content-header">
             <h1>{currentSection?.title_tr}</h1>
-            <button
-              className="mark-complete-btn"
-              onClick={() => handleSectionComplete(activeSection)}
-              disabled={completedSections.includes(activeSection)}
-            >
-              {completedSections.includes(activeSection)
-                ? isTurkish ? 'Tamamlandı ✓' : 'Completed ✓'
-                : isTurkish ? 'Tamamla' : 'Complete'}
-            </button>
           </div>
           {SectionComponentToRender && <SectionComponentToRender />}
         </motion.div>
@@ -331,27 +368,57 @@ const sections = (() => {
       <div className="section-navigation" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 3rem 2rem 4rem' }}>
         <button
           className="nav-btn prev"
-          onClick={() => { setActiveSection((p) => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); document.documentElement.scrollTop = 0; document.body.scrollTop = 0; }}
+          onClick={() => setActiveSection((p) => Math.max(1, p - 1))}
           disabled={activeSection === 1}
         >
           {'<-'} {isTurkish ? 'Önceki' : 'Previous'}
         </button>
-        <span style={{ color: '#64748b', fontWeight: 600, fontSize: '0.9rem' }}>
-          {activeSection} / {sections.length}
-        </span>
-        <button
-          className="nav-btn next"
-          onClick={() => {
-            handleSectionComplete(activeSection);
-            setActiveSection((p) => Math.min(sections.length, p + 1));
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            document.documentElement.scrollTop = 0;
-            document.body.scrollTop = 0;
-          }}
-          disabled={activeSection === sections.length}
-        >
-          {isTurkish ? 'Sonraki' : 'Next'} {'->'}
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px', minWidth: '100px' }}>
+          <span style={{
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: 'white',
+            borderRadius: '999px',
+            padding: '6px 22px',
+            fontWeight: 800,
+            fontSize: '0.88rem',
+            letterSpacing: '0.04em',
+            boxShadow: '0 2px 12px rgba(102,126,234,0.3)',
+            whiteSpace: 'nowrap',
+          }}>
+            {activeSection} / {sections.length}
+          </span>
+          <div style={{ width: '72px', height: '4px', background: '#e2e8f0', borderRadius: '999px', overflow: 'hidden' }}>
+            <div style={{
+              width: `${Math.round((activeSection / sections.length) * 100)}%`,
+              height: '100%',
+              background: 'linear-gradient(90deg, #667eea, #764ba2)',
+              borderRadius: '999px',
+              transition: 'width 0.4s ease',
+            }} />
+          </div>
+        </div>
+        {activeSection === sections.length ? (
+          <button
+            className="nav-btn next"
+            onClick={() => handleSectionComplete(activeSection)}
+            disabled={completedSections.includes(activeSection)}
+            style={{ background: completedSections.includes(activeSection) ? '#10b981' : '#7c3aed' }}
+          >
+            {completedSections.includes(activeSection)
+              ? (isTurkish ? 'Tamamlandı ✓' : 'Completed ✓')
+              : (isTurkish ? '✓ Modülü Tamamla' : '✓ Complete Module')}
+          </button>
+        ) : (
+          <button
+            className="nav-btn next"
+            onClick={() => {
+              handleSectionComplete(activeSection);
+              setActiveSection((p) => Math.min(sections.length, p + 1));
+            }}
+          >
+            {isTurkish ? 'Sonraki' : 'Next'} {'->'}
+          </button>
+        )}
       </div>
     </div>
   );

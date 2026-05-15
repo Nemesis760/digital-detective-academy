@@ -12,6 +12,7 @@ import { MODULE4_TR } from '../content/module4_lang_tr';
 import { MODULE4_EN } from '../content/module4_lang_en';
 
 import InteractiveQuiz from '../components/InteractiveQuiz';
+import Module4MiniQuiz from '../components/Module4MiniQuiz';
 import CardMatchGame from '../components/CardMatchGame';
 import WordPuzzleGame from '../components/WordPuzzleGame';
 import PasswordSmithGame from '../components/PasswordSmithGame';
@@ -200,16 +201,9 @@ const SorterGame = ({ activity, isTurkish }) => {
   );
 };
 
-function formatMiniQuiz(questions = []) {
-  return questions.map((q, i) => {
-    if (q.type === 'tf') return { id: i, type: 'true_false', question: q.question, options: [], answer: q.answer, explanation_tr: q.explanation, explanation_en: q.explanation };
-    return { id: i, type: 'multiple_choice', question: q.question, options: (q.options || []).map((opt, idx) => ({ text: opt, correct: idx === q.answerIndex })), answer: q.answerIndex, explanation_tr: q.explanation, explanation_en: q.explanation };
-  });
-}
-
 function ActivityRenderer({ activity, isTurkish }) {
   if (!activity) return null;
-  if (activity.type === 'mini_quiz') return <InteractiveQuiz quizItems={formatMiniQuiz(activity.questions || [])} isTurkish={isTurkish} />;
+  if (activity.type === 'mini_quiz') return <Module4MiniQuiz questions={activity.questions || []} isTurkish={isTurkish} />;
   if (activity.type === 'flashcards') return <FlashcardsGame cards={activity.cards || []} />;
   if (activity.type === 'sorter') return <SorterGame activity={activity} isTurkish={isTurkish} />;
   return null;
@@ -252,9 +246,10 @@ export default function Module4() {
     return () => clearTimeout(t);
   }, []);
 
-  // ✅ activeSection localStorage
+  // ✅ activeSection localStorage + scroll to top
   useEffect(() => {
     localStorage.setItem(`${MODULE_KEY}_activeSection`, String(activeSection));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeSection]);
 
   // ✅ completed → localStorage + Sidebar event
@@ -279,7 +274,6 @@ export default function Module4() {
     const handler = (e) => {
       if (e.detail.module === MODULE_KEY) {
         setActiveSection(e.detail.sectionId);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
     window.addEventListener('sidebarSectionClick', handler);
@@ -295,6 +289,8 @@ export default function Module4() {
       if (next.size === sections.length) {
         const progress = JSON.parse(localStorage.getItem('digitalShieldProgress') || '{}');
         progress.module4 = true;
+        if (!progress.badges) progress.badges = [];
+        if (!progress.badges.includes('module4')) progress.badges.push('module4');
         localStorage.setItem('digitalShieldProgress', JSON.stringify(progress));
         window.dispatchEvent(new CustomEvent('moduleCompleted', { detail: { module: MODULE_KEY } }));
         setTimeout(() => { setShowCompletion(true); setCountdown(5); }, 400);
@@ -335,16 +331,6 @@ export default function Module4() {
         >
           <div className="content-header">
             <h1>{current.title}</h1>
-            <button
-              type="button"
-              className="mark-complete-btn"
-              onClick={() => markComplete(activeSection)}
-              disabled={completed.has(activeSection)}
-            >
-              {completed.has(activeSection)
-                ? (isTurkish ? 'Tamamlandı ✓' : 'Completed ✓')
-                : (isTurkish ? 'Tamamla' : 'Complete')}
-            </button>
           </div>
 
           {moduleData.hero_image && activeSection === 1 && (
@@ -420,20 +406,54 @@ export default function Module4() {
 
       <div className="section-navigation" style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 3rem 2rem 4rem' }}>
         <button type="button" className="nav-btn prev"
-          onClick={() => { setActiveSection((p) => Math.max(1, p - 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+          onClick={() => setActiveSection((p) => Math.max(1, p - 1))}
           disabled={activeSection === 1}
         >
           {isTurkish ? 'Önceki' : 'Previous'}
         </button>
-        <span style={{ color: '#64748b', fontWeight: 600, fontSize: '0.9rem' }}>
-          {activeSection} / {sections.length}
-        </span>
-        <button type="button" className="nav-btn next"
-          onClick={() => { markComplete(activeSection); setActiveSection((p) => Math.min(sections.length, p + 1)); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-          disabled={activeSection === sections.length}
-        >
-          {isTurkish ? 'Sonraki' : 'Next'}
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px', minWidth: '100px' }}>
+          <span style={{
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: 'white',
+            borderRadius: '999px',
+            padding: '6px 22px',
+            fontWeight: 800,
+            fontSize: '0.88rem',
+            letterSpacing: '0.04em',
+            boxShadow: '0 2px 12px rgba(102,126,234,0.3)',
+            whiteSpace: 'nowrap',
+          }}>
+            {activeSection} / {sections.length}
+          </span>
+          <div style={{ width: '72px', height: '4px', background: '#e2e8f0', borderRadius: '999px', overflow: 'hidden' }}>
+            <div style={{
+              width: `${Math.round((activeSection / sections.length) * 100)}%`,
+              height: '100%',
+              background: 'linear-gradient(90deg, #667eea, #764ba2)',
+              borderRadius: '999px',
+              transition: 'width 0.4s ease',
+            }} />
+          </div>
+        </div>
+        {activeSection === sections.length ? (
+          <button
+            type="button"
+            className="nav-btn next"
+            onClick={() => markComplete(activeSection)}
+            disabled={completed.has(activeSection)}
+            style={{ background: completed.has(activeSection) ? '#10b981' : '#7c3aed' }}
+          >
+            {completed.has(activeSection)
+              ? (isTurkish ? 'Tamamlandı ✓' : 'Completed ✓')
+              : (isTurkish ? '✓ Modülü Tamamla' : '✓ Complete Module')}
+          </button>
+        ) : (
+          <button type="button" className="nav-btn next"
+            onClick={() => { markComplete(activeSection); setActiveSection((p) => Math.min(sections.length, p + 1)); }}
+          >
+            {isTurkish ? 'Sonraki' : 'Next'}
+          </button>
+        )}
       </div>
     </div>
   );

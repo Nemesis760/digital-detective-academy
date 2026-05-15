@@ -91,9 +91,9 @@ export const MODULE2_TR = {
         title: "🎯 Aktif ve Pasif Dijital Ayak İzi",
         intro:
           "Dijital ayak izimiz iki şekilde oluşur: Aktif ve Pasif. Her ikisini de anlamak önemlidir!",
-        activity_title: "🎮 Aktivite: Hangi İz? Kart Oyunu",
+        activity_title: "Aktivite: Kavramları Eşleştir",
         activity_desc:
-          "Verilen durumları oku ve doğru kartı (Aktif/Pasif) seç.",
+          "Dijital ayak izi kavramlarını doğru açıklamalarıyla eşleştir!",
         content: {
           "2.1": {
             title: "Aktif Dijital Ayak İzi",
@@ -118,6 +118,23 @@ export const MODULE2_TR = {
                 question: "Kendi isteğimle yorum yapmak aktif ayak izidir.",
                 answer: true,
                 explanation_tr: "Aktif dijital ayak izi, bilerek ve isteyerek yaptığımız paylaşımlardır. Bir yorum yazmak tamamen senin kararın olduğu için aktif bir iz bırakırsın."
+              },
+              {
+                type: "true_false",
+                question: "Sosyal medyaya yüklediğim fotoğraf pasif dijital ayak izidir.",
+                answer: false,
+                explanation_tr: "Fotoğraf yüklemek tamamen senin kararın; bu nedenle aktif dijital ayak izidir. Pasif iz, farkında olmadan başkaları tarafından toplanan verilerdir."
+              },
+              {
+                type: "multiple_choice",
+                question: "Hangisi aktif dijital ayak izine örnektir?",
+                options: [
+                  { text: "Web sitesinin beni çerezlerle takip etmesi", correct: false },
+                  { text: "YouTube'da bir videoya yorum yazmak", correct: true },
+                  { text: "Konum bilgimin otomatik kaydedilmesi", correct: false },
+                  { text: "Reklamların beni takip etmesi", correct: false }
+                ],
+                explanation_tr: "YouTube'a yorum yazmak bilerek yapılan bir paylaşımdır — bu aktif ayak izidir. Diğer seçenekler farkında olmadan oluşan pasif izlerdir."
               }
             ]
           },
@@ -174,9 +191,9 @@ export const MODULE2_TR = {
         title: "🔐 Kişisel Bilgiler ve Gizlilik",
         intro:
           "Kişisel bilgilerimiz dijital dünyada kimliğimizin anahtarları gibidir. Bu anahtarları nasıl koruyacağımızı öğrenelim!",
-        activity_title: "📝 Quiz: Güvenli/Güvensiz Eşleştirme",
+        activity_title: "Quiz: Güvenli ve Güvensiz Davranışlar",
         activity_desc:
-          "Verilen eylemleri oku ve uygun kutuya (Güvenli/Güvensiz) sürükle.",
+          "Her soruyu dikkatlice oku, doğru seçeneği işaretle ve açıklamayı incele!",
         content: {
           "3.1": {
             title: "Kişisel Bilgi Nedir?",
@@ -345,8 +362,8 @@ export const MODULE2_TR = {
         title: "🛡️ Güvenli Dijital Davranışlar",
         intro:
           "Dijital dünyada güvende kalmak ve temiz bir ayak izi bırakmak için bazı kurallar vardır. Bu kuralları öğrenelim!",
-        activity_title: "📝 Quiz: Güvenli Davranışlar",
-        activity_desc: "Güvenli dijital davranışlar hakkındaki soruları cevapla.",
+        activity_title: "Quiz: Güvenli Dijital Davranışlar",
+        activity_desc: "Güvenli dijital davranışlar hakkındaki soruları cevapla ve açıklamaları incele!",
         content: {
           "5.1": {
             title: "T.H.I.N.K. Kuralı",
@@ -412,6 +429,22 @@ export const MODULE2_TR = {
                   { text: "C) Kaç beğeni alacağını tahmin etmek.", correct: false }
                 ],
                 explanation_tr: "T.H.I.N.K. kuralına göre: paylaşmadan önce 'Bu doğru mu? Yararlı mı? İlham verici mi? Gerekli mi? Nazik mi?' diye sorman gerekir. Hız veya beğeni sayısı değil, güvenlik ve saygı önemlidir!"
+              },
+              {
+                type: "true_false",
+                question: "Tanımadığım bir kişiden gelen mesajdaki linke tıklamak güvenlidir.",
+                answer: false,
+                explanation_tr: "Tanımadığın kişilerden gelen linkler 'oltalama' (phishing) saldırısı olabilir. Bu tür linkler seni sahte bir siteye yönlendirerek şifreni veya kişisel bilgilerini çalabilir. Kaynağını bilmediğin hiçbir linke tıklama!"
+              },
+              {
+                type: "multiple_choice",
+                question: "Sosyal medya hesabının gizlilik ayarı 'Herkese Açık' olduğunda ne olur?",
+                options: [
+                  { text: "A) Sadece arkadaşların profilini görebilir.", correct: false },
+                  { text: "B) İnternetteki herkes paylaşımlarını ve bilgilerini görebilir.", correct: true },
+                  { text: "C) Sadece aile üyelerin görebilir.", correct: false }
+                ],
+                explanation_tr: "'Herkese Açık' profil, milyarlarca internet kullanıcısına bilgilerini açar. Güvenli olmak için profilini 'Sadece Arkadaşlar' olarak ayarla ve kim olduğunu bilmediğin kişileri arkadaş listene ekleme!"
               }
             ]
           }

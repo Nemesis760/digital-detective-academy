@@ -9,12 +9,10 @@ const EN_LETTERS = [
   'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'
 ];
 
-// "URL / LINK" gibi cevaplarda slash ve boşlukları koru
 function isRevealChar(ch) {
   return ch === ' ' || ch === '-' || ch === '/' || ch === '.' || ch === '_' || ch === '(' || ch === ')' || ch === ':';
 }
 
-// Türkçe karakterlerle büyük harf normalize + gereksiz diakritik bozma yok
 function normalizeAnswer(raw) {
   if (!raw) return '';
   return String(raw).trim().toLocaleUpperCase('tr-TR');
@@ -31,14 +29,13 @@ export default function HangmanGame({ isTurkish, data, compact = false }) {
       clue: isTurkish ? 'İpucu' : 'Clue',
       word: isTurkish ? 'Kelime' : 'Word',
       lives: isTurkish ? 'Hak' : 'Lives',
+      wrong: isTurkish ? 'Yanlış harfler' : 'Wrong letters',
+      question: isTurkish ? 'Soru' : 'Question',
       winTitle: isTurkish ? 'Tebrikler!' : 'Great job!',
       loseTitle: isTurkish ? 'Bitti!' : 'Game over!',
       yourAnswer: isTurkish ? 'Cevap' : 'Answer',
-
-      // ✅ pedagojik buton metinleri
       restart: isTurkish ? 'Tekrar Dene' : 'Try Again',
       next: isTurkish ? 'Sonraki Soru' : 'Next Question',
-
       score: isTurkish ? 'Skor' : 'Score',
       letters: isTurkish ? TR_LETTERS : EN_LETTERS,
       maxWrong: Number.isFinite(data?.settings?.maxWrong)
@@ -63,10 +60,9 @@ export default function HangmanGame({ isTurkish, data, compact = false }) {
   const [index, setIndex] = useState(0);
   const [guessed, setGuessed] = useState(() => new Set());
   const [wrongCount, setWrongCount] = useState(0);
-  const [status, setStatus] = useState('playing'); // playing | won | lost
+  const [status, setStatus] = useState('playing');
   const [score, setScore] = useState(0);
 
-  // yeni item yüklenince reset
   useEffect(() => {
     setIndex(0);
     setGuessed(new Set());
@@ -87,6 +83,11 @@ export default function HangmanGame({ isTurkish, data, compact = false }) {
     return s;
   }, [answer]);
 
+  const wrongLetters = useMemo(
+    () => [...guessed].filter((l) => !answerLetters.has(l)),
+    [guessed, answerLetters]
+  );
+
   const revealed = useMemo(() => {
     if (!answer) return '';
     let out = '';
@@ -100,44 +101,25 @@ export default function HangmanGame({ isTurkish, data, compact = false }) {
 
   const remaining = t.maxWrong - wrongCount;
 
-  // kazanma kontrolü
   useEffect(() => {
     if (!answer) return;
     if (status !== 'playing') return;
-
     let all = true;
     for (const ch of answerLetters) {
-      if (!guessed.has(ch)) {
-        all = false;
-        break;
-      }
+      if (!guessed.has(ch)) { all = false; break; }
     }
-    if (all) {
-      setStatus('won');
-      setScore((prev) => prev + 1);
-    }
+    if (all) { setStatus('won'); setScore((prev) => prev + 1); }
   }, [answer, answerLetters, guessed, status]);
 
-  // kaybetme kontrolü
   useEffect(() => {
     if (status !== 'playing') return;
     if (wrongCount >= t.maxWrong) setStatus('lost');
   }, [wrongCount, status, t.maxWrong]);
 
   const handlePick = (letter) => {
-    if (status !== 'playing') return;
-    if (!letter) return;
-    if (guessed.has(letter)) return;
-
-    setGuessed((prev) => {
-      const next = new Set(prev);
-      next.add(letter);
-      return next;
-    });
-
-    if (!answerLetters.has(letter)) {
-      setWrongCount((prev) => prev + 1);
-    }
+    if (status !== 'playing' || !letter || guessed.has(letter)) return;
+    setGuessed((prev) => { const next = new Set(prev); next.add(letter); return next; });
+    if (!answerLetters.has(letter)) setWrongCount((prev) => prev + 1);
   };
 
   const nextQuestion = () => {
@@ -162,99 +144,119 @@ export default function HangmanGame({ isTurkish, data, compact = false }) {
     );
   }
 
-  // ✅ 3) Çizimi aşamalı: önce çizgiler, sonra vücut
   const showBase = wrongCount >= 1;
-  const showV = wrongCount >= 2;
-  const showH = wrongCount >= 3;
-
+  const showV    = wrongCount >= 2;
+  const showH    = wrongCount >= 3;
   const showHead = wrongCount >= 4;
   const showBody = wrongCount >= 5;
   const showArms = wrongCount >= 6;
   const showLegs = wrongCount >= 7;
   const showFace = wrongCount >= 7;
 
+  const dangerLevel = wrongCount >= t.maxWrong - 1 ? 'critical' : wrongCount >= t.maxWrong - 3 ? 'warning' : '';
+
   return (
     <div className={`hangman-game ${compact ? 'compact' : ''}`}>
-      {/* ✅ 1) Çift başlık olmasın: compact modda title/desc basma */}
-      {!compact && (
-        <div className="hangman-top">
-          <div className="hangman-head">
-            <h3 className="hangman-title">{t.title}</h3>
-            <p className="hangman-desc">{t.desc}</p>
-          </div>
 
-          <div className="hangman-meta">
-            <div className="hangman-pill">
-              <span className="hangman-pill-label">{t.score}</span>
-              <span className="hangman-pill-value">{score}</span>
-            </div>
-            <div className={`hangman-pill ${remaining <= 2 ? 'danger' : ''}`}>
-              <span className="hangman-pill-label">{t.lives}</span>
-              <span className="hangman-pill-value">{Math.max(0, remaining)}</span>
-            </div>
+      {/* TOP BAR */}
+      <div className="hangman-top compact-top">
+        {/* Progress */}
+        <div className="hm-progress-block">
+          <span className="hm-q-label">{t.question} {index + 1} / {items.length}</span>
+          <div className="hm-progress-bar">
+            <div
+              className="hm-progress-fill"
+              style={{ width: `${((index + 1) / items.length) * 100}%` }}
+            />
           </div>
         </div>
-      )}
 
-      {compact && (
-        <div className="hangman-top compact-top">
-          <div className="hangman-meta">
-            <div className="hangman-pill">
-              <span className="hangman-pill-label">{t.score}</span>
-              <span className="hangman-pill-value">{score}</span>
-            </div>
-            <div className={`hangman-pill ${remaining <= 2 ? 'danger' : ''}`}>
-              <span className="hangman-pill-label">{t.lives}</span>
-              <span className="hangman-pill-value">{Math.max(0, remaining)}</span>
-            </div>
+        {/* Score & Lives */}
+        <div className="hangman-meta">
+          <div className="hangman-pill score-pill">
+            <span className="hangman-pill-label">⭐ {t.score}</span>
+            <span className="hangman-pill-value">{score}</span>
+          </div>
+          <div className={`hangman-pill lives-pill ${dangerLevel}`}>
+            <span className="hangman-pill-label">❤️ {t.lives}</span>
+            <span className="hangman-pill-value">{Math.max(0, remaining)}</span>
           </div>
         </div>
-      )}
+      </div>
 
       <div className="hangman-card">
+        {/* CLUE */}
         <div className="hangman-clue">
-          <span className="hangman-clue-badge">{t.clue}</span>
-          <span className="hangman-clue-text">{clue}</span>
+          <span className="hangman-clue-icon">💡</span>
+          <div>
+            <div className="hangman-clue-label">{t.clue}</div>
+            <div className="hangman-clue-text">{clue}</div>
+          </div>
         </div>
 
+        {/* BOARD */}
         <div className="hangman-board">
-          <div className="hangman-gallow">
-            {/* çizgiler de aşamalı */}
-            <div className={`g-line base ${showBase ? 'on' : ''}`} />
-            <div className={`g-line v ${showV ? 'on' : ''}`} />
-            <div className={`g-line h ${showH ? 'on' : ''}`} />
 
+          {/* Gallow */}
+          <div className={`hangman-gallow ${dangerLevel}`}>
+            <div className={`g-line base ${showBase ? 'on' : ''}`} />
+            <div className={`g-line v    ${showV    ? 'on' : ''}`} />
+            <div className={`g-line h    ${showH    ? 'on' : ''}`} />
             <div className={`g-part head ${showHead ? 'on' : ''}`} />
             <div className={`g-part body ${showBody ? 'on' : ''}`} />
-            <div className={`g-part arm left ${showArms ? 'on' : ''}`} />
+            <div className={`g-part arm left  ${showArms ? 'on' : ''}`} />
             <div className={`g-part arm right ${showArms ? 'on' : ''}`} />
-            <div className={`g-part leg left ${showLegs ? 'on' : ''}`} />
+            <div className={`g-part leg left  ${showLegs ? 'on' : ''}`} />
             <div className={`g-part leg right ${showLegs ? 'on' : ''}`} />
             <div className={`g-part face ${showFace ? 'on' : ''}`} />
-          </div>
 
-          <div className="hangman-word">
-            <div className="hangman-word-label">{t.word}</div>
-            <div className="hangman-word-value" aria-label="hangman-word">
-              {revealed.split('').map((ch, i) => (
-                <span key={i} className={`hm-ch ${ch === '•' ? 'hidden' : ''}`}>
-                  {ch === '•' ? '_' : ch}
-                </span>
+            {/* Remaining lives as dots */}
+            <div className="g-lives">
+              {Array.from({ length: t.maxWrong }, (_, i) => (
+                <span key={i} className={`g-life-dot ${i < wrongCount ? 'gone' : ''}`} />
               ))}
             </div>
           </div>
+
+          {/* Word + wrong letters */}
+          <div className="hangman-right-panel">
+            <div className="hangman-word">
+              <div className="hangman-word-label">{t.word}</div>
+              <div className="hangman-word-value" aria-label="hangman-word">
+                {revealed.split('').map((ch, i) => (
+                  <span
+                    key={i}
+                    className={`hm-ch ${ch === '•' ? 'hidden' : 'revealed'} ${ch === ' ' ? 'space' : ''}`}
+                  >
+                    {ch === '•' ? '' : ch === ' ' ? ' ' : ch}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {wrongLetters.length > 0 && (
+              <div className="hm-wrong-row">
+                <span className="hm-wrong-label">✗</span>
+                <div className="hm-wrong-chips">
+                  {wrongLetters.map((l) => (
+                    <span key={l} className="hm-wrong-chip">{l}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
+        {/* LETTERS */}
         <div className="hangman-letters" aria-label="hangman-letters">
           {t.letters.map((L) => {
             const used = guessed.has(L);
             const good = used && answerLetters.has(L);
-            const bad = used && !answerLetters.has(L);
-
+            const bad  = used && !answerLetters.has(L);
             return (
               <button
                 key={L}
-                className={`hm-letter ${used ? 'used' : ''} ${good ? 'good' : ''} ${bad ? 'bad' : ''}`}
+                className={`hm-letter ${good ? 'good' : bad ? 'bad' : used ? 'used' : ''}`}
                 onClick={() => handlePick(L)}
                 disabled={used || status !== 'playing'}
                 type="button"
@@ -265,6 +267,7 @@ export default function HangmanGame({ isTurkish, data, compact = false }) {
           })}
         </div>
 
+        {/* RESULT */}
         <AnimatePresence>
           {status !== 'playing' && (
             <motion.div
@@ -273,22 +276,22 @@ export default function HangmanGame({ isTurkish, data, compact = false }) {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
             >
-              <div className="hangman-result-title">
-                {status === 'won' ? `✅ ${t.winTitle}` : `❌ ${t.loseTitle}`}
+              <div className="hangman-result-emoji">
+                {status === 'won' ? '🎉' : '💀'}
               </div>
-
+              <div className="hangman-result-title">
+                {status === 'won' ? t.winTitle : t.loseTitle}
+              </div>
               <div className="hangman-result-answer">
                 <span className="label">{t.yourAnswer}:</span>
                 <span className="value">{answer}</span>
               </div>
-
-              {/* ✅ 2) Butonları sadeleştir: Yeni Kelime yok */}
               <div className="hangman-actions">
                 <button className="hm-btn ghost" onClick={restartSame} type="button">
-                  {t.restart}
+                  🔄 {t.restart}
                 </button>
                 <button className="hm-btn" onClick={nextQuestion} type="button">
-                  {t.next}
+                  {t.next} →
                 </button>
               </div>
             </motion.div>

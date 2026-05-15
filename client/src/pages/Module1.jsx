@@ -361,6 +361,8 @@ function Module1() {
       if (newCompleted.length === sections.length) {
         const progress = JSON.parse(localStorage.getItem('digitalShieldProgress') || '{}');
         progress.module1 = true;
+        if (!progress.badges) progress.badges = [];
+        if (!progress.badges.includes('module1')) progress.badges.push('module1');
         localStorage.setItem('digitalShieldProgress', JSON.stringify(progress));
         window.dispatchEvent(new CustomEvent('moduleCompleted', { detail: { module: MODULE_KEY } }));
         // ✅ alert yerine tamamlama ekranı
@@ -405,15 +407,6 @@ function Module1() {
         >
           <div className="content-header">
             <h1>{currentSection?.title_tr}</h1>
-            <button
-              className="mark-complete-btn"
-              onClick={() => handleSectionComplete(activeSection)}
-              disabled={completedSections.includes(activeSection)}
-            >
-              {completedSections.includes(activeSection)
-                ? isTurkish ? 'Tamamlandı ✓' : 'Completed ✓'
-                : isTurkish ? 'Tamamla' : 'Complete'}
-            </button>
           </div>
           {SectionComponentToRender && <SectionComponentToRender />}
         </motion.div>
@@ -427,19 +420,52 @@ function Module1() {
         >
           {'<-'} {isTurkish ? 'Önceki' : 'Previous'}
         </button>
-        <span style={{ color: '#64748b', fontWeight: 600, fontSize: '0.9rem' }}>
-          {activeSection} / {sections.length}
-        </span>
-        <button
-          className="nav-btn next"
-          onClick={() => {
-            handleSectionComplete(activeSection);
-            setActiveSection((p) => Math.min(sections.length, p + 1));
-          }}
-          disabled={activeSection === sections.length}
-        >
-          {isTurkish ? 'Sonraki' : 'Next'} {'->'}
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px', minWidth: '100px' }}>
+          <span style={{
+            background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            color: 'white',
+            borderRadius: '999px',
+            padding: '6px 22px',
+            fontWeight: 800,
+            fontSize: '0.88rem',
+            letterSpacing: '0.04em',
+            boxShadow: '0 2px 12px rgba(102,126,234,0.3)',
+            whiteSpace: 'nowrap',
+          }}>
+            {activeSection} / {sections.length}
+          </span>
+          <div style={{ width: '72px', height: '4px', background: '#e2e8f0', borderRadius: '999px', overflow: 'hidden' }}>
+            <div style={{
+              width: `${Math.round((activeSection / sections.length) * 100)}%`,
+              height: '100%',
+              background: 'linear-gradient(90deg, #667eea, #764ba2)',
+              borderRadius: '999px',
+              transition: 'width 0.4s ease',
+            }} />
+          </div>
+        </div>
+        {activeSection === sections.length ? (
+          <button
+            className="nav-btn next"
+            onClick={() => handleSectionComplete(activeSection)}
+            disabled={completedSections.includes(activeSection)}
+            style={{ background: completedSections.includes(activeSection) ? '#10b981' : '#7c3aed' }}
+          >
+            {completedSections.includes(activeSection)
+              ? (isTurkish ? 'Tamamlandı ✓' : 'Completed ✓')
+              : (isTurkish ? '✓ Modülü Tamamla' : '✓ Complete Module')}
+          </button>
+        ) : (
+          <button
+            className="nav-btn next"
+            onClick={() => {
+              handleSectionComplete(activeSection);
+              setActiveSection((p) => Math.min(sections.length, p + 1));
+            }}
+          >
+            {isTurkish ? 'Sonraki' : 'Next'} {'->'}
+          </button>
+        )}
       </div>
     </div>
   );

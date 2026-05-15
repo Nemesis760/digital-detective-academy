@@ -85,6 +85,17 @@ export default function Home() {
     completedModules <= 4 ? (isTurkish ? 'Kıdemli Dedektif' : 'Senior Detective') :
                             (isTurkish ? 'Siber Usta' : 'Cyber Master');
 
+  const BADGES = [
+    { id: 'module1', emoji: '🖥️', name_tr: 'Bilgisayar Kâşifi', name_en: 'Computer Explorer' },
+    { id: 'module2', emoji: '👣', name_tr: 'Dijital İzci',       name_en: 'Digital Tracker'   },
+    { id: 'module3', emoji: '🌐', name_tr: 'Ağ Dedektifi',       name_en: 'Network Detective'  },
+    { id: 'module4', emoji: '🔐', name_tr: 'Güvenlik Uzmanı',    name_en: 'Security Expert'    },
+    { id: 'module5', emoji: '🛡️', name_tr: 'Siber Koruyucu',     name_en: 'Cyber Protector'    },
+    { id: 'module6', emoji: '🕵️', name_tr: 'Baş Dedektif',       name_en: 'Head Detective'     },
+  ];
+
+  const earnedBadges: string[] = progress.badges || [];
+
   const moduleIslands = [
     {
       title: isTurkish ? 'Bilgisayar Dünyasını Keşfediyorum' : 'Exploring the Computer World',
@@ -256,6 +267,41 @@ export default function Home() {
                 </div>
                 <p className="text-2xl font-bold text-purple-400">{progress.totalScore || 0}</p>
               </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Badges */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-2xl font-bold mb-6 text-center">
+              {isTurkish ? 'Rozetlerim' : 'My Badges'}
+            </h2>
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
+              {BADGES.map((badge) => {
+                const earned = earnedBadges.includes(badge.id);
+                return (
+                  <motion.div
+                    key={badge.id}
+                    whileHover={{ scale: 1.08 }}
+                    className={`flex flex-col items-center gap-2 p-4 rounded-xl border transition-colors ${
+                      earned
+                        ? 'bg-gradient-to-b from-yellow-500/20 to-orange-500/10 border-yellow-500/50'
+                        : 'bg-slate-800/40 border-slate-700 opacity-40'
+                    }`}
+                  >
+                    <span className="text-4xl">{earned ? badge.emoji : '🔒'}</span>
+                    <span className={`text-xs font-semibold text-center leading-tight ${earned ? 'text-yellow-300' : 'text-slate-500'}`}>
+                      {isTurkish ? badge.name_tr : badge.name_en}
+                    </span>
+                    {earned && (
+                      <span className="text-xs text-green-400 font-bold">✓</span>
+                    )}
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
         </div>

@@ -103,7 +103,10 @@ export const MODULE5_TR = {
             ]
           }
         },
-        "activity_type": "quiz"
+        "activity_type": "quiz",
+        "second_activity_type": "cyber_hangman",
+        "second_activity_title": "🔤 Siber Güvenlik Kelime Bulmaca",
+        "second_activity_desc": "İpucunu oku, harfleri seç ve siber güvenlik terimini bul!"
       },
       {
         "id": 2,
@@ -313,7 +316,10 @@ export const MODULE5_TR = {
             ]
           }
         },
-        "activity_type": "quiz"
+        "activity_type": "quiz",
+        "second_activity_type": "virus_match",
+        "second_activity_title": "🃏 Zararlı Yazılım Eşleştirme Oyunu",
+        "second_activity_desc": "Her zararlı yazılım türünü doğru tanımıyla eşleştir!"
       },
       {
         "id": 3,
@@ -730,7 +736,10 @@ export const MODULE5_TR = {
             ]
           }
         },
-        "activity_type": "quiz"
+        "activity_type": "quiz",
+        "second_activity_type": "app_permission",
+        "second_activity_title": "📱 Uygulama İzni Dedektifi",
+        "second_activity_desc": "Her uygulamanın istediği izni 'Mantıklı' ya da 'Şüpheli' olarak sınıflandır!"
       },
       {
         "id": 5,
@@ -916,7 +925,10 @@ export const MODULE5_TR = {
             ]
           }
         },
-        "activity_type": "quiz"
+        "activity_type": "quiz",
+        "second_activity_type": "news_verifier",
+        "second_activity_title": "📰 Haber Doğrulama Oyunu",
+        "second_activity_desc": "Ekrana gelen haberleri incele: Güvenilir mi, yoksa sahte mi?"
       },
       {
         "id": 6,
@@ -1124,6 +1136,22 @@ export const MODULE5_TR = {
           }
         },
         "activity_type": "interactive_quiz"
+      },
+      {
+        "id": 8,
+        "title": "🕵️ Phishing Dedektifi: Sahteyi Yakala!",
+        "intro": "Gerçek mi, sahte mi? Ekrana gelen mesajları incele ve 'Güvenli' ya da 'Şüpheli' olarak sınıflandır. Her yanlış mesajın arkasındaki ipuçlarını öğren!",
+        "activity_title": "🎮 Phishing Dedektifi Oyunu",
+        "activity_desc": "10 farklı mesaj / bildirim gelecek. Her birinin gerçek mi yoksa phishing (sahte) mi olduğuna karar ver!",
+        "activity_type": "phishing_detective"
+      },
+      {
+        "id": 9,
+        "title": "🗺️ Güvenli Karar Haritası: Çevrimiçi Bir Gün",
+        "intro": "Sabahtan geceye kadar çevrimiçi bir gün geçiriyorsun. Her adımda güvenli mi, yoksa riskli mi davranacaksın? 8 karar noktasında doğru seçimi yap ve dijital güvenlik puanını koru!",
+        "activity_title": "🎮 Güvenli Karar Haritası",
+        "activity_desc": "8 farklı durumda karar ver. Her yanlış seçim puanından düşer. Mümkün olduğunca yüksek puan topla!",
+        "activity_type": "safe_decision_map"
       }
     ]
   }

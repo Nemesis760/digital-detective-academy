@@ -49,7 +49,8 @@ export const MODULE4_TR = {
               type: "tf",
               question: "Ekran kilidi, telefonunu hiç yalnız bırakmasan da işe yarar.",
               answer: true,
-              explanation: "Kaza her zaman olabilir ve kilit her durumda korur."
+              explanation_correct: "Ekran kilidi kaza, kayıp veya hırsızlık gibi her durumda seni korur. 'Bırakmıyorum zaten' demek, küçük bir dikkatsizlik anında tüm bilgilerini açıkta bırakmak demektir.",
+              explanation_wrong: "Bu ifade doğruydu. Ekran kilidi her zaman gereklidir — telefon kaybolsa, çalınsa veya yanlış ellere geçse bile kişisel bilgilerini korur."
             },
             {
               type: "mcq",
@@ -61,13 +62,15 @@ export const MODULE4_TR = {
                 "İnterneti kapatır"
               ],
               answerIndex: 1,
-              explanation: "Güncellemeler güvenlik sorunlarını düzeltir."
+              explanation_correct: "Tam olarak! Güncellemeler yalnızca yeni özellik getirmez; kötü kişilerin istismar ettiği güvenlik açıklarını kapatır ve hataları düzeltir. 'Sonra yapayım' demek o açığı bir süre daha açık bırakmaktır.",
+              explanation_wrong: "Doğru cevap: 'Güvenlik açıklarını kapatır ve hataları düzeltir.' Güncellemeler rengi değiştirmez, fotoğrafları silmez — cihazını güvende tutar ve saldırılara karşı korur."
             },
             {
               type: "tf",
               question: "Yedekleme, kayıp yaşarsan dosyaları geri getirir.",
               answer: true,
-              explanation: "Yedek, geri dönmek için bir kopyadır."
+              explanation_correct: "Evet! Bulut yedeklemesi sayesinde telefon çalınsa, bozulsa veya kaybolsa bile fotoğrafların ve dosyaların kalıcı olarak kaybolmaz. Düzenli yedekleme dijital güvenlik sigortandır.",
+              explanation_wrong: "Bu ifade doğruydu. Yedekleme tam olarak bu işe yarar — verilerinin güvenli bir kopyasını saklar ve kayıp durumunda geri getirebilirsin."
             }
           ]
         }
@@ -126,13 +129,15 @@ export const MODULE4_TR = {
                 "Tanımadığın birinin linki"
               ],
               answerIndex: 1,
-              explanation: "Resmi mağazalar uygulamaları daha sık kontrol eder."
+              explanation_correct: "Doğru! Google Play ve App Store gibi resmi mağazalar uygulamaları zararlı yazılımlara karşı denetler ve şüpheli olanları kaldırır. Bu güvence başka kaynaklarda yoktur.",
+              explanation_wrong: "Doğru cevap: 'Resmi uygulama mağazası'. Rastgele siteler, reklam pencereleri ve tanımadığın kişilerin linkleri zararlı yazılım içerebilir — her zaman resmi mağazayı tercih et."
             },
             {
               type: "tf",
               question: "Arkadaşım kullandıysa ücretsiz hile aracı her zaman güvenlidir.",
               answer: false,
-              explanation: "Arkadaşlar da zararlı dosyalarla kandırılabilir."
+              explanation_correct: "Kesinlikle yanlış! Arkadaşlar da farkında olmadan zararlı dosyalarla kandırılmış olabilir. 'Arkadaşım kullandı' ifadesi güvenli olduğunu kanıtlamaz.",
+              explanation_wrong: "Bu ifade yanlıştı. Arkadaşlar da zararlı içeriklere maruz kalabilir. Güvenli bir kaynak olduğunu kanıtlamadan hiçbir aracı kullanma."
             },
             {
               type: "mcq",
@@ -144,7 +149,8 @@ export const MODULE4_TR = {
                 "Hiçbir şeye bakmadan yüklemeye"
               ],
               answerIndex: 1,
-              explanation: "Detaylar sahte uygulamayı yakalamaya yardım eder."
+              explanation_correct: "Harika! Uygulama adı, yorum sayısı ve dosya boyutu sahte uygulamaları tespit etmenin en güvenilir yollarıdır. Birkaç dakikalık araştırma büyük sorunları önleyebilir.",
+              explanation_wrong: "Doğru cevap: 'Uygulama adına, yorumlara ve boyuta'. Sahte uygulamalar genellikle az yorum, şişirilmiş boyut veya gerçek uygulamaya çok benzeyen isimle kendini ele verir."
             }
           ]
         },
@@ -328,7 +334,8 @@ export const MODULE4_TR = {
               type: "tf",
               question: "Bir mesaj birini üzüyorsa siber zorbalık olabilir.",
               answer: true,
-              explanation: "İnternetteki sözler de gerçek hayatta olduğu gibi etkiler."
+              explanation_correct: "Evet! Siber zorbalık sadece açık hakaretle sınırlı değildir. Birini üzen, dışlayan veya rahatsız eden her içerik — 'sadece şaka' bile olsa — siber zorbalık kapsamına girebilir.",
+              explanation_wrong: "Bu ifade doğruydu. Siber zorbalık yalnızca açık hakaret değildir; birini üzen, rahatsız eden veya dışlayan her türlü içerik siber zorbalık sayılabilir."
             },
             {
               type: "mcq",
@@ -340,13 +347,15 @@ export const MODULE4_TR = {
                 "Daha çok kişiye yaymak"
               ],
               answerIndex: 1,
-              explanation: "Cevap verme, kanıt sakla ve yardım iste."
+              explanation_correct: "Harika seçim! Ekran görüntüsü alarak kanıt saklamak ve bir yetişkine bildirmek hem seni korur hem de durumu çözmenin en etkili yoludur. Yardım istemek güçsüzlük değil, cesaret işaretidir.",
+              explanation_wrong: "Doğru cevap: 'Kanıtı saklayıp bir yetişkine söylemek'. Katılmak, misilleme yapmak veya yaymak durumu daha da kötüleştirir ve seni de sorumlu kılar."
             },
             {
               type: "tf",
               question: "Engelle ve bildir araçları işe yarar.",
               answer: true,
-              explanation: "Bu araçlar zararı azaltır ve seni korur."
+              explanation_correct: "Kesinlikle! Engelle ve bildir araçları zararı azaltır, seni korur ve platformu sorunlu kullanıcı hakkında uyararak başkalarının da korunmasına yardım eder.",
+              explanation_wrong: "Bu ifade doğruydu. Engelle ve bildir araçları gerçekten etkilidir — platformlar bu bildirimleri değerlendirir ve tekrarlayan kural ihlalcilerini kaldırır."
             }
           ]
         }

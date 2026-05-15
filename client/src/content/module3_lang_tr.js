@@ -32,7 +32,7 @@ export const MODULE3_TR = {
             video_links: [
               {
                 title: "Bilgisayar Ağları",
-                url: "https://www.youtube.com/watch?v=FD3BJUbvlF0",
+                url: "https://youtu.be/PDixDk-1N70?si=ZLjgeZkA-y7uWpwT",
                 thumbnail: "/images/module3/video_tr.png",
               },
             ],
@@ -55,13 +55,37 @@ export const MODULE3_TR = {
                 thumbnail: "/images/module3/video_tr.png",
               },
             ],
+            quiz: [
+              {
+                type: "true_false",
+                question_tr: "Okuldaki bilgisayarların aynı yazıcıya bağlanması bir ağ örneğidir.",
+                answer: true,
+                explanation_tr: "Birden fazla cihazın veri paylaşmak için birbirine bağlanması bir ağ oluşturur. Sınıftaki bilgisayarlar yazıcıya bağlandığında yerel bir ağ (LAN) kurulmuş olur."
+              },
+              {
+                type: "true_false",
+                question_tr: "İnternete bağlı olmayan tek bir bilgisayar bir ağdır.",
+                answer: false,
+                explanation_tr: "Bir ağ oluşabilmesi için en az iki cihazın birbirine bağlı olması gerekir. Tek başına çalışan bir bilgisayar, başka hiçbir cihaza bağlı değilse ağ sayılmaz."
+              },
+              {
+                type: "multiple_choice",
+                question_tr: "Hangisi bir bilgisayar ağı örneğidir?",
+                options: [
+                  { text_tr: "A) Evdeki telefon, tablet ve laptopun aynı Wi-Fi'ye bağlanması", correct: true },
+                  { text_tr: "B) Sadece bir bilgisayarın çalışması", correct: false },
+                  { text_tr: "C) Bir kitabın okunması", correct: false },
+                  { text_tr: "D) Bir hesap makinesi kullanmak", correct: false }
+                ],
+                explanation_tr: "Telefon, tablet ve laptopun aynı Wi-Fi'ye bağlanması, cihazların birbirleriyle ve internetle veri paylaşmasına olanak tanır — bu bir ev ağıdır (LAN)."
+              }
+            ],
           },
         },
 
         activity_title: "Mini Etkinlik: Ağ Örneklerini Seç",
         activity_desc: "Hangileri bir bilgisayar ağına örnektir?",
         activity_type: "interactive_quiz",
-        activity_key: "network_security",
       },
 
       {
@@ -303,10 +327,9 @@ export const MODULE3_TR = {
           },
         },
 
-        activity_title: "Aktivite: Ağ Cihazları Hotspot",
-        activity_desc: "Görselde cihazları bul.",
-        activity_type: "network_hotspot",
-        activity_key: "device_communication",
+        activity_title: "Aktivite: Ağ Cihazlarını Yerleştir",
+        activity_desc: "İpucunu oku, doğru cihazı seç ve ağ diyagramındaki konumuna yerleştir!",
+        activity_type: "network_device_placement",
       },
 
       {
@@ -374,19 +397,30 @@ export const MODULE3_TR = {
           },
         },
 
-        activity_title: "Aktivite: Doğru mu Yanlış mı?",
-        activity_desc: "Kablolu/kablosuz ifadelerini değerlendir.",
-        activity_type: "truth_or_troll",
+        activity_title: "Quiz: Doğru mu Yanlış mı?",
+        activity_desc: "Kablolu ve kablosuz bağlantı hakkındaki ifadeleri değerlendir, doğru mu yanlış mı olduğunu seç!",
+        activity_type: "interactive_quiz",
         activity_key: "wired_wireless",
       },
 
       {
         id: 10,
+        title: "Adam Asmaca",
+        intro:
+          "Ağ güvenliği ve internet kavramlarını eğlenceli şekilde tekrar edelim. İpucuna bak, doğru harfleri seç ve kelimeyi bul!",
+        activity_title: "Aktivite: Adam Asmaca",
+        activity_desc: "İpucunu oku, doğru harfleri seç ve kelimeyi bul!",
+        activity_type: "hangman",
+        activity_key: "network_security_hangman",
+      },
+
+      {
+        id: 11,
         title: "Ağ Güvenliği ve Ünite Değerlendirme",
         subtitle: "Güvende kal, doğru seç",
         intro: "Güvensiz ağlar kişisel bilgileri riske atabilir.",
         content: {
-          "10.1": {
+          "11.1": {
             title: "Ağ Güvenliği Neden Önemli?",
             description:
               "Halka açık Wi-Fi gibi ortamlarda şifre girmek risklidir.",
@@ -396,7 +430,7 @@ export const MODULE3_TR = {
               "Önemli işlemleri ev ağında yap",
             ],
           },
-          "10.2": {
+          "11.2": {
             title: "Ünite Değerlendirme Testi",
             description: "Kısa bir tekrar testi.",
             image: "/images/module3/m3_network_security_en_tr.png",
@@ -424,25 +458,6 @@ export const MODULE3_TR = {
         activity_desc: "Soruları çoğunlukla doğru yapmaya çalış.",
         activity_type: "interactive_quiz",
         activity_key: "network_security",
-      },
-
-      // ✅ NEW: Adam Asmaca
-      {
-        id: 11,
-        title: "Adam Asmaca (Kolay)",
-        subtitle: "İpuçlarına bak, harfleri seç, kelimeyi bul!",
-        intro:
-          "Ağ güvenliği ve internet kavramlarını eğlenceli şekilde tekrar edelim.",
-        content: {
-          "11.1": {
-            title: "Oyun",
-            description: "Başla ve kelimeyi bul!",
-          },
-        },
-        activity_title: "Aktivite: Adam Asmaca (Kolay)",
-        activity_desc: "İpuçlarına bak, doğru harfleri seç ve kelimeyi bul!",
-        activity_type: "hangman",
-        activity_key: "network_security_hangman",
       },
     ],
 

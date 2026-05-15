@@ -62,8 +62,8 @@ const MODULE_SECTIONS = {
       'Ağ Cihazları: Modem, Router, Switch, Ethernet',
       'Ağ Cihazlarını Eşleştir',
       'Kablolu vs Kablosuz Bağlantı',
+      'Adam Asmaca',
       'Ağ Güvenliği ve Ünite Değerlendirme',
-      'Adam Asmaca (Kolay)',
     ],
     sections_en: [
       'What is a Network? Communication Timeline',
@@ -75,8 +75,8 @@ const MODULE_SECTIONS = {
       'Network Devices: Modem, Router, Switch, Ethernet',
       'Match Network Devices',
       'Wired vs Wireless Connection',
+      'Hangman',
       'Network Security and Unit Review',
-      'Hangman (Easy)',
     ],
   },
   '/module4': {

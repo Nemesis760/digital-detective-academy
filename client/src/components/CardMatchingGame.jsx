@@ -487,7 +487,7 @@ export default function CardMatchingGame({ pairs = [], isTurkish }) {
 
         /* ── CARD ── */
         .cmg-card {
-          height: 140px;
+          height: 170px;
           border: none;
           background: transparent;
           cursor: pointer;
@@ -520,20 +520,21 @@ export default function CardMatchingGame({ pairs = [], isTurkish }) {
 
         /* FRONT (unrevealed) */
         .cmg-front {
-          background: linear-gradient(135deg, #dbeafe 0%, #ede9fe 100%);
-          border: 2px solid rgba(99,102,241,.2);
+          background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 50%, #e9d5ff 100%);
+          border: 2px solid rgba(99,102,241,.3);
         }
         .cmg-card.selected .cmg-front {
           border: 2px solid #f59e0b;
+          background: linear-gradient(135deg, #fde68a 0%, #fbbf24 100%);
           box-shadow: 0 0 0 3px rgba(245,158,11,.35), 0 6px 20px rgba(0,0,0,.12);
         }
         .cmg-q {
-          font-size: 2.8rem;
+          font-size: 3rem;
           font-weight: 900;
-          color: rgba(99,102,241,.55);
+          color: rgba(79,70,229,.65);
         }
 
-        /* BACK — white base, colored top strip */
+        /* BACK — tinted base, colored top strip */
         .cmg-back {
           transform: rotateY(180deg);
           padding: 0;
@@ -544,33 +545,40 @@ export default function CardMatchingGame({ pairs = [], isTurkish }) {
           justify-content: flex-start;
           gap: 0;
         }
-        .cmg-card.is-term .cmg-back { border-color: #3b82f6; }
-        .cmg-card.is-def  .cmg-back { border-color: #a855f7; }
+        .cmg-card.is-term .cmg-back {
+          border-color: #2563eb;
+          background: linear-gradient(180deg, #eff6ff 0%, #fff 60%);
+        }
+        .cmg-card.is-def .cmg-back {
+          border-color: #9333ea;
+          background: linear-gradient(180deg, #faf5ff 0%, #fff 60%);
+        }
 
         .cmg-card-top {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 8px 0 6px;
+          padding: 10px 0 8px;
           flex-shrink: 0;
         }
-        .top-term { background: linear-gradient(135deg, #3b82f6, #6366f1); }
-        .top-def  { background: linear-gradient(135deg, #a855f7, #ec4899); }
+        .top-term { background: linear-gradient(135deg, #2563eb, #6366f1); }
+        .top-def  { background: linear-gradient(135deg, #9333ea, #db2777); }
 
-        .cmg-card-emoji { font-size: 1.4rem; line-height: 1; }
+        .cmg-card-emoji { font-size: 1.5rem; line-height: 1; }
 
         .cmg-card-text {
           flex: 1;
-          padding: 6px 8px;
-          font-size: .78rem;
-          font-weight: 800;
+          padding: 8px 10px;
+          font-size: .82rem;
+          font-weight: 700;
           text-align: center;
-          line-height: 1.3;
+          line-height: 1.35;
           color: #1e293b;
           margin: 0;
           display: flex;
           align-items: center;
           justify-content: center;
+          overflow: hidden;
         }
         .cmg-match-check {
           position: absolute; top: 5px; right: 7px;

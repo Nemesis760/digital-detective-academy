@@ -43,13 +43,37 @@ export const MODULE3_EN = {
               "Tools evolved and got faster",
               "The Internet is very fast and widespread",
               "More speed means more security needs"
+            ],
+            quiz: [
+              {
+                type: "true_false",
+                question_en: "School computers connected to the same printer is an example of a network.",
+                answer: true,
+                explanation_en: "When multiple devices share data or resources (like a printer), they form a network. A school lab connected to one printer is a local area network (LAN)."
+              },
+              {
+                type: "true_false",
+                question_en: "A single computer with no connection to any other device is a network.",
+                answer: false,
+                explanation_en: "A network requires at least two devices connected to each other. A standalone computer with no connections to other devices is not a network."
+              },
+              {
+                type: "multiple_choice",
+                question_en: "Which of the following is an example of a computer network?",
+                options: [
+                  { text_en: "A) Phone, tablet, and laptop connected to the same home Wi-Fi", correct: true },
+                  { text_en: "B) A single computer running offline", correct: false },
+                  { text_en: "C) Reading a book", correct: false },
+                  { text_en: "D) Using a standalone calculator", correct: false }
+                ],
+                explanation_en: "Phone, tablet, and laptop connected to the same Wi-Fi share data and internet access with each other — that is a home network (LAN)."
+              }
             ]
           }
         },
         activity_title: "Mini Activity: Pick Network Examples",
-        activity_desc: "Which ones are network examples?",
+        activity_desc: "Which ones are examples of a computer network?",
         activity_type: "interactive_quiz",
-        activity_key: "network_security",
       },
       {
         id: 2,
@@ -281,10 +305,10 @@ export const MODULE3_EN = {
             points: ["Wired connection", "More stable in many cases"]
           }
         },
-        activity_title: "Activity: Find Network Devices",
-        activity_desc: "Find the devices in the picture.",
-        activity_type: "network_hotspot",
-        activity_key: "device_communication",
+
+        activity_title: "Activity: Place the Network Devices",
+        activity_desc: "Read the hint, select a device, then click the correct slot in the network diagram!",
+        activity_type: "network_device_placement",
       },
       {
         id: 8,
@@ -346,24 +370,33 @@ export const MODULE3_EN = {
             ]
           }
         },
-        activity_title: "Activity: True or False?",
-        activity_desc: "Evaluate wired/wireless statements.",
-        activity_type: "truth_or_troll",
+        activity_title: "Quiz: True or False?",
+        activity_desc: "Evaluate statements about wired and wireless connections — true or false?",
+        activity_type: "interactive_quiz",
         activity_key: "wired_wireless",
       },
       {
         id: 10,
+        title: "Hangman",
+        intro: "Let's review network security and internet concepts in a fun way. Read the clue, pick the right letters, and find the word!",
+        activity_title: "Activity: Hangman",
+        activity_desc: "Read the clue, pick the right letters, and find the word!",
+        activity_type: "hangman",
+        activity_key: "network_security_hangman",
+      },
+      {
+        id: 11,
         title: "Network Security and Unit Review",
         subtitle: "Stay safe, choose right",
         intro: "Unsafe networks can put personal information at risk.",
         content: {
-          "10.1": {
+          "11.1": {
             title: "Why Is Network Security Important?",
             description: "Entering passwords on public Wi-Fi can be risky.",
             image: "/images/module3/m3_network_security_en_tr.png",
             points: ["Protect passwords and private info", "Do important tasks on a home network"]
           },
-          "10.2": {
+          "11.2": {
             title: "Unit Review Quiz",
             description: "A short review test.",
             image: "/images/module3/m3_network_security_en_tr.png",
@@ -390,22 +423,6 @@ export const MODULE3_EN = {
         activity_desc: "Try to answer most questions correctly.",
         activity_type: "interactive_quiz",
         activity_key: "network_security",
-      },
-      {
-        id: 11,
-        title: "Hangman (Easy)",
-        subtitle: "Look at the clues, pick letters, find the word!",
-        intro: "Let's review network security and internet concepts in a fun way.",
-        content: {
-          "11.1": {
-            title: "Game",
-            description: "Start and find the word!",
-          },
-        },
-        activity_title: "Activity: Hangman (Easy)",
-        activity_desc: "Read the clue, pick the right letters, and find the word!",
-        activity_type: "hangman",
-        activity_key: "network_security_hangman",
       }
     ],
     scenario_assessment: {

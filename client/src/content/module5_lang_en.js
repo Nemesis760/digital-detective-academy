@@ -105,7 +105,10 @@ export const MODULE5_EN = {
             ]
           }
         },
-        activity_type: "quiz"
+        activity_type: "quiz",
+        second_activity_type: "cyber_hangman",
+        second_activity_title: "🔤 Cybersecurity Word Puzzle",
+        second_activity_desc: "Read the clue, pick the right letters, and find the cybersecurity term!"
       },
       {
         id: 2,
@@ -227,7 +230,10 @@ export const MODULE5_EN = {
             ]
           }
         },
-        activity_type: "quiz"
+        activity_type: "quiz",
+        second_activity_type: "virus_match",
+        second_activity_title: "🃏 Malware Matching Game",
+        second_activity_desc: "Match each type of malware with its correct description!"
       },
       {
         id: 3,
@@ -468,7 +474,10 @@ export const MODULE5_EN = {
             ]
           }
         },
-        activity_type: "quiz"
+        activity_type: "quiz",
+        second_activity_type: "app_permission",
+        second_activity_title: "📱 App Permission Detective",
+        second_activity_desc: "Classify each app permission as 'Makes Sense' or 'Suspicious'!"
       },
       {
         id: 5,
@@ -566,7 +575,10 @@ export const MODULE5_EN = {
             ]
           }
         },
-        activity_type: "quiz"
+        activity_type: "quiz",
+        second_activity_type: "news_verifier",
+        second_activity_title: "📰 News Verification Game",
+        second_activity_desc: "Examine each headline and decide: Reliable source or fake news?"
       },
       {
         id: 6,
@@ -711,6 +723,22 @@ export const MODULE5_EN = {
           }
         },
         activity_type: "interactive_quiz"
+      },
+      {
+        id: 8,
+        title: "🕵️ Phishing Detective: Spot the Fake!",
+        intro: "Real or fake? Examine each message and decide if it's 'Safe' or 'Suspicious'. Learn the red flags hidden in every phishing attempt!",
+        activity_title: "🎮 Phishing Detective Game",
+        activity_desc: "10 different messages will appear. Decide whether each one is real or a phishing (fake) attempt!",
+        activity_type: "phishing_detective"
+      },
+      {
+        id: 9,
+        title: "🗺️ Safe Decision Map: An Online Day",
+        intro: "You're spending a day online from morning to night. At every step, will you play it safe or take a risk? Make the right choice at 8 decision points and protect your digital security score!",
+        activity_title: "🎮 Safe Decision Map",
+        activity_desc: "Make decisions at 8 different situations. Every wrong choice costs you points. Get the highest score possible!",
+        activity_type: "safe_decision_map"
       }
     ],
   },

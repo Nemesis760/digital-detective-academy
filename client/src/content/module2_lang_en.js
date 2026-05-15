@@ -82,8 +82,8 @@ export const MODULE2_EN = {
         id: 2,
         title: "🎯 Active and Passive Digital Footprint",
         intro: "Our digital footprint is formed in two ways: Active and Passive. Understanding both is important!",
-        activity_title: "🎮 Activity: Which Footprint? Card Game",
-        activity_desc: "Read the given situations and select the correct card (Active/Passive).",
+        activity_title: "Activity: Match the Concepts",
+        activity_desc: "Match each digital footprint concept with its correct definition!",
         content: {
           "2.1": {
             title: "Active Digital Footprint",
@@ -107,6 +107,23 @@ export const MODULE2_EN = {
                 question: "Commenting by my own choice is an active footprint.",
                 answer: true,
                 explanation_en: "An active digital footprint is created by actions you intentionally choose to do. Writing a comment is fully your own decision, so it creates an active footprint."
+              },
+              {
+                type: "true_false",
+                question: "A photo I upload to social media is a passive digital footprint.",
+                answer: false,
+                explanation_en: "Uploading a photo is entirely your decision, making it an active digital footprint. Passive footprints are data collected without your awareness by others."
+              },
+              {
+                type: "multiple_choice",
+                question: "Which of the following is an example of an active digital footprint?",
+                options: [
+                  { text: "A website tracking me with cookies", correct: false },
+                  { text: "Writing a comment on a YouTube video", correct: true },
+                  { text: "My location being automatically recorded", correct: false },
+                  { text: "Ads following me online", correct: false }
+                ],
+                explanation_en: "Writing a YouTube comment is a deliberate action you choose — that makes it an active footprint. The other options are passive footprints created without your direct action."
               }
             ]
           },
@@ -158,8 +175,8 @@ export const MODULE2_EN = {
         id: 3,
         title: "🔐 Personal Information & Privacy",
         intro: "Our personal information is like the keys to our identity in the digital world. Let's learn how to protect these keys!",
-        activity_title: "📝 Quiz: Safe/Unsafe Matching",
-        activity_desc: "Read the given actions and drag them to the appropriate box (Safe/Unsafe).",
+        activity_title: "Quiz: Safe and Unsafe Behaviors",
+        activity_desc: "Read each question carefully, choose the correct answer, and check the explanation!",
         content: {
           "3.1": {
             title: "What Is Personal Information?",
@@ -317,8 +334,8 @@ export const MODULE2_EN = {
         id: 5,
         title: "🛡️ Safe Digital Behaviors",
         intro: "There are some rules to stay safe in the digital world and leave a clean footprint. Let's learn these rules!",
-        activity_title: "🎮 Activity: Scenario Quiz - Zeynep's Story",
-        activity_desc: "Read Zeynep's story and make the right decisions.",
+        activity_title: "Quiz: Safe Digital Behaviors",
+        activity_desc: "Answer questions about safe digital behaviors and check the explanations!",
         content: {
           "5.1": {
             title: "T.H.I.N.K. Rule",
@@ -376,11 +393,27 @@ export const MODULE2_EN = {
                   { text: "C) Guess how many likes you'll get.", correct: false }
                 ],
                 explanation_en: "According to the T.H.I.N.K. rule, before sharing you should ask: Is it True? Helpful? Inspiring? Necessary? Kind? Speed and likes don't matter — safety and respect do!"
+              },
+              {
+                type: "true_false",
+                question: "Clicking a link from a message sent by someone I don't know is safe.",
+                answer: false,
+                explanation_en: "Links from strangers can be phishing attacks. They can redirect you to fake websites to steal your password or personal information. Never click a link if you don't know and trust the sender!"
+              },
+              {
+                type: "multiple_choice",
+                question: "What happens when your social media account is set to 'Public'?",
+                options: [
+                  { text: "A) Only your friends can see your profile.", correct: false },
+                  { text: "B) Anyone on the internet can see your posts and information.", correct: true },
+                  { text: "C) Only family members can see it.", correct: false }
+                ],
+                explanation_en: "A 'Public' profile exposes your information to billions of internet users. For your safety, set your profile to 'Friends Only' and never add people you don't know to your friend list!"
               }
             ]
           }
         },
-        activity_type: "scenario_game"
+        activity_type: "interactive_quiz"
       },
       {
         id: 6,
