@@ -395,7 +395,7 @@ export default function Module4() {
 
             {current.game && (
               <div className="activity-box m4-game-box">
-                <h3 style={{ color: '#ec4899' }}>🎮 {current.game.title}</h3>
+                <h3 style={{ color: '#ec4899' }}>{current.game.title}</h3>
                 <p>{current.game.description}</p>
                 <GameRenderer game={current.game} isTurkish={isTurkish} />
               </div>
