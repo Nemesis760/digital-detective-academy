@@ -5,6 +5,10 @@
 .module5 .content-image {
   display: block;
   margin: 1rem auto;
+  max-width: 420px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 
 .hotspot-quiz-container {
