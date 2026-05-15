@@ -404,12 +404,17 @@ const sections = (() => {
         {activeSection === sections.length ? (
           <button
             className="nav-btn next"
-            onClick={() => handleSectionComplete(activeSection)}
-            disabled={completedSections.includes(activeSection)}
-            style={{ background: completedSections.includes(activeSection) ? '#10b981' : '#7c3aed' }}
+            onClick={() => {
+              if (completedSections.includes(activeSection)) {
+                navigate('/module6');
+              } else {
+                handleSectionComplete(activeSection);
+              }
+            }}
+            style={{ background: '#10b981' }}
           >
             {completedSections.includes(activeSection)
-              ? (isTurkish ? 'Tamamlandı ✓' : 'Completed ✓')
+              ? (isTurkish ? 'Modül 6\'ya Geç →' : 'Go to Module 6 →')
               : (isTurkish ? '✓ Modülü Tamamla' : '✓ Complete Module')}
           </button>
         ) : (
