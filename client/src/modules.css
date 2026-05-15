@@ -1138,10 +1138,11 @@
 
 .content-description {
   color: var(--text-primary);
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.15rem;
+  line-height: 1.9;
   margin: var(--spacing-md) 0;
   white-space: pre-line;
+  font-weight: 600;
 }
 
 .content-points {
@@ -1155,8 +1156,9 @@
   padding-left: var(--spacing-xl);
   position: relative;
   color: var(--text-primary);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.75;
 }
 
 .content-points li::before {
@@ -1169,29 +1171,36 @@
 }
 
 .content-examples {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
-  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.07) 0%, rgba(139, 92, 246, 0.07) 100%);
+  padding: var(--spacing-lg) var(--spacing-xl);
   border-radius: var(--border-radius);
   margin: var(--spacing-lg) 0;
+  border-left: 4px solid var(--module-primary);
 }
 
 .content-examples h4 {
   color: var(--module-primary);
   margin: 0 0 var(--spacing-md) 0;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
 .content-examples ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .content-examples li {
-  padding: var(--spacing-xs) 0;
+  padding: 8px 0 8px var(--spacing-lg);
   color: var(--text-primary);
-  padding-left: var(--spacing-lg);
   position: relative;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.6;
 }
 
 .content-examples li::before {
@@ -1200,6 +1209,7 @@
   left: 0;
   color: var(--module-primary);
   font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .content-table {

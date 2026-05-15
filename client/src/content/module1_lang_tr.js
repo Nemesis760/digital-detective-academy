@@ -6,8 +6,8 @@ export const MODULE1_TR = {
       {
         "id": 1,
         "title": "💻 Bilgisayar nedir ve nasıl düşünür?",
-        "subtitle": "Giriş, Mantık, IPOS Döngüsü ve Temel Tanımlar",
-        "intro": "Bilgisayar; verileri hammadde olarak alan, onları işlemcisinde inanılmaz bir hızla işleyen, ihtiyaç duyduğumuzda saklayan ve sonuçları bize bilgi olarak sunan akıllı bir elektronik makinedir. Tıpkı durmaksızın çalışan dev ve akıllı bir fabrika gibi!",
+        "subtitle": "🔍 Bu bölümde ne keşfedeceksin?",
+        "intro": "Bir tuşa bastığında ekrana nasıl harf geliyor? 'Merhaba' kelimesi bilgisayarda nasıl saklanıyor? Cevap çok basit ama çok harika: bilgisayar aslında devasa bir fabrika gibi çalışıyor — veri girer, işlenir, bilgi çıkar. Bu bölümde IPOS döngüsünü, veri ile bilgi arasındaki farkı ve bilgisayarların 0 ve 1 diliyle nasıl konuştuğunu keşfedeceksin!",
         "video_links": [
           {
             "title": "Khan Academy: İkili Sayı Sistemi (Bilgisayarlar ve İnternet)",

@@ -12,7 +12,7 @@ export const MODULE3_EN = {
           "A network is a structure made of connected points. In computer networks, devices connect with cables or Wi-Fi to share information.",
         content: {
           "1.1": {
-            title: "What is a Network?",
+            title: "What is the Network?",
             description:
               "A computer network is a group of connected devices that share data.",
             image: "/images/module3/m3_network_definition_en.png",
@@ -28,8 +28,8 @@ export const MODULE3_EN = {
             ],
             video_links: [
               {
-                title: "Computer networks for kids",
-                url: "https://www.youtube.com/watch?v=FD3BJUbvlF0",
+                title: "Computer Networks",
+                url: "https://youtu.be/wFjn2Nr7ylU?si=VaAZEbaPBMcHcObF",
                 thumbnail: "/images/module3/video_en.png"
               }
             ]
@@ -94,7 +94,7 @@ export const MODULE3_EN = {
             ],
             video_links: [
               {
-                title: "What is the Internet? (for kids)",
+                title: "What is the Internet?",
                 url: "https://www.youtube.com/watch?v=hjjLnUMcJfs",
                 thumbnail: "/images/module3/video_en.png"
               }
@@ -133,7 +133,7 @@ export const MODULE3_EN = {
             video_links: [
               {
                 title: "Browser vs Search Engine",
-                url: "https://www.youtube.com/watch?v=Rn9XcSTQl8A",
+                url: "https://youtu.be/8oJPhwzdujQ?si=JSssppxsnfwynytQ",
                 thumbnail: "/images/module3/video_en.png"
               }
             ]
@@ -175,7 +175,7 @@ export const MODULE3_EN = {
             video_links: [
               {
                 title: "What is a URL? Domain and extension",
-                url: "https://www.youtube.com/watch?v=ojuCsBIKyDY",
+                url: "https://youtu.be/sh7fe05mUfA?si=Yw01uy-MG28oKNVJ",
                 thumbnail: "/images/module3/video_en.png"
               }
             ]
@@ -224,7 +224,7 @@ export const MODULE3_EN = {
             points: ["Anyone can connect", "Avoid entering passwords"],
             video_links: [
               {
-                title: "Wi-Fi safety (for kids)",
+                title: "Wi-Fi safety",
                 url: "https://www.youtube.com/watch?v=GgdK2rdJTrE",
                 thumbnail: "/images/module3/video_en.png"
               }
@@ -387,19 +387,28 @@ export const MODULE3_EN = {
       {
         id: 11,
         title: "Network Security and Unit Review",
-        subtitle: "Stay safe, choose right",
-        intro: "Unsafe networks can put personal information at risk.",
+        subtitle: "🔐 How do you stay safe on a network?",
+        intro: "Every network has a different security level — home, school, and public Wi-Fi each carry different risks. Knowing the difference helps you protect your passwords and personal data wherever you connect.",
         content: {
           "11.1": {
             title: "Why Is Network Security Important?",
-            description: "Entering passwords on public Wi-Fi can be risky.",
+            description: "The type of network you use affects how safe your personal information is.",
             image: "/images/module3/m3_network_security_en_tr.png",
-            points: ["Protect passwords and private info", "Do important tasks on a home network"]
+            points: [
+              "Public Wi-Fi is open — anyone can see unprotected data",
+              "Never enter passwords or log into accounts on public Wi-Fi",
+              "Do sensitive tasks (banking, school accounts) only on home or trusted networks",
+              "A strong password on your home router adds an extra layer of protection"
+            ],
+            examples: [
+              "✅ Watching a video on cafe Wi-Fi — low risk",
+              "❌ Logging into your school account on cafe Wi-Fi — high risk",
+              "✅ Checking your grades on your home network — safe"
+            ]
           },
           "11.2": {
-            title: "Unit Review Quiz",
-            description: "A short review test.",
-            image: "/images/module3/m3_network_security_en_tr.png",
+            title: "Unit Review",
+            description: "Test what you've learned about networks, the internet, and online safety.",
             quiz: [
               {
                 type: "multiple_choice",
