@@ -135,6 +135,9 @@ export const MODULE5_TR = {
               "Sahte Antivirüs Uyarısı": "/images/module5/m5_fake_antivirus.jpeg",
               "İndirme Uyarısı": "/images/module5/m5_download_warning.jpeg"
             },
+            "video_links": [
+              { "title": "Virüs Nasıl Çalışır? (Animasyonlu)", "url": "https://youtu.be/Z7byVtPyktk?si=HbemOeoc8eXX24HM" }
+            ],
             "quiz": [
               {
                 "type": "true_false",
@@ -574,6 +577,10 @@ export const MODULE5_TR = {
               "❌ Şüpheli: Hesap makinesi konumunuza erişmek istiyor",
               "✅ Mantıklı: Harita uygulaması konumunuza erişmek istiyor"
             ],
+            "video_links": [
+              { "title": "Telefon Uygulama İzinleri Nasıl Kontrol Edilir?", "url": "https://youtu.be/YgvuRLl77xk?si=bypNgz7rQ5M2s3yz" },
+              { "title": "Uygulama İzinlerini Yönetme Rehberi", "url": "https://youtu.be/o92z8s3Bfqw?si=HkZguWJDWcJaVXtP" }
+            ],
             "quiz": [
               {
                 "type": "true_false",
@@ -763,6 +770,10 @@ export const MODULE5_TR = {
               "✅ Sorumlu: Başkalarının fotoğraflarını izin almadan paylaşmamak",
               "❌ Sorumlu değil: İzinsiz fotoğraf paylaşmak"
             ],
+            "video_links": [
+              { "title": "Dijital Vatandaşlık Animasyonu", "url": "https://youtu.be/D_tqwqgGGOc?si=kmJMeSxaM5e3mWoN" },
+              { "title": "Sahte Haber Nasıl Anlaşılır?", "url": "https://youtu.be/CdwW5Ghn7c0?si=iNn_dD3VB3HCJbdq" }
+            ],
             "quiz": [
               {
                 "type": "true_false",
@@ -941,6 +952,9 @@ export const MODULE5_TR = {
             "title": "Senaryo: Açık Kalan Tablet Vakası",
             "description": "Can (6. sınıf öğrencisi), teneffüste tabletini sırasında açık ve kilitsiz bırakıp kantine gider. Can'ın arkadaşı Mert, şaka yapmak amacıyla Can'ın tabletini alır. O sırada Mert'in dikkatini bir reklam çeker: 'Bedava Savaş Oyunu İndir - Sadece APK'. Mert, Can'a sürpriz yapmak için oyunu indirmeye çalışır. İndirme sırasında tablet; 'Bu dosya cihazınıza zarar verebilir, yine de indirilsin mi?' diye sorar. Mert 'Evet' der ve tüm izinleri (Rehber, Galeri, Konum) onaylar. Can geri döndüğünde tabletinin çok ısındığını ve ekranda sürekli reklam çıktığını görür.",
             "image": "/images/module5/m5_public_wifi.jpeg",
+            "video_links": [
+              { "title": "Gerçek Phishing E-postası Analizi", "url": "https://youtu.be/JGiz2d1EbSA?si=zTBuyK9K8CEFfpO3" }
+            ],
             "quiz": [
               {
                 "type": "true_false",

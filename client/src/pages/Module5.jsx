@@ -13,6 +13,7 @@ import NewsVerifier from '../components/NewsVerifier';
 import SafeDecisionMap from '../components/SafeDecisionMap';
 import HangmanGame from '../components/HangmanGame';
 import { CYBER_SECURITY_HANGMAN } from '../content/activities/cyber_security_hangman';
+import VideoLinks from '../components/VideoLinks';
 import '../modules.css';
 import './module5.css';
 
@@ -168,6 +169,9 @@ const SectionComponent = ({ section, isTurkish }) => {
                   <h4>{isTurkish ? 'Örnekler:' : 'Examples:'}</h4>
                   <ul>{contentItem.examples.map((e, i) => <li key={i}>{e}</li>)}</ul>
                 </div>
+              )}
+              {Array.isArray(contentItem.video_links) && contentItem.video_links.length > 0 && (
+                <VideoLinks videoLinks={contentItem.video_links} />
               )}
             </motion.div>
           ))}

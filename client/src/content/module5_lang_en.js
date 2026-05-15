@@ -137,6 +137,9 @@ export const MODULE5_EN = {
               "Fake Antivirus Warning": "/images/module5/m5_fake_antivirus.jpeg",
               "Download Warning": "/images/module5/m5_download_warning.jpeg"
             },
+            video_links: [
+              { title: "How Malware Works for Kids", url: "https://youtu.be/PM9O7rk69Cw?si=nPwjFed8vJXvcdV3" }
+            ],
             quiz: [
               {
                 type: "true_false",
@@ -400,6 +403,10 @@ export const MODULE5_EN = {
               "❌ Suspicious: Calculator wants to access your location",
               "✅ Logical: Map app wants to access your location"
             ],
+            video_links: [
+              { title: "How to Check App Permissions on Your Phone", url: "https://youtu.be/YgvuRLl77xk?si=bypNgz7rQ5M2s3yz" },
+              { title: "App Permissions Explained for Teens", url: "https://youtu.be/o92z8s3Bfqw?si=HkZguWJDWcJaVXtP" }
+            ],
             quiz: [
               {
                 type: "true_false",
@@ -501,6 +508,11 @@ export const MODULE5_EN = {
               "✅ Responsible: Not sharing others' photos without permission",
               "❌ Not responsible: Sharing photos without permission"
             ],
+            video_links: [
+              { title: "Digital Citizenship Animation", url: "https://youtu.be/D_tqwqgGGOc?si=kmJMeSxaM5e3mWoN" },
+              { title: "How to Spot Fake News", url: "https://youtu.be/g2AdkNH-kWA?si=-FbHg7y_8OXvSGYl" },
+              { title: "Fake News & Media Literacy", url: "https://youtu.be/AkwWcHekMdo?si=kSU1YW-ybAinrpKY" }
+            ],
             quiz: [
               {
                 type: "true_false",
@@ -591,6 +603,9 @@ export const MODULE5_EN = {
             title: "Scenario: The Unlocked Tablet Case",
             description: "Can (6th grade student) leaves his tablet open and unlocked on his desk during recess and goes to the cafeteria. Can's friend Mert takes Can's tablet to play a joke. At that moment, an advertisement catches Mert's attention: 'Download Free War Game - APK Only'. Mert tries to download the game to surprise Can. During the download, the tablet asks: 'This file may harm your device, do you still want to download it?' Mert says 'Yes' and approves all permissions (Contacts, Gallery, Location). When Can returns, he sees that his tablet is very hot and constant advertisements are appearing on the screen.",
             image: "/images/module5/m5_public_wifi.jpeg",
+            video_links: [
+              { title: "How to Spot a Phishing Email", url: "https://youtu.be/iHetr8xTWIU?si=bv3hl6xFafLE6hs3" }
+            ],
             quiz: [
               {
                 type: "true_false",
