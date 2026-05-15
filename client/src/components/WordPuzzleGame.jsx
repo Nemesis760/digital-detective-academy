@@ -40,9 +40,9 @@ function scoreGuess(guess, target) {
 }
 
 const TR_KEYS = [
-  "E","R","T","Y","U","I","O","P","Ğ","Ü",
-  "A","S","D","F","G","H","J","K","L","Ş",
-  "İ","Z","C","V","B","N","M","Ö","Ç"
+  "E","R","T","Y","U","I","O","P","Ğ","Ü",      // satır 1: 10
+  "A","S","D","F","G","H","J","K","L","Ş","İ",  // satır 2: 11
+  "Z","C","V","B","N","M","Ö","Ç"               // satır 3: 8  → Enter + 8 + ⌫ sığar
 ];
 
 const TR_CHARSET = new Set("ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
@@ -278,7 +278,7 @@ export default function WordPuzzleGame({ words = [], isTurkish }) {
           ))}
         </div>
         <div className="wp-kbd-row">
-          {TR_KEYS.slice(10, 20).map((k) => (
+          {TR_KEYS.slice(10, 21).map((k) => (
             <button key={k} type="button" className={keyClass(k)} onClick={() => typeLetter(k)} disabled={done}>
               {k}
             </button>
@@ -288,7 +288,7 @@ export default function WordPuzzleGame({ words = [], isTurkish }) {
           <button type="button" className="wp-key wp-wide" onClick={submit} disabled={done}>
             Enter
           </button>
-          {TR_KEYS.slice(20).map((k) => (
+          {TR_KEYS.slice(21).map((k) => (
             <button key={k} type="button" className={keyClass(k)} onClick={() => typeLetter(k)} disabled={done}>
               {k}
             </button>
