@@ -40,30 +40,16 @@ function scoreGuess(guess, target) {
 }
 
 const TR_KEYS = [
-  "Q","W","E","R","T","Y","U","I","O","P",
-  "A","S","D","F","G","H","J","K","L",
-  "Z","X","C","V","B","N","M"
+  "E","R","T","Y","U","I","O","P","Ğ","Ü",
+  "A","S","D","F","G","H","J","K","L","Ş",
+  "İ","Z","C","V","B","N","M","Ö","Ç"
 ];
+
+const TR_CHARSET = new Set("ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ");
 
 export default function WordPuzzleGame({ words = [], isTurkish }) {
   const WORD_LENGTH = 5;
   const MAX_TRIES = 6;
-
-  const bankWords = useMemo(() => {
-    return (words || []).map(normalizeWord).filter(Boolean);
-  }, [words]);
-
-  // Kelime Havuzu (UI) - dil bazlı sadece 2 kelime göster:
-  // TR: GUVEN, SIFRE
-  // EN: SAFE, VIRUS
-  // Not: Oyun mantığı (pool/target) değiştirilmez.
-  const displayedBankWords = useMemo(() => {
-    const preferred = isTurkish ? ["GUVEN", "SIFRE"] : ["SAFE", "VIRUS"];
-    const keep = new Set(preferred);
-    const filtered = bankWords.filter((w) => keep.has(w));
-    // İçerikte yoksa da çocukların kafası karışmasın diye yine bu iki kelimeyi göster.
-    return filtered.length ? filtered : preferred;
-  }, [bankWords, isTurkish]);
 
   const pool = useMemo(() => {
     const cleaned = (words || [])
@@ -188,7 +174,7 @@ export default function WordPuzzleGame({ words = [], isTurkish }) {
       }
 
       const upper = k.length === 1 ? k.toUpperCase() : "";
-      if (/^[A-Z]$/.test(upper)) {
+      if (upper && TR_CHARSET.has(upper)) {
         e.preventDefault();
         typeLetter(upper);
       }
@@ -263,7 +249,7 @@ export default function WordPuzzleGame({ words = [], isTurkish }) {
           <div className="wp-bank-label">{isTurkish ? "Kelime Havuzu" : "Word Bank"}</div>
         </div>
         <div className="wp-pills">
-          {(displayedBankWords.length ? displayedBankWords : pool).map((w, idx) => (
+          {pool.map((w, idx) => (
             <span key={`${w}-${idx}`} className="wp-pill">
               {w}
             </span>
@@ -292,7 +278,7 @@ export default function WordPuzzleGame({ words = [], isTurkish }) {
           ))}
         </div>
         <div className="wp-kbd-row">
-          {TR_KEYS.slice(10, 19).map((k) => (
+          {TR_KEYS.slice(10, 20).map((k) => (
             <button key={k} type="button" className={keyClass(k)} onClick={() => typeLetter(k)} disabled={done}>
               {k}
             </button>
@@ -302,7 +288,7 @@ export default function WordPuzzleGame({ words = [], isTurkish }) {
           <button type="button" className="wp-key wp-wide" onClick={submit} disabled={done}>
             Enter
           </button>
-          {TR_KEYS.slice(19).map((k) => (
+          {TR_KEYS.slice(20).map((k) => (
             <button key={k} type="button" className={keyClass(k)} onClick={() => typeLetter(k)} disabled={done}>
               {k}
             </button>

@@ -152,7 +152,7 @@ export const MODULE4_EN = {
           type: "word_puzzle",
           title: "Word Puzzle: Safe Download Terms",
           description: "Find the hidden security words.",
-          words: ["SAFE", "VIRUS", "CLOUD", "CYBER", "LOCKS", "GUARD", "SMART"]
+          words: ["PATCH", "VIRUS", "CLOUD", "CYBER", "LOCKS", "GUARD", "SMART"]
         }
       },
       {
