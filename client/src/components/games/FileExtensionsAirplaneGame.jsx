@@ -72,6 +72,7 @@ export default function FileExtensionsAirplaneGame() {
   const [message, setMessage] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [gameResult, setGameResult] = useState(null); // 'win' | 'fail' | null
 
   const round = FILE_EXTENSIONS_ROUNDS[roundIndex];
   const totalRounds = FILE_EXTENSIONS_ROUNDS.length;
@@ -210,7 +211,7 @@ export default function FileExtensionsAirplaneGame() {
     };
 
     const drawPlane = (plane) => {
-      const size = 120;
+      const size = 160;
       ctx.save();
       ctx.translate(plane.x, plane.y);
       if (planeImg.complete && planeImg.naturalWidth > 0) {
@@ -318,12 +319,13 @@ export default function FileExtensionsAirplaneGame() {
             if (ridx < totalRounds - 1) {
               setRoundIndex((i) => i + 1);
             } else {
+              setGameResult('win');
               setGameOver(true);
             }
           }, 500);
         }
 
-        if (livesRef.current <= 0) setGameOver(true);
+        if (livesRef.current <= 0) { setGameResult('fail'); setGameOver(true); }
       }
 
       rafRef.current = requestAnimationFrame(loop);
@@ -368,9 +370,11 @@ export default function FileExtensionsAirplaneGame() {
     stateRef.current.advancePending = false;
     stateRef.current.effects = [];
     stateRef.current.correctHits = new Set();
+    setGameResult(null);
   };
 
   const startGame = () => { startAgain(); setIsRunning(true); };
+  const resetToStart = () => { startAgain(); setIsRunning(false); };
 
   const onPointerDown = (e) => {
     if (!isRunningRef.current) return;
@@ -423,6 +427,13 @@ export default function FileExtensionsAirplaneGame() {
                 className="rounded-full bg-black/50 border border-white/20 px-3 py-1.5 text-white text-xs backdrop-blur-md hover:bg-black/65 transition"
               >
                 {isFullscreen ? "✕ Küçült" : "⛶ Tam ekran"}
+              </button>
+              <button
+                type="button"
+                onClick={resetToStart}
+                className="rounded-full bg-red-600/70 border border-red-400/40 px-3 py-1.5 text-white text-xs backdrop-blur-md hover:bg-red-600/90 transition"
+              >
+                ← Çıkış
               </button>
             </div>
           </div>
@@ -482,9 +493,9 @@ export default function FileExtensionsAirplaneGame() {
         </div>
       </div>
 
-      {/* ── Game Over ── */}
+      {/* ── Win Screen ── */}
       <AnimatePresence>
-        {gameOver && !showAnswers && (
+        {gameOver && gameResult === 'win' && !showAnswers && (
           <motion.div
             className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center"
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -493,9 +504,41 @@ export default function FileExtensionsAirplaneGame() {
               className="bg-slate-900 text-white rounded-2xl p-7 w-[min(420px,90vw)] shadow-2xl border border-white/10 text-center"
               initial={{ scale: 0.88, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.88, opacity: 0 }}
             >
-              <div className="text-5xl mb-3">{score >= totalRounds * 10 ? "🏆" : "💀"}</div>
-              <h3 className="text-2xl font-bold mb-1">Oyun Bitti!</h3>
+              <div className="text-5xl mb-3">🎉</div>
+              <h3 className="text-2xl font-bold mb-1">Tebrikler!</h3>
               <p className="text-slate-300 mb-5">
+                Tüm soruları başarıyla tamamladın!<br />
+                Puan: <strong className="text-white text-xl">{score}</strong>
+                <span className="text-slate-400"> / {totalRounds * 10}</span>
+              </p>
+              <div className="flex flex-col gap-2">
+                <button className="px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-600 font-bold transition" onClick={startGame}>
+                  🔄 Tekrar Oyna
+                </button>
+                <button className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 font-bold transition" onClick={resetToStart}>
+                  ✕ Kapat
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Fail Screen ── */}
+      <AnimatePresence>
+        {gameOver && gameResult === 'fail' && !showAnswers && (
+          <motion.div
+            className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+          >
+            <motion.div
+              className="bg-slate-900 text-white rounded-2xl p-7 w-[min(420px,90vw)] shadow-2xl border border-white/10 text-center"
+              initial={{ scale: 0.88, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.88, opacity: 0 }}
+            >
+              <div className="text-5xl mb-3">💔</div>
+              <h3 className="text-2xl font-bold mb-1">Başarısız Oldun!</h3>
+              <p className="text-slate-300 mb-5">
+                Canların bitti.<br />
                 Puan: <strong className="text-white text-xl">{score}</strong>
                 <span className="text-slate-400"> / {totalRounds * 10}</span>
               </p>
@@ -504,7 +547,10 @@ export default function FileExtensionsAirplaneGame() {
                   📋 Cevapları Gör
                 </button>
                 <button className="px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-600 font-bold transition" onClick={startGame}>
-                  🔄 Tekrar Oyna
+                  🔄 Tekrar Dene
+                </button>
+                <button className="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 font-bold transition" onClick={resetToStart}>
+                  ✕ Kapat
                 </button>
               </div>
             </motion.div>

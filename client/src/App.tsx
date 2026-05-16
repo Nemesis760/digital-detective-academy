@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch, Router as WouterRouter } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
@@ -30,8 +31,6 @@ function Router() {
   );
 }
 
-const BASE = import.meta.env.BASE_URL;
-
 function App() {
   return (
     <ErrorBoundary>
@@ -39,13 +38,11 @@ function App() {
         <LanguageProvider>
           <TooltipProvider>
             <Toaster />
-            <Sidebar />
-
-            {/* ✅ GitHub Pages uyumlu Router */}
-            <WouterRouter base={BASE}>
+            {/* Hash routing: URL becomes /#/module3 — refresh always works, no server config needed */}
+            <WouterRouter hook={useHashLocation}>
+              <Sidebar />
               <Router />
             </WouterRouter>
-
           </TooltipProvider>
         </LanguageProvider>
       </ThemeProvider>

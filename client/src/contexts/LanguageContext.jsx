@@ -5,7 +5,9 @@ import module2_en from '../content/module2_lang_en';
 const LanguageContext = createContext();
 
 export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState('tr');
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem('language') || 'tr';
+  });
 
   const translations = {
     tr: {
@@ -17,13 +19,22 @@ export const LanguageProvider = ({ children }) => {
   };
 
   const toggleLanguage = () => {
-    setLanguage(prev => prev === 'tr' ? 'en' : 'tr');
+    setLanguage(prev => {
+      const next = prev === 'tr' ? 'en' : 'tr';
+      localStorage.setItem('language', next);
+      return next;
+    });
+  };
+
+  const setLanguagePersisted = (lang) => {
+    localStorage.setItem('language', lang);
+    setLanguage(lang);
   };
 
   const isTurkish = language === 'tr';
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, isTurkish, translations: translations[language] }}>
+    <LanguageContext.Provider value={{ language, setLanguage: setLanguagePersisted, toggleLanguage, isTurkish, translations: translations[language] }}>
       {children}
     </LanguageContext.Provider>
   );

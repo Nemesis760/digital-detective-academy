@@ -82,7 +82,8 @@ const pulseAnim = {
   transition: { duration: 0.6, repeat: 2, repeatType: "mirror" },
 };
 
-function CrosswordBoard({ isOverlay, onRequestClose }) {
+// entries, solved, score are lifted up and shared between normal + fullscreen views
+function CrosswordBoard({ isOverlay, onRequestClose, entries, setEntries, solved, setSolved, score, setScore }) {
   const solution = useMemo(() => buildGrid(), []);
   const startNums = useMemo(() => makeStartNumbers(), []);
   const wordCells = useMemo(() => {
@@ -93,11 +94,9 @@ function CrosswordBoard({ isOverlay, onRequestClose }) {
 
   const [selectedWordId, setSelectedWordId] = useState(null);
   const [cursorIndex, setCursorIndex] = useState(0);
-  const [entries, setEntries] = useState({});
-  const [solved, setSolved] = useState(() => new Set());
-  const [score, setScore] = useState(0);
   const [toast, setToast] = useState(null);
   const [shakeKey, setShakeKey] = useState(0);
+  const [hintOpen, setHintOpen] = useState(true);
 
   const rootRef = useRef(null);
   const selectedWord = useMemo(
@@ -166,6 +165,19 @@ function CrosswordBoard({ isOverlay, onRequestClose }) {
     setToastAuto({ type: "bad", text: "❌ Yanlış, tekrar dene." });
   };
 
+  const doBackspace = () => {
+    if (!selectedWord || solved.has(selectedWord.id) || !activeCell) return;
+    const k = keyOf(activeCell.r, activeCell.c);
+    if (entries[k]) {
+      clearCharAt(activeCell.r, activeCell.c);
+    } else {
+      const prevIdx = clamp(cursorIndex - 1, 0, selectedCoords.length - 1);
+      setCursorIndex(prevIdx);
+      const prev = selectedCoords[prevIdx];
+      if (prev) clearCharAt(prev.r, prev.c);
+    }
+  };
+
   const handleKeyDown = (e) => {
     if (!selectedWord) return;
     if (solved.has(selectedWord.id)) return;
@@ -189,14 +201,7 @@ function CrosswordBoard({ isOverlay, onRequestClose }) {
 
     if (e.key === "Backspace") {
       e.preventDefault();
-      const k = keyOf(activeCell.r, activeCell.c);
-      if (entries[k]) {
-        clearCharAt(activeCell.r, activeCell.c);
-      } else {
-        setCursorIndex((i) => clamp(i - 1, 0, selectedCoords.length - 1));
-        const prev = selectedCoords[clamp(cursorIndex - 1, 0, selectedCoords.length - 1)];
-        if (prev) clearCharAt(prev.r, prev.c);
-      }
+      doBackspace();
       return;
     }
 
@@ -378,9 +383,49 @@ function CrosswordBoard({ isOverlay, onRequestClose }) {
             )}
           </motion.div>
 
+          {/* Backspace button — visible when a word is selected */}
+          {selectedWord && !solved.has(selectedWord.id) && (
+            <div className="cdg-actions">
+              <button
+                type="button"
+                className="cdg-btn cdg-btn--backspace"
+                onClick={() => { doBackspace(); rootRef.current?.focus(); }}
+              >
+                ⌫ Geri Sil
+              </button>
+              <button
+                type="button"
+                className="cdg-btn cdg-btn--check"
+                onClick={() => { checkSelectedWord(); rootRef.current?.focus(); }}
+              >
+                ✓ Kontrol Et
+              </button>
+            </div>
+          )}
+
+          {/* Collapsible hint */}
           <div className="cdg-hint">
-            <div className="cdg-hint-title">İpucu & Bilgi</div>
-            <div className="cdg-hint-text">{hintText}</div>
+            <button
+              type="button"
+              className="cdg-hint-toggle"
+              onClick={() => setHintOpen((o) => !o)}
+            >
+              <span>💡 İpucu & Bilgi</span>
+              <span className="cdg-hint-chevron">{hintOpen ? "▲" : "▼"}</span>
+            </button>
+            <AnimatePresence initial={false}>
+              {hintOpen && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                  className="cdg-hint-body"
+                >
+                  <div className="cdg-hint-text">{hintText}</div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
@@ -391,6 +436,11 @@ function CrosswordBoard({ isOverlay, onRequestClose }) {
 export default function CrosswordDataGame() {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
+  // Shared state — survives normal ↔ fullscreen switch
+  const [entries, setEntries] = useState({});
+  const [solved, setSolved] = useState(() => new Set());
+  const [score, setScore] = useState(0);
+
   useEffect(() => {
     if (!isFullscreen) return;
     const onKey = (e) => {
@@ -400,6 +450,8 @@ export default function CrosswordDataGame() {
     return () => window.removeEventListener("keydown", onKey);
   }, [isFullscreen]);
 
+  const sharedProps = { entries, setEntries, solved, setSolved, score, setScore };
+
   return (
     <div className="cdg-container">
       <div className="cdg-card">
@@ -407,14 +459,14 @@ export default function CrosswordDataGame() {
           ⛶ Tam ekran
         </button>
         <div className="cdg-card-body">
-          <CrosswordBoard />
+          <CrosswordBoard {...sharedProps} />
         </div>
       </div>
 
       {isFullscreen && (
         <div className="cdg-fullscreen" onMouseDown={() => setIsFullscreen(false)}>
           <div className="cdg-fullscreen-content" onMouseDown={(e) => e.stopPropagation()}>
-            <CrosswordBoard isOverlay onRequestClose={() => setIsFullscreen(false)} />
+            <CrosswordBoard isOverlay onRequestClose={() => setIsFullscreen(false)} {...sharedProps} />
           </div>
         </div>
       )}

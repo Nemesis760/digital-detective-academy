@@ -301,8 +301,9 @@ function Module1() {
   const isTurkish = language === 'tr';
   const [, navigate] = useLocation();
 
-  // Always start at section 1 when entering the module
-  const [activeSection, setActiveSection] = useState(1);
+  const [activeSection, setActiveSection] = useState(() => {
+    return Number(localStorage.getItem(`${MODULE_KEY}_activeSection`)) || 1;
+  });
 
   const [completedSections, setCompletedSections] = useState(() => {
     try { return JSON.parse(localStorage.getItem(`${MODULE_KEY}_completedSections`) || '[]'); }

@@ -452,6 +452,12 @@ export const MODULE1_TR = {
             "title": "Bilişim Etiği ve Telif Hakkı",
             "description": "Gerçek hayatta hırsızlık yapmak nasıl suçsa, dijital dünyada da başkasının emeğini izinsiz kullanmak suçtur (Telif Hakkı İhlali). Her yaptığımızın internette bir iz bıraktığını (Dijital Ayak İzi) unutmamalıyız.",
             "image": "/images/module1_copyright.png",
+            "points": [
+              "📜 Telif Hakkı: Bir kişinin yarattığı eser (resim, müzik, oyun, yazı) üzerindeki yasal hakkıdır. Sahibinin izni olmadan kopyalanamaz veya kullanılamaz.",
+              "🚫 Telif Hakkı İhlali: Başkasına ait bir eseri sahibinden izin almadan kopyalamak, dağıtmak veya kullanmaktır. Yasal bir suçtur.",
+              "📋 İntihal: Başkasının fikrî emeğini (yazı, proje, çizim) sanki kendine aitmiş gibi göstermektir. Dijital dünyada en yaygın etik ihlallerinden biridir.",
+              "👣 Dijital Ayak İzi: İnternette yaptığımız her işlemin (paylaşım, yorum, indirme) bıraktığı kalıcı izdir. Bir kez bırakılan iz kolayca silinemez."
+            ],
             "scenarios": [
               {
                 "situation": "Ücretli bir oyunu 'crack'li (korsan) indirmek.",

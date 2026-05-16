@@ -383,9 +383,15 @@ export const MODULE1_EN = {
             }
           },
           "5.4": {
-            title: "Copyright (Respecting Work)",
-            description: "Images, music and games on the internet are someone's work. Copying without permission or using pirated versions is a crime and unethical.",
+            title: "Digital Ethics and Copyright",
+            description: "Just as stealing is a crime in real life, using someone else's work online without permission is also illegal. Everything we do on the internet leaves a trace — our Digital Footprint.",
             image: "/images/module1_copyright.png",
+            points: [
+              "📜 Copyright: The legal right that protects a creator's work (image, music, game, or text). It cannot be copied or used without the owner's permission.",
+              "🚫 Copyright Infringement: Copying, distributing, or using someone else's work without the owner's permission. It is a legal offence.",
+              "📋 Plagiarism: Presenting someone else's intellectual work (writing, project, drawing) as if it were your own. It is one of the most common digital ethics violations.",
+              "👣 Digital Footprint: The permanent trace left by everything we do online (posts, comments, downloads). Once left, a digital trace is very difficult to erase."
+            ],
             scenarios: [
               {
                 situation: "Downloading a game for free (pirated)",
