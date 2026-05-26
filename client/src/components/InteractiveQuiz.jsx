@@ -45,6 +45,7 @@ function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
   const [stepScore, setStepScore] = useState(0);
   const [finished, setFinished] = useState(false);
   const stepFeedbackRef = useRef(null);
+  const normalFeedbackRefs = useRef({});
 
   // ── Ortak yardımcılar ─────────────────────────────────────────────
   const isCorrectAnswer = (quizItem, selected) => {
@@ -367,12 +368,14 @@ function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
     if (showResults[quizIndex]) return;
     setSelectedAnswers((prev) => ({ ...prev, [quizIndex]: optIndex }));
     setShowResults((prev) => ({ ...prev, [quizIndex]: true }));
+    setTimeout(() => normalFeedbackRefs.current[quizIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 200);
   };
 
   const handleTF = (quizIndex, val) => {
     if (showResults[quizIndex]) return;
     setSelectedAnswers((prev) => ({ ...prev, [quizIndex]: val }));
     setShowResults((prev) => ({ ...prev, [quizIndex]: true }));
+    setTimeout(() => normalFeedbackRefs.current[quizIndex]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 200);
   };
 
   return (
@@ -467,6 +470,7 @@ function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
             <AnimatePresence>
               {answered && (
                 <motion.div
+                  ref={el => { normalFeedbackRefs.current[quizIndex] = el; }}
                   className={`quiz-feedback ${correct ? 'correct-feedback' : 'wrong-feedback'}`}
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
