@@ -174,6 +174,8 @@ function FlappyBirdGame({ isTurkish }) {
           boxShadow: '0 4px 16px rgba(0,0,0,0.25)',
           cursor: 'pointer',
           display: 'block',
+          maxWidth: '100%',
+          height: 'auto',
         }}
       />
 

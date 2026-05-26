@@ -357,6 +357,27 @@
   }
 }
 
+@media (max-width: 480px) {
+  .cdg-grid {
+    grid-template-columns: repeat(12, minmax(22px, 1fr));
+    gap: 3px;
+  }
+
+  .cdg-cell {
+    font-size: 0.75rem;
+  }
+
+  .cdg-header {
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+  }
+
+  .cdg-body {
+    padding: 8px 10px 10px;
+  }
+}
+
 @media (max-width: 640px) {
   .cdg-header {
     flex-direction: column;

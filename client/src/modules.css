@@ -2991,6 +2991,28 @@
   .module-page .module-content .content-wrapper {
     padding-inline: 0;
   }
+
+  /* Metin taşması: metin elementlerde sözcük kırma */
+  .module-page .module-content p,
+  .module-page .module-content h1,
+  .module-page .module-content h2,
+  .module-page .module-content h3,
+  .module-page .module-content h4,
+  .module-page .module-content li,
+  .module-page .module-content span,
+  .module-page .module-content td,
+  .module-page .module-content th {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  /* Resimler ve oyunlar genişliği aşmasın */
+  .module-page .module-content img,
+  .module-page .module-content canvas,
+  .module-page .module-content iframe,
+  .module-page .module-content table {
+    max-width: 100% !important;
+  }
 }
 
 @media (max-width: 480px) {
