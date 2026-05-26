@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'wouter';
+import { Helmet } from 'react-helmet-async';
 import { MODULE2_TR } from '../content/module2_lang_tr';
 import { MODULE2_EN } from '../content/module2_lang_en';
 import LoadingScreen from '../components/LoadingScreen';
@@ -290,6 +291,15 @@ function Module2() {
 
   return (
     <div className="module-container module-page module2">
+      <Helmet>
+        <title>Dijital Ayak İzi ve Çevrimiçi Gizlilik | Digital Detective Academy</title>
+        <meta name="description" content="Dijital ayak izin nedir? Çevrimiçi gizliliğini nasıl korursun? Eğlenceli aktivitelerle dijital kimliğini keşfet." />
+        <meta property="og:title" content="Dijital Ayak İzi ve Çevrimiçi Gizlilik | Digital Detective Academy" />
+        <meta property="og:description" content="Dijital ayak izin nedir? Çevrimiçi gizliliğini nasıl korursun? Eğlenceli aktivitelerle dijital kimliğini keşfet." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.digitaldetectiveacademy.com/module2" />
+        <meta property="og:image" content="https://www.digitaldetectiveacademy.com/og-image.png" />
+      </Helmet>
       <AnimatePresence>
         {showCompletion && (
           <CompletionScreen

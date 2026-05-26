@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
 import { MODULE3_TR } from '../content/module3_lang_tr';
 import { MODULE3_EN } from '../content/module3_lang_en';
@@ -494,6 +495,15 @@ function Module3() {
 
   return (
     <div className="module-container module-page module3">
+      <Helmet>
+        <title>Bilgisayar Ağları ve Dijital İletişim | Digital Detective Academy</title>
+        <meta name="description" content="İnternet nasıl çalışır? Ağ cihazları, protokoller ve dijital iletişimi interaktif oyunlarla öğren." />
+        <meta property="og:title" content="Bilgisayar Ağları ve Dijital İletişim | Digital Detective Academy" />
+        <meta property="og:description" content="İnternet nasıl çalışır? Ağ cihazları, protokoller ve dijital iletişimi interaktif oyunlarla öğren." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.digitaldetectiveacademy.com/module3" />
+        <meta property="og:image" content="https://www.digitaldetectiveacademy.com/og-image.png" />
+      </Helmet>
       <AnimatePresence>
         {showCompletion && (
           <CompletionScreen

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'wouter';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../contexts/LanguageContext';
 import {
   Shield, Cpu, ArrowRight, Globe, BookOpen, Award, Zap,
@@ -166,6 +167,19 @@ export default function Home() {
   ];
 
   return (
+    <>
+      <Helmet>
+        <title>Dijital Dedektif Akademisi | Digital Detective Academy</title>
+        <meta name="description" content="Çocuklar için eğlenceli dijital okuryazarlık ve siber güvenlik eğitimi. 6 modül, interaktif oyunlar ve görevlerle öğren!" />
+        <meta property="og:title" content="Dijital Dedektif Akademisi | Digital Detective Academy" />
+        <meta property="og:description" content="Çocuklar için eğlenceli dijital okuryazarlık ve siber güvenlik eğitimi. 6 modül, interaktif oyunlar ve görevlerle öğren!" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.digitaldetectiveacademy.com/" />
+        <meta property="og:image" content="https://www.digitaldetectiveacademy.com/og-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Dijital Dedektif Akademisi | Digital Detective Academy" />
+        <meta name="twitter:description" content="Çocuklar için eğlenceli dijital okuryazarlık ve siber güvenlik eğitimi. 6 modül, interaktif oyunlar ve görevlerle öğren!" />
+      </Helmet>
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 font-sans text-white">
 
       {/* Navbar */}
@@ -224,8 +238,8 @@ export default function Home() {
             </p>
 
             <motion.a
-              href="#mission-map"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-blue-500/50 transition-all"
+              onClick={() => document.getElementById('mission-map')?.scrollIntoView({ behavior: 'smooth' })}
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-bold text-lg shadow-2xl hover:shadow-blue-500/50 transition-all cursor-pointer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -476,5 +490,6 @@ export default function Home() {
       </footer>
 
     </div>
+    </>
   );
 }

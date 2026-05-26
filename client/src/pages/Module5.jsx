@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'wouter';
+import { Helmet } from 'react-helmet-async';
 import { MODULE5_TR } from '../content/module5_lang_tr';
 import { MODULE5_EN } from '../content/module5_lang_en';
 import LoadingScreen from '../components/LoadingScreen';
@@ -346,6 +347,15 @@ const sections = (() => {
 
   return (
     <div className="module-container module-page module5">
+      <Helmet>
+        <title>Dijital Güvenlik ve Sorumlu Teknoloji | Digital Detective Academy</title>
+        <meta name="description" content="Dijital güvenliğini koru, teknolojiyi sorumlu kullan. Phishing, zararlı yazılımlar ve online güvenliği öğren." />
+        <meta property="og:title" content="Dijital Güvenlik ve Sorumlu Teknoloji | Digital Detective Academy" />
+        <meta property="og:description" content="Dijital güvenliğini koru, teknolojiyi sorumlu kullan. Phishing, zararlı yazılımlar ve online güvenliği öğren." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.digitaldetectiveacademy.com/module5" />
+        <meta property="og:image" content="https://www.digitaldetectiveacademy.com/og-image.png" />
+      </Helmet>
       <AnimatePresence>
         {showCompletion && (
           <CompletionScreen isTurkish={isTurkish} countdown={countdown} onNavigate={() => navigate('/module6')} />

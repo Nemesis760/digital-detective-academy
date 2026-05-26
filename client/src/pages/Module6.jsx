@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'wouter';
+import { Helmet } from 'react-helmet-async';
 import { MODULE6_TR } from '../content/module6_lang_tr';
 import { MODULE6_EN } from '../content/module6_lang_en';
 import LoadingScreen from '../components/LoadingScreen';
@@ -505,6 +506,15 @@ function Module6() {
 
   return (
     <div className="module-container module-page module6">
+      <Helmet>
+        <title>Dijital Dedektif | Digital Detective Academy</title>
+        <meta name="description" content="Son görev! Tüm öğrendiklerini kullanarak dijital dedektif ol. Gerçek senaryolarla bilgini test et." />
+        <meta property="og:title" content="Dijital Dedektif | Digital Detective Academy" />
+        <meta property="og:description" content="Son görev! Tüm öğrendiklerini kullanarak dijital dedektif ol. Gerçek senaryolarla bilgini test et." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.digitaldetectiveacademy.com/module6" />
+        <meta property="og:image" content="https://www.digitaldetectiveacademy.com/og-image.png" />
+      </Helmet>
       <AnimatePresence>
         {showCompletion && <CompletionScreen isTurkish={isTurkish} />}
       </AnimatePresence>

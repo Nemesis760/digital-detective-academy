@@ -1,6 +1,7 @@
 ﻿import { useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useLocation } from 'wouter';
+import { Helmet } from 'react-helmet-async';
 
 import '../modules.css';
 import './module4.css';
@@ -313,6 +314,15 @@ export default function Module4() {
   return (
     // ✅ Sol sidebar kaldırıldı
     <div className="module-container module-page module4 m4-page">
+      <Helmet>
+        <title>Şifre Güvenliği ve Hesap Koruma | Digital Detective Academy</title>
+        <meta name="description" content="Güçlü şifreler nasıl oluşturulur? Hesaplarını nasıl korursun? Siber güvenliğin temellerini öğren." />
+        <meta property="og:title" content="Şifre Güvenliği ve Hesap Koruma | Digital Detective Academy" />
+        <meta property="og:description" content="Güçlü şifreler nasıl oluşturulur? Hesaplarını nasıl korursun? Siber güvenliğin temellerini öğren." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.digitaldetectiveacademy.com/module4" />
+        <meta property="og:image" content="https://www.digitaldetectiveacademy.com/og-image.png" />
+      </Helmet>
       <AnimatePresence>
         {showCompletion && (
           <CompletionScreen isTurkish={isTurkish} countdown={countdown} onNavigate={() => navigate('/module5')} />

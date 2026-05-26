@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch, Router as WouterRouter } from "wouter";
+import { HelmetProvider } from "react-helmet-async";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
@@ -32,19 +33,21 @@ function Router() {
 
 function App() {
   return (
-    <ErrorBoundary>
-      <ThemeProvider defaultTheme="light" switchable>
-        <LanguageProvider>
-          <TooltipProvider>
-            <Toaster />
-            <WouterRouter>
-              <Sidebar />
-              <Router />
-            </WouterRouter>
-          </TooltipProvider>
-        </LanguageProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
+    <HelmetProvider>
+      <ErrorBoundary>
+        <ThemeProvider defaultTheme="light" switchable>
+          <LanguageProvider>
+            <TooltipProvider>
+              <Toaster />
+              <WouterRouter>
+                <Sidebar />
+                <Router />
+              </WouterRouter>
+            </TooltipProvider>
+          </LanguageProvider>
+        </ThemeProvider>
+      </ErrorBoundary>
+    </HelmetProvider>
   );
 }
 

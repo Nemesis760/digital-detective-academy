@@ -15,6 +15,7 @@ import ScenarioTest from '../components/ScenarioTest';
 import BoxGame from '../components/BoxGame';
 import VideoLinks from '../components/VideoLinks';
 import { handleImgError } from '../utils/imageFallback';
+import { Helmet } from 'react-helmet-async';
 import '../modules.css';
 
 const MODULE_KEY = 'module1';
@@ -385,6 +386,15 @@ function Module1() {
 
   return (
     <div className="module-container module-page module1">
+      <Helmet>
+        <title>Bilgisayar Dünyasını Keşfediyorum | Digital Detective Academy</title>
+        <meta name="description" content="Donanım, yazılım, dosya uzantıları ve veri birimleri hakkında her şeyi interaktif oyunlar ve etkinliklerle öğren." />
+        <meta property="og:title" content="Bilgisayar Dünyasını Keşfediyorum | Digital Detective Academy" />
+        <meta property="og:description" content="Donanım, yazılım, dosya uzantıları ve veri birimleri hakkında her şeyi interaktif oyunlar ve etkinliklerle öğren." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.digitaldetectiveacademy.com/module1" />
+        <meta property="og:image" content="https://www.digitaldetectiveacademy.com/og-image.png" />
+      </Helmet>
       {/* ✅ Tamamlama ekranı */}
       <AnimatePresence>
         {showCompletion && (
