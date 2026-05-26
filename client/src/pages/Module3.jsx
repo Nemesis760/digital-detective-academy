@@ -441,6 +441,7 @@ function Module3() {
   useEffect(() => {
     if (!showCompletion) return;
     if (countdown <= 0) {
+      localStorage.setItem('module4_activeSection', '1');
       navigate('/module4');
       return;
     }
@@ -509,7 +510,7 @@ function Module3() {
           <CompletionScreen
             isTurkish={isTurkish}
             countdown={countdown}
-            onNavigate={() => navigate('/module4')}
+            onNavigate={() => { localStorage.setItem('module4_activeSection', '1'); navigate('/module4'); }}
           />
         )}
       </AnimatePresence>

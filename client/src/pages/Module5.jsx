@@ -306,7 +306,7 @@ const sections = (() => {
 
   useEffect(() => {
     if (!showCompletion) return;
-    if (countdown <= 0) { navigate('/module6'); return; }
+    if (countdown <= 0) { localStorage.setItem('module6_activeSection', '1'); navigate('/module6'); return; }
     const timer = setTimeout(() => setCountdown((c) => c - 1), 1000);
     return () => clearTimeout(timer);
   }, [showCompletion, countdown, navigate]);
@@ -358,7 +358,7 @@ const sections = (() => {
       </Helmet>
       <AnimatePresence>
         {showCompletion && (
-          <CompletionScreen isTurkish={isTurkish} countdown={countdown} onNavigate={() => navigate('/module6')} />
+          <CompletionScreen isTurkish={isTurkish} countdown={countdown} onNavigate={() => { localStorage.setItem('module6_activeSection', '1'); navigate('/module6'); }} />
         )}
       </AnimatePresence>
 

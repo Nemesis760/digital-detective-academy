@@ -249,7 +249,7 @@ function Module2() {
   // ✅ Geri sayım
   useEffect(() => {
     if (!showCompletion) return;
-    if (countdown <= 0) { navigate('/module3'); return; }
+    if (countdown <= 0) { localStorage.setItem('module3_activeSection', '1'); navigate('/module3'); return; }
     const timer = setTimeout(() => setCountdown((c) => c - 1), 1000);
     return () => clearTimeout(timer);
   }, [showCompletion, countdown, navigate]);
@@ -305,7 +305,7 @@ function Module2() {
           <CompletionScreen
             isTurkish={isTurkish}
             countdown={countdown}
-            onNavigate={() => navigate('/module3')}
+            onNavigate={() => { localStorage.setItem('module3_activeSection', '1'); navigate('/module3'); }}
           />
         )}
       </AnimatePresence>
