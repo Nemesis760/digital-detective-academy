@@ -2980,14 +2980,25 @@
 }
 
 @media (max-width: 768px) {
-  /* Mobilde content-wrapper'ın ek padding'ini sıfırla —
-     module-content zaten kendi padding'ini veriyor (çift padding sorunu) */
+  /* Modül sayfalarında content-wrapper ve section-navigation'un
+     inline style padding'ini (2rem 3rem 2rem 4rem) ezip mobil için küçültüyoruz.
+     !important zorunlu çünkü inline style CSS'i override eder. */
+  .module-page .content-wrapper,
+  .module-page .section-navigation {
+    padding: 1rem !important;
+  }
+
   .module-page .module-content .content-wrapper {
     padding-inline: 0;
   }
 }
 
 @media (max-width: 480px) {
+  .module-page .content-wrapper,
+  .module-page .section-navigation {
+    padding: 0.75rem !important;
+  }
+
   .module-page .module-content .content-wrapper {
     padding-inline: 0;
   }
