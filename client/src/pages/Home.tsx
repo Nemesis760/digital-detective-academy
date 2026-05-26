@@ -100,10 +100,10 @@ export default function Home() {
   const xpPercentage = Math.round((completedModules / 6) * 100);
 
   const trustStats = [
-    { value: '500+', icon: '🎓', label_tr: 'Eğitilen Detektif',  label_en: 'Trained Detectives' },
-    { value: '6',    icon: '🎯', label_tr: 'İnteraktif Görev',   label_en: 'Interactive Missions' },
-    { value: '50+',  icon: '🎮', label_tr: 'Aktivite & Oyun',    label_en: 'Activities & Games' },
-    { value: '2',    icon: '🌍', label_tr: 'Dil Desteği',        label_en: 'Language Support' },
+    { value: '6',   icon: '🎯', label_tr: 'İnteraktif Modül',  label_en: 'Interactive Modules' },
+    { value: '50+', icon: '🎮', label_tr: 'Aktivite & Oyun',   label_en: 'Activities & Games' },
+    { value: '2',   icon: '🌍', label_tr: 'Dil Desteği',       label_en: 'Language Support' },
+    { value: '🆓',  icon: '✅', label_tr: 'Ücretsiz Erişim',   label_en: 'Free Access' },
   ];
 
   const moduleIslands = [
