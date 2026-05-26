@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import './ContentQuizGame.css';
 
 const ContentQuizGame = ({ section, isTurkish }) => {
@@ -22,6 +22,7 @@ const ContentQuizGame = ({ section, isTurkish }) => {
   const [selected, setSelected] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
   const [isComplete, setIsComplete] = useState(false);
+  const feedbackRef = useRef(null);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -52,6 +53,7 @@ const ContentQuizGame = ({ section, isTurkish }) => {
     setSelected(optionIndex ?? value);
     setIsCorrect(correct);
     if (correct) setScore((prev) => prev + 1);
+    setTimeout(() => feedbackRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
   };
 
   const handleNext = () => {
@@ -164,7 +166,7 @@ const ContentQuizGame = ({ section, isTurkish }) => {
           )}
 
           {answered && (
-            <div className={`content-quiz-feedback ${isCorrect ? 'correct' : 'wrong'}`}>
+            <div ref={feedbackRef} className={`content-quiz-feedback ${isCorrect ? 'correct' : 'wrong'}`}>
               <div className="cqg-feedback-header">
                 {isCorrect
                   ? (isTurkish ? '✅ Harika! Doğru cevap!' : '✅ Great! Correct answer!')

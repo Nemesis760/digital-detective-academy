@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../modules.css';
 
@@ -44,6 +44,7 @@ function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
   const [stepAnswered, setStepAnswered] = useState(false);
   const [stepScore, setStepScore] = useState(0);
   const [finished, setFinished] = useState(false);
+  const stepFeedbackRef = useRef(null);
 
   // ── Ortak yardımcılar ─────────────────────────────────────────────
   const isCorrectAnswer = (quizItem, selected) => {
@@ -117,6 +118,7 @@ function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
       setStepSelected(optIndex);
       setStepAnswered(true);
       if (isOk) setStepScore((s) => s + 1);
+      setTimeout(() => stepFeedbackRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
     };
 
     const handleStepTF = (val) => {
@@ -125,6 +127,7 @@ function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
       setStepSelected(val);
       setStepAnswered(true);
       if (isOk) setStepScore((s) => s + 1);
+      setTimeout(() => stepFeedbackRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
     };
 
     const handleNext = () => {
@@ -284,6 +287,7 @@ function InteractiveQuiz({ quizItems, isTurkish, stepByStep = false }) {
             <AnimatePresence>
               {stepAnswered && (
                 <motion.div
+                  ref={stepFeedbackRef}
                   className={`quiz-feedback ${correct ? 'correct-feedback' : 'wrong-feedback'}`}
                   initial={{ opacity: 0, scale: correct ? 0.8 : 0.95, height: 0 }}
                   animate={{ opacity: 1, scale: 1, height: 'auto' }}
