@@ -37,7 +37,7 @@ export const MODULE1_EN = {
               "Process (Production Line): The processor calculates the data",
               "Output (Product): The image on the screen or paper from the printer"
             ],
-            image: "/images/module1/bilgisayar\u0131n_tan\u0131m\u0131_en.png",
+            image: "/images/module1/bilgisayarin_tanimi_en.png",
             examples: [
               "When you type on a keyboard, you're providing INPUT",
               "The CPU processes your typing and converts it to text (PROCESS)",

@@ -30,7 +30,7 @@ export const MODULE1_TR = {
               "Çıkış (Output/Ürün): İşlenen verinin ekrandaki görüntü, hoparlörden çıkan ses veya yazıcıdan alınan kağıt olarak bize sunulması.",
               "Depolama (Storage/Depo): Bilgilerin daha sonra kullanılmak üzere sabit disk, USB veya bulut sisteminde saklanması."
             ],
-            "image": "/images/module1/bilgisayar\u0131n_tan\u0131m\u0131_tr.png",
+            "image": "/images/module1/bilgisayarin_tanimi_tr.png",
             "examples": [
               "Klavyede 'Merhaba' yazdığında GİRİŞ yapıyorsun.",
               "Bilgisayar harfleri tanıyıp ekrana yansıtacak şekle getirir (İŞLEM).",
