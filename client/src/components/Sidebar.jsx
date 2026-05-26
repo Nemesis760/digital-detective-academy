@@ -146,11 +146,24 @@ const SIDEBAR_WIDTH = 300;
 const Sidebar = () => {
   const { isTurkish, toggleLanguage } = useLanguage();
   const { theme, toggleTheme, switchable } = useTheme();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  const [isOpen, setIsOpen] = useState(() => window.innerWidth >= 768);
   const [isVisible, setIsVisible] = useState(true);
   const [location] = useLocation();
   const [expandedModule, setExpandedModule] = useState(null);
   const [moduleProgress, setModuleProgress] = useState({});
+
+  // HOOK 0 — mobil tespiti ve resize takibi
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) setIsOpen(false);
+      else setIsOpen(true);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // HOOK 1 — sidebarVisibility event (home'da gizle)
   useEffect(() => {
@@ -213,15 +226,15 @@ const Sidebar = () => {
     if (MODULE_SECTIONS[location]) setExpandedModule(location);
   }, [location]);
 
-  // HOOK 5 — body margin (sidebar açık/kapalı)
+  // HOOK 5 — body margin (mobilde overlay, masaüstünde push)
   useEffect(() => {
     if (!isVisible) return;
-    document.body.style.marginLeft = isOpen ? `${SIDEBAR_WIDTH}px` : '0px';
+    document.body.style.marginLeft = (!isMobile && isOpen) ? `${SIDEBAR_WIDTH}px` : '0px';
     document.body.style.transition = 'margin-left 0.3s ease';
     return () => {
       document.body.style.marginLeft = '0px';
     };
-  }, [isOpen, isVisible]);
+  }, [isOpen, isVisible, isMobile]);
 
   // ── TÜM HOOK'LAR BITTI — şimdi early return güvenli ──
   if (!isVisible) return null;
@@ -255,6 +268,19 @@ const Sidebar = () => {
 
   return (
     <>
+      {/* Mobil overlay — sidebar açıkken arka planı karartır */}
+      {isMobile && isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.55)',
+            zIndex: 999,
+          }}
+        />
+      )}
+
       {/* Toggle butonu */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}

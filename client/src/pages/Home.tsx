@@ -97,6 +97,15 @@ export default function Home() {
 
   const earnedBadges: string[] = progress.badges || [];
 
+  const xpPercentage = Math.round((completedModules / 6) * 100);
+
+  const trustStats = [
+    { value: '500+', icon: '🎓', label_tr: 'Eğitilen Detektif',  label_en: 'Trained Detectives' },
+    { value: '6',    icon: '🎯', label_tr: 'İnteraktif Görev',   label_en: 'Interactive Missions' },
+    { value: '50+',  icon: '🎮', label_tr: 'Aktivite & Oyun',    label_en: 'Activities & Games' },
+    { value: '2',    icon: '🌍', label_tr: 'Dil Desteği',        label_en: 'Language Support' },
+  ];
+
   const moduleIslands = [
     {
       title: isTurkish ? 'Bilgisayar Dünyasını Keşfediyorum' : 'Exploring the Computer World',
@@ -228,7 +237,7 @@ export default function Home() {
               {isTurkish ? '🚀 Geleceğin Teknolojisi Burada' : '🚀 Future Technology is Here'}
             </motion.span>
 
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400">
               {isTurkish ? 'Dijital Dedektif Akademisine Hoş Geldin!' : 'Welcome to Digital Detective Academy!'}
             </h1>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
@@ -249,6 +258,28 @@ export default function Home() {
           </motion.div>
         </div>
       </header>
+
+      {/* Trust Bar */}
+      <section className="py-10 bg-gradient-to-r from-blue-900/60 to-purple-900/60 border-y border-blue-700/40">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+            {trustStats.map((stat, i) => (
+              <motion.div
+                key={i}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <div className="text-3xl mb-1">{stat.icon}</div>
+                <div className="text-2xl md:text-3xl font-extrabold text-white">{stat.value}</div>
+                <div className="text-xs md:text-sm text-blue-200 mt-1">{isTurkish ? stat.label_tr : stat.label_en}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* User Stats */}
       <section className="py-12 bg-slate-800/50 backdrop-blur-sm border-y border-slate-700">
@@ -281,6 +312,29 @@ export default function Home() {
                 </div>
                 <p className="text-2xl font-bold text-purple-400">{progress.totalScore || 0}</p>
               </motion.div>
+            </div>
+
+            {/* XP Bar */}
+            <div className="mt-8 bg-slate-800/80 rounded-xl p-5 border border-slate-700">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-sm font-semibold text-slate-300">
+                  {isTurkish ? 'İlerleme' : 'Progress'} — {userLevel}
+                </span>
+                <span className="text-sm font-bold text-blue-400">{xpPercentage}%</span>
+              </div>
+              <div className="w-full h-3 bg-slate-700 rounded-full overflow-hidden">
+                <motion.div
+                  className="h-full rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                  initial={{ width: 0 }}
+                  animate={{ width: `${xpPercentage}%` }}
+                  transition={{ duration: 1.2, ease: 'easeOut', delay: 0.3 }}
+                />
+              </div>
+              <p className="text-xs text-slate-500 mt-2">
+                {completedModules === 6
+                  ? (isTurkish ? '🏆 Tüm modüller tamamlandı!' : '🏆 All modules completed!')
+                  : (isTurkish ? `${6 - completedModules} modül kaldı` : `${6 - completedModules} modules remaining`)}
+              </p>
             </div>
           </div>
         </div>
@@ -340,9 +394,9 @@ export default function Home() {
           </div>
 
           <div className="max-w-6xl mx-auto relative">
-            {/* SVG bağlantı çizgileri — path kullanıldı, line değil */}
+            {/* SVG bağlantı çizgileri — mobilde gizli */}
             <svg
-              className="absolute inset-0 w-full h-full pointer-events-none z-0"
+              className="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-0"
               viewBox="0 0 300 200"
               preserveAspectRatio="none"
             >
@@ -423,8 +477,9 @@ export default function Home() {
                     <Link href={island.link}>
                       <motion.div
                         className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 border-2 border-slate-600 relative overflow-hidden cursor-pointer group"
-                        whileHover={{ scale: 1.05, borderColor: '#3b82f6' }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.04, borderColor: '#3b82f6', boxShadow: '0 0 32px rgba(59,130,246,0.3)' }}
+                        whileTap={{ scale: 0.97 }}
+                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                       >
                         <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${island.color} opacity-20 rounded-bl-full`} />
                         <div className="relative z-10">
