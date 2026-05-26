@@ -2979,9 +2979,26 @@
   }
 }
 
+@media (max-width: 768px) {
+  /* Mobilde content-wrapper'ın ek padding'ini sıfırla —
+     module-content zaten kendi padding'ini veriyor (çift padding sorunu) */
+  .module-page .module-content .content-wrapper {
+    padding-inline: 0;
+  }
+}
+
 @media (max-width: 480px) {
   .module-page .module-content .content-wrapper {
-    padding-inline: var(--spacing-md);
+    padding-inline: 0;
+  }
+
+  /* section-intro ve activity-box: yatay padding'i küçült */
+  .module-page .module-content .section-intro {
+    padding: 0.75rem var(--spacing-sm);
+  }
+
+  .module-page .module-content .activity-box {
+    padding: 0.75rem var(--spacing-sm);
   }
 }
 
