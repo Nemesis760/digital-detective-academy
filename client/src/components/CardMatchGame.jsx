@@ -339,7 +339,7 @@ export default function CardMatchGame({ isTurkish, pairs }) {
           <div className="cm-help-title">{t('subtitle')}</div>
           <ul className="cm-help-steps">
             {t('instructions').map((line, idx) => (
-              <li key={idx}>{line}</li>
+              <li key={`instr-${idx}`}>{line}</li>
             ))}
           </ul>
         </div>

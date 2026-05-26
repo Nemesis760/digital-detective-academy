@@ -11,6 +11,7 @@ import InteractiveQuiz from '../components/InteractiveQuiz';
 import VideoLinks from '../components/VideoLinks';
 import '../modules.css';
 import './module6.css';
+import CompletionScreen from '../components/CompletionScreen';
 
 const MODULE_KEY = 'module6';
 
@@ -375,11 +376,11 @@ const SectionComponent = ({ section, isTurkish }) => {
               <h3 className="content-item-title">{contentItem.title}</h3>
               {contentItem.image && <img src={contentItem.image} alt={contentItem.title} className="content-image" onError={(e) => { e.target.style.display = 'none'; }} />}
               <p className="content-description">{contentItem.description}</p>
-              {contentItem.points && <ul className="content-points">{contentItem.points.map((point, idx) => <li key={idx}>{point}</li>)}</ul>}
+              {contentItem.points && <ul className="content-points">{contentItem.points.map((point, idx) => <li key={`pt-${idx}`}>{point}</li>)}</ul>}
               {contentItem.examples && Array.isArray(contentItem.examples) && (
                 <div className="content-examples">
                   <h4>{isTurkish ? 'Örnekler:' : 'Examples:'}</h4>
-                  <ul>{contentItem.examples.map((example, idx) => <li key={idx}>{example}</li>)}</ul>
+                  <ul>{contentItem.examples.map((example, idx) => <li key={`ex-${idx}`}>{example}</li>)}</ul>
                 </div>
               )}
             </motion.div>
@@ -398,38 +399,6 @@ const SectionComponent = ({ section, isTurkish }) => {
   );
 };
 
-const CompletionScreen = ({ isTurkish }) => (
-  <motion.div
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    style={{
-      position: 'fixed', inset: 0, zIndex: 2000,
-      background: 'rgba(10,15,40,0.85)', backdropFilter: 'blur(8px)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-    }}
-  >
-    <motion.div
-      initial={{ y: 40, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 0.15 }}
-      style={{
-        background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4c1d95 100%)',
-        borderRadius: '24px', padding: '48px 40px', textAlign: 'center',
-        maxWidth: '460px', width: '90%',
-        boxShadow: '0 25px 80px rgba(102,126,234,0.4)',
-        border: '1px solid rgba(167,139,250,0.3)',
-      }}
-    >
-      <motion.div animate={{ rotate: [0, 10, -10, 10, 0], scale: [1, 1.2, 1] }} transition={{ duration: 0.6, delay: 0.3 }} style={{ fontSize: '4rem', marginBottom: '16px' }}>🏆</motion.div>
-      <h2 style={{ color: 'white', fontWeight: 900, fontSize: '1.8rem', margin: '0 0 10px' }}>
-        {isTurkish ? 'Tebrikler! Tüm Modüller Tamamlandı!' : 'Congratulations! All Modules Complete!'}
-      </h2>
-      <p style={{ color: 'rgba(255,255,255,0.75)', fontSize: '1rem', margin: '0 0 24px', lineHeight: 1.6 }}>
-        {isTurkish ? 'Dijital Dedektif Akademisi\'ni başarıyla bitirdin!' : 'You have successfully completed the Digital Detective Academy!'}
-      </p>
-    </motion.div>
-  </motion.div>
-);
 
 function Module6() {
   const { language } = useLanguage();
@@ -516,7 +485,13 @@ function Module6() {
         <meta property="og:image" content="https://www.digitaldetectiveacademy.com/og-image.png" />
       </Helmet>
       <AnimatePresence>
-        {showCompletion && <CompletionScreen isTurkish={isTurkish} />}
+        {showCompletion && (
+          <CompletionScreen
+            emoji="🏆"
+            title={isTurkish ? 'Tebrikler! Tüm Modüller Tamamlandı!' : 'Congratulations! All Modules Complete!'}
+            description={isTurkish ? "Dijital Dedektif Akademisi'ni başarıyla bitirdin!" : 'You have successfully completed the Digital Detective Academy!'}
+          />
+        )}
       </AnimatePresence>
 
       <AnimatePresence mode="wait">

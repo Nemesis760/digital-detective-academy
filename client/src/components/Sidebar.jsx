@@ -557,7 +557,7 @@ const Sidebar = () => {
 
                           return (
                             <Link
-                              key={idx}
+                              key={sectionId}
                               href={path}
                               onClick={() => {
                                 localStorage.setItem(

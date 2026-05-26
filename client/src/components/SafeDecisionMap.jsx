@@ -514,7 +514,7 @@ export default function SafeDecisionMap({ isTurkish }) {
             <div className="sdm-choices">
               {step.choices.map((ch, idx) => (
                 <motion.button
-                  key={idx}
+                  key={ch.label}
                   className="sdm-choice-btn"
                   onClick={() => handlePick(idx)}
                   whileHover={{ scale: 1.015, translateY: -2 }}
@@ -532,7 +532,7 @@ export default function SafeDecisionMap({ isTurkish }) {
             <div className="sdm-choices">
               {step.choices.map((ch, idx) => (
                 <div
-                  key={idx}
+                  key={ch.label}
                   className={`sdm-choice-result ${
                     idx === pickedChoice
                       ? ch.safe ? "sdm-result-safe" : "sdm-result-danger"

@@ -204,7 +204,7 @@ const StrongPasswordGame = ({ isTurkish }) => {
           </div>
           <ul className="list-disc pl-5 text-sm">
             {warnings.map((w, idx) => (
-              <li key={idx}>{w}</li>
+              <li key={`warn-${idx}`}>{w}</li>
             ))}
           </ul>
         </div>
