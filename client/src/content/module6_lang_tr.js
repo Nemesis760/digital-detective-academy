@@ -36,7 +36,7 @@ export const MODULE6_TR = {
           "1.2": {
             "title": "Kötü Amaçlı Yazılım Uyarı İşaretleri",
             "description": "Bilgisayarınız bir şeylerin yanlış olduğunda size sinyaller verir. Bunları tanımayı öğrenin!",
-            "image": "/images/module6/m6_malware_signs_tr.png",
+            "image": "/images/module6/malware_tr.png",
             "points": [
               "Bilgisayar normalden çok daha yavaş çalışır",
               "Pop-up pencereler sık sık görünür",
@@ -56,7 +56,7 @@ export const MODULE6_TR = {
           "1.3": {
             "title": "Kötü Amaçlı Yazılımdan Nasıl Korunulur?",
             "description": "Önlemek tedaviden daha iyidir! İşte kötü amaçlı yazılımları uzak tutmanın yolları:",
-            "image": "/images/module6/m6_protection_tr.png",
+            "image": "/images/module6/cyber_crisis_tr.png",
             "points": [
               "Antivirüs yazılımı kurun ve düzenli olarak güncelleyin",
               "Şüpheli linklere veya pop-up'lara tıklamayın",
@@ -154,7 +154,7 @@ export const MODULE6_TR = {
           "2.2": {
             "title": "Kimlik Avını Nasıl Tespit Edilir?",
             "description": "Kimlik avı girişimlerinin belirgin işaretleri vardır. Bunları tanımayı öğrenin:",
-            "image": "/images/module6/m6_phishing_signs_tr.png",
+            "image": "/images/module6/phishing_tr.png",
             "points": [
               "Gönderenin e-posta adresini dikkatlice kontrol edin",
               "Yazım ve dil bilgisi hatalarını arayın",
@@ -173,7 +173,7 @@ export const MODULE6_TR = {
           "2.3": {
             "title": "Kimlik Avından Şüphelenirseniz Ne Yapmalısınız?",
             "description": "Kimlik avı mesajı aldığınızı düşünüyorsanız, işte yapmanız gerekenler:",
-            "image": "/images/module6/m6_phishing_response_tr.png",
+            "image": "/images/module6/Stop_tr.png",
             "points": [
               "Hiçbir linke tıklamayın veya ek indirmeyin",
               "Mesaja cevap vermeyin",
@@ -240,7 +240,7 @@ export const MODULE6_TR = {
           "3.3": {
             "title": "Önleme Kontrol Listesi",
             "description": "En iyi savunma önlemektir. Bu kontrol listesini takip edin:",
-            "image": "/images/module6/m6_checklist_tr.png",
+            "image": "/images/module6/cyber_crisis_tr.png",
             "points": [
               "✅ Antivirüs yazılımını güncel tutun",
               "✅ Şifrelerinizi kimseyle paylaşmayın",

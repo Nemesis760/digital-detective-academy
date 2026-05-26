@@ -38,7 +38,7 @@ export const MODULE6_EN = {
           "1.2": {
             title: "Warning Signs of Malware",
             description: "Your computer gives you signals when something is wrong. Learn to recognize them!",
-            image: "/images/module6/m6_malware_signs_en.png",
+            image: "/images/module6/malware_ing.png",
             points: [
               "Computer runs much slower than usual",
               "Pop-up windows appear frequently",
@@ -58,7 +58,7 @@ export const MODULE6_EN = {
           "1.3": {
             title: "How to Protect Against Malware",
             description: "Prevention is better than cure! Here's how to keep malware away:",
-            image: "/images/module6/m6_protection_en.png",
+            image: "/images/module6/cyber_crisis_en.png",
             points: [
               "Install and update antivirus software regularly",
               "Don't click on suspicious links or pop-ups",
@@ -156,7 +156,7 @@ export const MODULE6_EN = {
           "2.2": {
             title: "How to Spot Phishing",
             description: "Phishing attempts have telltale signs. Learn to recognize them:",
-            image: "/images/module6/m6_phishing_signs_en.png",
+            image: "/images/module6/phishing_ing.png",
             points: [
               "Check the sender's email address carefully",
               "Look for spelling and grammar mistakes",
@@ -175,7 +175,7 @@ export const MODULE6_EN = {
           "2.3": {
             title: "What to Do If You Suspect Phishing",
             description: "If you think you've received a phishing message, here's what to do:",
-            image: "/images/module6/m6_phishing_response_en.png",
+            image: "/images/module6/Stop_en.png",
             points: [
               "Don't click on any links or download attachments",
               "Don't reply to the message",
@@ -242,7 +242,7 @@ export const MODULE6_EN = {
           "3.3": {
             title: "Prevention Checklist",
             description: "The best defense is prevention. Follow this checklist:",
-            image: "/images/module6/m6_checklist_en.png",
+            image: "/images/module6/cyber_crisis_en.png",
             points: [
               "✅ Keep antivirus software updated",
               "✅ Don't share passwords with anyone",
