@@ -115,7 +115,7 @@ const StoryMode = ({ isOpen, onClose, isTurkish }) => {
                   exit="exit"
                 >
                   <img
-                    src={`/story_images/page-${String(currentPage).padStart(2, '0')}.png`}
+                    src={`/${isTurkish ? 'story_images_tr' : 'story_images_eng'}/page-${String(currentPage).padStart(2, '0')}.png`}
                     alt={`${isTurkish ? 'Sayfa' : 'Page'} ${currentPage}`}
                     className="story-image"
                     draggable={false}
