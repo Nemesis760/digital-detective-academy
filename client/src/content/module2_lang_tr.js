@@ -70,7 +70,7 @@ export const MODULE2_TR = {
             title: "Dijital Ayak İzinin Kalıcılığı",
             description:
               "İnternet asla unutmaz. Bu izler başkaları tarafından görülebilir, saklanabilir ve kopyalanabilir. Bir gönderi silinse bile ekran görüntüsü alınmış olabilir. Bu yüzden 'paylaşmadan önce düşünmek' dijital dünyada çok önemlidir.",
-            image: "/images/digital_footprint_hero.png",
+            image: "/images/module2/digital_footprint_hero.png",
             points: [
               "Ekran görüntüleri alınmış olabilir",
               "Arşivlenmiş sayfalar ve veri tabanı yedekleri",
