@@ -159,7 +159,7 @@ export default function CardMatchGame({ isTurkish, pairs }) {
     setMatched([]);
     setMoves(0);
     setSeconds(0);
-    setPreviewLeft(3);
+    setPreviewLeft(6);
     setFeedback(null);
     setLock(false);
     setPhase('idle');
@@ -183,7 +183,7 @@ export default function CardMatchGame({ isTurkish, pairs }) {
     setSeconds(0);
     setFeedback(null);
 
-    setPreviewLeft(3);
+    setPreviewLeft(6);
     previewIntervalRef.current = window.setInterval(() => {
       setPreviewLeft((s) => Math.max(0, s - 1));
     }, 1000);
@@ -194,7 +194,7 @@ export default function CardMatchGame({ isTurkish, pairs }) {
       setPhase('playing');
       setLock(false);
       setSelected([]); // flip all down
-    }, 3000);
+    }, 5500);
 
     return () => {
       if (previewIntervalRef.current) window.clearInterval(previewIntervalRef.current);
