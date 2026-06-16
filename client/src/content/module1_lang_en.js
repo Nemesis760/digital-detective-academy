@@ -263,7 +263,7 @@ export const MODULE1_EN = {
           "4.1": {
             title: "Capacity Units (From Largest to Smallest)",
             description: "Bit: Smallest unit (0 or 1).\nByte: 1 Letter.\nKilobyte (KB): One page of text.\nMegabyte (MB): One MP3 song or photo.\nGigabyte (GB): One movie or game.\nTerabyte (TB): Thousands of movies (Hard disk size).",
-            image: "/images/module1_capacity_units.png",
+            image: "/images/module1_capacity_units_eng.png",
             visual_comparison: [
               { unit: "Bit", size: "1 grain of rice", example: "0 or 1" },
               { unit: "Byte", size: "1 letter", example: "A" },
