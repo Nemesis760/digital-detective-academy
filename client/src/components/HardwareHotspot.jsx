@@ -430,8 +430,7 @@ const HardwareHotspot = ({ isTurkish = true }) => {
                 style={{ top: `${part.position.top}%`, left: `${part.position.left}%` }}
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => handlePartClick(part)}
-                whileHover={{ scale: 1.08 }}
-                whileTap={{ scale: 0.92 }}
+                whileTap={{ scale: 0.95 }}
                 aria-label={part.name}
                 title={part.name}
               >
