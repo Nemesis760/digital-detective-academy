@@ -270,6 +270,21 @@
   z-index: 1;
 }
 
+/* Override .activity-box h3/p (--module-primary color + 🎮 icon) which
+   otherwise makes the completion text nearly invisible on this gradient */
+.activity-box .quiz-completion-box h3 {
+  color: white;
+  display: block;
+}
+
+.activity-box .quiz-completion-box h3::before {
+  content: none;
+}
+
+.activity-box .quiz-completion-box p {
+  color: white;
+}
+
 /* Dark Theme */
 .dark .hotspot-quiz-container {
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);

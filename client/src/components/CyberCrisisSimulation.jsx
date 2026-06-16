@@ -541,7 +541,7 @@ const CyberCrisisSimulation = ({ isTurkish = true }) => {
             </h2>
             <p className="bsod-code">
               {isTurkish ? 'HATA KODU: ' : 'ERROR CODE: '}
-              <strong>SIBER_DIKKATSIZLIK</strong>
+              <strong>{isTurkish ? 'SIBER_DIKKATSIZLIK' : 'CYBER_CARELESSNESS'}</strong>
             </p>
             <p className="bsod-reason">
               {isTurkish ? 'Sebep: ' : 'Reason: '}

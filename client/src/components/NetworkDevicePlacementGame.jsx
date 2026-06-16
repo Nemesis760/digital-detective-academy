@@ -220,7 +220,7 @@ export default function NetworkDevicePlacementGame({ isTurkish }) {
                     onClick={() => !isPlaced && setSelected(isSelected ? null : device.id)}
                     disabled={isPlaced}
                     style={{
-                      padding: '10px 16px', borderRadius: 12, border: 'none', cursor: isPlaced ? 'default' : 'pointer',
+                      padding: '10px 16px', borderRadius: 12, cursor: isPlaced ? 'default' : 'pointer',
                       fontWeight: 800, fontSize: '.9rem',
                       background: isPlaced
                         ? '#d1fae5'

@@ -746,7 +746,7 @@
 .bsod-screen {
   width: 100%;
   height: 100vh;
-  background: #0000aa;
+  background: linear-gradient(160deg, #1a0000 0%, #3d0000 60%, #1a0000 100%);
   color: white;
   padding: 50px;
   box-sizing: border-box;
@@ -758,6 +758,13 @@
 
 .bsod-content {
   max-width: 800px;
+}
+
+/* force white on all text regardless of parent .activity-box overrides */
+.bsod-content h1,
+.bsod-content h2,
+.bsod-content p {
+  color: white !important;
 }
 
 .bsod-emoji {
@@ -809,7 +816,7 @@
   margin-top: 30px;
   padding: 15px 30px;
   background: white;
-  color: #0000aa;
+  color: #3d0000;
   border: none;
   border-radius: 4px;
   cursor: pointer;
