@@ -1,7 +1,6 @@
 {
-  "rootDirectory": "client",
-  "outputDirectory": "dist",
   "buildCommand": "npm run build",
+  "outputDirectory": "client/dist",
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/robots.txt", "destination": "/robots.txt" },
