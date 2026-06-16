@@ -27,6 +27,7 @@ const HardwareHotspot = ({ isTurkish = true }) => {
   const [answered, setAnswered] = useState(false);
 
   const stageRef = useRef(null);
+  const panelRef = useRef(null);
   const feedbackTimeoutRef = useRef(null);
   const confettiCooldownRef = useRef(0);
 
@@ -310,6 +311,9 @@ const HardwareHotspot = ({ isTurkish = true }) => {
     setAnswered(false);
     setFeedback(null);
     soundManager.playClick();
+    setTimeout(() => {
+      panelRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
   };
 
   const answerQuiz = (opt) => {
@@ -441,37 +445,38 @@ const HardwareHotspot = ({ isTurkish = true }) => {
             );
           })}
 
-          {/* Popup overlay — appears on the image when a hotspot is clicked */}
-          <AnimatePresence>
-            {selectedPart && mode === "discover" && (
-              <motion.div
-                className="hh-popup"
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 0.2 }}
-              >
-                <button
-                  className="hh-popupClose"
-                  onClick={(e) => { e.stopPropagation(); setSelectedPartId(null); }}
-                  aria-label="Close"
-                >✕</button>
-                <div className="hh-popupEmoji">{selectedPart.emoji}</div>
-                <div className="hh-popupName">{selectedPart.name}</div>
-                <p className="hh-popupDesc">{selectedPart.description}</p>
-                {clickedParts.has(selectedPart.id) && (
-                  <span className="hh-badge" style={{ marginTop: 8, display: "inline-block" }}>
-                    ✓ {isTurkish ? "Keşfedildi" : "Discovered"}
-                  </span>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
         </div>
+
+        {/* Popup overlay — outside imageWrap (no overflow clipping) */}
+        <AnimatePresence>
+          {selectedPart && mode === "discover" && (
+            <motion.div
+              className="hh-popup"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.2 }}
+            >
+              <button
+                className="hh-popupClose"
+                onClick={(e) => { e.stopPropagation(); setSelectedPartId(null); }}
+                aria-label="Close"
+              >✕</button>
+              <div className="hh-popupEmoji">{selectedPart.emoji}</div>
+              <div className="hh-popupName">{selectedPart.name}</div>
+              <p className="hh-popupDesc">{selectedPart.description}</p>
+              {clickedParts.has(selectedPart.id) && (
+                <span className="hh-badge" style={{ marginTop: 8, display: "inline-block" }}>
+                  ✓ {isTurkish ? "Keşfedildi" : "Discovered"}
+                </span>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Panel area */}
-      <div className="hh-panel">
+      <div className="hh-panel" ref={panelRef}>
         {/* DISCOVER PANEL — just a subtle hint, real info is in the popup */}
         {mode === "discover" && (
           <div className="hh-detail">
@@ -590,6 +595,7 @@ const HardwareHotspot = ({ isTurkish = true }) => {
           background:#eef2ff;
           border-radius:14px;
           padding:18px;
+          position:relative;
         }
         .hh-imageWrap{
           position:relative;
@@ -663,22 +669,20 @@ const HardwareHotspot = ({ isTurkish = true }) => {
           50%{ transform:scale(1.45); opacity:0; }
         }
 
-        /* Popup overlay on image */
+        /* Popup overlay — absolute inside hh-stage (not clipped by imageWrap) */
         .hh-popup{
           position:absolute;
-          bottom:12px;
+          bottom:28px;
           left:50%;
           transform:translateX(-50%);
-          width:calc(100% - 28px);
-          max-width:460px;
-          background:rgba(255,255,255,0.97);
+          width:min(420px, calc(100% - 40px));
+          background:#ffffff;
           border-radius:16px;
-          padding:16px 18px;
-          box-shadow:0 8px 36px rgba(0,0,0,0.38);
+          padding:18px 20px 16px;
+          box-shadow:0 8px 36px rgba(0,0,0,0.28);
           z-index:30;
           text-align:center;
           border:2px solid #6366f1;
-          backdrop-filter:blur(6px);
         }
         .hh-popupClose{
           position:absolute;
