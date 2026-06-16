@@ -441,60 +441,42 @@ const HardwareHotspot = ({ isTurkish = true }) => {
               </motion.button>
             );
           })}
+
+          {/* Popup overlay — appears on the image when a hotspot is clicked */}
+          <AnimatePresence>
+            {selectedPart && mode === "discover" && (
+              <motion.div
+                className="hh-popup"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.2 }}
+              >
+                <button
+                  className="hh-popupClose"
+                  onClick={(e) => { e.stopPropagation(); setSelectedPartId(null); }}
+                  aria-label="Close"
+                >✕</button>
+                <div className="hh-popupEmoji">{selectedPart.emoji}</div>
+                <div className="hh-popupName">{selectedPart.name}</div>
+                <p className="hh-popupDesc">{selectedPart.description}</p>
+                {clickedParts.has(selectedPart.id) && (
+                  <span className="hh-badge" style={{ marginTop: 8, display: "inline-block" }}>
+                    ✓ {isTurkish ? "Keşfedildi" : "Discovered"}
+                  </span>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
       {/* Panel area */}
       <div className="hh-panel">
-        {/* DISCOVER PANEL */}
+        {/* DISCOVER PANEL — just a subtle hint, real info is in the popup */}
         {mode === "discover" && (
           <div className="hh-detail">
-            {selectedPart ? (
-              <motion.div
-                className="hh-card"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                <div className="hh-cardHeader">
-                  <div className="hh-cardTitle">
-                    <span className="hh-cardEmoji">{selectedPart.emoji}</span>
-                    <span>{selectedPart.name}</span>
-                  </div>
-
-                  {clickedParts.has(selectedPart.id) && (
-                    <span className="hh-badge">✓ {isTurkish ? "Keşfedildi" : "Discovered"}</span>
-                  )}
-                </div>
-
-                <p className="hh-cardDesc">{selectedPart.description}</p>
-
-                <div className="hh-hintRow">
-                  <span className="hh-hintDot" />
-                  <span className="hh-hintText">{t.hint}</span>
-                </div>
-
-                <div className="hh-miniGoals">
-                  <div className="hh-goal">
-                    <span className="hh-goalDot" />
-                    <span>
-                      {isTurkish
-                        ? "Hedef: En az 4 parça keşfet → mini sınav açılır."
-                        : "Goal: Discover 4 parts → quiz unlocks."}
-                    </span>
-                  </div>
-                  <div className="hh-goal">
-                    <span className="hh-goalDot" />
-                    <span>
-                      {isTurkish
-                        ? "Bonus: Tüm parçaları keşfet → final rozeti!"
-                        : "Bonus: Discover all parts → final badge!"}
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
-            ) : (
-              <div className="hh-empty">{t.selectHint}</div>
-            )}
+            <div className="hh-empty">{selectedPart ? t.hint : t.selectHint}</div>
           </div>
         )}
 
@@ -681,6 +663,37 @@ const HardwareHotspot = ({ isTurkish = true }) => {
           0%,100%{ transform:scale(1); opacity:.35; }
           50%{ transform:scale(1.45); opacity:0; }
         }
+
+        /* Popup overlay on image */
+        .hh-popup{
+          position:absolute;
+          bottom:12px;
+          left:50%;
+          transform:translateX(-50%);
+          width:calc(100% - 28px);
+          max-width:460px;
+          background:rgba(255,255,255,0.97);
+          border-radius:16px;
+          padding:16px 18px;
+          box-shadow:0 8px 36px rgba(0,0,0,0.38);
+          z-index:30;
+          text-align:center;
+          border:2px solid #6366f1;
+          backdrop-filter:blur(6px);
+        }
+        .hh-popupClose{
+          position:absolute;
+          top:8px; right:10px;
+          background:none; border:none;
+          font-size:1.1rem; cursor:pointer;
+          color:#64748b; line-height:1; padding:4px;
+          border-radius:6px;
+          transition:background .12s;
+        }
+        .hh-popupClose:hover{ background:#f1f5f9; }
+        .hh-popupEmoji{ font-size:2.2rem; margin-bottom:4px; }
+        .hh-popupName{ font-weight:900; color:#0f172a; font-size:1.1rem; margin-bottom:6px; }
+        .hh-popupDesc{ color:#334155; line-height:1.55; margin:0; font-size:0.95rem; }
 
         /* Panel */
         .hh-panel{ margin-top:14px; }
