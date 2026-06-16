@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { useLanguage } from '../contexts/LanguageContext';
 import {
-  Shield, Cpu, ArrowRight, Globe, BookOpen, Award, Zap,
+  Shield, Cpu, ArrowRight, Globe, BookOpen, Award,
   Network, Lock, Star, Trophy, Search, Eye, ChevronRight
 } from 'lucide-react';
 
@@ -58,7 +58,7 @@ export default function Home() {
       try {
         const saved = localStorage.getItem('digitalShieldProgress');
         if (saved) {
-          setProgress(prev => {
+          setProgress((prev: typeof progress) => {
             const next = JSON.parse(saved);
             return JSON.stringify(next) !== JSON.stringify(prev) ? next : prev;
           });
