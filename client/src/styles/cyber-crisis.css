@@ -767,6 +767,18 @@
   color: white !important;
 }
 
+/* same fix for victory screen */
+.victory-content h1,
+.victory-content h3,
+.victory-content p {
+  color: white !important;
+}
+
+/* suppress the 🎮 icon that .activity-box h3::before adds */
+.victory-content h3::before {
+  content: none !important;
+}
+
 .bsod-emoji {
   font-size: 5rem;
   margin: 0 0 20px 0;
