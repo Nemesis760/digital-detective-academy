@@ -302,7 +302,7 @@ function Module3() {
   const sections = moduleData.sections.map((section, index) => ({
     id: index + 1,
     title_tr: section.title,
-    component: () => <SectionComponent section={section} isTurkish={isTurkish} />,
+    component: () => <SectionComponent section={{ ...section, id: index + 1 }} isTurkish={isTurkish} />,
   }));
 
   useEffect(() => {

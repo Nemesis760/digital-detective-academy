@@ -79,7 +79,7 @@ export default function CardMatchingGame({ pairs = [], isTurkish }) {
   useEffect(() => {
     if (phase !== "preview") return;
     setPreviewLeft(3);
-    let n = 3;
+    let n = 4;
     previewRef.current = setInterval(() => {
       n -= 1;
       setPreviewLeft(n);

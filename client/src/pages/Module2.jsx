@@ -125,7 +125,7 @@ const SectionComponent = ({ section, isTurkish }) => {
 };
 
 function Module2() {
-  const languageState = useLanguage?.();
+  const languageState = useLanguage();
   const language = languageState?.language || 'tr';
   const isTurkish = language === 'tr';
   const [, navigate] = useLocation();
