@@ -200,14 +200,17 @@ const SectionComponent = ({ section, isTurkish }) => {
 
       {Array.isArray(section.activities) && section.activities.length > 0 ? (
         section.activities.map((activity, index) => (
-          <div className="activity-box" key={`${activity.activity_type}-${index}`}>
+          <div
+            className={`activity-box${activity.activity_type === 'file_extensions_airplane' ? ' hidden md:block' : ''}`}
+            key={`${activity.activity_type}-${index}`}
+          >
             <h3>{activity.activity_title}</h3>
             <p>{activity.activity_desc}</p>
             {renderActivityByType(activity.activity_type)}
           </div>
         ))
       ) : section.activity_type ? (
-        <div className="activity-box">
+        <div className={`activity-box${section.activity_type === 'file_extensions_airplane' ? ' hidden md:block' : ''}`}>
           <h3>{section.activity_title}</h3>
           <p>{section.activity_desc}</p>
           {renderActivityByType(section.activity_type)}
