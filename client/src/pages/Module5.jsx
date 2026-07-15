@@ -18,6 +18,7 @@ import VideoLinks from '../components/VideoLinks';
 import '../modules.css';
 import './module5.css';
 import CompletionScreen from '../components/CompletionScreen';
+import ImageLightbox from '../components/ImageLightbox';
 
 const VIRUS_PAIRS_TR = [
   ['Virüs', 'Dosyalara bulaşır ve onları bozar'],
@@ -41,6 +42,7 @@ const MODULE_KEY = 'module5';
 
 const SectionComponent = ({ section, isTurkish }) => {
   const virusPairs = isTurkish ? VIRUS_PAIRS_TR : VIRUS_PAIRS_EN;
+  const [lightbox, setLightbox] = useState(null);
 
   const renderActivity = (type) => {
     switch (type) {
@@ -95,7 +97,7 @@ const SectionComponent = ({ section, isTurkish }) => {
             <motion.div key={key} className="content-item" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
               <h3 className="content-item-title">{contentItem.title}</h3>
               {contentItem.image && (
-                <img src={contentItem.image} alt={contentItem.title} className="content-image" onError={(e) => { e.target.style.display = 'none'; }} />
+                <img src={contentItem.image} alt={contentItem.title} className="content-image" style={{ cursor: 'zoom-in' }} onClick={() => setLightbox({ src: contentItem.image, alt: contentItem.title })} onError={(e) => { e.target.style.display = 'none'; }} />
               )}
               <p className="content-description">{contentItem.description}</p>
               {contentItem.points && (
@@ -132,6 +134,7 @@ const SectionComponent = ({ section, isTurkish }) => {
           {renderActivity(section.second_activity_type)}
         </div>
       )}
+      <AnimatePresence>{lightbox && <ImageLightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}</AnimatePresence>
     </motion.div>
   );
 };

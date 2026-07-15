@@ -17,12 +17,14 @@ import WheelQuizGame from '../components/WheelQuizGame';
 import VideoLinks from '../components/VideoLinks';
 import CompletionScreen from '../components/CompletionScreen';
 import '../modules.css';
+import ImageLightbox from '../components/ImageLightbox';
 
 const MODULE_KEY = 'module2';
 
 
 const SectionComponent = ({ section, isTurkish }) => {
   const [showStory, setShowStory] = useState(false);
+  const [lightbox, setLightbox] = useState(null);
 
   const renderActivity = () => {
     const activityType = section.activity_type;
@@ -80,7 +82,7 @@ const SectionComponent = ({ section, isTurkish }) => {
             <motion.div key={key} className="content-item" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
               <h3 className="content-item-title">{contentItem.title}</h3>
               {contentItem.image && (
-                <img src={contentItem.image} alt={contentItem.title} className="content-image" onError={(e) => { e.target.style.display = 'none'; }} />
+                <img src={contentItem.image} alt={contentItem.title} className="content-image" style={{ cursor: 'zoom-in' }} onClick={() => setLightbox({ src: contentItem.image, alt: contentItem.title })} onError={(e) => { e.target.style.display = 'none'; }} />
               )}
               <p className="content-description">{contentItem.description}</p>
               {contentItem.points && (
@@ -120,6 +122,7 @@ const SectionComponent = ({ section, isTurkish }) => {
           {act}
         </div>
       ) : null; })()}
+      <AnimatePresence>{lightbox && <ImageLightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}</AnimatePresence>
     </motion.div>
   );
 };

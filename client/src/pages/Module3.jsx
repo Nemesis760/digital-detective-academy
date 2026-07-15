@@ -41,6 +41,7 @@ const WIRED_WIRELESS_QUIZ = WIRED_WIRELESS_TRUTH_OR_TROLL.statements.map((s) => 
 
 import CompletionScreen from '../components/CompletionScreen';
 import '../modules.css';
+import ImageLightbox from '../components/ImageLightbox';
 
 const MODULE_KEY = 'module3';
 
@@ -50,6 +51,7 @@ const MODULE_KEY = 'module3';
 // ------------------------------------------------------
 const SectionComponent = ({ section, isTurkish }) => {
   const [showStory, setShowStory] = useState(false);
+  const [lightbox, setLightbox] = useState(null);
 
   const shouldRenderInlineQuiz = section.activity_type !== 'interactive_quiz';
   const isDeviceSection = section.id === 7;
@@ -198,6 +200,8 @@ const SectionComponent = ({ section, isTurkish }) => {
                   src={contentItem.image}
                   alt={contentItem.title}
                   className="content-image"
+                  style={{ cursor: 'zoom-in' }}
+                  onClick={() => setLightbox({ src: contentItem.image, alt: contentItem.title })}
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                   }}
@@ -268,6 +272,7 @@ const SectionComponent = ({ section, isTurkish }) => {
           {activityElement}
         </div>
       )}
+      <AnimatePresence>{lightbox && <ImageLightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}</AnimatePresence>
     </motion.div>
   );
 };

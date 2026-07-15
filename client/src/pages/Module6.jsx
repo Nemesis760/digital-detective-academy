@@ -12,6 +12,7 @@ import VideoLinks from '../components/VideoLinks';
 import '../modules.css';
 import './module6.css';
 import CompletionScreen from '../components/CompletionScreen';
+import ImageLightbox from '../components/ImageLightbox';
 
 const MODULE_KEY = 'module6';
 
@@ -119,6 +120,7 @@ function AdvancedHotspotCyberQuiz({ isTurkish }) {
   const [answered, setAnswered] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
   const [isCorrect, setIsCorrect] = useState(false);
+  const [lightbox, setLightbox] = useState(null);
 
   const playSound = (soundFile) => {
     try { new Audio(soundFile).play().catch(() => {}); } catch (_) {}
@@ -194,7 +196,8 @@ function AdvancedHotspotCyberQuiz({ isTurkish }) {
         <img
           src={current.image}
           alt={current.title}
-          style={{ width: '100%', display: 'block', maxHeight: '300px', objectFit: 'cover' }}
+          style={{ width: '100%', display: 'block', maxHeight: '300px', objectFit: 'cover', cursor: 'zoom-in' }}
+          onClick={() => setLightbox({ src: current.image, alt: current.title })}
           onError={(e) => { e.target.style.display = 'none'; }}
         />
       </div>
@@ -272,6 +275,7 @@ function AdvancedHotspotCyberQuiz({ isTurkish }) {
             : (isTurkish ? '✅ Tamamla' : '✅ Finish')}
         </motion.button>
       )}
+      <AnimatePresence>{lightbox && <ImageLightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}</AnimatePresence>
     </div>
   );
 }
@@ -326,6 +330,7 @@ function CrisisSimulationIntro({ isTurkish }) {
 
 const SectionComponent = ({ section, isTurkish }) => {
   const activityType = section.activity_type;
+  const [lightbox, setLightbox] = useState(null);
 
   const renderActivity = () => {
     switch (activityType) {
@@ -374,7 +379,7 @@ const SectionComponent = ({ section, isTurkish }) => {
           {Object.entries(section.content).map(([key, contentItem]) => (
             <motion.div key={key} className="content-item" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}>
               <h3 className="content-item-title">{contentItem.title}</h3>
-              {contentItem.image && <img src={contentItem.image} alt={contentItem.title} className="content-image" onError={(e) => { e.target.style.display = 'none'; }} />}
+              {contentItem.image && <img src={contentItem.image} alt={contentItem.title} className="content-image" style={{ cursor: 'zoom-in' }} onClick={() => setLightbox({ src: contentItem.image, alt: contentItem.title })} onError={(e) => { e.target.style.display = 'none'; }} />}
               <p className="content-description">{contentItem.description}</p>
               {contentItem.points && <ul className="content-points">{contentItem.points.map((point, idx) => <li key={`pt-${idx}`}>{point}</li>)}</ul>}
               {contentItem.examples && Array.isArray(contentItem.examples) && (
@@ -395,6 +400,7 @@ const SectionComponent = ({ section, isTurkish }) => {
         <p>{section.activity_desc}</p>
         {renderActivity()}
       </div>
+      <AnimatePresence>{lightbox && <ImageLightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}</AnimatePresence>
     </motion.div>
   );
 };

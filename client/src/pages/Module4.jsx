@@ -18,6 +18,7 @@ import Module4MiniQuiz from '../components/Module4MiniQuiz';
 import CardMatchGame from '../components/CardMatchGame';
 import WordPuzzleGame from '../components/WordPuzzleGame';
 import PasswordSmithGame from '../components/PasswordSmithGame';
+import ImageLightbox from '../components/ImageLightbox';
 
 const MODULE_KEY = 'module4';
 
@@ -177,6 +178,7 @@ export default function Module4() {
   const [isLoading, setIsLoading] = useState(true);
   const [showCompletion, setShowCompletion] = useState(false);
   const [countdown, setCountdown] = useState(5);
+  const [lightbox, setLightbox] = useState(null);
 
   useEffect(() => {
     const t = setTimeout(() => setIsLoading(false), 450);
@@ -288,7 +290,7 @@ export default function Module4() {
 
           {moduleData.hero_image && activeSection === 1 && (
             <div className="m4-visual-container">
-              <img src={moduleData.hero_image} alt={isTurkish ? 'Dijital güvenlik' : 'Digital safety'} className="m4-main-image" />
+              <img src={moduleData.hero_image} alt={isTurkish ? 'Dijital güvenlik' : 'Digital safety'} className="m4-main-image" style={{ cursor: 'zoom-in' }} onClick={() => setLightbox({ src: moduleData.hero_image, alt: isTurkish ? 'Dijital güvenlik' : 'Digital safety' })} />
             </div>
           )}
 
@@ -315,7 +317,7 @@ export default function Module4() {
                         {text && <div className="m4-flow-bullet"><span className="m4-flow-dot" aria-hidden="true">✓</span><span>{text}</span></div>}
                       </div>
                       <div className="m4-flow-image">
-                        {img && <img src={img.src} alt={isTurkish ? img.alt_tr : img.alt_en} className="m4-section-image" loading="lazy" />}
+                        {img && <img src={img.src} alt={isTurkish ? img.alt_tr : img.alt_en} className="m4-section-image" loading="lazy" style={{ cursor: 'zoom-in' }} onClick={() => setLightbox({ src: img.src, alt: isTurkish ? img.alt_tr : img.alt_en })} />}
                       </div>
                     </div>
                   );
@@ -331,7 +333,7 @@ export default function Module4() {
                 <div className="m4-image-wrapper">
                   {sectionImages.map((img, idx) => (
                     <div key={`${current.id}-img-${idx}`} style={{ marginBottom: 14 }}>
-                      <img src={img.src} alt={isTurkish ? img.alt_tr : img.alt_en} className="m4-section-image" loading="lazy" />
+                      <img src={img.src} alt={isTurkish ? img.alt_tr : img.alt_en} className="m4-section-image" loading="lazy" style={{ cursor: 'zoom-in' }} onClick={() => setLightbox({ src: img.src, alt: isTurkish ? img.alt_tr : img.alt_en })} />
                     </div>
                   ))}
                 </div>
@@ -408,6 +410,7 @@ export default function Module4() {
           </button>
         )}
       </div>
+      <AnimatePresence>{lightbox && <ImageLightbox src={lightbox.src} alt={lightbox.alt} onClose={() => setLightbox(null)} />}</AnimatePresence>
     </div>
   );
 }
