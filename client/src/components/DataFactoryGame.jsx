@@ -180,7 +180,7 @@ const DataFactoryGame = ({ isTurkish = true }) => {
           <h3 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 to-orange-400">
             {isTurkish ? '🏭 Veri Fabrikası Oyunu' : '🏭 Data Factory Game'}
           </h3>
-          <p className="text-slate-400 text-xs mt-1">
+          <p className="text-slate-400 text-xs mt-1 leading-snug break-words px-1">
             {isTurkish ? 'Cihazları doğru istasyonlara sürükle veya seç! (IPOS)' : 'Drag or select devices to the correct stations! (IPOS)'}
           </p>
         </div>
@@ -241,8 +241,8 @@ const DataFactoryGame = ({ isTurkish = true }) => {
                       onClick={() => handleItemSelect(item)}
                       onPointerDown={(e) => onPointerDownItem(e, item)}
                       className={[
-                        'flex items-center gap-2 rounded-lg px-2 py-2 md:px-3',
-                        'border-2 transition-colors select-none cursor-grab active:cursor-grabbing touch-pan-y',
+                        'flex items-center gap-2 rounded-lg px-2 py-3 md:px-3 md:py-2',
+                        'border-2 transition-colors select-none cursor-grab active:cursor-grabbing touch-none',
                         selectedItem?.id === item.id
                           ? 'bg-yellow-500/20 border-yellow-400 ring-1 ring-yellow-300'
                           : 'bg-slate-700 border-slate-600 hover:border-blue-400',
@@ -251,8 +251,8 @@ const DataFactoryGame = ({ isTurkish = true }) => {
                       whileHover={{ x: 2 }}
                       whileTap={{ scale: 0.97 }}
                     >
-                      <span className="text-lg pointer-events-none">{item.emoji}</span>
-                      <span className="text-white font-semibold text-xs md:text-sm pointer-events-none truncate">{item.name}</span>
+                      <span className="text-xl pointer-events-none">{item.emoji}</span>
+                      <span className="text-white font-semibold text-sm pointer-events-none truncate">{item.name}</span>
                       {selectedItem?.id === item.id && (
                         <span className="ml-auto text-yellow-300 text-xs font-bold pointer-events-none flex-shrink-0">✓</span>
                       )}
@@ -291,7 +291,7 @@ const DataFactoryGame = ({ isTurkish = true }) => {
                 <span className="text-xl">{config.emoji}</span>
                 <div className="min-w-0">
                   <h4 className="text-sm font-bold text-white leading-tight">{config.title}</h4>
-                  <p className="text-xs text-white/70 truncate">{config.description}</p>
+                  <p className="text-xs text-white/80 leading-tight">{config.description}</p>
                 </div>
               </div>
 

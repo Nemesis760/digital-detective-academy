@@ -477,10 +477,38 @@ const HardwareHotspot = ({ isTurkish = true }) => {
 
       {/* Panel area */}
       <div className="hh-panel" ref={panelRef}>
-        {/* DISCOVER PANEL — just a subtle hint, real info is in the popup */}
+        {/* DISCOVER PANEL — info card below image (popup hidden on mobile) */}
         {mode === "discover" && (
           <div className="hh-detail">
-            <div className="hh-empty">{selectedPart ? t.hint : t.selectHint}</div>
+            <AnimatePresence mode="wait">
+              {selectedPart ? (
+                <motion.div
+                  key={selectedPart.id}
+                  className="hh-infoCard"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 4 }}
+                  transition={{ duration: 0.18 }}
+                >
+                  <div className="hh-infoCardRow">
+                    <span className="hh-infoCardEmoji">{selectedPart.emoji}</span>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div className="hh-popupName">{selectedPart.name}</div>
+                      {clickedParts.has(selectedPart.id) && (
+                        <span className="hh-badge" style={{ marginTop: 4, display: 'inline-block', fontSize: '0.78rem', padding: '2px 8px' }}>
+                          ✓ {isTurkish ? "Keşfedildi" : "Discovered"}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <p className="hh-popupDesc">{selectedPart.description}</p>
+                </motion.div>
+              ) : (
+                <motion.div key="hint" className="hh-empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  {t.selectHint}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         )}
 
@@ -861,13 +889,31 @@ const HardwareHotspot = ({ isTurkish = true }) => {
         .hh-doneText{ opacity:.95; font-weight:700; }
         .hh-doneScore{ margin:10px 0 14px; font-weight:900; }
 
+        /* Info card in panel (replaces floating popup on mobile) */
+        .hh-infoCard{
+          background:#fff;
+          border:2px solid #6366f1;
+          border-radius:14px;
+          padding:14px 16px;
+          box-shadow:0 4px 16px rgba(99,102,241,.15);
+        }
+        .hh-infoCardRow{
+          display:flex;
+          align-items:center;
+          gap:12px;
+          margin-bottom:8px;
+        }
+        .hh-infoCardEmoji{ font-size:2.2rem; flex-shrink:0; }
+
         @media (max-width:768px){
           .hh-info{ flex-direction:column; align-items:flex-start; }
           .hh-right{ width:100%; justify-content:space-between; }
-          .hh-imageWrap{ min-height:260px; padding:12px; }
-          .hh-hotspot{ width:46px; height:46px; }
-          .hh-emoji{ font-size:1.35rem; }
+          .hh-imageWrap{ min-height:220px; padding:10px; }
+          .hh-hotspot{ width:48px; height:48px; }
+          .hh-emoji{ font-size:1.4rem; }
           .hh-hitArea{ inset:-16px; }
+          /* Hide floating overlay popup on mobile — info shows in panel below */
+          .hh-popup{ display:none; }
         }
       `}</style>
     </div>
